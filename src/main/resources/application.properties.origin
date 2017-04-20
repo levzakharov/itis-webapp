@@ -1,8 +1,14 @@
 # PostgreSQL properties
 spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL96Dialect
 spring.datasource.url=jdbc:postgresql://localhost:5432/itis-portal
 spring.datasource.username=postgres
 spring.datasource.password=postgres
+
+# JPA peoperties
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.jpa.generate-ddl=false
 
 # LIQUIBASE (LiquibaseProperties)
 liquibase.change-log=classpath:/db/changelog.xml
