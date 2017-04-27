@@ -2,9 +2,7 @@ CREATE TABLE users (
 	id SERIAL,
 	email VARCHAR(50),
 	phone VARCHAR(50),
-	first_name VARCHAR(50),
-	last_name VARCHAR(50),
-	middle_name VARCHAR(50),
+	full_name VARCHAR(255),
 	password VARCHAR(100),
 	group_id INT
 );
