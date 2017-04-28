@@ -7,5 +7,14 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <include file="changelog/role-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-destinations.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-documents.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-events.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-groups.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-notifications.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-posts.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-requests.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-users.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-foreign-keys.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

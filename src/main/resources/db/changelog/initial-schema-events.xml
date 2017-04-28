@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="initial-schema-events-0" author="r.khakov">
+        <createTable tableName="events">
+            <column name="id" type="bigint"/>
+            <column name="number" type="varchar(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="date" type="TIMESTAMP"/>
+            <column name="place" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="initial-schema-events-1" author="r.khakov">
+        <addPrimaryKey tableName="events"
+                       columnNames="id"
+                       constraintName="events_pk"/>
+    </changeSet>
+
+    <changeSet id="initial-schema-events-2" author="r.khakov">
+        <createSequence sequenceName="events_seq"
+                        startValue="1" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

@@ -9,7 +9,7 @@ CREATE TABLE users (
 
 CREATE TABLE roles (
 	id SERIAL,
-	name VARCHAR(30)
+	type VARCHAR(30)
 );
 
 CREATE TABLE roles_users (
