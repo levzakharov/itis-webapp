@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="initial-schema-documents-posts-0" author="al.leontyev">
+        <createTable tableName="documents_posts">
+            <column name="document_id" type="bigint"/>
+            <column name="post_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="initial-schema-documents-posts-1" author="al.leontyev">
+        <addPrimaryKey tableName="documents_posts"
+                       columnNames="document_id, post_id"
+                       constraintName="documents_posts_pk"/>
+    </changeSet>
+</databaseChangeLog>

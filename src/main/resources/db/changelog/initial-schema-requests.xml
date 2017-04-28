@@ -23,7 +23,6 @@
 
     <changeSet id="initial-schema-requests-2" author="r.khakov">
         <createSequence sequenceName="requests_seq"
-                        startValue="1"
-                        incrementBy="1"/>
+                        startValue="1" incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>

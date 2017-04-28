@@ -16,5 +16,9 @@
     <include file="changelog/initial-schema-requests.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-users.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-foreign-keys.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-roles-users.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-events-users.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-documents-posts.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-users-destinations.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
