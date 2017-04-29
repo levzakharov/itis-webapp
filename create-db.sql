@@ -98,10 +98,10 @@ ALTER TABLE documents_posts ADD CONSTRAINT documents_posts_pk PRIMARY KEY (docum
 ALTER TABLE users_destinations ADD CONSTRAINT users_destinations_pk PRIMARY KEY (user_id, destination_id);
 
 -- ADD foreign keys for "many-to-many"
-ALTER TABLE documents_posts ADD CONSTRAINT documents_posts_document_fk FOREIGN KEY (document_id) REFERENCES documents (id); 
-ALTER TABLE documents_posts ADD CONSTRAINT documents_posts_post_fk FOREIGN KEY (post_id) REFERENCES posts (id); 
-ALTER TABLE users_destinations ADD CONSTRAINT users_destinations_user_fk FOREIGN KEY (user_id) REFERENCES users (id); 
-ALTER TABLE users_destinations ADD CONSTRAINT users_destinations_destination_fk FOREIGN KEY (destination_id) REFERENCES destinations (id); 
+ALTER TABLE documents_posts ADD CONSTRAINT documents_posts_documents_fk FOREIGN KEY (document_id) REFERENCES documents (id);
+ALTER TABLE documents_posts ADD CONSTRAINT documents_posts_posts_fk FOREIGN KEY (post_id) REFERENCES posts (id);
+ALTER TABLE users_destinations ADD CONSTRAINT users_destinations_users_fk FOREIGN KEY (user_id) REFERENCES users (id);
+ALTER TABLE users_destinations ADD CONSTRAINT users_destinations_destinations_fk FOREIGN KEY (destination_id) REFERENCES destinations (id);
 ALTER TABLE events_users ADD CONSTRAINT events_users_events_fk FOREIGN KEY (event_id) REFERENCES events (id);
 ALTER TABLE events_users ADD CONSTRAINT events_users_users_fk FOREIGN KEY (user_id) REFERENCES users (id);
 ALTER TABLE roles_users ADD CONSTRAINT roles_users_users_fk FOREIGN KEY (user_id) REFERENCES users (id);
