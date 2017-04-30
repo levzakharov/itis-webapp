@@ -6,18 +6,18 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="0" author="al.pliskin">
-        <createTable tableName="roles">
+        <createTable tableName="role">
             <column name="id" type="bigint"/>
             <column name="type" type="varchar(255)"/>
         </createTable>
     </changeSet>
 
     <changeSet id="1" author="al.pliskin">
-        <addPrimaryKey tableName="roles" columnNames="id"/>
+        <addPrimaryKey tableName="role" columnNames="id"/>
     </changeSet>
 
     <changeSet id="2" author="al.pliskin">
-        <createSequence sequenceName="roles_seq"
+        <createSequence sequenceName="role_seq"
                         startValue="1" incrementBy="1"/>
     </changeSet>
 
