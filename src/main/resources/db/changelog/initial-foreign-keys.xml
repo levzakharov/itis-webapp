@@ -5,154 +5,154 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet  id="initial-fk-documents-posts-0" author="al.leontyev">
+    <changeSet  id="initial-fk-document-post-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="document_id"
-                                 baseTableName="documents_posts"
-                                 constraintName="documents_posts_documents_fk"
+                                 baseTableName="document_post"
+                                 constraintName="document_post_document_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="documents"/>
+                                 referencedTableName="document"/>
     </changeSet>
 
-    <changeSet id="initial-fk-documents-posts-1" author="al.leontyev">
+    <changeSet id="initial-fk-document-post-1" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="post_id"
-                                 baseTableName="documents_posts"
-                                 constraintName="documents_posts_posts_fk"
+                                 baseTableName="document_post"
+                                 constraintName="document_post_post_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="posts"/>
+                                 referencedTableName="post"/>
     </changeSet>
 
-    <changeSet id="initial-fk-users-destinations-0" author="al.leontyev">
+    <changeSet id="initial-fk-user-destination-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="users_destinations"
-                                 constraintName="users_destinations_users_fk"
+                                 baseTableName="user_destination"
+                                 constraintName="user_destination_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="users"/>
+                                 referencedTableName="user"/>
     </changeSet>
 
-    <changeSet id="initial-fk-users-destinations-1" author="al.leontyev">
+    <changeSet id="initial-fk-user-destination-1" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="destination_id"
-                                 baseTableName="users_destinations"
-                                 constraintName="users_destinations_destinations_fk"
+                                 baseTableName="user_destination"
+                                 constraintName="user_destination_destination_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="destinations"/>
+                                 referencedTableName="destination"/>
     </changeSet>
 
-    <changeSet id="initial-fk-events-users-0" author="al.leontyev">
+    <changeSet id="initial-fk-event-user-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="event_id"
-                                 baseTableName="events_users"
-                                 constraintName="events_users_events_fk"
+                                 baseTableName="event_user"
+                                 constraintName="event_user_event_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="events"/>
+                                 referencedTableName="event"/>
     </changeSet>
 
-    <changeSet id="initial-fk-events-users-1" author="al.leontyev">
+    <changeSet id="initial-fk-event-user-1" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="events_users"
-                                 constraintName="events_users_users_fk"
+                                 baseTableName="event_user"
+                                 constraintName="event_user_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="users"/>
+                                 referencedTableName="user"/>
     </changeSet>
 
-    <changeSet id="initial-fk-events-users-0" author="al.leontyev">
+    <changeSet id="initial-fk-event-user-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="event_id"
-                                 baseTableName="events_users"
-                                 constraintName="events_users_events_fk"
+                                 baseTableName="event_user"
+                                 constraintName="event_user_event_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="events"/>
+                                 referencedTableName="event"/>
     </changeSet>
 
-    <changeSet id="initial-fk-roles-users-0" author="al.leontyev">
+    <changeSet id="initial-fk-role-user-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="roles_users"
-                                 constraintName="roles_users_users_fk"
+                                 baseTableName="role_user"
+                                 constraintName="role_user_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="users"/>
+                                 referencedTableName="user"/>
     </changeSet>
 
-    <changeSet id="initial-fk-roles-users-1" author="al.leontyev">
+    <changeSet id="initial-fk-role-user-1" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="role_id"
-                                 baseTableName="roles_users"
-                                 constraintName="roles_users_roles_fk"
+                                 baseTableName="role_user"
+                                 constraintName="role_user_role_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="roles"/>
+                                 referencedTableName="role"/>
     </changeSet>
 
-    <changeSet id="initial-fk-users-0" author="al.leontyev">
+    <changeSet id="initial-fk-user-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="group_id"
-                                 baseTableName="users"
-                                 constraintName="users_groups_fk"
+                                 baseTableName="user"
+                                 constraintName="user_group_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="groups"/>
+                                 referencedTableName="group"/>
     </changeSet>
 
-    <changeSet id="initial-fk-posts-0" author="al.leontyev">
+    <changeSet id="initial-fk-post-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="posts"
-                                 constraintName="posts_users_fk"
+                                 baseTableName="post"
+                                 constraintName="post_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="users"/>
+                                 referencedTableName="user"/>
     </changeSet>
 
-    <changeSet id="initial-fk-documents-0" author="al.leontyev">
+    <changeSet id="initial-fk-document-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="documents"
-                                 constraintName="documents_users_fk"
+                                 baseTableName="document"
+                                 constraintName="document_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="users"/>
+                                 referencedTableName="user"/>
     </changeSet>
 
-    <changeSet id="initial-fk-notifications-0" author="al.leontyev">
+    <changeSet id="initial-fk-notification-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="notifications"
-                                 constraintName="notifications_users_fk"
+                                 baseTableName="notification"
+                                 constraintName="notification_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="users"/>
+                                 referencedTableName="user"/>
     </changeSet>
 
-    <changeSet id="initial-fk-destinations-0" author="al.leontyev">
+    <changeSet id="initial-fk-destination-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="notification_id"
-                                 baseTableName="destinations"
-                                 constraintName="destinations_notifications_fk"
+                                 baseTableName="destination"
+                                 constraintName="destination_notification_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="notifications"/>
+                                 referencedTableName="notification"/>
     </changeSet>
 
-    <changeSet id="initial-fk-requests-0" author="al.leontyev">
+    <changeSet id="initial-fk-request-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="requests"
-                                 constraintName="requests_users_fk"
+                                 baseTableName="request"
+                                 constraintName="request_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="users"/>
+                                 referencedTableName="user"/>
     </changeSet>
-    
+
 </databaseChangeLog>

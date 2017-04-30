@@ -5,20 +5,22 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="0" author="al.pliskin">
-        <createTable tableName="roles">
+    <changeSet id="initial-schema-group-0" author="r.khakov">
+        <createTable tableName="group">
             <column name="id" type="bigint"/>
-            <column name="type" type="varchar(255)"/>
+            <column name="number" type="varchar(12)"/>
+            <column name="start_year" type="DATE"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="1" author="al.pliskin">
-        <addPrimaryKey tableName="roles" columnNames="id"/>
+    <changeSet id="initial-schema-group-1" author="r.khakov">
+        <addPrimaryKey tableName="group"
+                       columnNames="id"
+                       constraintName="group_pk"/>
     </changeSet>
 
-    <changeSet id="2" author="al.pliskin">
-        <createSequence sequenceName="roles_seq"
+    <changeSet id="initial-schema-group-2" author="r.khakov">
+        <createSequence sequenceName="group_seq"
                         startValue="1" incrementBy="1"/>
     </changeSet>
-
 </databaseChangeLog>

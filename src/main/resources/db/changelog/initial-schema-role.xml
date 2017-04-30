@@ -5,21 +5,20 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="initial-schema-destinations-0" author="r.khakov">
-        <createTable tableName="destinations">
+    <changeSet id="0" author="al.pliskin">
+        <createTable tableName="role">
             <column name="id" type="bigint"/>
-            <column name="notification_id" type="bigint"/>
+            <column name="type" type="varchar(255)"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="initial-schema-destinations-1" author="r.khakov">
-        <addPrimaryKey tableName="destinations"
-                       columnNames="id"
-                       constraintName="destinations_pk"/>
+    <changeSet id="1" author="al.pliskin">
+        <addPrimaryKey tableName="role" columnNames="id"/>
     </changeSet>
 
-    <changeSet id="initial-schema-destinations-2" author="r.khakov">
-        <createSequence sequenceName="destinations_seq"
+    <changeSet id="2" author="al.pliskin">
+        <createSequence sequenceName="role_seq"
                         startValue="1" incrementBy="1"/>
     </changeSet>
+
 </databaseChangeLog>

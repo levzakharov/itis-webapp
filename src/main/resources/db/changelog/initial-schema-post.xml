@@ -5,24 +5,24 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="initial-schema-notifications-0" author="r.khakov">
-        <createTable tableName="notifications">
+    <changeSet id="initial-schema-post-0" author="r.khakov">
+        <createTable tableName="post">
             <column name="id" type="bigint"/>
-            <column name="user_id" type="bigint"/>
-            <column name="theme" type="varchar(255)"/>
+            <column name="title" type="varchar(255)"/>
             <column name="text" type="text"/>
             <column name="date" type="TIMESTAMP"/>
+            <column name="user_id" type="bigint"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="initial-schema-notifications-1" author="r.khakov">
-        <addPrimaryKey tableName="notifications"
+    <changeSet id="initial-schema-post-1" author="r.khakov">
+        <addPrimaryKey tableName="post"
                        columnNames="id"
-                       constraintName="notifications_pk"/>
+                       constraintName="post_pk"/>
     </changeSet>
 
-    <changeSet id="initial-schema-notifications-2" author="r.khakov">
-        <createSequence sequenceName="notifications_seq"
+    <changeSet id="initial-schema-post-2" author="r.khakov">
+        <createSequence sequenceName="post_seq"
                         startValue="1" incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>

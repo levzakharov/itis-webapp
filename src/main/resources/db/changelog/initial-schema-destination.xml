@@ -5,22 +5,21 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="initial-schema-groups-0" author="r.khakov">
-        <createTable tableName="groups">
+    <changeSet id="initial-schema-destination-0" author="r.khakov">
+        <createTable tableName="destination">
             <column name="id" type="bigint"/>
-            <column name="number" type="varchar(12)"/>
-            <column name="start_year" type="DATE"/>
+            <column name="notification_id" type="bigint"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="initial-schema-groups-1" author="r.khakov">
-        <addPrimaryKey tableName="groups"
+    <changeSet id="initial-schema-destination-1" author="r.khakov">
+        <addPrimaryKey tableName="destination"
                        columnNames="id"
-                       constraintName="groups_pk"/>
+                       constraintName="destination_pk"/>
     </changeSet>
 
-    <changeSet id="initial-schema-groups-2" author="r.khakov">
-        <createSequence sequenceName="groups_seq"
+    <changeSet id="initial-schema-destination-2" author="r.khakov">
+        <createSequence sequenceName="destination_seq"
                         startValue="1" incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>

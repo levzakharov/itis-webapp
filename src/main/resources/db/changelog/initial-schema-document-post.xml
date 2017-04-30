@@ -5,16 +5,16 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="initial-schema-documents-posts-0" author="al.leontyev">
-        <createTable tableName="documents_posts">
+    <changeSet id="initial-schema-document-post-0" author="al.leontyev">
+        <createTable tableName="document_post">
             <column name="document_id" type="bigint"/>
             <column name="post_id" type="bigint"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="initial-schema-documents-posts-1" author="al.leontyev">
-        <addPrimaryKey tableName="documents_posts"
+    <changeSet id="initial-schema-document-post-1" author="al.leontyev">
+        <addPrimaryKey tableName="document_post"
                        columnNames="document_id, post_id"
-                       constraintName="documents_posts_pk"/>
+                       constraintName="document_post_pk"/>
     </changeSet>
 </databaseChangeLog>
