@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="initial-schema-user-destination-0" author="al.leontyev">
+        <createTable tableName="user_destination">
+            <column name="user_id" type="bigint"/>
+            <column name="destination_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="initial-schema-user-destination-1" author="al.leontyev">
+        <addPrimaryKey tableName="user_destination"
+                       columnNames="user_id, destination_id"
+                       constraintName="user_destination_pk"/>
+    </changeSet>
+</databaseChangeLog>
