@@ -21,7 +21,7 @@ public class PostServiceIMPL implements PostService {
 
     @Override
     public List<Post> getAllOrderByDateDesc() {
-        return postRepository.findAllOrderByDateDesc();
+        return postRepository.findAllByOrderByDateDesc();
     }
 
     @Override
