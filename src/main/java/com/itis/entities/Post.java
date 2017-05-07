@@ -16,7 +16,6 @@ public class Post {
 
     int user_id;
 
-
     String title;
     String text;
 

@@ -38,4 +38,9 @@ public class PostServiceIMPL implements PostService {
     public void delete(Post post) {
         postRepository.delete(post);
     }
+
+    @Override
+    public Post add(Post post) {
+        return postRepository.save(post);
+    }
 }
