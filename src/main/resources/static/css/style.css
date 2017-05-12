@@ -1,0 +1,417 @@
+html, body {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100%;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+	text-decoration: none;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+/* MAIN STYLES */
+.col-5 {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+}
+
+aside {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 240px;
+	background: #344c6d;
+	z-index: 2;
+}
+
+aside .logo {
+	height: 70px;
+	line-height: 70px;
+	border-bottom: 1px solid #456693;
+	padding: 0 30px;
+	box-sizing: border-box;
+}
+
+aside .logo img {
+	width: 150px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+aside .exit {
+	position: absolute;
+	bottom: 0;
+	box-sizing: border-box ;
+	left: 0;
+	right: 0;
+	padding: 20px 30px;
+	border-top: 1px solid #456693;
+}
+
+aside .exit a {
+	font-size: 16px;
+	color: #fff;
+}
+
+.container {
+	padding-left: 240px;
+	box-sizing: border-box;
+	position: relative;
+	z-index: 1;
+}
+
+.container header {
+	height: 70px;
+	border-bottom: 1px solid #eee;
+	font-size: 0;
+}
+
+aside .menu {
+	box-sizing: border-box;
+	padding: 30px;
+}
+
+aside .menu ul li:first-child {
+	padding-top: 0;
+}
+
+aside .menu ul li {
+	list-style-type: none;
+	display: block;
+	padding: 16px 0;
+}
+
+aside .menu ul li a {
+	font-weight: 600;
+	color: #fff;
+	font-size: 16px;
+}
+
+header .col-5:last-child {
+	text-align: right;
+}
+
+header .user {
+	height: 70px;
+	line-height: 70px;
+	display: inline-block;
+	padding: 0 30px;
+	border-left: 1px solid #eee;
+}
+
+header .user a {
+	font-size: 16px;
+	color: 555;
+}
+
+.container .content {
+	padding: 40px;
+}
+
+/* SIGNIN PAGE */
+
+.signin-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: -moz-linear-gradient(45deg, rgba(0,52,87,1) 0%, rgba(52,76,110,1) 100%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(0,52,87,1)), color-stop(100%, rgba(52,76,110,1))); /* safari4+,chrome */
+	background: -webkit-linear-gradient(45deg, rgba(0,52,87,1) 0%, rgba(52,76,110,1) 100%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(45deg, rgba(0,52,87,1) 0%, rgba(52,76,110,1) 100%); /* opera 11.10+ */
+	background: -ms-linear-gradient(45deg, rgba(0,52,87,1) 0%, rgba(52,76,110,1) 100%); /* ie10+ */
+	background: linear-gradient(45deg, rgba(0,52,87,1) 0%, rgba(52,76,110,1) 100%); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#344C6E', endColorstr='#003457',GradientType=1 ); /* ie6-9 */
+	overflow: hidden ;
+}
+
+.signin-container .signin {
+	width: 450px;
+	display: inline-block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -275px;
+	margin-top: -288px;
+	padding: 50px;
+}
+
+.signin-container .signin .signin-content {
+	padding: 40px;
+	background: #fff;
+}
+
+.signin-container .signin input {
+	display: block;
+	font-size: 16px;
+	width: 100%;
+	padding: 15px 15px;
+	border-radius: 5px;
+	border: none;
+	background: none;
+	box-shadow: none;
+	outline: none;
+	background: transparent;
+	border-bottom: 2px solid #aaa;
+	border-radius: 0;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	color: #222;
+
+	transition: 0.2s linear;
+}
+
+.signin-container .signin input:focus {
+	border-color: #0091cf;
+}
+
+.signin-container .signin input::-webkit-input-placeholder {color:#aaa;}
+.signin-container .signin input::-moz-placeholder          {color:#aaa;}/* Firefox 19+ */
+.signin-container .signin input:-moz-placeholder           {color:#aaa;}/* Firefox 18- */
+.signin-container .signin input:-ms-input-placeholder      {color:#aaa;}
+
+.signin-container .signin .button {
+	display: block;
+	font-size: 16px;
+	width: 100%;
+	padding: 15px 10px;
+	margin-top: 40px;
+	background: #0091cf;
+	text-align: center;
+	color: #fff;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.signin-container .signin .forgot {
+	padding-top: 30px;
+	text-align: center;
+	width: 100%;
+}
+
+.signin-container .signin .forgot a {
+	font-size: 16px;
+	color: #0091cf;
+}
+
+.signin-container .signin .logo {
+	margin-bottom: 80px;
+	text-align: center;
+}
+
+.signin-container .signin .logo img {
+	width: 300px;
+}
+
+/* NEWS PAGE */
+
+.container .content .blocks .block {
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	border-bottom: 1px solid #ddd;
+}
+
+.container .content .blocks .block .name {
+	font-weight: 600;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.container .content .blocks .block .date {
+	color: #777;
+}
+
+.container .content .blocks .block .text {
+	margin-top: 15px;
+}
+
+.container .content .blocks .block img {
+	margin-top: 10px;
+}
+
+/* SHEDULE PAGE */
+
+.container .content .upload {
+	margin-bottom: 30px;
+}
+
+.container .content .upload a {
+	color: #344c6d;
+	text-decoration: underline;
+	font-weight: 600;
+}
+
+.container .content .filter * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.container .content .filter .button {
+	padding: 8px 18px;
+	border: 2px solid #ddd;
+	border-radius: 90px;
+	cursor: pointer;
+	transition: 0.2s linear;
+}
+
+.container .content .filter .button.active {
+	border-color: #344c6d;
+	color: #344c6d;
+	border-width: 2px;
+	font-weight: 700;
+}
+
+.container .content .filter .button.enter {
+	background-color: #344c6d;
+	color: #fff;
+	font-weight: 700;
+	border-color: #344c6d;
+}
+
+.container .content .filter .title {
+	margin-right: 10px;
+}
+
+.container .content .filter .modes > div {
+	margin: 0 10px;
+}
+
+.container .content .panel {
+	margin-top: 30px;
+	font-size: 0;
+}
+
+.container .content .panel * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.container .content .panel .group select {
+	width: 170px;
+	height: 34px;
+	margin-left: 10px;
+}
+
+.container .content .panel .days {
+	font-size: 0;
+	margin-right: 20px;
+}
+
+.container .content .panel .button {
+	padding: 6px 14px;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	transition: 0.2s linear;
+}
+
+.container .content .panel .button.active {
+	color: #fff;
+	background: #344c6d;
+}
+
+.container .content .table {
+	width: 100%;
+	overflow: scroll ;
+	margin-top: 40px;
+}
+
+.container .content .table table {
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.container .content .table table td, .container .content .table table th {
+	min-width: 130px;
+	border: 1px solid #ddd;
+	padding: 5px;
+} 
+
+.container .content .table table td:first-child, .container .content .table table th:first-child {
+	min-width: 100px;
+}
+
+.container .content .table table td:nth-child(2), .container .content .table table th:nth-child(2) {
+	min-width: 50px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1000px) {
+	aside {
+		width: 200px;
+	}
+
+	aside .menu {
+		padding: 20px;
+	}
+
+	.container {
+		padding-left: 200px;
+	}
+
+	aside .logo {
+		padding: 0 20px;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.signin-container .signin .logo img {
+		width: 220px;
+	}
+	
+	.signin-container .signin {
+		width: 300px;
+		margin-left: -200px;
+		margin-top: -288px;
+	}
+}
+
+@media only screen and (max-width: 380px) {
+	.signin-container .signin {
+		width: 270px;
+		margin-left: -185px;
+		margin-top: -254px;
+	}
+
+	.signin-container .signin .logo {
+		margin-bottom: 50px;
+	}
+
+	.signin-container .signin .signin-content {
+		padding: 30px;
+	}
+
+	.signin-container .signin input {
+		margin-bottom: 15px;
+	}
+
+	.signin-container .signin .logo img {
+		width: 200px;
+	}
+}
+
+
+@media only screen and (max-height: 540px) {
+	.signin-container .signin {
+		position: relative;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		top: 0;
+	}
+
+	.signin-container {
+		height: auto;
+	}
+}
+
