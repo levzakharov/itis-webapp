@@ -26,8 +26,7 @@
         </preConditions>
 
         <addPrimaryKey tableName="role"
-                       columnNames="id"
-                       constraintName="role_pkey"/>
+                       columnNames="id"/>
     </changeSet>
 
     <changeSet id="2" author="al.pliskin">
