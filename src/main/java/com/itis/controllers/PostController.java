@@ -2,9 +2,8 @@ package com.itis.controllers;
 
 import com.itis.entities.Post;
 import com.itis.forms.PostForm;
-import com.itis.services.INTR.PostService;
+import com.itis.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,9 +17,7 @@ import java.util.Date;
  * Created by softi on 01.05.2017.
  */
 @Controller
-@EnableAutoConfiguration
 public class PostController {
-
     @Autowired
     PostService postService;
 
@@ -61,6 +58,4 @@ public class PostController {
         post.setText(postForm.getText());
         return "redirect:/posts";
     }
-
-
 }

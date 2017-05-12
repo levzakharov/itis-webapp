@@ -10,10 +10,6 @@ import java.util.List;
  * Created by softi on 01.05.2017.
  */
 @Repository
-public interface PostRepository extends JpaRepository<Post, Integer> {
-
-    List<Post> findAllByOrderByDateDesc();
-
-
-
+public interface PostRepository extends JpaRepository<Post, Long> {
+    List<Post> findAllOrderByDateDesc();
 }

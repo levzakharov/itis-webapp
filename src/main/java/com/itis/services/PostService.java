@@ -1,4 +1,4 @@
-package com.itis.services.INTR;
+package com.itis.services;
 
 import com.itis.entities.Post;
 
@@ -18,5 +18,4 @@ public interface PostService {
     void delete(Post post);
 
     Post add(Post post);
-
 }

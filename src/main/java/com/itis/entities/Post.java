@@ -7,36 +7,24 @@ import java.util.Date;
  * Created by softi on 01.05.2017.
  */
 @Entity
-@Table(name = "post", schema = "public", catalog = "isit-portal")
+@Table(name = "post", schema = "public")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_id_sequence")
     @SequenceGenerator(name = "post_id_sequence", sequenceName = "post_seq", allocationSize = 1)
-    int id;
-
-    int user_id;
-
-    String title;
-    String text;
+    private Long id;
+    private String title;
+    private String text;
 
     @Temporal(TemporalType.TIMESTAMP)
-    Date date;
+    private Date date;
 
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
     }
 
     public String getTitle() {

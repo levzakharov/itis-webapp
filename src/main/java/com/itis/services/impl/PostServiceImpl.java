@@ -1,8 +1,8 @@
-package com.itis.services.IMPL;
+package com.itis.services.impl;
 
 import com.itis.entities.Post;
 import com.itis.repositories.PostRepository;
-import com.itis.services.INTR.PostService;
+import com.itis.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class PostServiceIMPL implements PostService {
+public class PostServiceImpl implements PostService {
 
     @Autowired
     private PostRepository postRepository;
