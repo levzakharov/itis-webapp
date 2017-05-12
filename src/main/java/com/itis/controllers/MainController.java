@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping(value = "/")
-    public String index(){
+    public String index() {
         return "index";
-  
+    }
+
     @GetMapping(value = "/news")
     public String news(){
         return "news";
