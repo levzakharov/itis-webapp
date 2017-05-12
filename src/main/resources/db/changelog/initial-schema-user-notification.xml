@@ -5,28 +5,28 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="initial-schema-role-user-0" author="al.leontyev">
+    <changeSet id="initial-schema-user-notification-0" author="al.leontyev">
         <preConditions>
             <not>
-                <tableExists tableName="role_user"/>
+                <tableExists tableName="user_notification"/>
             </not>
         </preConditions>
 
-        <createTable tableName="role_user">
+        <createTable tableName="user_notification">
             <column name="user_id" type="bigint"/>
-            <column name="role_id" type="bigint"/>
+            <column name="notification_id" type="bigint"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="initial-schema-role-user-1" author="al.leontyev">
+    <changeSet id="initial-schema-user-notification-1" author="al.leontyev">
         <preConditions>
             <not>
-                <primaryKeyExists primaryKeyName="role_user_pk"/>
+                <primaryKeyExists primaryKeyName="user_notification_pk"/>
             </not>
         </preConditions>
 
-        <addPrimaryKey tableName="role_user"
-                       columnNames="user_id, role_id"
-                       constraintName="role_user_pk"/>
+        <addPrimaryKey tableName="user_notification"
+                       columnNames="user_id, notification_id"
+                       constraintName="user_notification_pk"/>
     </changeSet>
 </databaseChangeLog>

@@ -6,6 +6,12 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="initial-schema-event-user-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <tableExists tableName="event_user"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="event_user">
             <column name="user_id" type="bigint"/>
             <column name="event_id" type="bigint"/>
@@ -13,6 +19,12 @@
     </changeSet>
 
     <changeSet id="initial-schema-event-user-1" author="al.leontyev">
+        <preConditions>
+            <not>
+                <primaryKeyExists primaryKeyName="event_user_pk"/>
+            </not>
+        </preConditions>
+
         <addPrimaryKey tableName="event_user"
                        columnNames="user_id, event_id"
                        constraintName="event_user_pk"/>

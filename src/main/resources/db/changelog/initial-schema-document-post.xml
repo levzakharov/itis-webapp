@@ -6,6 +6,12 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="initial-schema-document-post-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <tableExists tableName="document_post"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="document_post">
             <column name="document_id" type="bigint"/>
             <column name="post_id" type="bigint"/>
@@ -13,6 +19,11 @@
     </changeSet>
 
     <changeSet id="initial-schema-document-post-1" author="al.leontyev">
+        <preConditions>
+            <not>
+                <primaryKeyExists primaryKeyName="document_post_pk"/>
+            </not>
+        </preConditions>
         <addPrimaryKey tableName="document_post"
                        columnNames="document_id, post_id"
                        constraintName="document_post_pk"/>

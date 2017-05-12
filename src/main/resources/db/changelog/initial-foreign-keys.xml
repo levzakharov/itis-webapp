@@ -6,6 +6,12 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet  id="initial-fk-document-post-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="document_post_document_fk"/>
+            </not>
+        </preConditions>
+
         <addForeignKeyConstraint baseColumnNames="document_id"
                                  baseTableName="document_post"
                                  constraintName="document_post_document_fk"
@@ -16,6 +22,13 @@
     </changeSet>
 
     <changeSet id="initial-fk-document-post-1" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="document_post_post_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="post_id"
                                  baseTableName="document_post"
                                  constraintName="document_post_post_fk"
@@ -25,27 +38,14 @@
                                  referencedTableName="post"/>
     </changeSet>
 
-    <changeSet id="initial-fk-user-destination-0" author="al.leontyev">
-        <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="user_destination"
-                                 constraintName="user_destination_user_fk"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 referencedColumnNames="id"
-                                 referencedTableName="user"/>
-    </changeSet>
-
-    <changeSet id="initial-fk-user-destination-1" author="al.leontyev">
-        <addForeignKeyConstraint baseColumnNames="destination_id"
-                                 baseTableName="user_destination"
-                                 constraintName="user_destination_destination_fk"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 referencedColumnNames="id"
-                                 referencedTableName="destination"/>
-    </changeSet>
-
     <changeSet id="initial-fk-event-user-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="event_user_event_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="event_id"
                                  baseTableName="event_user"
                                  constraintName="event_user_event_fk"
@@ -56,6 +56,13 @@
     </changeSet>
 
     <changeSet id="initial-fk-event-user-1" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="event_user_user_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="event_user"
                                  constraintName="event_user_user_fk"
@@ -65,17 +72,14 @@
                                  referencedTableName="user"/>
     </changeSet>
 
-    <changeSet id="initial-fk-event-user-0" author="al.leontyev">
-        <addForeignKeyConstraint baseColumnNames="event_id"
-                                 baseTableName="event_user"
-                                 constraintName="event_user_event_fk"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 referencedColumnNames="id"
-                                 referencedTableName="event"/>
-    </changeSet>
-
     <changeSet id="initial-fk-role-user-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="role_user_user_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="role_user"
                                  constraintName="role_user_user_fk"
@@ -86,6 +90,13 @@
     </changeSet>
 
     <changeSet id="initial-fk-role-user-1" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="role_user_role_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="role_id"
                                  baseTableName="role_user"
                                  constraintName="role_user_role_fk"
@@ -96,6 +107,13 @@
     </changeSet>
 
     <changeSet id="initial-fk-user-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_group_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="group_id"
                                  baseTableName="user"
                                  constraintName="user_group_fk"
@@ -106,6 +124,13 @@
     </changeSet>
 
     <changeSet id="initial-fk-post-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="post_user_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="post"
                                  constraintName="post_user_fk"
@@ -116,6 +141,13 @@
     </changeSet>
 
     <changeSet id="initial-fk-document-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="document_user_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="document"
                                  constraintName="document_user_fk"
@@ -126,6 +158,13 @@
     </changeSet>
 
     <changeSet id="initial-fk-notification-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="notification_user_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="notification"
                                  constraintName="notification_user_fk"
@@ -135,17 +174,14 @@
                                  referencedTableName="user"/>
     </changeSet>
 
-    <changeSet id="initial-fk-destination-0" author="al.leontyev">
-        <addForeignKeyConstraint baseColumnNames="notification_id"
-                                 baseTableName="destination"
-                                 constraintName="destination_notification_fk"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 referencedColumnNames="id"
-                                 referencedTableName="notification"/>
-    </changeSet>
-
     <changeSet id="initial-fk-request-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="request_user_fk"/>
+            </not>
+        </preConditions>
+
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="request"
                                  constraintName="request_user_fk"
@@ -155,4 +191,35 @@
                                  referencedTableName="user"/>
     </changeSet>
 
+    <changeSet id="initial-fk-user-notification-0" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_notification_user_fk"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_notification"
+                                 constraintName="user_notification_user_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"/>
+    </changeSet>
+
+    <changeSet id="initial-fk-user-notification-1" author="al.leontyev">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_notification_notification_fk"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseColumnNames="notification_id"
+                                 baseTableName="user_notification"
+                                 constraintName="user_notification_notification_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="notification"/>
+    </changeSet>
 </databaseChangeLog>
