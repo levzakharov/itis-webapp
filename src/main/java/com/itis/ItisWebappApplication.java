@@ -8,11 +8,12 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = "com.itis")
 @EnableAutoConfiguration(exclude = {
-		org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class,
-		org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration.class})
+        org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class,
+        org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration.class})
 public class ItisWebappApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ItisWebappApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ItisWebappApplication.class, args);
+    }
+
 }

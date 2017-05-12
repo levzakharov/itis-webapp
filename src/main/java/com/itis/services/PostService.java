@@ -11,7 +11,7 @@ public interface PostService {
 
     List<Post> getAllOrderByDateDesc();
 
-    Post getById(int id);
+    Post getById(long id);
 
     Post update(Post post);
 

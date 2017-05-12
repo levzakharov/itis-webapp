@@ -217,7 +217,136 @@ header .user a {
 /* NEWS PAGE */
 
 .container .content .blocks .block {
+<<<<<<< HEAD
 	margin-bottom: 40px;
+=======
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	border-bottom: 1px solid #ddd;
+}
+
+.container .content .blocks .block .name {
+	font-weight: 600;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.container .content .blocks .block .date {
+	color: #777;
+}
+
+.container .content .blocks .block .text {
+	margin-top: 15px;
+}
+
+.container .content .blocks .block img {
+	margin-top: 10px;
+}
+
+/* SHEDULE PAGE */
+
+.container .content .upload {
+	margin-bottom: 30px;
+}
+
+.container .content .upload a {
+	color: #344c6d;
+	text-decoration: underline;
+	font-weight: 600;
+}
+
+.container .content .filter * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.container .content .filter .button {
+	padding: 8px 18px;
+	border: 2px solid #ddd;
+	border-radius: 90px;
+	cursor: pointer;
+	transition: 0.2s linear;
+}
+
+.container .content .filter .button.active {
+	border-color: #344c6d;
+	color: #344c6d;
+	border-width: 2px;
+	font-weight: 700;
+}
+
+.container .content .filter .button.enter {
+	background-color: #344c6d;
+	color: #fff;
+	font-weight: 700;
+	border-color: #344c6d;
+}
+
+.container .content .filter .title {
+	margin-right: 10px;
+}
+
+.container .content .filter .modes > div {
+	margin: 0 10px;
+}
+
+.container .content .panel {
+	margin-top: 30px;
+	font-size: 0;
+}
+
+.container .content .panel * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.container .content .panel .group select {
+	width: 170px;
+	height: 34px;
+	margin-left: 10px;
+}
+
+.container .content .panel .days {
+	font-size: 0;
+	margin-right: 20px;
+}
+
+.container .content .panel .button {
+	padding: 6px 14px;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	transition: 0.2s linear;
+}
+
+.container .content .panel .button.active {
+	color: #fff;
+	background: #344c6d;
+}
+
+.container .content .table {
+	width: 100%;
+	overflow: scroll ;
+	margin-top: 40px;
+}
+
+.container .content .table table {
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.container .content .table table td, .container .content .table table th {
+	min-width: 130px;
+	border: 1px solid #ddd;
+	padding: 5px;
+} 
+
+.container .content .table table td:first-child, .container .content .table table th:first-child {
+	min-width: 100px;
+}
+
+.container .content .table table td:nth-child(2), .container .content .table table th:nth-child(2) {
+	min-width: 50px;
+>>>>>>> 7d7122c679f4c463a6fba31b6cbc191b632bc233
 }
 
 /* MEDIA QUERIES */
