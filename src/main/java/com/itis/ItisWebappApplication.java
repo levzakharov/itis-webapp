@@ -11,4 +11,5 @@ public class ItisWebappApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ItisWebappApplication.class, args);
 	}
+
 }

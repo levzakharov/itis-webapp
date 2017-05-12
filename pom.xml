@@ -61,7 +61,6 @@
 			<artifactId>spring-boot-actuator</artifactId>
 		</dependency>
 
-
 		<!--Freemarker-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
