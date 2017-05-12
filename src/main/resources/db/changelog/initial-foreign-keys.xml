@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet  id="initial-fk-document-post-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="document_post_document_fk"/>
             </not>
@@ -22,7 +22,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-document-post-1" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="document_post_post_fk"/>
             </not>
@@ -39,7 +39,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-event-user-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="event_user_event_fk"/>
             </not>
@@ -56,7 +56,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-event-user-1" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="event_user_user_fk"/>
             </not>
@@ -73,7 +73,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-role-user-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="role_user_user_fk"/>
             </not>
@@ -90,7 +90,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-role-user-1" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="role_user_role_fk"/>
             </not>
@@ -107,7 +107,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-user-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="user_group_fk"/>
             </not>
@@ -124,7 +124,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-post-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="post_user_fk"/>
             </not>
@@ -141,7 +141,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-document-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="document_user_fk"/>
             </not>
@@ -158,7 +158,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-notification-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="notification_user_fk"/>
             </not>
@@ -175,7 +175,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-request-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="request_user_fk"/>
             </not>
@@ -192,7 +192,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-user-notification-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="user_notification_user_fk"/>
             </not>
@@ -208,7 +208,7 @@
     </changeSet>
 
     <changeSet id="initial-fk-user-notification-1" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="user_notification_notification_fk"/>
             </not>

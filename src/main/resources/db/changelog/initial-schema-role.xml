@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="0" author="al.pliskin">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="role"/>
             </not>
@@ -19,7 +19,7 @@
     </changeSet>
 
     <changeSet id="1" author="al.pliskin">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists primaryKeyName="role_pkey"/>
             </not>
@@ -31,7 +31,7 @@
     </changeSet>
 
     <changeSet id="2" author="al.pliskin">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <sequenceExists sequenceName="role_seq"/>
             </not>

@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="initial-schema-user-notification-0" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="user_notification"/>
             </not>
@@ -19,7 +19,7 @@
     </changeSet>
 
     <changeSet id="initial-schema-user-notification-1" author="al.leontyev">
-        <preConditions>
+        <preConditions onFail="MARK_RAN">
             <not>
                 <primaryKeyExists primaryKeyName="user_notification_pk"/>
             </not>
