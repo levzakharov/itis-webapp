@@ -19,22 +19,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(ApplicationUrls.WebAppUrls.BASE_SCHEDULE_URL)
 public class ScheduleController {
 
+    private final EventService eventService;
+
     @Autowired
-    private EventService eventService;
+    public ScheduleController(EventService eventService) {
+        this.eventService = eventService;
+    }
 
     @GetMapping
     public String getSchedulePage() {
         return "schedule/index";
     }
 
-    @PostMapping("/period")
+    @GetMapping("/period")
     public String getScheduleByPeriod(@RequestParam Long startDate,
                                       @RequestParam Long endDate, Model model) {
         model.addAttribute("schedule", eventService.getScheduleBetween(startDate, endDate));
         return "schedule";
     }
 
-    @PostMapping("/period/group/{userGroupId}")
+    @GetMapping("/period/group/{userGroupId}")
     public String getUserGroupScheduleByPeriod(@PathVariable("userGroupId") Long userGroupId,
                                                @RequestParam Long startDate,
                                                @RequestParam Long endDate, Model model) {
