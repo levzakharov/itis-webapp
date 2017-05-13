@@ -1,21 +1,27 @@
 package com.itis.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Objects;
 
 /**
  * @author alt
  */
 @Entity
 @Table(name = "notification")
+@SequenceGenerator(name = "notification_id_sequence",
+        sequenceName = "notification_seq", allocationSize = 1, initialValue = 50)
 public class Notification {
+
     @Id
-    @GeneratedValue(generator = "notification_seq")
-    @SequenceGenerator(name = "notification_seq", sequenceName = "notification_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_id_sequence")
     private Long id;
+
     private String theme;
+
     private String text;
-    private Timestamp date;
+
+    private Long date;
+
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
@@ -44,12 +50,20 @@ public class Notification {
         this.text = text;
     }
 
-    public Timestamp getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Long date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -59,12 +73,10 @@ public class Notification {
 
         Notification that = (Notification) o;
 
-        if (id != that.id) return false;
-        if (theme != null ? !theme.equals(that.theme) : that.theme != null) return false;
-        if (text != null ? !text.equals(that.text) : that.text != null) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-
-        return true;
+        return Objects.equals(id, that.id) &&
+                (theme != null ? theme.equals(that.theme) : that.theme == null) &&
+                (text != null ? text.equals(that.text) : that.text == null) &&
+                (date != null ? date.equals(that.date) : that.date == null);
     }
 
     @Override
@@ -74,13 +86,5 @@ public class Notification {
         result = 31 * result + (text != null ? text.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

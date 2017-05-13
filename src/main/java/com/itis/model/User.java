@@ -2,37 +2,43 @@ package com.itis.model;
 
 import com.itis.model.enums.Role;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@SequenceGenerator(name = "user_seq",
+        sequenceName = "user_seq", allocationSize = 1, initialValue = 50)
 public class User {
+
     @Id
     @GeneratedValue(generator = "user_seq")
-    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
     private Long id;
-    @NotBlank
+
     private String email;
-    @NotBlank
+
+    @Column(name = "full_name")
     private String fullName;
-    @NotEmpty
+
     private String password;
+
+    private String phone;
+
+    @ManyToOne
+    @JoinColumn(name = "user_group_id")
+    private UserGroup userGroup;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
-    @ManyToMany
-    @JoinTable(
-            name = "user_notification",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "notification_id")
-    )
-    private Set<Notification> notifications;
+
+    @ManyToMany(mappedBy = "users")
+    private List<Event> events;
+
+
 
     public Long getId() {
         return id;
@@ -66,6 +72,22 @@ public class User {
         this.password = password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public UserGroup getUserGroup() {
+        return userGroup;
+    }
+
+    public void setUserGroup(UserGroup userGroup) {
+        this.userGroup = userGroup;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
@@ -74,11 +96,11 @@ public class User {
         this.roles = roles;
     }
 
-    public Set<Notification> getNotifications() {
-        return notifications;
+    public List<Event> getEvents() {
+        return events;
     }
 
-    public void setNotifications(Set<Notification> notifications) {
-        this.notifications = notifications;
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }

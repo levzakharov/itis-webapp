@@ -3,25 +3,22 @@ package com.itis.controller.api;
 import com.itis.model.User;
 import com.itis.repository.UserRepository;
 import com.itis.utils.ApplicationUrls;
-
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 
 import static java.util.Collections.singletonMap;
 
@@ -36,7 +33,7 @@ public class UserController {
     }
 
     @ApiOperation("create user")
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public ResponseEntity create(@Valid @RequestBody User user, BindingResult result) {
         if (repository.findByEmail(user.getEmail()) != null) {
             result.rejectValue("email", "email.taken", "is already taken");
