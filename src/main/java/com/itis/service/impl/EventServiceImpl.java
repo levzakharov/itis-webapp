@@ -2,6 +2,7 @@ package com.itis.service.impl;
 
 import com.itis.model.Event;
 import com.itis.model.User;
+import com.itis.model.UserGroup;
 import com.itis.repository.EventRepository;
 import com.itis.security.SecurityUtils;
 import com.itis.service.EventService;
@@ -28,6 +29,11 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> getCurrentUserEvents() {
         return getEventsByUser(SecurityUtils.getCurrentUser());
+    }
+
+    @Override
+    public List<Event> getScheduleByGroup(UserGroup userGroup) {
+        return null;
     }
 
     @Override

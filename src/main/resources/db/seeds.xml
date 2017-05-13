@@ -6,4 +6,16 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
+    <changeSet id="seeds_1" author="al.pliskin">
+        <loadUpdateData tableName="user_group" primaryKey="id" file="db/seeds/initial/user_group.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="seeds_2" author="al.pliskin">
+        <loadUpdateData tableName="users" primaryKey="id" file="db/seeds/initial/user.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+
 </databaseChangeLog>

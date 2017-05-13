@@ -18,12 +18,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "event")
-@SequenceGenerator(name = "event_id_gen", sequenceName = "event_seq",
-        allocationSize = 1, initialValue = 50)
+@SequenceGenerator(name = "event_gen",
+        sequenceName = "event_seq", allocationSize = 1, initialValue = 50)
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_id_gen")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_gen")
     private Long id;
 
     private String number;
@@ -34,7 +34,7 @@ public class Event {
 
     private String place;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "event_user",
             joinColumns = @JoinColumn(name = "event_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "user_id", nullable = false))

@@ -3,6 +3,7 @@ package com.itis.controller;
 import com.itis.utils.ApplicationUrls;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(ApplicationUrls.WebAppUrls.SIGN_IN)
 public class SignInController {
+
+    @GetMapping
     public String signInPage() {
         return "signIn";
     }
+
 }

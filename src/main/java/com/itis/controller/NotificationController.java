@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL)
 public class NotificationController {
+
     @Autowired
     NotificationService notificationService;
 
+    @GetMapping
     public String getNotifications(ModelMap modelMap) {
         return "notifications";
     }
