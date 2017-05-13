@@ -25,6 +25,14 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_notification",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "notification_id")
+    )
+    private Set<Notification> notifications;
+
     public Long getId() {
         return id;
     }
@@ -63,5 +71,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(Set<Notification> notifications) {
+        this.notifications = notifications;
     }
 }

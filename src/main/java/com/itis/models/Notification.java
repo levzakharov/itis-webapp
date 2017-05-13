@@ -10,15 +10,17 @@ import java.sql.Timestamp;
 @Table(name = "notification")
 public class Notification {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_id_sequence")
-    @SequenceGenerator(name = "notification_id_sequence",
-            sequenceName = "notification_seq", allocationSize = 1)
+    @GeneratedValue(generator = "notification_seq")
+    @SequenceGenerator(name = "notification_seq", sequenceName = "notification_seq")
     private Long id;
     private String theme;
     private String text;
     private Timestamp date;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -72,5 +74,13 @@ public class Notification {
         result = 31 * result + (text != null ? text.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
