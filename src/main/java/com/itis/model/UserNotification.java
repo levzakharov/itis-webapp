@@ -10,6 +10,8 @@ import javax.persistence.*;
 @SequenceGenerator(name = "user_notification_seq",
         sequenceName = "user_notification_seq", allocationSize = 1, initialValue = 50)
 public class UserNotification {
+    @Id
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -21,6 +23,14 @@ public class UserNotification {
 
     @Column(name = "is_read")
     private boolean isRead;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public User getUser() {
         return user;
