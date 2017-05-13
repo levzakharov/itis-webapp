@@ -5,8 +5,12 @@ import com.itis.utils.ApplicationUrls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
@@ -15,12 +19,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(ApplicationUrls.WebAppUrls.BASE_SCHEDULE_URL)
 public class ScheduleController {
 
+    private final EventService eventService;
+
     @Autowired
-    private EventService eventService;
+    public ScheduleController(EventService eventService) {
+        this.eventService = eventService;
+    }
 
     @GetMapping
     public String getSchedulePage() {
         return "schedule/index";
+    }
+
+    @GetMapping("/period")
+    public String getScheduleByPeriod(@RequestParam Long startDate,
+                                      @RequestParam Long endDate, Model model) {
+        model.addAttribute("schedule", eventService.getScheduleBetween(startDate, endDate));
+        return "schedule";
+    }
+
+    @GetMapping("/period/group/{userGroupId}")
+    public String getUserGroupScheduleByPeriod(@PathVariable("userGroupId") Long userGroupId,
+                                               @RequestParam Long startDate,
+                                               @RequestParam Long endDate, Model model) {
+        model.addAttribute("schedule",
+                eventService.getScheduledBetweenByGroup(startDate, endDate, userGroupId));
+        return "group_schedule";
     }
 
 }
