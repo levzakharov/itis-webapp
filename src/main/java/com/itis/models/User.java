@@ -1,5 +1,7 @@
 package com.itis.models;
 
+import com.itis.models.enums.Role;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 

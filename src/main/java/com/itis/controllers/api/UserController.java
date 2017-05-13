@@ -1,4 +1,4 @@
-package com.itis.controllers;
+package com.itis.controllers.api;
 
 import com.itis.models.User;
 import com.itis.repositories.UserRepository;

@@ -1,6 +1,7 @@
 package com.itis.config;
 
-import com.itis.service.CustomUserDetailsService;
+import com.itis.security.CustomUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,11 +25,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder builder) throws Exception {
         builder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-                .loginPage("/signin").permitAll()
+                .loginPage("/signIn").permitAll()
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/news")
                 .and()

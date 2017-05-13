@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by Rus on 13.05.2017.
  */
 @Controller
-@RequestMapping("/signin")
+@RequestMapping("/signIn")
 public class SignInController {
     @GetMapping
-    public String signinPage() {
-        return "signin";
+    public String signInPage() {
+        return "signIn";
     }
 }

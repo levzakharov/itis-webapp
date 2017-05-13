@@ -1,4 +1,4 @@
-package com.itis.service;
+package com.itis.security;
 
 import com.itis.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
