@@ -5,16 +5,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="initial-schema-role-user-0" author="al.leontyev">
-        <createTable tableName="role_user">
+    <changeSet id="initial-schema-user-role-0" author="e.akhmetshin">
+        <createTable tableName="user_role">
             <column name="user_id" type="bigint"/>
-            <column name="role_id" type="bigint"/>
+            <column name="role" type="varchar"/>
         </createTable>
-    </changeSet>
-
-    <changeSet id="initial-schema-role-user-1" author="al.leontyev">
-        <addPrimaryKey tableName="role_user"
-                       columnNames="user_id, role_id"
-                       constraintName="role_user_pk"/>
+        <addPrimaryKey tableName="user_role" columnNames="user_id, role" constraintName="user_role_pk"/>
     </changeSet>
 </databaseChangeLog>

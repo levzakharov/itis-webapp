@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="main">
-    <#include "includes/sidebar.ftl">
+    <#include "../includes/sidebar.ftl">
     <div class="container">
         <header>
             <div class="col-5">

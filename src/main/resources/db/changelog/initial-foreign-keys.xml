@@ -32,7 +32,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-user-destination-1" author="al.leontyev">
@@ -62,7 +62,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-event-user-0" author="al.leontyev">
@@ -75,29 +75,19 @@
                                  referencedTableName="event"/>
     </changeSet>
 
-    <changeSet id="initial-fk-role-user-0" author="al.leontyev">
+    <changeSet id="initial-fk-user-role-0" author="e.akhmetshin">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="role_user"
-                                 constraintName="role_user_user_fk"
+                                 baseTableName="user_role"
+                                 constraintName="user_role_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
-    </changeSet>
-
-    <changeSet id="initial-fk-role-user-1" author="al.leontyev">
-        <addForeignKeyConstraint baseColumnNames="role_id"
-                                 baseTableName="role_user"
-                                 constraintName="role_user_role_fk"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 referencedColumnNames="id"
-                                 referencedTableName="role"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-user-0" author="al.leontyev">
         <addForeignKeyConstraint baseColumnNames="group_id"
-                                 baseTableName="user"
+                                 baseTableName="users"
                                  constraintName="user_group_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
@@ -112,7 +102,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-document-0" author="al.leontyev">
@@ -122,7 +112,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-notification-0" author="al.leontyev">
@@ -132,7 +122,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-destination-0" author="al.leontyev">
@@ -152,7 +142,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
 </databaseChangeLog>
