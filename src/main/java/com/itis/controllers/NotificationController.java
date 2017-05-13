@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class NotificationController {
     @Autowired
     NotificationRepository notificationRepository;
-
     @Autowired
     UserRepository userRepository;
 

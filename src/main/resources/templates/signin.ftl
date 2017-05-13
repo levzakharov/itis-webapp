@@ -13,10 +13,10 @@
 				<img src="images/logo.png">
 			</div>
 			<div class="signin-content">
-				<form>
-					<input type="text" placeholder="Логин">
-					<input type="text" placeholder="Пароль">
-					<div class="button">Войти</div>
+				<form action="/login" method="post">
+					<input name="username" type="text" placeholder="Логин">
+					<input name="password" type="text" placeholder="Пароль">
+					<input type="submit" class="button" value="Войти">
 				</form>
 				<div class="forgot">
 					<a href="#">Забыли свой пароль?</a>
