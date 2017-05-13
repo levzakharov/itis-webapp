@@ -1,8 +1,8 @@
-package com.itis.services.impl;
+package com.itis.service.impl;
 
-import com.itis.entities.Post;
-import com.itis.repositories.PostRepository;
-import com.itis.services.PostService;
+import com.itis.model.Post;
+import com.itis.repository.PostRepository;
+import com.itis.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
-package com.itis.repositories;
+package com.itis.repository;
 
-import com.itis.entities.Post;
+import com.itis.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

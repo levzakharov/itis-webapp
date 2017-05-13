@@ -117,7 +117,11 @@ header .user a {
 }
 
 .container .content {
+<<<<<<< HEAD
 	padding: 30px;
+=======
+	padding: 40px;
+>>>>>>> d795a6d015b63acc4cf4f5a4c41af8257d5b3ae9
 }
 
 /* SIGNIN PAGE */
@@ -218,8 +222,11 @@ header .user a {
 
 .container .content .blocks .block {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	margin-bottom: 40px;
 =======
+=======
+>>>>>>> d795a6d015b63acc4cf4f5a4c41af8257d5b3ae9
 	padding-bottom: 20px;
 	margin-bottom: 30px;
 	border-bottom: 1px solid #ddd;
@@ -346,7 +353,10 @@ header .user a {
 
 .container .content .table table td:nth-child(2), .container .content .table table th:nth-child(2) {
 	min-width: 50px;
+<<<<<<< HEAD
 >>>>>>> 7d7122c679f4c463a6fba31b6cbc191b632bc233
+=======
+>>>>>>> d795a6d015b63acc4cf4f5a4c41af8257d5b3ae9
 }
 
 /* MEDIA QUERIES */

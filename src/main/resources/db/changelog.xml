@@ -6,7 +6,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <include file="changelog/initial-schema-destination.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-document.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-document-post.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-event.xml" relativeToChangelogFile="true"/>
@@ -16,9 +15,10 @@
     <include file="changelog/initial-schema-post.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-request.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-role.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-role-user.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-user.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-user-destination.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/drop-table-destination.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/drop-table-user-destination.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-user-notification.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-user-role.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-users.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-foreign-keys.xml" relativeToChangelogFile="true"/>
-
 </databaseChangeLog>

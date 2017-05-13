@@ -6,6 +6,12 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="0" author="al.pliskin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="role"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="role">
             <column name="id" type="bigint"/>
             <column name="type" type="varchar(255)"/>
@@ -13,12 +19,24 @@
     </changeSet>
 
     <changeSet id="1" author="al.pliskin">
-        <addPrimaryKey tableName="role" columnNames="id"/>
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <primaryKeyExists primaryKeyName="role_pkey"/>
+            </not>
+        </preConditions>
+
+        <addPrimaryKey tableName="role"
+                       columnNames="id"/>
     </changeSet>
 
     <changeSet id="2" author="al.pliskin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="role_seq"/>
+            </not>
+        </preConditions>
+
         <createSequence sequenceName="role_seq"
                         startValue="1" incrementBy="1"/>
     </changeSet>
-
 </databaseChangeLog>

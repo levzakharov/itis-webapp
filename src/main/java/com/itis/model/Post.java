@@ -1,4 +1,4 @@
-package com.itis.entities;
+package com.itis.model;
 
 import javax.persistence.*;
 import java.util.Date;

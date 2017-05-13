@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="al.leontyev" id="drop-table-destination-0">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="destination"/>
+        </preConditions>
+
+        <dropTable cascadeConstraints="true"
+                   schemaName="public"
+                   tableName="destination"/>
+    </changeSet>
+
+
+    <changeSet author="al.leontyev" id="drop-sequence-destination-0">
+        <preConditions onFail="MARK_RAN">
+                <sequenceExists sequenceName="destination_seq"/>
+        </preConditions>
+
+        <dropSequence schemaName="public"
+                      sequenceName="destination_seq"/>
+    </changeSet>
+</databaseChangeLog>

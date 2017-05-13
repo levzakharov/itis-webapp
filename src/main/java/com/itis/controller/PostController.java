@@ -1,8 +1,8 @@
-package com.itis.controllers;
+package com.itis.controller;
 
-import com.itis.entities.Post;
+import com.itis.model.Post;
 import com.itis.forms.PostForm;
-import com.itis.services.PostService;
+import com.itis.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

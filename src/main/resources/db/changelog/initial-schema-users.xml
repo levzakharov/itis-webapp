@@ -6,6 +6,12 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="initial-schema-user-0" author="r.khakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="user">
             <column name="id" type="bigint"/>
             <column name="email" type="varchar(50)"/>
@@ -17,14 +23,38 @@
     </changeSet>
 
     <changeSet id="initial-schema-user-1" author="r.khakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <primaryKeyExists primaryKeyName="user_pk"/>
+            </not>
+        </preConditions>
+
         <addPrimaryKey tableName="user"
                        columnNames="id"
                        constraintName="user_pk"/>
     </changeSet>
 
     <changeSet id="initial-schema-user-2" author="r.khakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="user_seq"/>
+            </not>
+        </preConditions>
+
         <createSequence sequenceName="user_seq"
                         startValue="1"
                         incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="initial-schema-user-3" author="e.akhmetshin">
+        <preConditions onFail="MARK_RAN">
+                <tableExists tableName="user"/>
+        </preConditions>
+
+        <renameTable oldTableName="user" newTableName="users"/>
+        <addNotNullConstraint tableName="users" columnName="email"/>
+        <addUniqueConstraint tableName="users" columnNames="email"/>
+        <addNotNullConstraint tableName="users" columnName="full_name"/>
+        <addNotNullConstraint tableName="users" columnName="password"/>
     </changeSet>
 </databaseChangeLog>

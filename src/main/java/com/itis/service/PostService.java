@@ -1,6 +1,6 @@
-package com.itis.services;
+package com.itis.service;
 
-import com.itis.entities.Post;
+import com.itis.model.Post;
 
 import java.util.List;
 

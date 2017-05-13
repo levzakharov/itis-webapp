@@ -6,6 +6,12 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="initial-schema-post-0" author="r.khakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="post"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="post">
             <column name="id" type="bigint"/>
             <column name="title" type="varchar(255)"/>
@@ -16,12 +22,24 @@
     </changeSet>
 
     <changeSet id="initial-schema-post-1" author="r.khakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <primaryKeyExists primaryKeyName="post_pk"/>
+            </not>
+        </preConditions>
+
         <addPrimaryKey tableName="post"
                        columnNames="id"
                        constraintName="post_pk"/>
     </changeSet>
 
     <changeSet id="initial-schema-post-2" author="r.khakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="post_seq"/>
+            </not>
+        </preConditions>
+
         <createSequence sequenceName="post_seq"
                         startValue="1" incrementBy="1"/>
     </changeSet>
