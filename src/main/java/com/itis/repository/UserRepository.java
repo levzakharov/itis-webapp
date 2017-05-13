@@ -1,6 +1,6 @@
-package com.itis.repositories;
+package com.itis.repository;
 
-import com.itis.models.User;
+import com.itis.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

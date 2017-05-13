@@ -1,7 +1,7 @@
 package com.itis.security;
 
-import com.itis.models.enums.Role;
-import com.itis.models.User;
+import com.itis.model.enums.Role;
+import com.itis.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

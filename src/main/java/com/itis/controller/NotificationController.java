@@ -1,4 +1,4 @@
-package com.itis.controllers;
+package com.itis.controller;
 
 import com.itis.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
