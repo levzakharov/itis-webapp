@@ -1,22 +1,32 @@
 package com.itis.model;
 
-import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * @author alt
  */
 @Entity
 @Table(name = "notification")
+@SequenceGenerator(name = "notification_id_sequence",
+        sequenceName = "notification_seq", allocationSize = 1, initialValue = 50)
 public class Notification {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_id_sequence")
-    @SequenceGenerator(name = "notification_id_sequence",
-            sequenceName = "notification_seq", allocationSize = 1)
     private Long id;
+
     private String theme;
+
     private String text;
-    private Timestamp date;
+
+    private Long date;
 
     public long getId() {
         return id;
@@ -42,11 +52,11 @@ public class Notification {
         this.text = text;
     }
 
-    public Timestamp getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 
@@ -57,12 +67,10 @@ public class Notification {
 
         Notification that = (Notification) o;
 
-        if (id != that.id) return false;
-        if (theme != null ? !theme.equals(that.theme) : that.theme != null) return false;
-        if (text != null ? !text.equals(that.text) : that.text != null) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-
-        return true;
+        return Objects.equals(id, that.id) &&
+                (theme != null ? theme.equals(that.theme) : that.theme == null) &&
+                (text != null ? text.equals(that.text) : that.text == null) &&
+                (date != null ? date.equals(that.date) : that.date == null);
     }
 
     @Override

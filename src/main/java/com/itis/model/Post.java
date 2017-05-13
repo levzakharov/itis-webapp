@@ -1,6 +1,7 @@
 package com.itis.model;
 
 import javax.persistence.*;
+import java.security.Timestamp;
 import java.util.Date;
 
 /**
@@ -16,8 +17,12 @@ public class Post {
     private String title;
     private String text;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    private long date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
 
     public Long getId() {
         return id;
@@ -43,11 +48,19 @@ public class Post {
         this.text = text;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -10,7 +10,7 @@
 <div class="main">
     <aside>
         <div class="logo">
-            <img src="images/logo.png">
+            <img src="/images/logo.png">
         </div>
         <div class="menu">
             <ul>
@@ -38,6 +38,7 @@
         <div class="content">
             <div class="blocks">
                 <form action="" method="post">
+                    <input type="hidden" name="action" value="create">
                     <label>Title: <input type="text" name="title"></label>
                     <label>Text: <textarea name="text"></textarea></label>
                     <input type="submit" value="Save">

@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import static com.itis.utils.ApplicationUrls.WebAppUrls.BASE_NEWS_URL;
+import static com.itis.utils.ApplicationUrls.WebAppUrls.SIGN_IN;
+
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
@@ -30,9 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-                .loginPage("/signIn").permitAll()
+                .loginPage(SIGN_IN).permitAll()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/news")
+                .defaultSuccessUrl(BASE_NEWS_URL)
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and().csrf().disable();

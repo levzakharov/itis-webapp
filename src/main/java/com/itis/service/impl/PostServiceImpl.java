@@ -40,7 +40,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post add(Post post) {
+    public Post create(Post post) {
         return postRepository.save(post);
     }
 }

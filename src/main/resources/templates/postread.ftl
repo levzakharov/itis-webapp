@@ -36,23 +36,28 @@
             </div>
         </header>
         <div class="content">
-            <div class="block">
-                <h2>Добавить новость</h2>
-                <form action="/posts/new" method="post">
-                    <div class="name"><label>Title: <input type="text" name="title"></label></div>
-                    <div class="text"><label>Text: <textarea name="text"></textarea></label></div>
-                    <div><input type="submit" value="Save"></div>
-                </form>
-            </div>
+
             <div class="blocks">
-                <#list posts as post>
                 <div class="block">
-                    <div class="name"><a href="/posts/${post.id}">${post.title}</a></div>
+                    <div class="name">${post.title}</div>
                     <div class="date">${post.date?number_to_datetime}</div>
                     <div class="text">${post.text}</div>
                     <div class="image"></div>
                 </div>
-                </#list>
+                <div class="block">
+                    <h3>Редактировать новость</h3>
+                    <form action="/posts/${post.id}" method="post">
+                        <input type="hidden" name="action" value="update">
+                        <div class="name"><label>Title: <input type="text" name="title" value="${post.title}"></label></div>
+                        <div class="text"><label>Text: <textarea name="text">${post.text}</textarea></label></div>
+                        <div><input type="submit" value="Save"></div>
+                    </form>
+                    <h3>Удалить новость</h3>
+                    <form action="/posts/${post.id}" method="post">
+                        <input type="hidden" name="action" value="delete">
+                        <div><input type="submit" value="Удались новость"></div>
+                    </form>
+                </div>
 
             </div>
         </div>

@@ -6,19 +6,22 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <include file="changelog/initial-schema-document.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-document-post.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-event.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-event-user.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-group.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-notification.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-post.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-request.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-role.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/drop-table-destination.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/drop-table-user-destination.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-user-notification.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-user-role.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-users.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-foreign-keys.xml" relativeToChangelogFile="true"/>
+    <!--Initial changelog-->
+    <include file="changelog/initial/user_group.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/user.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/event.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/event_user.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/document.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/post.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/document_post.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/notification.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/request.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/user_notification.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/user_role.xml" relativeToChangelogFile="true"/>
+
+    <!--Initial seeds-->
+    <include file="seeds.xml" relativeToChangelogFile="true"/>
+
+    <!--Custom changelog-->
+
 </databaseChangeLog>
