@@ -27,4 +27,12 @@
                         startValue="1"
                         incrementBy="1"/>
     </changeSet>
+
+    <changeSet id="initial-schema-user-3" author="e.akhmetshin">
+        <renameTable oldTableName="user" newTableName="users"/>
+        <addNotNullConstraint tableName="users" columnName="email"/>
+        <addUniqueConstraint tableName="users" columnNames="email"/>
+        <addNotNullConstraint tableName="users" columnName="full_name"/>
+        <addNotNullConstraint tableName="users" columnName="password"/>
+    </changeSet>
 </databaseChangeLog>
