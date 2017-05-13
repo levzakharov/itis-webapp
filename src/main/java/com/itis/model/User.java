@@ -42,6 +42,11 @@ public class User implements UserDetails {
     @ManyToMany(mappedBy = "users")
     private List<Event> events;
 
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<UserNotification> userNotifications;
+
+
     public Long getId() {
         return id;
     }
@@ -144,4 +149,13 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public List<UserNotification> getUserNotifications() {
+        return userNotifications;
+    }
+
+    public void setUserNotifications(List<UserNotification> userNotifications) {
+        this.userNotifications = userNotifications;
+    }
 }
+
