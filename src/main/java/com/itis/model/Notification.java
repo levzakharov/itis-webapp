@@ -1,4 +1,4 @@
-package com.itis.models;
+package com.itis.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

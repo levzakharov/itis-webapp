@@ -1,6 +1,7 @@
 package com.itis.aspects;
 
-import com.itis.models.User;
+import com.itis.model.User;
+
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class PasswordEncoderAspect {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Before("execution(* com.itis.repositories.UserRepository.save(..)) && args(user)")
+    @Before("execution(* com.itis.repository.UserRepository.save(..)) && args(user)")
     public void encodePassword(final User user) throws Exception {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
     }

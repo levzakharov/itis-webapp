@@ -15,7 +15,7 @@
 			<div class="signin-content">
 				<form action="/login" method="post">
 					<input name="username" type="text" placeholder="Логин">
-					<input name="password" type="text" placeholder="Пароль">
+					<input name="password" type="password" placeholder="Пароль">
 					<input type="submit" class="button" value="Войти">
 				</form>
 				<div class="forgot">

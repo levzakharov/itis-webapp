@@ -1,7 +1,9 @@
-package com.itis.controllers;
+package com.itis.controller.api;
 
-import com.itis.models.User;
-import com.itis.repositories.UserRepository;
+import com.itis.model.User;
+import com.itis.repository.UserRepository;
+import com.itis.utils.ApplicationUrls;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +20,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 import static java.util.Collections.singletonMap;
 
 @Controller
-@RequestMapping("/api/users")
+@RequestMapping(ApplicationUrls.ApiUrls.BASE_USERS_URL)
 public class UserController {
     private final UserRepository repository;
 
@@ -30,6 +35,7 @@ public class UserController {
         this.repository = repository;
     }
 
+    @ApiOperation("create user")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@Valid @RequestBody User user, BindingResult result) {
         if (repository.findByEmail(user.getEmail()) != null) {

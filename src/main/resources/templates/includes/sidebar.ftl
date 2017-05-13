@@ -12,6 +12,6 @@
         </ul>
     </div>
     <div class="exit">
-        <a href="#">Выход</a>
+        <a href="/logout">Выход</a>
     </div>
 </aside>
