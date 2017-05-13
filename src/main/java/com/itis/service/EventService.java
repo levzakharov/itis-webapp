@@ -22,5 +22,5 @@ public interface EventService {
 
     Map<UserGroup, Map<String, List<Event>>> getScheduleBetween(Long startDate, Long endDate);
 
-    Map<String, List<Event>> getScheduledBetweenByGroup(Long startDate, Long endDate, UserGroup userGroup);
+    Map<String, List<Event>> getScheduledBetweenByGroup(Long startDate, Long endDate, Long userGroupId);
 }

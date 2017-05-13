@@ -4,6 +4,7 @@ import com.itis.model.Event;
 import com.itis.model.User;
 import com.itis.model.UserGroup;
 import com.itis.repository.EventRepository;
+import com.itis.repository.UserGroupRepository;
 import com.itis.security.SecurityUtils;
 import com.itis.service.EventService;
 
@@ -23,8 +24,15 @@ public class EventServiceImpl implements EventService {
 
     private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("E");
 
+    private final EventRepository eventRepository;
+
+    private final UserGroupRepository userGroupRepository;
+
     @Autowired
-    private EventRepository eventRepository;
+    public EventServiceImpl(EventRepository eventRepository, UserGroupRepository userGroupRepository) {
+        this.eventRepository = eventRepository;
+        this.userGroupRepository = userGroupRepository;
+    }
 
     @Override
     public List<Event> getEventsByUser(User user) {
@@ -56,8 +64,9 @@ public class EventServiceImpl implements EventService {
     @Override
     public Map<String, List<Event>> getScheduledBetweenByGroup(Long startDate,
                                                                Long endDate,
-                                                               UserGroup userGroup) {
-        return getScheduleBetween(startDate, endDate).get(userGroup);
+                                                               Long userGroupId) {
+        return getScheduleBetween(startDate, endDate)
+                .get(userGroupRepository.findOne(userGroupId));
     }
 
     private Map<UserGroup, Map<String, List<Event>>> generateSchedule(List<Event> events) {

@@ -34,11 +34,12 @@ public class ScheduleController {
         return "schedule";
     }
 
-    @PostMapping("/period/group/${groupId}")
-    public String getUserGroupScheduleByPeriod(@PathVariable("groupId") String groupId,
+    @PostMapping("/period/group/{userGroupId}")
+    public String getUserGroupScheduleByPeriod(@PathVariable("userGroupId") Long userGroupId,
                                                @RequestParam Long startDate,
                                                @RequestParam Long endDate, Model model) {
-        model.addAttribute("schedule", eventService.getScheduleBetween(startDate, endDate));
+        model.addAttribute("schedule",
+                eventService.getScheduledBetweenByGroup(startDate, endDate, userGroupId));
         return "group_schedule";
     }
 
