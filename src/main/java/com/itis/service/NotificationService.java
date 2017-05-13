@@ -1,4 +1,4 @@
-package com.itis.services;
+package com.itis.service;
 
 /**
  * @author alt

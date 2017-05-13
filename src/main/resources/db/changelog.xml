@@ -15,10 +15,10 @@
     <include file="changelog/initial-schema-post.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-request.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-role.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-role-user.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/initial-schema-user.xml" relativeToChangelogFile="true"/>
     <include file="changelog/drop-table-destination.xml" relativeToChangelogFile="true"/>
     <include file="changelog/drop-table-user-destination.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-schema-user-notification.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-user-role.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial-schema-users.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial-foreign-keys.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

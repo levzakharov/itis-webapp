@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet  id="initial-fk-document-post-0" author="al.leontyev">
+    <changeSet id="initial-fk-document-post-0" author="al.leontyev">
         <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="document_post_document_fk"/>
@@ -38,13 +38,13 @@
                                  referencedTableName="post"/>
     </changeSet>
 
+
     <changeSet id="initial-fk-event-user-0" author="al.leontyev">
         <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="event_user_event_fk"/>
             </not>
         </preConditions>
-
 
         <addForeignKeyConstraint baseColumnNames="event_id"
                                  baseTableName="event_user"
@@ -69,41 +69,39 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
-    <changeSet id="initial-fk-role-user-0" author="al.leontyev">
+    <changeSet id="initial-fk-event-user-0" author="al.leontyev">
         <preConditions onFail="MARK_RAN">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="role_user_user_fk"/>
+                <foreignKeyConstraintExists foreignKeyName="event_user_event_fk"/>
             </not>
         </preConditions>
 
+        <addForeignKeyConstraint baseColumnNames="event_id"
+                                 baseTableName="event_user"
+                                 constraintName="event_user_event_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="event"/>
+    </changeSet>
+
+    <changeSet id="initial-fk-user-role-0" author="e.akhmetshin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_role_user_fk"/>
+            </not>
+        </preConditions>
 
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="role_user"
-                                 constraintName="role_user_user_fk"
+                                 baseTableName="user_role"
+                                 constraintName="user_role_user_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
-    </changeSet>
-
-    <changeSet id="initial-fk-role-user-1" author="al.leontyev">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <foreignKeyConstraintExists foreignKeyName="role_user_role_fk"/>
-            </not>
-        </preConditions>
-
-
-        <addForeignKeyConstraint baseColumnNames="role_id"
-                                 baseTableName="role_user"
-                                 constraintName="role_user_role_fk"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 referencedColumnNames="id"
-                                 referencedTableName="role"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-user-0" author="al.leontyev">
@@ -115,7 +113,7 @@
 
 
         <addForeignKeyConstraint baseColumnNames="group_id"
-                                 baseTableName="user"
+                                 baseTableName="users"
                                  constraintName="user_group_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
@@ -137,7 +135,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-document-0" author="al.leontyev">
@@ -154,7 +152,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-notification-0" author="al.leontyev">
@@ -171,7 +169,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-request-0" author="al.leontyev">
@@ -188,7 +186,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-user-notification-0" author="al.leontyev">
@@ -204,7 +202,7 @@
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="users"/>
     </changeSet>
 
     <changeSet id="initial-fk-user-notification-1" author="al.leontyev">

@@ -1,4 +1,4 @@
-package com.itis.entities;
+package com.itis.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * @author alt
  */
 @Entity
-@Table(name = "notification", schema = "public")
+@Table(name = "notification")
 public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_id_sequence")

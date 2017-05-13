@@ -1,6 +1,6 @@
 package com.itis.controllers;
 
-import com.itis.services.NotificationService;
+import com.itis.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
