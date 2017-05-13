@@ -1,6 +1,6 @@
 package com.itis.security;
 
-import com.itis.repositories.UserRepository;
+import com.itis.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

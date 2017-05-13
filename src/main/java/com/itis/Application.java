@@ -1,8 +1,8 @@
 package com.itis;
 
-import com.itis.models.enums.Role;
-import com.itis.models.User;
-import com.itis.repositories.UserRepository;
+import com.itis.model.enums.Role;
+import com.itis.model.User;
+import com.itis.repository.UserRepository;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
