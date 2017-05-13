@@ -1,26 +1,26 @@
 package com.itis.controller;
 
-import com.itis.service.NotificationService;
+import com.itis.service.EventService;
 import com.itis.utils.ApplicationUrls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @author alt
+ * @author aleksandrpliskin on 13.05.17.
  */
 @Controller
-@RequestMapping(ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL)
-public class NotificationController {
+@RequestMapping(ApplicationUrls.WebAppUrls.BASE_SCHEDULE_URL)
+public class ScheduleController {
 
     @Autowired
-    NotificationService notificationService;
+    private EventService eventService;
 
     @GetMapping
-    public String getNotifications(ModelMap modelMap) {
-        return "notifications";
+    public String getSchedulePage() {
+        return "schedule/index";
     }
+
 }

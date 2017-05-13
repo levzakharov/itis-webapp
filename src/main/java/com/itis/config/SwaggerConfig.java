@@ -29,7 +29,7 @@ public class SwaggerConfig {
     @Bean
     public ApiInfo apiInfo() {
         final ApiInfoBuilder builder = new ApiInfoBuilder();
-        builder.title("ITIS-Portal api").version("1.0.0").license("(C) 11-401 ITIS 2017")
+        builder.title("ITIS-Portal API").version("1.0.0").license("(C) 11-401 ITIS 2017")
                 .description("The API for ITIS-Portal");
         return builder.build();
     }
