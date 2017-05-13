@@ -1,6 +1,7 @@
 package com.itis.aspects;
 
 import com.itis.models.User;
+
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
