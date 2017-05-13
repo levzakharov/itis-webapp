@@ -5,17 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="initial-schema-user-role-0" author="e.akhmetshin">
+    <changeSet author="al.leontyev" id="drop-table-user-destination-0">
         <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="user_role"/>
-            </not>
+            <tableExists tableName="user_destination"/>
         </preConditions>
 
-        <createTable tableName="user_role">
-            <column name="user_id" type="bigint"/>
-            <column name="role" type="varchar"/>
-        </createTable>
-        <addPrimaryKey tableName="user_role" columnNames="user_id, role" constraintName="user_role_pk"/>
+        <dropTable cascadeConstraints="true"
+                   schemaName="public"
+                   tableName="user_destination"/>
     </changeSet>
 </databaseChangeLog>
