@@ -1,8 +1,13 @@
 package com.itis.model;
 
 import com.itis.model.enums.Role;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -10,8 +15,7 @@ import java.util.Set;
 @Table(name = "users")
 @SequenceGenerator(name = "user_seq",
         sequenceName = "user_seq", allocationSize = 1, initialValue = 50)
-public class User {
-
+public class User implements UserDetails {
     @Id
     @GeneratedValue(generator = "user_seq")
     private Long id;
@@ -38,8 +42,6 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Event> events;
 
-
-
     public Long getId() {
         return id;
     }
@@ -64,6 +66,7 @@ public class User {
         this.fullName = fullName;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
@@ -102,5 +105,43 @@ public class User {
 
     public void setEvents(List<Event> events) {
         this.events = events;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        final List<GrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : roles) {
+            String name = role.name();
+            if (!name.startsWith("ROLE_")) {
+                name = "ROLE_" + name;
+            }
+            authorities.add(new SimpleGrantedAuthority(name));
+        }
+        return authorities;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
