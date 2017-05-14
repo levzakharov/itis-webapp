@@ -10,7 +10,7 @@ public class PostForm {
     private String Text;
     private String action;
 
-    @NotNull
+    @NotNull(message = "Отсутствует заголовок")
     public String getTitle() {
         return Title;
     }
@@ -19,7 +19,7 @@ public class PostForm {
         Title = title;
     }
 
-    @NotNull
+    @NotNull(message = "Пустой текст")
     public String getText() {
         return Text;
     }
@@ -28,7 +28,7 @@ public class PostForm {
         Text = text;
     }
 
-    @NotNull
+    @NotNull(message = "Нет действия")
     public String getAction() {
         return action;
     }

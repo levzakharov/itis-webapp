@@ -30,38 +30,21 @@ public class PostController {
     }
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/new", method = RequestMethod.POST)
-    public String postCreate(ModelMap modelMap, @ModelAttribute(name = "post") PostForm postForm) {
-        User user = SecurityUtils.getCurrentUser();
-        Post post = new Post();
-        post.setTitle(postForm.getTitle());
-        post.setText(postForm.getText());
-        Long date = new Date().getTime();
-        post.setDate(date);
-        post.setUser(user);
-        postService.create(post);
-        return "redirect:/posts";
-    }
-
-    @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/{post_id:\\d+}", method = RequestMethod.GET)
-    public String postRead(ModelMap modelMap, @PathVariable long post_id) {
-        Post post = postService.getById(post_id);
-        modelMap.put("post", post);
-        return "post/page";
+    public String postCreate(@ModelAttribute(name = "post") PostForm postForm) {
+        postService.createByForm(postForm);
+        return "redirect:/news";
     }
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/{post_id:\\d+}", method = RequestMethod.POST)
     public String postUpdate(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long post_id) {
         Post post = postService.getById(post_id);
-
         if ("update".equals(postForm.getAction())) {
-            post.setTitle(postForm.getTitle());
-            post.setText(postForm.getText());
-            postService.update(post);
+            postService.updateByForm(post, postForm);
         } else if ("delete".equals(postForm.getAction())) {
             postService.delete(post);
         }
 
-        return "redirect:/posts";
+        return "redirect:/news";
     }
 
     @ApiOperation("List Posts")

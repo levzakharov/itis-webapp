@@ -7,7 +7,7 @@
         <div class="cancel">Отменить</div>
         <div class="block">
             <div class="title">Создание новости</div>
-            <form action="/posts/new" method="post">
+            <form action="/news/new" method="post">
                 <input type="hidden" name="action" value="create">
                 <div class="name">
                     <input type="text" name="title" placeholder="Название">
@@ -24,7 +24,7 @@
         <div class="block">
             <div class="edit">
                 <div class="title">Редактирование новости</div>
-                <form action="/posts/${post.id}" method="post">
+                <form action="/news/${post.id}" method="post">
                     <input type="hidden" name="action" value="update">
                     <div class="name">
                         <input type="text" placeholder="Название" name="title" value="${post.title}">
@@ -39,12 +39,12 @@
             </div>
             <div class="buttons">
                 <div class="button">Редактировать</div>
-                <form action="/posts/${post.id}" name="delete_${post.id}" method="post">
+                <form action="/news/${post.id}" name="delete_${post.id}" method="post">
                     <input type="hidden" name="action" value="delete">
                     <div class="button" onclick="document.forms['delete_${post.id}'].submit();">Удалить</div>
                 </form>
             </div>
-            <div class="name"><a href="/posts/${post.id}">${post.title}</a></div>
+            <div class="name">${post.title}</div>
             <div class="date">${post.date?number_to_datetime}</div>
             <div class="text">${post.text}</div>
             <div class="image"></div>

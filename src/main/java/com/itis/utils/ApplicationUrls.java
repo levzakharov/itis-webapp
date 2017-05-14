@@ -11,7 +11,7 @@ public interface ApplicationUrls {
 
         String BASE_USERS_URL = BASE_API_URL + "/users";
 
-        String BASE_NEWS_URL = BASE_API_URL + "/posts";
+        String BASE_NEWS_URL = BASE_API_URL + "/news";
     }
 
     interface WebAppUrls {
@@ -22,7 +22,7 @@ public interface ApplicationUrls {
 
         String BASE_NOTIFICATIONS_URL = "/notifications";
 
-        String BASE_NEWS_URL = "/posts";
+        String BASE_NEWS_URL = "/news";
     }
 
 }

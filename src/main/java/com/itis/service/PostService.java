@@ -1,5 +1,6 @@
 package com.itis.service;
 
+import com.itis.form.PostForm;
 import com.itis.model.Post;
 
 import java.util.List;
@@ -15,7 +16,12 @@ public interface PostService {
 
     Post update(Post post);
 
+    Post updateByForm(Post post, PostForm postForm);
+
     void delete(Post post);
 
     Post create(Post post);
+
+    Post createByForm(PostForm postForm);
+
 }
