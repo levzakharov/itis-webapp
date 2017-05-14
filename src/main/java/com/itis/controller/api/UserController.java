@@ -1,20 +1,16 @@
 package com.itis.controller.api;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itis.model.User;
 import com.itis.repository.UserRepository;
 import com.itis.utils.ApplicationUrls;
+import com.itis.utils.CSVParser;
 import com.itis.validators.UserValidator;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
@@ -23,10 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.*;
+import java.util.Set;
 
 @Controller
-@RequestMapping(ApplicationUrls.ApiUrls.BASE_USERS_URL)
 public class UserController {
     private final UserRepository repository;
     private final UserValidator validator;
@@ -43,7 +38,7 @@ public class UserController {
     }
 
     @ApiOperation("save user")
-    @PostMapping
+    @PostMapping(ApplicationUrls.ApiUrls.BASE_USERS_URL)
     public ResponseEntity save(@Valid @RequestBody User user, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(result.getFieldErrors());
@@ -55,29 +50,13 @@ public class UserController {
     }
 
     @ApiOperation("import users")
-    @PostMapping("import")
+    @PostMapping(ApplicationUrls.ApiUrls.IMPORT_USERS_URL)
     public ResponseEntity importUsers(@RequestParam MultipartFile file) throws IOException {
-        final ObjectMapper objectMapper = new ObjectMapper();
-        final Iterator<CSVRecord> iterator = CSVParser.parse(new String(file.getBytes()), CSVFormat.DEFAULT).iterator();
-        if (!iterator.hasNext()) {
+        final Set<User> users = CSVParser.parse(file.getBytes(), User.class);
+        if (users == null) {
             return ResponseEntity.badRequest().body("Parsing failure");
         }
-        final CSVRecord headers = iterator.next();
-        final Set<User> users = new HashSet<>();
-        final Set<FieldError> errors = new HashSet<>();
-        iterator.forEachRemaining((record) -> {
-            final Map<String, String> values = new HashMap<>();
-            for (int i = 0; i < headers.size(); i++) {
-                values.put(headers.get(i), record.get(i));
-            }
-            final User user = objectMapper.convertValue(values, User.class);
-            final BeanPropertyBindingResult result = new BeanPropertyBindingResult(user, "user");
-            validator.validate(user, result);
-            if (result.hasErrors()) {
-                errors.addAll(result.getFieldErrors());
-            }
-            users.add(user);
-        });
+        final Set<FieldError> errors = validator.validate(users);
         if (!errors.isEmpty()) {
             return ResponseEntity.badRequest().body(errors);
         }
@@ -85,13 +64,13 @@ public class UserController {
     }
 
     @ApiOperation("find user")
-    @GetMapping("search")
+    @GetMapping(ApplicationUrls.ApiUrls.FIND_USER_URL)
     public User find(@RequestParam String email) {
         return repository.findByEmail(email);
     }
 
     @ApiOperation("delete user")
-    @DeleteMapping("{id}")
+    @DeleteMapping(ApplicationUrls.ApiUrls.USER_URL)
     public ResponseEntity delete(@PathVariable Long id) {
         try {
             repository.delete(id);
