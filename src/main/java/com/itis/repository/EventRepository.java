@@ -20,5 +20,4 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findByUser(User user);
 
     List<Event> findByDateGreaterThanAndDateLessThan(Long startDate, Long endDate);
-
 }

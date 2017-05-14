@@ -11,6 +11,7 @@ public interface ApplicationUrls {
 
         String BASE_USERS_URL = BASE_API_URL + "/users";
 
+        String BASE_NEWS_URL = BASE_API_URL + "/news";
         String IMPORT_USERS_URL = BASE_USERS_URL + "/import";
 
         String FIND_USER_URL = BASE_USERS_URL + "/search";

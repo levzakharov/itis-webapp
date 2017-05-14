@@ -1,5 +1,7 @@
 package com.itis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -31,6 +33,7 @@ public class UserGroup {
     private Integer startYear;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "userGroup")
+    @JsonIgnore
     private List<User> users;
 
     public Long getId() {

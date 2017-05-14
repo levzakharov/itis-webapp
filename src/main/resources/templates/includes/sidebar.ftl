@@ -1,10 +1,10 @@
 <aside>
     <div class="logo">
-        <img src="images/logo.png">
+        <img src="/images/logo.png">
     </div>
     <div class="menu">
         <ul>
-            <li><a href="/news">Новости</a></li>
+            <li><a href="/posts">Новости</a></li>
             <li><a href="/schedule">Расписание</a></li>
             <li><a href="#">Баллы</a></li>
             <li><a href="#">Запрос в деканат</a></li>

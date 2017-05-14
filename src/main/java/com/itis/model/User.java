@@ -30,7 +30,6 @@ public class User implements UserDetails {
     private String phone;
 
     @ManyToOne
-    @JoinColumn(name = "user_group_id")
     private UserGroup userGroup;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
