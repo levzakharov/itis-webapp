@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Configuration;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/", "/news");
+        registry.addRedirectViewController("/", "/posts");
     }
 }

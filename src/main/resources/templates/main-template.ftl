@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic"
           rel="stylesheet">
     <link href="/css/style.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/js/javascript.js"></script>
 </head>
 <body>
 <div class="main">
