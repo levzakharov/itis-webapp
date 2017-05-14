@@ -8,7 +8,7 @@
     <changeSet id="group_0" author="r.khakov">
         <createTable tableName="user_group">
             <column name="id" type="bigint"/>
-            <column name="name" type="varchar(12)"/>
+            <column name="number" type="varchar(12)"/>
             <column name="start_year" type="int"/>
         </createTable>
     </changeSet>

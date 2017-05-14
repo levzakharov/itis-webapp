@@ -1,16 +1,7 @@
 package com.itis.model;
 
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
@@ -25,7 +16,7 @@ public class UserGroup {
     @GeneratedValue(generator = "user_group_gen", strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String name;
+    private String number;
 
     @Column(name = "start_year")
     private Integer startYear;
@@ -41,12 +32,12 @@ public class UserGroup {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNumber() {
+        return number;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public Integer getStartYear() {

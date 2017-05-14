@@ -24,5 +24,18 @@ public class NotificationServiceImpl implements NotificationService {
         return notificationRepository.findOne(id);
     }
 
+    @Override
+    public Notification update(Notification notification) {
+        return notificationRepository.save(notification);
+    }
 
+    @Override
+    public void delete(Notification notification) {
+        notificationRepository.delete(notification);
+    }
+
+    @Override
+    public Notification create(Notification notification) {
+        return notificationRepository.save(notification);
+    }
 }

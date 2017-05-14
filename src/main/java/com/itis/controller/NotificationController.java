@@ -1,8 +1,5 @@
 package com.itis.controller;
 
-import com.itis.model.User;
-import com.itis.model.UserNotification;
-import com.itis.security.SecurityUtils;
 import com.itis.service.NotificationService;
 import com.itis.service.UserNotificationService;
 import com.itis.utils.ApplicationUrls;
@@ -29,17 +26,14 @@ public class NotificationController {
         this.userNotificationService = userNotificationService;
     }
 
-
     @GetMapping
-    public String getNotifications(ModelMap modelMap) {
-        User user = SecurityUtils.getCurrentUser();
-        modelMap.put("notifications", userNotificationService.getCurrentUserUserNotification());
+    public String getNotificationsPage(ModelMap modelMap) {
+        modelMap.put("user_notifications", userNotificationService.getCurrentUserUserNotification());
         return "notification/notifications";
     }
 
     @GetMapping("/add")
-    public String addNotification(ModelMap modelMap){
+    public String addNotification(ModelMap modelMap) {
         return "notification/add-notification";
     }
-
 }
