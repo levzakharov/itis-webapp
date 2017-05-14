@@ -8,12 +8,12 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "notification")
-@SequenceGenerator(name = "notification_id_sequence",
+@SequenceGenerator(name = "notification_seq",
         sequenceName = "notification_seq", allocationSize = 1, initialValue = 50)
 public class Notification {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_id_sequence")
+    @GeneratedValue(generator = "notification_seq")
     private Long id;
 
     private String theme;

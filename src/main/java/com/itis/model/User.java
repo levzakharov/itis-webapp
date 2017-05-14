@@ -1,6 +1,8 @@
 package com.itis.model;
 
 import com.itis.model.enums.Role;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,6 +45,7 @@ public class User implements UserDetails {
     private List<Event> events;
 
     @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "user_id")
     private List<UserNotification> userNotifications;
 

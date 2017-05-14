@@ -22,7 +22,7 @@ public class UserNotification {
     private Notification notification;
 
     @Column(name = "is_read")
-    private boolean isRead;
+    private Boolean isRead;
 
     public Long getId() {
         return id;
@@ -52,7 +52,7 @@ public class UserNotification {
         return isRead;
     }
 
-    public void setRead(boolean read) {
+    public void setRead(Boolean read) {
         isRead = read;
     }
 
@@ -63,16 +63,17 @@ public class UserNotification {
 
         UserNotification that = (UserNotification) o;
 
-        if (isRead != that.isRead) return false;
+        if (!id.equals(that.id)) return false;
         if (!user.equals(that.user)) return false;
-        return notification.equals(that.notification);
+        if (!notification.equals(that.notification)) return false;
+        return isRead.equals(that.isRead);
     }
 
     @Override
     public int hashCode() {
-        int result = user.hashCode();
+        int result = id.hashCode();
+        result = 31 * result + user.hashCode();
         result = 31 * result + notification.hashCode();
-        result = 31 * result + (isRead ? 1 : 0);
         return result;
     }
 }
