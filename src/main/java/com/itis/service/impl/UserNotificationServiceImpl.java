@@ -14,7 +14,7 @@ import java.util.List;
  * Created by r.khakov
  */
 @Service
-public class UserNotificationServiceImpl implements UserNotificationService{
+public class UserNotificationServiceImpl implements UserNotificationService {
 
     private final UserNotificationRepository userNotificationRepository;
 
@@ -24,13 +24,18 @@ public class UserNotificationServiceImpl implements UserNotificationService{
     }
 
     @Override
-    public List<UserNotification> getUserNotificationByUser(User user) {
+    public List<UserNotification> getUserNotificationsByUser(User user) {
         return userNotificationRepository.findByUser(user);
     }
 
     @Override
-    public List<UserNotification> getCurrentUserUserNotification() {
-        return this.getUserNotificationByUser(SecurityUtils.getCurrentUser());
+    public List<UserNotification> getCurrentUserUserNotifications() {
+        return this.getUserNotificationsByUser(SecurityUtils.getCurrentUser());
     }
 
+    @Override
+    public List<UserNotification> getCurrentUserUnreadUserNotifications() {
+        return userNotificationRepository.findByUserAndIsRead(
+                SecurityUtils.getCurrentUser(), true);
+    }
 }

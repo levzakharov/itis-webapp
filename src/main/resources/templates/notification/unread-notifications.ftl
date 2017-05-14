@@ -12,4 +12,4 @@
 </div>
 </#macro>
 
-<@main title="Полученные уведомления" username="${username}"/>
+<@main title="Новые уведомления" username="${username}"/>

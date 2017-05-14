@@ -1,6 +1,7 @@
 package com.itis.form;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @author alt
@@ -13,6 +14,7 @@ public class NotificationCreationForm {
     @NotNull(message = "отстутствует текст уведомления")
     private String text;
 
+    private List<String> groups;
 
     public String getTheme() {
         return theme;
@@ -28,5 +30,13 @@ public class NotificationCreationForm {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public List<String> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<String> groups) {
+        this.groups = groups;
     }
 }

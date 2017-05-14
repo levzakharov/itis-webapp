@@ -1,9 +1,10 @@
 package com.itis.controller;
 
+import com.itis.repository.UserGroupRepository;
+import com.itis.security.SecurityUtils;
 import com.itis.service.NotificationService;
 import com.itis.service.UserNotificationService;
 import com.itis.utils.ApplicationUrls;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,17 +20,37 @@ public class NotificationController {
 
     private final NotificationService notificationService;
     private final UserNotificationService userNotificationService;
+    private final UserGroupRepository userGroupRepository;
 
     @Autowired
-    public NotificationController(NotificationService notificationService, UserNotificationService userNotificationService) {
+    public NotificationController(NotificationService notificationService,
+                                  UserNotificationService userNotificationService,
+                                  UserGroupRepository userGroupRepository) {
         this.notificationService = notificationService;
         this.userNotificationService = userNotificationService;
+        this.userGroupRepository = userGroupRepository;
     }
 
     @GetMapping
     public String getNotificationsPage(ModelMap modelMap) {
-        modelMap.put("user_notifications", userNotificationService.getCurrentUserUserNotification());
+        modelMap.put("user_notifications", userNotificationService.getCurrentUserUserNotifications());
+        modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
         return "notification/notifications";
+    }
+
+    @GetMapping("/sent")
+    public String getSentNotificationsPage(ModelMap modelMap) {
+        modelMap.put("notifications", notificationService.getCurrentUserSentNotifications());
+        modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
+        modelMap.put("groups", userGroupRepository.findAll());
+        return "notification/sent-notifications";
+    }
+
+    @GetMapping("/unread")
+    public String getUnreadNotificationsPage(ModelMap modelMap) {
+        modelMap.put("user_notifications", userNotificationService.getCurrentUserUnreadUserNotifications());
+        modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
+        return "notification/unread-notifications";
     }
 
     @GetMapping("/add")

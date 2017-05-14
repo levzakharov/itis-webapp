@@ -9,6 +9,7 @@ import java.util.List;
  * Created by r.khakov
  */
 public interface UserNotificationService {
-    List<UserNotification> getUserNotificationByUser(User user);
-    List<UserNotification> getCurrentUserUserNotification();
+    List<UserNotification> getUserNotificationsByUser(User user);
+    List<UserNotification> getCurrentUserUserNotifications();
+    List<UserNotification> getCurrentUserUnreadUserNotifications();
 }
