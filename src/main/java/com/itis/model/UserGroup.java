@@ -2,6 +2,7 @@ package com.itis.model;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,6 +28,7 @@ public class UserGroup {
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "user_group_id")
+    @JsonIgnore
     private List<User> users;
 
     public Long getId() {

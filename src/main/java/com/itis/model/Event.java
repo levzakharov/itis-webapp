@@ -1,6 +1,11 @@
 package com.itis.model;
 
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.util.List;
 
 /**
@@ -66,6 +71,7 @@ public class Event {
         return place;
     }
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     public List<User> getUsers() {
         return users;
     }
@@ -76,6 +82,5 @@ public class Event {
 
     public void setPlace(String place) {
         this.place = place;
-
     }
 }

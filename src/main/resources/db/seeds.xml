@@ -22,7 +22,8 @@
         </loadUpdateData>
     </changeSet>
     <changeSet id="seeds_3" author="r.khakov">
-        <loadUpdateData tableName="user_group" primaryKey="id"
+        <loadUpdateData tableName="user_group"
+                        primaryKey="id"
                         file="db/seeds/initial/user_group-2017-05-14.csv">
             <column name="id" type="numeric"/>
         </loadUpdateData>
@@ -52,5 +53,4 @@
             <column name="id" type="numeric"/>
         </loadUpdateData>
     </changeSet>
-
 </databaseChangeLog>

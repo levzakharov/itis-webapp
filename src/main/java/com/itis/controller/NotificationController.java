@@ -42,6 +42,8 @@ public class NotificationController {
 
     @GetMapping
     public String getNotificationsPage(ModelMap modelMap) {
+        userNotificationService.markUnreadNotificationsAsRead();
+
         ArrayList<Role> redirectRoles = new ArrayList<>
                 (Arrays.asList(Role.STAROSTA, Role.WORKER, Role.TEACHER));
 
@@ -50,12 +52,14 @@ public class NotificationController {
         }
         modelMap.put("user_notifications", userNotificationService.getCurrentUserUserNotifications());
         modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
+
         return "notification/basic-notifications";
     }
 
     @GetMapping("/extended")
     public String getSentNotificationsPage(ModelMap modelMap) {
         User currentUser = SecurityUtils.getCurrentUser();
+
         modelMap.put("sent_notifications", notificationService.getCurrentUserSentNotifications());
         modelMap.put("received_notifications", userNotificationService.getCurrentUserUserNotifications());
         modelMap.put("isStarosta", currentUser.getRoles().contains(Role.STAROSTA));

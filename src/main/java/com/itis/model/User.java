@@ -1,5 +1,7 @@
 package com.itis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itis.model.enums.Role;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -8,10 +10,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
@@ -32,17 +32,16 @@ public class User implements UserDetails {
     private String phone;
 
     @ManyToOne
-    @JoinColumn(name = "user_group_id")
     private UserGroup userGroup;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     @ManyToMany(mappedBy = "users")
-    private List<Event> events;
+    private List<Event> events = new ArrayList<>();
 
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -75,10 +74,12 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -122,15 +123,11 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = new ArrayList<>();
-        for (Role role : roles) {
-            String name = role.name();
-            if (!name.startsWith("ROLE_")) {
-                name = "ROLE_" + name;
-            }
-            authorities.add(new SimpleGrantedAuthority(name));
-        }
-        return authorities;
+        return roles.stream().map((role) ->
+                new SimpleGrantedAuthority(
+                        role.name().startsWith("ROLE_") ? role.name() : "ROLE_" + role.name()
+                )
+        ).collect(Collectors.toSet());
     }
 
     @Override
@@ -159,20 +156,6 @@ public class User implements UserDetails {
 
     public void setUserNotifications(List<UserNotification> userNotifications) {
         this.userNotifications = userNotifications;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", userGroup=" + userGroup +
-                ", roles=" + roles +
-                ", userNotifications=" + userNotifications +
-                '}';
     }
 }
 
