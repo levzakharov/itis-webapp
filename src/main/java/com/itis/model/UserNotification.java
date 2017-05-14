@@ -56,7 +56,7 @@ public class UserNotification {
         return isRead;
     }
 
-    public void setRead(Boolean read) {
+    public void setIsRead(Boolean read) {
         isRead = read;
     }
 

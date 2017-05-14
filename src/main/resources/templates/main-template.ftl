@@ -1,4 +1,4 @@
-<#macro main title="ИТИС" username="" customScripts=[] customStyles=[] customFonts=[] customClass=[]>
+<#macro main title="ИТИС" customScripts=[] customStyles=[] customFonts=[] customClass=[]>
 <!DOCTYPE html>
 <html>
 <head>

@@ -41,4 +41,4 @@
 </div>
 </#macro>
 
-<@main title="Новости" username="Имя пользователя"/>
+<@main title="Новости"/>

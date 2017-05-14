@@ -7,7 +7,7 @@
     <div class="block">
         <div class="title">Создание уведомления</div>
         <form name="notification" action="/notifications/add" method="post">
-            <#if isStarosta??>
+            <#if isStarosta>
             <#else>
                 <div class="name">
                     <div class="sub">Кому</div>
@@ -87,4 +87,4 @@
 
 </#macro>
 
-<@main title="Уведомления" username="Имя пользователя" customScripts=["/js/jquery-1.11.3.min.js", "/js/multiple-select.js", "/js/notifications.js"] customStyles=["/css/multiple-select.css"] customClass=["notifications"]/>
+<@main title="Уведомления" customScripts=["/js/jquery-1.11.3.min.js", "/js/multiple-select.js", "/js/notifications.js"] customStyles=["/css/multiple-select.css"] customClass=["notifications"]/>

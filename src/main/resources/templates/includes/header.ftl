@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#">${full_name}</a>
+            <a href="#">${username}</a>
         </div>
     </div>
 </header>

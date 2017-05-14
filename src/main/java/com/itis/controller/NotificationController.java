@@ -46,7 +46,7 @@ public class NotificationController {
                 (Arrays.asList(Role.STAROSTA, Role.WORKER, Role.TEACHER));
 
         if (CollectionUtils.containsAny(SecurityUtils.getCurrentUser().getRoles(), redirectRoles)) {
-            return "redirect:/notifications/extended";
+            return "redirect:" + ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL + "/extended";
         }
         modelMap.put("user_notifications", userNotificationService.getCurrentUserUserNotifications());
         modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
@@ -56,7 +56,6 @@ public class NotificationController {
     @GetMapping("/extended")
     public String getSentNotificationsPage(ModelMap modelMap) {
         User currentUser = SecurityUtils.getCurrentUser();
-
         modelMap.put("sent_notifications", notificationService.getCurrentUserSentNotifications());
         modelMap.put("received_notifications", userNotificationService.getCurrentUserUserNotifications());
         modelMap.put("isStarosta", currentUser.getRoles().contains(Role.STAROSTA));
@@ -74,12 +73,8 @@ public class NotificationController {
     @PostMapping("/add")
     public String sendNotification(@ModelAttribute(name = "notification")
                                            NotificationCreationForm notificationCreationForm) {
-
-        System.out.println(notificationCreationForm.getGroups());
-
         notificationService.sendNotification(notificationCreationForm);
 
-        return "redirect:/notifications/extended";
+        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL + "/extended";
     }
-
 }

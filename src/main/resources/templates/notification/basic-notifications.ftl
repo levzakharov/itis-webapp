@@ -14,4 +14,4 @@
     </#list>
 </div>
 </#macro>
-<@main title="Уведомления" username="Имя пользователя" customClass=["notifications"]/>
+<@main title="Уведомления" customClass=["notifications"]/>

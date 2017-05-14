@@ -44,7 +44,7 @@ public class UserNotificationServiceImpl implements UserNotificationService {
     @Override
     public void markUnreadNotificationsAsRead() {
         for (UserNotification unreadNotification: this.getCurrentUserUnreadUserNotifications()){
-            unreadNotification.setRead(true);
+            unreadNotification.setIsRead(true);
             userNotificationRepository.save(unreadNotification);
         }
     }
@@ -55,6 +55,7 @@ public class UserNotificationServiceImpl implements UserNotificationService {
             UserNotification userNotification = new UserNotification();
             userNotification.setNotification(notification);
             userNotification.setUser(user);
+            userNotification.setIsRead(false);
             userNotificationRepository.save(userNotification);
         }
     }
