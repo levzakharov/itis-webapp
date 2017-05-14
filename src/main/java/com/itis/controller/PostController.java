@@ -26,7 +26,7 @@ public class PostController {
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL, method = RequestMethod.GET)
     public String postIndex(ModelMap modelMap) {
         modelMap.put("posts", postService.getAllOrderByDateDesc());
-        return "postindex";
+        return "post/index";
     }
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/new", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public class PostController {
     public String postRead(ModelMap modelMap, @PathVariable long post_id) {
         Post post = postService.getById(post_id);
         modelMap.put("post", post);
-        return "postread";
+        return "post/page";
     }
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/{post_id:\\d+}", method = RequestMethod.POST)

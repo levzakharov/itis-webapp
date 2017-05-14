@@ -1,5 +1,6 @@
 package com.itis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.itis.model.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -39,6 +40,7 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     @ManyToMany(mappedBy = "users")
+    @JsonIgnore
     private List<Event> events;
 
     public Long getId() {
