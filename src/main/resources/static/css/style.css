@@ -1,17 +1,17 @@
 html, body {
-    font-family: 'Open Sans', sans-serif;
-    width: 100%;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	width: 100%;
+	-webkit-font-smoothing: antialiased;
+	min-height: 100%;
 }
 
 * {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    margin: 0;
-    padding: 0;
-    color: #000;
-    -webkit-font-smoothing: antialiased;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: none;
 	text-decoration: none;
 	border: none;
@@ -120,6 +120,36 @@ header .user a {
 	padding: 40px;
 }
 
+header .user .notif {
+	margin-right: 25px;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	cursor: pointer;
+}
+
+header .user .notif .fa {
+	font-size: 18px;
+}
+
+header .user .notif .count {
+	position: absolute;
+	top: 18px;
+	left: 15px;
+	background-color: red;
+	width: 18px;
+	height: 18px;
+	text-align: center;
+	border-radius: 90px;
+	line-height: 1.3;
+}
+
+header .user .notif .count span {
+	font-size: 12px;
+	color: #fff;
+	font-weight: 800;
+}
+
 /* SIGNIN PAGE */
 
 .signin-container {
@@ -216,10 +246,178 @@ header .user a {
 
 /* NEWS PAGE */
 
+.container .content .title {
+	font-size: 24px;
+	float: left;
+	font-weight: 600;
+}
+
+.container .content .add {
+	padding-bottom: 20px;
+	margin-bottom: 40px;
+}
+
+.container .content .add .title {
+	color: #456693;
+	font-size: 18px;
+	font-weight: 600;
+	padding-bottom: 20px;
+	float: none;
+}
+
+.container .content .add .button {
+	display: inline-block;
+	background: #456693;
+	padding: 10px 15px;
+	color: #fff;
+	float: right;
+	cursor: pointer;
+}
+
+.container .content .add .cancel {
+	display: inline-block;
+	background: #456693;
+	padding: 10px 15px;
+	color: #fff;
+	float: right;
+	cursor: pointer;
+	display: none;
+}
+
+.container .content .add .block {
+	clear: both;
+	padding: 20px 0;
+	display: none;
+	border-bottom: 1px solid #ddd;
+}
+
+.container .content .add .block .name {
+	margin-bottom: 10px;
+}
+
+.container .content .add .block input {
+	border: 1px solid #ddd;
+	width: 400px;
+	padding: 10px;
+	outline: none;
+	box-shadow: none;
+}
+
+.container .content .add .block textarea {
+	border: 1px solid rgb(221, 221, 221);
+	width: 444px;
+	padding: 10px;
+	height: 101px;
+	outline: none;
+	box-shadow: none;
+	margin: 0px;
+}
+
+.container .content .add .block input[type='submit'] {
+	width: auto;
+	outline: none;
+	box-shadow: none;
+	display: inline-block;
+	color: #344c6d;
+	font-weight: 600;
+	background: #fff;
+	border: none ;
+	margin-top: 10px;
+	padding: 0;
+	cursor: pointer;
+}
+
 .container .content .blocks .block {
 	padding-bottom: 20px;
 	margin-bottom: 30px;
 	border-bottom: 1px solid #ddd;
+}
+
+.container .content .add {
+	padding-bottom: 20px;
+	margin-bottom: 40px;
+}
+
+.container .content .block .edit .title {
+	color: #456693;
+	font-size: 18px;
+	font-weight: 600;
+	padding-bottom: 20px;
+	float: none;
+}
+
+.container .content .block .edit .button {
+	display: inline-block;
+	background: #456693;
+	padding: 10px 15px;
+	color: #fff;
+	float: right;
+	cursor: pointer;
+}
+
+.container .content .block .edit .cancel {
+	display: inline-block ;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+.container .content .block .edit {
+	clear: both;
+	padding: 20px 0;
+	display: none;
+}
+
+.container .content .block .edit .name {
+	margin-bottom: 10px;
+}
+
+.container .content .block .edit input {
+	border: 1px solid #ddd;
+	width: 400px;
+	padding: 10px;
+	outline: none;
+	box-shadow: none;
+}
+
+.container .content .block .edit textarea {
+	border: 1px solid rgb(221, 221, 221);
+	width: 444px;
+	padding: 10px;
+	height: 101px;
+	outline: none;
+	box-shadow: none;
+	margin: 0px;
+}
+
+.container .content .block .edit input[type='submit'] {
+	width: auto;
+	outline: none;
+	box-shadow: none;
+	display: inline-block;
+	color: #344c6d;
+	font-weight: 600;
+	background: #fff;
+	border: none ;
+	margin-top: 10px;
+	padding: 0;
+}
+
+.container .content .blocks .block .buttons {
+	float: right;
+}
+
+.container .content .blocks .block .buttons .button {
+	display: inline-block;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.container .content .blocks .block .buttons .button:first-child {
+	color: #344c6d;
+}
+
+.container .content .blocks .block .buttons .button:nth-child(2) {
+	color: red;
 }
 
 .container .content .blocks .block .name {
@@ -335,7 +533,7 @@ header .user a {
 	min-width: 130px;
 	border: 1px solid #ddd;
 	padding: 5px;
-} 
+}
 
 .container .content .table table td:first-child, .container .content .table table th:first-child {
 	min-width: 100px;
@@ -343,6 +541,40 @@ header .user a {
 
 .container .content .table table td:nth-child(2), .container .content .table table th:nth-child(2) {
 	min-width: 50px;
+}
+
+/* NOTIFICATIONS PAGE */
+
+.container .content .add .block .name .sub {
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.container .content .add .block .name .ms-parent input {
+	border: none;
+	width: auto;
+	outline: none;
+	box-shadow: none;
+}
+
+.container .content .add .block .name .ms-parent .ms-search {
+	display: none;
+}
+
+.container .content .add .block .name .ms-parent {
+	width: 300px !important;
+}
+
+.notifications .filter .button {
+	margin-left: 0 !important;
+}
+
+.notifications .filter {
+	margin-bottom: 40px;
+}
+
+.notifications .blocks.sent {
+	display: none;
 }
 
 /* MEDIA QUERIES */
@@ -369,7 +601,7 @@ header .user a {
 	.signin-container .signin .logo img {
 		width: 220px;
 	}
-	
+
 	.signin-container .signin {
 		width: 300px;
 		margin-left: -200px;
@@ -414,4 +646,5 @@ header .user a {
 		height: auto;
 	}
 }
+
 
