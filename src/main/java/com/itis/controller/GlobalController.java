@@ -23,13 +23,14 @@ public class GlobalController {
 
     @ModelAttribute
     public void getFullName(ModelMap model) {
-        if (SecurityContextHolder.getContext().getAuthentication()instanceof UsernamePasswordAuthenticationToken){
+        if (SecurityContextHolder.getContext().getAuthentication() instanceof UsernamePasswordAuthenticationToken) {
             model.addAttribute("username", SecurityUtils.getCurrentUser().getFullName());
         }
     }
+
     @ModelAttribute
     public void get(ModelMap model) {
-        if (SecurityContextHolder.getContext().getAuthentication()instanceof UsernamePasswordAuthenticationToken){
+        if (SecurityContextHolder.getContext().getAuthentication() instanceof UsernamePasswordAuthenticationToken) {
             model.addAttribute("unread_notifications_count",
                     userNotificationService.getCurrentUserUnreadUserNotifications().size());
         }
