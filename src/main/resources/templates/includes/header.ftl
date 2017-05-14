@@ -6,12 +6,12 @@
             <a href="/notifications">
                 <div class="notif">
                     <i class="fa fa-bell" aria-hidden="true"></i>
-                    <div  class="count">
-                        <span>5</span>
+                    <div class="count">
+                        <span>${unread_notifications_count}</span>
                     </div>
                 </div>
             </a>
-            <a href="#">${username}</a>
+            <a href="#">${full_name}</a>
         </div>
     </div>
 </header>

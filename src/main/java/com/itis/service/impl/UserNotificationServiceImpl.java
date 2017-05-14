@@ -38,7 +38,7 @@ public class UserNotificationServiceImpl implements UserNotificationService {
     @Override
     public List<UserNotification> getCurrentUserUnreadUserNotifications() {
         return userNotificationRepository.findByUserAndIsRead(
-                SecurityUtils.getCurrentUser(), true);
+                SecurityUtils.getCurrentUser(), false);
     }
 
     @Override
