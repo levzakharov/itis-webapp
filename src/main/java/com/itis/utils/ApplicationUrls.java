@@ -10,6 +10,12 @@ public interface ApplicationUrls {
         String BASE_API_URL = "/api/v2";
 
         String BASE_USERS_URL = BASE_API_URL + "/users";
+
+        String IMPORT_USERS_URL = BASE_USERS_URL + "/import";
+
+        String FIND_USER_URL = BASE_USERS_URL + "/search";
+
+        String USER_URL = BASE_USERS_URL + "/{id}";
     }
 
     interface WebAppUrls {

@@ -18,4 +18,8 @@
         </loadUpdateData>
     </changeSet>
 
+    <changeSet id="seeds_3" author="e.akhmetshin">
+        <loadUpdateData tableName="user_role" primaryKey="user_id,role" file="db/seeds/initial/user_role.csv">
+        </loadUpdateData>
+    </changeSet>
 </databaseChangeLog>
