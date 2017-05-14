@@ -71,40 +71,4 @@ public class PostController {
         return postService.getAllOrderByDateDesc();
     }
 
-    @ApiOperation("Create Post. This method is expecting an object of class PostForm for validation. There also should be" +
-            "a parametr 'action'")
-    @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL + "/new", method = RequestMethod.POST)
-    public String postCreateApi(@RequestBody PostForm postForm) {
-        User user = SecurityUtils.getCurrentUser();
-        Post post = new Post();
-        post.setTitle(postForm.getTitle());
-        post.setText(postForm.getText());
-        Long date = new Date().getTime();
-        post.setDate(date);
-        post.setUser(user);
-        postService.create(post);
-        return "redirect:/posts";
-    }
-
-    @ApiOperation("Get post by id")
-    @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL + "/{post_id:\\d+}", method = RequestMethod.GET)
-    @ResponseBody
-    public Post postReadApi(@PathVariable long post_id) {
-        return postService.getById(post_id);
-    }
-
-    @ApiOperation("Update Post. This method is expecting an object of class Post for validation")
-    @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL, method = RequestMethod.PUT)
-    public String postUpdateApi(@RequestBody Post post) {
-        postService.update(post);
-        return "redirect:/posts";
-    }
-
-
-    @ApiOperation("Update Post. This method is expecting an object of class Post for validation")
-    @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL, method = RequestMethod.DELETE)
-    public String postDeleteApi(@RequestBody Post post) {
-        postService.delete(post);
-        return "redirect:/posts";
-    }
 }
