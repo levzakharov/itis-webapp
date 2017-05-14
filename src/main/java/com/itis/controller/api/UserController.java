@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Set;
 
-@Controller
+@RestController
 public class UserController {
     private final UserRepository repository;
     private final UserValidator validator;
