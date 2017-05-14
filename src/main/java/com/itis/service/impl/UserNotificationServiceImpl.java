@@ -1,6 +1,8 @@
 package com.itis.service.impl;
 
+import com.itis.model.Notification;
 import com.itis.model.User;
+import com.itis.model.UserGroup;
 import com.itis.model.UserNotification;
 import com.itis.repository.UserNotificationRepository;
 import com.itis.security.SecurityUtils;
@@ -45,7 +47,22 @@ public class UserNotificationServiceImpl implements UserNotificationService {
             unreadNotification.setRead(true);
             userNotificationRepository.save(unreadNotification);
         }
-
     }
 
+    @Override
+    public void createUserNotificationsByGroup(Notification notification, UserGroup userGroup) {
+        for (User user : userGroup.getUsers()) {
+            UserNotification userNotification = new UserNotification();
+            userNotification.setNotification(notification);
+            userNotification.setUser(user);
+            userNotificationRepository.save(userNotification);
+        }
+    }
+
+    @Override
+    public void createUserNotificationsByGroups(Notification notification, List<UserGroup> userGroups) {
+        for (UserGroup userGroup : userGroups) {
+            this.createUserNotificationsByGroup(notification, userGroup);
+        }
+    }
 }

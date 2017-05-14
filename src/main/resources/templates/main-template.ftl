@@ -1,4 +1,4 @@
-<#macro main title="ИТИС" username="" customScripts=[] customStyles=[] customFonts=[]>
+<#macro main title="ИТИС" username="" customScripts=[] customStyles=[] customFonts=[] customClass=[]>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +24,7 @@
     <#include "includes/sidebar.ftl">
     <div class="container">
         <#include "includes/header.ftl">
-        <div class="content">
+        <div class="content <#list customClass as class> ${class}</#list>">
             <@m_body/>
         </div>
     </div>

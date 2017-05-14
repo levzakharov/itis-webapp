@@ -1,18 +1,24 @@
 package com.itis.controller;
 
 import com.itis.form.NotificationCreationForm;
-import com.itis.repository.UserGroupRepository;
+import com.itis.model.User;
+import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
 import com.itis.service.NotificationService;
+import com.itis.service.UserGroupService;
 import com.itis.service.UserNotificationService;
 import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author alt
@@ -23,51 +29,57 @@ public class NotificationController {
 
     private final NotificationService notificationService;
     private final UserNotificationService userNotificationService;
-    private final UserGroupRepository userGroupRepository;
+    private final UserGroupService userGroupService;
 
     @Autowired
     public NotificationController(NotificationService notificationService,
                                   UserNotificationService userNotificationService,
-                                  UserGroupRepository userGroupRepository) {
+                                  UserGroupService userGroupService) {
         this.notificationService = notificationService;
         this.userNotificationService = userNotificationService;
-        this.userGroupRepository = userGroupRepository;
+        this.userGroupService = userGroupService;
     }
 
     @GetMapping
     public String getNotificationsPage(ModelMap modelMap) {
+        ArrayList<Role> redirectRoles = new ArrayList<>
+                (Arrays.asList(Role.STAROSTA, Role.WORKER, Role.TEACHER));
+
+        if (CollectionUtils.containsAny(SecurityUtils.getCurrentUser().getRoles(), redirectRoles)) {
+            return "redirect:/notifications/extended";
+        }
         modelMap.put("user_notifications", userNotificationService.getCurrentUserUserNotifications());
         modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
-        return "notification/notifications";
+        return "notification/basic-notifications";
     }
 
-    @GetMapping("/sent")
+    @GetMapping("/extended")
     public String getSentNotificationsPage(ModelMap modelMap) {
-        modelMap.put("notifications", notificationService.getCurrentUserSentNotifications());
-        modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
-        modelMap.put("groups_1", userGroupRepository.findAll());
-        modelMap.put("groups_2", userGroupRepository.findAll());
-        modelMap.put("groups_3", userGroupRepository.findAll());
-        modelMap.put("groups_4", userGroupRepository.findAll());
-        return "notification/sent-notifications";
-    }
+        User currentUser = SecurityUtils.getCurrentUser();
 
-    @GetMapping("/unread")
-    public String getUnreadNotificationsPage(ModelMap modelMap) {
-        modelMap.put("user_notifications", userNotificationService.getCurrentUserUnreadUserNotifications());
-        modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
-        return "notification/unread-notifications";
+        modelMap.put("sent_notifications", notificationService.getCurrentUserSentNotifications());
+        modelMap.put("received_notifications", userNotificationService.getCurrentUserUserNotifications());
+        modelMap.put("isStarosta", currentUser.getRoles().contains(Role.STAROSTA));
+        modelMap.put("username", currentUser.getFullName());
+        modelMap.put("groups_1", userGroupService.getUserGroupsByCourse(1));
+        modelMap.put("groups_2", userGroupService.getUserGroupsByCourse(2));
+        modelMap.put("groups_3", userGroupService.getUserGroupsByCourse(3));
+        modelMap.put("groups_4", userGroupService.getUserGroupsByCourse(4));
+        modelMap.put("groups_5", userGroupService.getUserGroupsByCourse(5));
+        modelMap.put("groups_6", userGroupService.getUserGroupsByCourse(6));
+
+        return "notification/extended-notifications";
     }
 
     @PostMapping("/add")
     public String sendNotification(@ModelAttribute(name = "notification")
                                            NotificationCreationForm notificationCreationForm) {
 
-        System.out.println(notificationCreationForm.getTheme());
-        System.out.println(notificationCreationForm.getText());
         System.out.println(notificationCreationForm.getGroups());
 
-        return "redirect:/sent";
+        notificationService.sendNotification(notificationCreationForm);
+
+        return "redirect:/notifications/extended";
     }
 
 }

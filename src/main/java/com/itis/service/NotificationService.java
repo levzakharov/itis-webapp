@@ -1,5 +1,6 @@
 package com.itis.service;
 
+import com.itis.form.NotificationCreationForm;
 import com.itis.model.Notification;
 import com.itis.model.User;
 
@@ -20,4 +21,6 @@ public interface NotificationService {
     List<Notification> getCurrentUserSentNotifications();
 
     List<Notification> getSentNotificationsByUser(User user);
+
+    void sendNotification(NotificationCreationForm notificationCreationForm);
 }

@@ -13,6 +13,7 @@ import javax.persistence.*;
         sequenceName = "user_notification_seq", allocationSize = 1, initialValue = 50)
 public class UserNotification {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_notification_seq")
     private Long id;
 
     @ManyToOne

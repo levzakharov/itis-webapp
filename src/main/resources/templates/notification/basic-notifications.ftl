@@ -1,6 +1,6 @@
 <#include "../main-template.ftl">
 <#macro m_body>
-<div class="title">Уведомления</div>
+<div class="title">Полученные уведомления</div>
 
 <div class="add"></div>
 
@@ -14,4 +14,4 @@
     </#list>
 </div>
 </#macro>
-<@main title="Уведомления" username="Имя пользователя"  customStyles=["/css/multiple-select.css"] />
+<@main title="Уведомления" username="Имя пользователя" customClass=["notifications"]/>

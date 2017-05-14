@@ -1,5 +1,8 @@
 package com.itis.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,7 +24,9 @@ public class UserGroup {
     @Column(name = "start_year")
     private Integer startYear;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userGroup")
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "user_group_id")
     private List<User> users;
 
     public Long getId() {

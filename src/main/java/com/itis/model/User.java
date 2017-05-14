@@ -160,5 +160,19 @@ public class User implements UserDetails {
     public void setUserNotifications(List<UserNotification> userNotifications) {
         this.userNotifications = userNotifications;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", userGroup=" + userGroup +
+                ", roles=" + roles +
+                ", userNotifications=" + userNotifications +
+                '}';
+    }
 }
 
