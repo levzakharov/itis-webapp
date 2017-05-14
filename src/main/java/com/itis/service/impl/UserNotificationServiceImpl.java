@@ -38,4 +38,14 @@ public class UserNotificationServiceImpl implements UserNotificationService {
         return userNotificationRepository.findByUserAndIsRead(
                 SecurityUtils.getCurrentUser(), true);
     }
+
+    @Override
+    public void markUnreadNotificationsAsRead() {
+        for (UserNotification unreadNotification: this.getCurrentUserUnreadUserNotifications()){
+            unreadNotification.setRead(true);
+            userNotificationRepository.save(unreadNotification);
+        }
+
+    }
+
 }

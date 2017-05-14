@@ -69,4 +69,5 @@ public class NotificationController {
 
         return "redirect:/sent";
     }
+
 }

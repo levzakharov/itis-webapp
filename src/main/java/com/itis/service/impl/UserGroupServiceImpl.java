@@ -1,0 +1,34 @@
+package com.itis.service.impl;
+
+import com.itis.model.UserGroup;
+import com.itis.repository.UserGroupRepository;
+import com.itis.service.UserGroupService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Calendar;
+import java.util.List;
+
+/**
+ * Created by r.khakov
+ */
+@Service
+public class UserGroupServiceImpl implements UserGroupService{
+    private final UserGroupRepository userGroupRepository;
+
+    @Autowired
+    public UserGroupServiceImpl(UserGroupRepository userGroupRepository) {
+        this.userGroupRepository = userGroupRepository;
+    }
+
+    @Override
+    public List<UserGroup> getUserGroupsByCourse(Integer courseNumber) {
+        Calendar currentDate = Calendar.getInstance();
+        int currentMonth = currentDate.get(Calendar.MONTH);
+        int groupsStartYear = currentDate.get(Calendar.YEAR) - courseNumber;
+        if (currentMonth>8){
+            groupsStartYear++;
+        }
+        return userGroupRepository.findByStartYear(groupsStartYear);
+    }
+}

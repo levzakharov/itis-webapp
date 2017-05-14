@@ -12,4 +12,5 @@ public interface UserNotificationService {
     List<UserNotification> getUserNotificationsByUser(User user);
     List<UserNotification> getCurrentUserUserNotifications();
     List<UserNotification> getCurrentUserUnreadUserNotifications();
+    void markUnreadNotificationsAsRead();
 }
