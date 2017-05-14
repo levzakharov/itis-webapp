@@ -1,5 +1,6 @@
 package com.itis.controller;
 
+import com.itis.form.NotificationCreationForm;
 import com.itis.repository.UserGroupRepository;
 import com.itis.security.SecurityUtils;
 import com.itis.service.NotificationService;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -53,8 +56,14 @@ public class NotificationController {
         return "notification/unread-notifications";
     }
 
-    @GetMapping("/add")
-    public String addNotification(ModelMap modelMap) {
-        return "notification/add-notification";
+    @PostMapping("/add")
+    public String sendNotification(@ModelAttribute(name = "notification")
+                                               NotificationCreationForm notificationCreationForm) {
+
+        System.out.println(notificationCreationForm.getTheme());
+        System.out.println(notificationCreationForm.getText());
+        System.out.println(notificationCreationForm.getGroups());
+
+        return "redirect:/sent";
     }
 }
