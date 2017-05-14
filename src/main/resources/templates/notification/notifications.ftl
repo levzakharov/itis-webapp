@@ -2,6 +2,8 @@
 <#macro m_body>
 <div class="title">Уведомления</div>
 
+<div class="add"></div>
+
 <div class="blocks">
     <#list user_notifications as user_notification>
         <div class="block">
@@ -12,4 +14,4 @@
     </#list>
 </div>
 </#macro>
-<@main title="Уведомления" username="Имя пользователя" />
+<@main title="Уведомления" username="Имя пользователя"  customStyles=["/css/multiple-select.css"] />

@@ -45,7 +45,10 @@ public class NotificationController {
     public String getSentNotificationsPage(ModelMap modelMap) {
         modelMap.put("notifications", notificationService.getCurrentUserSentNotifications());
         modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
-        modelMap.put("groups", userGroupRepository.findAll());
+        modelMap.put("groups_1", userGroupRepository.findAll());
+        modelMap.put("groups_2", userGroupRepository.findAll());
+        modelMap.put("groups_3", userGroupRepository.findAll());
+        modelMap.put("groups_4", userGroupRepository.findAll());
         return "notification/sent-notifications";
     }
 
@@ -58,7 +61,7 @@ public class NotificationController {
 
     @PostMapping("/add")
     public String sendNotification(@ModelAttribute(name = "notification")
-                                               NotificationCreationForm notificationCreationForm) {
+                                           NotificationCreationForm notificationCreationForm) {
 
         System.out.println(notificationCreationForm.getTheme());
         System.out.println(notificationCreationForm.getText());

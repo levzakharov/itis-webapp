@@ -7,28 +7,38 @@
     <div class="cancel">Отменить</div>
     <div class="block">
         <div class="title">Создание уведомления</div>
-        <form action="/notifications/add" method="post">
+        <form name="notification" action="/notifications/add" method="post">
             <div class="name">
                 <div class="sub">Кому</div>
-                <select multiple="multiple">
-                    <optgroup label="Group 1">
-                        <option value="1">000</option>
-                        <option value="2">001</option>
-                        <option value="3">2</option>
-                        <option value="4">3</option>
-                        <option value="5">4</option>
+                <select name="groups" multiple="multiple">
+                    <optgroup label="1 курс">
+                        <#list groups_1 as group_1>
+                            <option value="${group_1.id}">${group_1.number}</option>
+                        </#list>
                     </optgroup>
-                    <optgroup label="Group 2">
-                        <option value="6">23</option>
-                        <option value="7">002321</option>
-                        <option value="8">22</option>
-                        <option value="9">23</option>
-                        <option value="10">433</option>
+                    <optgroup label="2 курс">
+                        <#list groups_2 as group_2>
+                            <option value="${group_2.id}">${group_2.number}</option>
+                        </#list>
+                    </optgroup>
+                    <optgroup label="3 курс">
+                        <#list groups_3 as group_3>
+                            <option value="${group_3.id}">${group_3.number}</option>
+                        </#list>
+                    </optgroup>
+                    <optgroup label="4 курс">
+                        <#list groups_4 as group_4>
+                            <option value="${group_4.id}">${group_4.number}</option>
+                        </#list>
                     </optgroup>
                 </select>
             </div>
             <div class="text">
-                <textarea placeholder="Текст"></textarea>
+                <label> Тема <input name="theme" type="text"/> </label>
+            </div>
+            <br>
+            <div class="text">
+                <textarea name="text" placeholder="Текст"></textarea>
             </div>
             <img>
             <input type="submit" value="Создать">
