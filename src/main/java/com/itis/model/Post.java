@@ -12,7 +12,7 @@ import java.util.Date;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_id_sequence")
-    @SequenceGenerator(name = "post_id_sequence", sequenceName = "post_seq", allocationSize = 1)
+    @SequenceGenerator(name = "post_id_sequence", sequenceName = "post_seq", allocationSize = 1, initialValue = 50)
     private Long id;
     private String title;
     private String text;

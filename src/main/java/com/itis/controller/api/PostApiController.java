@@ -23,7 +23,7 @@ public class PostApiController {
 
     @ApiOperation("Create Post. This method is expecting an object of class PostForm for validation. There also should be" +
             "a parametr 'action'")
-    @PostMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL + "/new")
+    @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL + "/new", method = RequestMethod.POST)
     public String postCreateApi(@RequestBody PostForm postForm) {
         User user = SecurityUtils.getCurrentUser();
         Post post = new Post();
@@ -37,14 +37,14 @@ public class PostApiController {
     }
 
     @ApiOperation("Get post by id")
-    @GetMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL + "/{post_id:\\d+}")
+    @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL + "/{post_id:\\d+}", method = RequestMethod.GET)
     @ResponseBody
     public Post postReadApi(@PathVariable long post_id) {
         return postService.getById(post_id);
     }
 
     @ApiOperation("Update Post. This method is expecting an object of class Post for validation")
-    @PostMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL)
+    @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL, method = RequestMethod.PUT)
     public String postUpdateApi(@RequestBody Post post) {
         postService.update(post);
         return "redirect:/posts";

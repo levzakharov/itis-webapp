@@ -1,5 +1,7 @@
 package com.itis.form;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by softi on 06.05.2017.
  */
@@ -8,6 +10,7 @@ public class PostForm {
     private String Text;
     private String action;
 
+    @NotNull
     public String getTitle() {
         return Title;
     }
@@ -16,6 +19,7 @@ public class PostForm {
         Title = title;
     }
 
+    @NotNull
     public String getText() {
         return Text;
     }
@@ -24,6 +28,7 @@ public class PostForm {
         Text = text;
     }
 
+    @NotNull
     public String getAction() {
         return action;
     }
