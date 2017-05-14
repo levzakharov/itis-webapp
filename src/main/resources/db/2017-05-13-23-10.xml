@@ -8,7 +8,8 @@
     <changeSet id="2017-05-13-23-10_0" author="r.khakov">
         <addColumn schemaName="public"
                    tableName="user_notification">
-            <column name="is_read" type="boolean" defaultValueBoolean="false"/>
+            <column name="is_read" type="boolean"
+                    defaultValueBoolean="false"/>
         </addColumn>
         <addColumn schemaName="public"
                 tableName="user_notification">
