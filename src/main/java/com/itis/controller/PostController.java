@@ -3,6 +3,7 @@ package com.itis.controller;
 import com.itis.model.Post;
 import com.itis.form.PostForm;
 import com.itis.model.User;
+import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
 import com.itis.service.PostService;
 import com.itis.utils.ApplicationUrls;
@@ -25,6 +26,12 @@ public class PostController {
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL, method = RequestMethod.GET)
     public String postIndex(ModelMap modelMap) {
+        User user = SecurityUtils.getCurrentUser();
+        boolean isAdmin = false;
+        if (user.getRoles().contains(Role.ADMIN)) {
+            isAdmin = true;
+        }
+        modelMap.put("isAdmin", isAdmin);
         modelMap.put("posts", postService.getAllOrderByDateDesc());
         return "post/index";
     }
