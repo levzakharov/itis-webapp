@@ -12,11 +12,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class NotificationServiceImpl implements NotificationService {
 
+    private final NotificationRepository notificationRepository;
+
     @Autowired
-    NotificationRepository notificationRepository;
+    public NotificationServiceImpl(NotificationRepository notificationRepository) {
+        this.notificationRepository = notificationRepository;
+    }
 
     @Override
     public Notification getOne(Long id) {
         return notificationRepository.findOne(id);
     }
+
+
 }

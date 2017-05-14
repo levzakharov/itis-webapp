@@ -25,7 +25,7 @@ public class UserGroup {
     @GeneratedValue(generator = "user_group_gen", strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String number;
+    private String name;
 
     @Column(name = "start_year")
     private Integer startYear;
@@ -41,12 +41,12 @@ public class UserGroup {
         this.id = id;
     }
 
-    public String getNumber() {
-        return number;
+    public String getName() {
+        return name;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getStartYear() {

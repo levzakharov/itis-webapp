@@ -1,6 +1,10 @@
 package com.itis.controller;
 
+import com.itis.model.User;
+import com.itis.model.UserNotification;
+import com.itis.security.SecurityUtils;
 import com.itis.service.NotificationService;
+import com.itis.service.UserNotificationService;
 import com.itis.utils.ApplicationUrls;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +20,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL)
 public class NotificationController {
 
+    private final NotificationService notificationService;
+    private final UserNotificationService userNotificationService;
+
     @Autowired
-    NotificationService notificationService;
+    public NotificationController(NotificationService notificationService, UserNotificationService userNotificationService) {
+        this.notificationService = notificationService;
+        this.userNotificationService = userNotificationService;
+    }
+
 
     @GetMapping
     public String getNotifications(ModelMap modelMap) {
-        return "notifications";
+        User user = SecurityUtils.getCurrentUser();
+        modelMap.put("notifications", userNotificationService.getCurrentUserUserNotification());
+        return "notification/notifications";
     }
+
+    @GetMapping("/add")
+    public String addNotification(ModelMap modelMap){
+        return "notification/add-notification";
+    }
+
 }
