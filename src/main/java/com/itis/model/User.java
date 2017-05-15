@@ -39,6 +39,7 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
 
     @ManyToMany(mappedBy = "users")
+    @JsonIgnore
     private List<Event> events = new ArrayList<>();
 
     public Long getId() {
