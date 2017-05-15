@@ -1,8 +1,6 @@
 package com.itis.model;
 
 import javax.persistence.*;
-import java.security.Timestamp;
-import java.util.Date;
 
 /**
  * Created by softi on 01.05.2017.

@@ -7,19 +7,50 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="seeds_1" author="al.pliskin">
-        <loadUpdateData tableName="user_group" primaryKey="id" file="db/seeds/initial/user_group.csv">
+        <loadUpdateData tableName="user_group"
+                        primaryKey="id"
+                        file="db/seeds/initial/user_group.csv">
             <column name="id" type="numeric"/>
         </loadUpdateData>
     </changeSet>
 
     <changeSet id="seeds_2" author="al.pliskin">
-        <loadUpdateData tableName="users" primaryKey="id" file="db/seeds/initial/user.csv">
+        <loadUpdateData tableName="users"
+                        primaryKey="id"
+                        file="db/seeds/initial/user.csv">
             <column name="id" type="numeric"/>
         </loadUpdateData>
     </changeSet>
-
-    <changeSet id="seeds_3" author="e.akhmetshin">
-        <loadUpdateData tableName="user_role" primaryKey="user_id,role" file="db/seeds/initial/user_role.csv">
+    <changeSet id="seeds_3" author="r.khakov">
+        <loadUpdateData tableName="user_group"
+                        primaryKey="id"
+                        file="db/seeds/initial/user_group-2017-05-14.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_4" author="r.khakov">
+        <loadUpdateData tableName="users"
+                        primaryKey="id"
+                        file="db/seeds/initial/user-2017-05-14-17-00.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_5" author="r.khakov">
+        <loadUpdateData tableName="user_role" primaryKey="user_id, role"
+                        file="db/seeds/initial/user_role.csv">
+            <column name="user_id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_6" author="r.khakov">
+        <loadUpdateData tableName="notification" primaryKey="id"
+                        file="db/seeds/initial/notifications.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_7" author="r.khakov">
+        <loadUpdateData tableName="user_notification" primaryKey="id"
+                        file="db/seeds/initial/user_notification.csv">
+            <column name="id" type="numeric"/>
         </loadUpdateData>
     </changeSet>
 </databaseChangeLog>
