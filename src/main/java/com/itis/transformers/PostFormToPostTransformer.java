@@ -26,6 +26,9 @@ public class PostFormToPostTransformer implements Function<PostForm, Post> {
         Long date = new Date().getTime();
         post.setDate(date);
         post.setUser(user);
+        if (postForm.getImage() != null) {
+            post.setImage(postForm.getImage().getOriginalFilename());
+        }
         return post;
     }
 }

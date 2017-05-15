@@ -35,4 +35,10 @@
                                  referencedColumnNames="id"
                                  referencedTableName="users"/>
     </changeSet>
+
+    <changeSet id="post_4" author="i.nasibullin">
+        <addColumn tableName="post">
+            <column name="image" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

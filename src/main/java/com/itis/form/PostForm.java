@@ -1,5 +1,7 @@
 package com.itis.form;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.constraints.NotNull;
 
 /**
@@ -9,6 +11,7 @@ public class PostForm {
     private String Title;
     private String Text;
     private String action;
+    private MultipartFile image;
 
     @NotNull(message = "Отсутствует заголовок")
     public String getTitle() {
@@ -35,5 +38,13 @@ public class PostForm {
 
     public void setAction(String action) {
         this.action = action;
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
     }
 }

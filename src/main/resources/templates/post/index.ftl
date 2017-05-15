@@ -9,7 +9,7 @@
             <div class="cancel">Отменить</div>
             <div class="block">
                 <div class="title">Создание новости</div>
-                <form action="/news/new" method="post">
+                <form action="/news/new" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="create">
                     <div class="name">
                         <input type="text" name="title" placeholder="Название">
@@ -17,7 +17,8 @@
                     <div class="text">
                         <textarea placeholder="Текст" name="text"></textarea>
                     </div>
-                    <img>
+                    <input type="file" name="image">
+
                     <input type="submit" value="Применить">
                 </form>
             </div>
@@ -37,7 +38,6 @@
                         <div class="text">
                             <textarea name="text" placeholder="Текст">${post.text}</textarea>
                         </div>
-                        <img>
                         <input type="submit" value="Применить">
                         <div class="cancel">Отменить</div>
                     </form>
@@ -53,6 +53,9 @@
             <div class="name">${post.title}</div>
             <div class="date">${post.date?number_to_datetime}</div>
             <div class="text">${post.text}</div>
+            <#if post.image?exists>
+                <img src="/files/${post.image}">
+            </#if>
             <div class="image"></div>
         </div>
     </#list>
