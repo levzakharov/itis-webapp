@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static com.itis.utils.ApplicationUrls.WebAppUrls.BASE_NEWS_URL;
-import static com.itis.utils.ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL;
 import static com.itis.utils.ApplicationUrls.WebAppUrls.SIGN_IN;
 
 @Configuration
@@ -40,8 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .antMatchers(HttpMethod.POST, "/api/v2/users").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/v2/news").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable();
     }
 }
-

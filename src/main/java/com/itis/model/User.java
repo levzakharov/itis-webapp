@@ -41,6 +41,7 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
 
     @ManyToMany(mappedBy = "users")
+    @JsonIgnore
     private List<Event> events = new ArrayList<>();
 
     @OneToMany
@@ -158,4 +159,3 @@ public class User implements UserDetails {
         this.userNotifications = userNotifications;
     }
 }
-
