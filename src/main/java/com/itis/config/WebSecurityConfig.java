@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static com.itis.utils.ApplicationUrls.WebAppUrls.BASE_NEWS_URL;
-import static com.itis.utils.ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL;
 import static com.itis.utils.ApplicationUrls.WebAppUrls.SIGN_IN;
 
 @Configuration
@@ -45,4 +44,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable();
     }
 }
-

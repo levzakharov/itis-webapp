@@ -159,4 +159,3 @@ public class User implements UserDetails {
         this.userNotifications = userNotifications;
     }
 }
-
