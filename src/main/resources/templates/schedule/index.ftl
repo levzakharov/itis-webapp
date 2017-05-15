@@ -372,4 +372,4 @@
 </div>
 </#macro>
 
-<@main title="Расписание" username="Имя пользователя" customScripts=["/js/jquery-1.11.3.min.js", "/js/schedule.js"]/>
+<@main title="Расписание" customScripts=["/js/jquery-1.11.3.min.js", "/js/schedule.js"]/>

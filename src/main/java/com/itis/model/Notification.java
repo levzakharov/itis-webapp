@@ -1,25 +1,21 @@
 package com.itis.model;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * @author alt
  */
 @Entity
 @Table(name = "notification")
-@SequenceGenerator(name = "notification_id_sequence",
+@SequenceGenerator(name = "notification_seq",
         sequenceName = "notification_seq", allocationSize = 1, initialValue = 50)
 public class Notification {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_id_sequence")
+    @GeneratedValue(generator = "notification_seq")
     private Long id;
 
     private String theme;
@@ -28,7 +24,12 @@ public class Notification {
 
     private Long date;
 
-    public long getId() {
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @JsonIgnore
+    private User user;
+
+    public Long getId() {
         return id;
     }
 
@@ -58,6 +59,14 @@ public class Notification {
 
     public void setDate(Long date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
