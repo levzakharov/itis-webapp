@@ -1,5 +1,5 @@
 package com.itis.model.enums;
 
 public enum Role {
-    STUDENT, ADMIN
+  STUDENT, STAROSTA, WORKER, ADMIN, TEACHER
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2017-05-13-23-10_0" author="r.khakov">
+        <addColumn schemaName="public"
+                   tableName="user_notification">
+            <column name="is_read" type="boolean"
+                    defaultValueBoolean="false"/>
+        </addColumn>
+        <addColumn schemaName="public"
+                tableName="user_notification">
+            <column name="id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2017-05-13-23-10_1" author="r.khakov">
+        <dropPrimaryKey constraintName="user_notification_pk"
+                        schemaName="public"
+                        tableName="user_notification"/>
+    </changeSet>
+
+    <changeSet id="2017-05-13-23-10_2" author="r.khakov">
+        <addPrimaryKey tableName="user_notification"
+                       columnNames="id"
+                       constraintName="user_notification_pk"/>
+    </changeSet>
+
+    <changeSet id="2017-05-13-23-10_3" author="r.khakov">
+        <createSequence sequenceName="user_notification_seq"
+                        startValue="50" incrementBy="1"/>
+    </changeSet>
+
+</databaseChangeLog>

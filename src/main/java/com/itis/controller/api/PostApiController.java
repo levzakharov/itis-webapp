@@ -2,16 +2,12 @@ package com.itis.controller.api;
 
 import com.itis.form.PostForm;
 import com.itis.model.Post;
-import com.itis.model.User;
-import com.itis.security.SecurityUtils;
 import com.itis.service.PostService;
 import com.itis.utils.ApplicationUrls;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
 
 /**
  * Created by softi on 14.05.2017.

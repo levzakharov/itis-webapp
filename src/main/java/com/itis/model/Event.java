@@ -1,20 +1,12 @@
 package com.itis.model;
 
+
+import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
@@ -90,6 +82,5 @@ public class Event {
 
     public void setPlace(String place) {
         this.place = place;
-
     }
 }

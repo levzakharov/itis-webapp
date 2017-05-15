@@ -3,6 +3,8 @@ package com.itis.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itis.model.enums.Role;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -40,6 +42,12 @@ public class User implements UserDetails {
 
     @ManyToMany(mappedBy = "users")
     private List<Event> events = new ArrayList<>();
+
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "user_id")
+    private List<UserNotification> userNotifications;
+
 
     public Long getId() {
         return id;
@@ -141,4 +149,13 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public List<UserNotification> getUserNotifications() {
+        return userNotifications;
+    }
+
+    public void setUserNotifications(List<UserNotification> userNotifications) {
+        this.userNotifications = userNotifications;
+    }
 }
+
