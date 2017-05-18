@@ -10,10 +10,10 @@
             <form action="/news/new" method="post">
                 <input type="hidden" name="action" value="create">
                 <div class="name">
-                    <input type="text" name="title" placeholder="Название">
+                    <input type="text" name="title" placeholder="Название" required>
                 </div>
                 <div class="text">
-                    <textarea placeholder="Текст" name="text"></textarea>
+                    <textarea placeholder="Текст" name="text" required maxlength="1024"></textarea>
                 </div>
                 <img>
                 <input type="submit" value="Применить">
@@ -27,10 +27,10 @@
                 <form action="/news/${post.id}" method="post">
                     <input type="hidden" name="action" value="update">
                     <div class="name">
-                        <input type="text" placeholder="Название" name="title" value="${post.title}">
+                        <input type="text" placeholder="Название" name="title" value="${post.title}" required>
                     </div>
                     <div class="text">
-                        <textarea name="text" placeholder="Текст">${post.text}</textarea>
+                        <textarea name="text" placeholder="Текст" required maxlength="1024">${post.text}</textarea>
                     </div>
                     <img>
                     <input type="submit" value="Применить">
