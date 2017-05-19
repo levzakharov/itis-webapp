@@ -37,10 +37,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl(BASE_NEWS_URL)
                 .and()
-                .authorizeRequests()
+                .authorizeRequests().anyRequest().authenticated()
                 .antMatchers(HttpMethod.POST, "/api/v2/users").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/v2/news").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable();
     }
 }
-

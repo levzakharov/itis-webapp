@@ -4,21 +4,21 @@
 <div class="blocks">
     <#if isAdmin>
 
+
         <div class="add">
             <div class="button">Добавить новость</div>
             <div class="cancel">Отменить</div>
             <div class="block">
                 <div class="title">Создание новости</div>
-                <form action="/news/new" method="post" enctype="multipart/form-data">
+                <form action="/news/new" method="post">
                     <input type="hidden" name="action" value="create">
                     <div class="name">
-                        <input type="text" name="title" placeholder="Название">
+                        <input type="text" name="title" placeholder="Название" required>
                     </div>
                     <div class="text">
-                        <textarea placeholder="Текст" name="text"></textarea>
+                        <textarea placeholder="Текст" name="text" required maxlength="1024"></textarea>
                     </div>
-                    <input type="file" name="image">
-
+                    <input type="file" name="images" multiple>
                     <input type="submit" value="Применить">
                 </form>
             </div>
@@ -53,13 +53,10 @@
             <div class="name">${post.title}</div>
             <div class="date">${post.date?number_to_datetime}</div>
             <div class="text">${post.text}</div>
-            <#if post.image?exists>
-                <img src="/files/${post.image}">
-            </#if>
             <div class="image"></div>
         </div>
     </#list>
 </div>
 </#macro>
 
-<@main title="Новости" username="Имя пользователя"/>
+<@main title="Новости" customScripts=["/js/jquery-1.11.3.min.js",  "/js/news.js"]/>

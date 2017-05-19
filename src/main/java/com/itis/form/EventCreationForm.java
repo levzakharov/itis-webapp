@@ -1,8 +1,7 @@
 package com.itis.form;
 
-import java.util.Date;
-
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
