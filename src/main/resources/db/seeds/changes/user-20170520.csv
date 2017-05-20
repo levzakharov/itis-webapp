@@ -1,0 +1,4 @@
+ID,EMAIL,PHONE,FULL_NAME,PASSWORD
+3,worker@test.com,+654897,Сотрудник Деканата,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym
+4,admin@test.com,+155555,Администратор,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym
+5,teacher@test.com,+123,Преподаватель.,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym
