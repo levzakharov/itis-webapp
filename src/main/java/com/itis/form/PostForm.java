@@ -11,7 +11,6 @@ import java.util.List;
 public class PostForm {
     private String Title;
     private String Text;
-    private String action;
     private List<MultipartFile> images;
 
     @NotNull(message = "Отсутствует заголовок")
@@ -30,15 +29,6 @@ public class PostForm {
 
     public void setText(String text) {
         Text = text;
-    }
-
-    @NotNull(message = "Нет действия")
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
     }
 
     public List<MultipartFile> getImages() {

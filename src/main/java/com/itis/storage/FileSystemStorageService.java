@@ -1,6 +1,7 @@
 package com.itis.storage;
 
 
+import liquibase.util.FileUtil;
 import liquibase.util.file.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -35,7 +36,7 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
             String name = "image" + new Date().getTime() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
-            Files.copy(file.getInputStream(), this.rootLocation.resolve("image" + new Date().getTime()));
+            Files.copy(file.getInputStream(), this.rootLocation.resolve("image" + new Date().getTime() + "." + FilenameUtils.getExtension(file.getOriginalFilename())));
             return name;
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
@@ -64,10 +65,9 @@ public class FileSystemStorageService implements StorageService {
         try {
             Path file = load(filename);
             Resource resource = new UrlResource(file.toUri());
-            if(resource.exists() || resource.isReadable()) {
+            if (resource.exists() || resource.isReadable()) {
                 return resource;
-            }
-            else {
+            } else {
                 throw new StorageFileNotFoundException("Could not read file: " + filename);
 
             }

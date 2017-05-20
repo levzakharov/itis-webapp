@@ -36,51 +36,33 @@ public class PostController {
     ImageService imageService;
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL, method = RequestMethod.GET)
-    public String postIndex(ModelMap modelMap) {
-        User user = SecurityUtils.getCurrentUser();
-        boolean isAdmin = false;
-        if (user.getRoles().contains(Role.ADMIN)) {
-            isAdmin = true;
-        }
-        modelMap.put("isAdmin", isAdmin);
+
+    public String getPostsPage(ModelMap modelMap) {
         modelMap.put("posts", postService.getAllOrderByDateDesc());
         return "post/index";
     }
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/new", method = RequestMethod.POST)
-    public String postCreate(@ModelAttribute(name = "post") PostForm postForm) throws IOException {
-        Post post = postService.createByForm(postForm);
-        List<MultipartFile> multipartFiles = postForm.getImages();
-        if (multipartFiles != null) {
-            List<Image> images = new ArrayList<>();
-            for (MultipartFile multipartFile : multipartFiles) {
-                String fileName = storageService.store(multipartFile);
-                Image image = imageService.createImage(fileName);
-                images.add(image);
-            }
-            post.setImages(images);
-        }
-        postService.update(post);
+    public String createPost(@ModelAttribute(name = "post") PostForm postForm) {
+        postService.createByForm(postForm);
         return "redirect:/news";
     }
 
-    @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/{post_id:\\d+}", method = RequestMethod.POST)
-    public String postUpdate(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long post_id) {
+    @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/update/{post_id:\\d+}", method = RequestMethod.POST)
+    public String updatePost(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long post_id) {
         Post post = postService.getById(post_id);
-        if ("update".equals(postForm.getAction())) {
-            postService.updateByForm(post, postForm);
-        } else if ("delete".equals(postForm.getAction())) {
-            postService.delete(post);
-        }
-
+        postService.updateByForm(post, postForm);
         return "redirect:/news";
     }
 
-    @ApiOperation("List Posts")
-    @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL, method = RequestMethod.GET)
-    @ResponseBody
-    public List<Post> postIndexApi() {
-        return postService.getAllOrderByDateDesc();
+    @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/delete/{post_id:\\d+}", method = RequestMethod.POST)
+    public String deletePost(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long post_id) {
+        Post post = postService.getById(post_id);
+        postService.delete(post);
+        return "redirect:/news";
+
     }
+
+
 
 }

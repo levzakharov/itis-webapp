@@ -2,35 +2,29 @@
 
 <#macro m_body>
 <div class="blocks">
-    <#if isAdmin>
-
-
-        <div class="add">
-            <div class="button">Добавить новость</div>
-            <div class="cancel">Отменить</div>
-            <div class="block">
-                <div class="title">Создание новости</div>
-                <form action="/news/new" method="post">
-                    <input type="hidden" name="action" value="create">
-                    <div class="name">
-                        <input type="text" name="title" placeholder="Название" required>
-                    </div>
-                    <div class="text">
-                        <textarea placeholder="Текст" name="text" required maxlength="1024"></textarea>
-                    </div>
-                    <input type="file" name="images" multiple>
-                    <input type="submit" value="Применить">
-                </form>
-            </div>
+    <div class="add">
+        <div class="button">Добавить новость</div>
+        <div class="cancel">Отменить</div>
+        <div class="block">
+            <div class="title">Создание новости</div>
+            <form action="/news/new" method="post" enctype="multipart/form-data">
+                <div class="name">
+                    <input type="text" name="title" placeholder="Название" required>
+                </div>
+                <div class="text">
+                    <textarea placeholder="Текст" name="text" required maxlength="1024"></textarea>
+                </div>
+                <input type="file" multiple name="images">
+                <input type="submit" value="Применить">
+            </form>
         </div>
-    </#if>
+    </div>
 
     <#list posts as post>
         <div class="block">
-            <#if isAdmin>
                 <div class="edit">
                     <div class="title">Редактирование новости</div>
-                    <form action="/news/${post.id}" method="post">
+                    <form action="/news/update/${post.id}" method="post">
                         <input type="hidden" name="action" value="update">
                         <div class="name">
                             <input type="text" placeholder="Название" name="title" value="${post.title}">
@@ -44,16 +38,21 @@
                 </div>
                 <div class="buttons">
                     <div class="button">Редактировать</div>
-                    <form action="/news/${post.id}" name="delete_${post.id}" method="post">
+                    <form action="/news/delete/${post.id}" name="delete_${post.id}" method="post">
                         <input type="hidden" name="action" value="delete">
                         <div class="button" onclick="document.forms['delete_${post.id}'].submit();">Удалить</div>
                     </form>
                 </div>
-            </#if>
             <div class="name">${post.title}</div>
             <div class="date">${post.date?number_to_datetime}</div>
             <div class="text">${post.text}</div>
-            <div class="image"></div>
+            <#if post.images?size != 0 >
+                <#list post.images as image>
+                    <div class="image">
+                        <img src="/files/${image.title}">
+                    </div>
+                </#list>
+            </#if>
         </div>
     </#list>
 </div>

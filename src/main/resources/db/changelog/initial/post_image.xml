@@ -7,7 +7,6 @@
 
     <changeSet id="post_image_0" author="i.nasibullin">
         <createTable tableName="post_image">
-            <column name="id" type="bigint"/>
             <column name="post_id" type="bigint"/>
             <column name="image_id" type="bigint"/>
         </createTable>
@@ -15,7 +14,7 @@
 
     <changeSet id="post_image_1" author="i.nasibullin">
         <addPrimaryKey tableName="post_image"
-                       columnNames="id"
+                       columnNames="post_id, image_id"
                        constraintName="post_image_pk"/>
     </changeSet>
 

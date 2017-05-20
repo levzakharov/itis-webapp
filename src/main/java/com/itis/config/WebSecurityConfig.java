@@ -1,6 +1,7 @@
 package com.itis.config;
 
 import com.itis.security.CustomUserDetailsService;
+import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,9 +39,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl(BASE_NEWS_URL)
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
+                .antMatchers("/news/new",  "news/update/**", "news/delete/**").hasAnyRole("ADMIN", "WORKER")
                 .antMatchers(HttpMethod.POST, "/api/v2/users").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v2/news").permitAll()
+
                 .anyRequest().authenticated()
-                .and().csrf().disable();
+                .and().csrf().disable()
+        ;
     }
 }
