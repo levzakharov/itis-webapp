@@ -32,6 +32,7 @@ public interface ApplicationUrls {
         String BASE_NOTIFICATIONS_URL = "/notifications";
 
         String BASE_NEWS_URL = "/news";
+        String NEW = BASE_NEWS_URL + "/{newId}";
     }
 
 }
