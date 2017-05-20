@@ -9,14 +9,12 @@ public class StorageProperties {
     /**
      * Folder location for storing files
      */
-    private String location = "src/main/resources/upload-dir";
+    private static final String LOCATION = "src/main/resources/upload-dir";
 
     public String getLocation() {
-        return location;
+        return LOCATION;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+
 
 }
