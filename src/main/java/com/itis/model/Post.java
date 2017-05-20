@@ -1,6 +1,9 @@
 package com.itis.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by softi on 01.05.2017.
@@ -14,6 +17,11 @@ public class Post {
     private Long id;
     private String title;
     private String text;
+
+    @ManyToMany
+    @JoinTable(name = "post_image", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns =
+    @JoinColumn(name = "image_id"))
+    private List<Image> images;
 
     private long date;
 
@@ -60,5 +68,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

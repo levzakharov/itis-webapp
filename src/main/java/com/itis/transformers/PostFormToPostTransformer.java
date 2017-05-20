@@ -7,6 +7,7 @@ import com.itis.model.Post;
 import com.itis.model.User;
 import com.itis.security.SecurityUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.function.Function;
