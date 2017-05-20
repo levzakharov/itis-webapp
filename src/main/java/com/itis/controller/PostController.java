@@ -42,25 +42,24 @@ public class PostController {
         return "post/index";
     }
 
-    @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/new", method = RequestMethod.POST)
+    @PostMapping(value = ApplicationUrls.WebAppUrls.CREATE_NEWS_URL)
     public String createPost(@ModelAttribute(name = "post") PostForm postForm) {
         postService.createByForm(postForm);
         return "redirect:/news";
     }
 
-    @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/update/{post_id:\\d+}", method = RequestMethod.POST)
-    public String updatePost(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long post_id) {
-        Post post = postService.getById(post_id);
+    @PostMapping(value = ApplicationUrls.WebAppUrls.UPDATE_NEWS_URL)
+    public String updatePost(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long postId) {
+        Post post = postService.getById(postId);
         postService.updateByForm(post, postForm);
         return "redirect:/news";
     }
 
-    @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/delete/{post_id:\\d+}", method = RequestMethod.POST)
-    public String deletePost(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long post_id) {
-        Post post = postService.getById(post_id);
+    @PostMapping(value = ApplicationUrls.WebAppUrls.DELETE_NEWS_URL)
+    public String deletePost(@PathVariable long postId) {
+        Post post = postService.getById(postId);
         postService.delete(post);
         return "redirect:/news";
-
     }
 
 

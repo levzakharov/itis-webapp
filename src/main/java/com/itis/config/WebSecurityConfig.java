@@ -39,7 +39,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl(BASE_NEWS_URL)
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
-                .antMatchers("/news/new",  "news/update/**", "news/delete/**").hasAnyRole("ADMIN", "WORKER")
+                .antMatchers(ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/new",
+                        ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/update/**",
+                        ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/delete/**").hasAnyRole("ADMIN", "WORKER")
                 .antMatchers(HttpMethod.POST, "/api/v2/users").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v2/news").permitAll()
 

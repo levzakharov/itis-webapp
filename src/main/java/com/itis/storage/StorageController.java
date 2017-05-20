@@ -1,6 +1,7 @@
-package com.itis.controller;
+package com.itis.storage;
 
 import com.itis.storage.StorageService;
+import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.io.Resource;
@@ -21,14 +22,14 @@ public class StorageController {
     @Autowired
     StorageService storageService;
 
-    @GetMapping("/files/{filename:.+}")
+    @GetMapping(value = ApplicationUrls.WebAppUrls.FILE_URL)
     @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+    public ResponseEntity<Resource> serveFile(@PathVariable String fileName) {
 
-        Resource file = storageService.loadAsResource(filename);
+        Resource file = storageService.loadAsResource(fileName);
         return ResponseEntity
                 .ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFilename()+"\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
                 .body(file);
     }
 }

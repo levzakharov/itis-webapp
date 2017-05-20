@@ -27,35 +27,15 @@ public class PostApiController {
         this.postService = postService;
     }
 
-    @ApiOperation("Create Post. This method is expecting an object of class PostForm for validation. There also should be a parametr 'action'")
-    @PostMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL)
-    public ResponseEntity<Post> createPost(@RequestBody PostForm postForm) {
-        return new ResponseEntity<>(postService.createByForm(postForm), HttpStatus.OK);
-    }
-
     @ApiOperation("Get post by id")
-    @GetMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL + "/{postId}")
+    @GetMapping(value = ApplicationUrls.ApiUrls.NEW_URL)
     public ResponseEntity<Post> getPostPage(@PathVariable Long postId) {
         return new ResponseEntity<>(postService.getById(postId), HttpStatus.OK);
     }
 
-    @ApiOperation("Update Post. This method is expecting an object of class Post for validation")
-    @PutMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL)
-    public ResponseEntity<Post> updatePost(@RequestBody Post post) {
-        return new ResponseEntity<>(postService.update(post), HttpStatus.OK);
-    }
-
-    @ApiOperation("Delete Post. This method is expecting an object of class Post for validation")
-    @DeleteMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL)
-    public ResponseEntity deletePost(@RequestBody Post post) {
-        postService.delete(post);
-        return ResponseEntity.noContent().build();
-    }
-
     @ApiOperation("List Posts")
     @RequestMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL, method = RequestMethod.GET)
-    @ResponseBody
-    public List<Post> postIndexApi() {
+    public List<Post> getPostsPage() {
         return postService.getAllOrderByDateDesc();
     }
 }
