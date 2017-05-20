@@ -24,19 +24,19 @@
 3. В **author** changeset\`а указываем свой ник на гитхабе. В **id** - название файла и порадковый номер chageset\`а в файле
 4. Импортим созданные миграции в **changelog.xml** в нужном порядке
 
-###### Тестовые пользователи
-starosta-304@test.com, password
-stud-304@test.com, password 
-worker@test.com, password 
-admin@test.com, password 
-teacher@test.com, password 
-stud-405@test.com, password 
-stud-601@test.com, password 
-stud-501@test.com, password 
-stud-401@test.com, password 
-stud-302@test.com, password 
-stud-201@test.com, password 
-stud-101@test.com, password 
-stud-402@test.com, password 
-stud-502@test.com, password 
-stud-303@test.com, password 
+#### Тестовые пользователи
+- starosta-304@test.com, password
+- stud-304@test.com, password 
+- worker@test.com, password 
+- admin@test.com, password 
+- teacher@test.com, password 
+- stud-405@test.com, password 
+- stud-601@test.com, password 
+- stud-501@test.com, password 
+- stud-401@test.com, password 
+- stud-302@test.com, password 
+- stud-201@test.com, password 
+- stud-101@test.com, password 
+- stud-402@test.com, password 
+- stud-502@test.com, password 
+- stud-303@test.com, password 
