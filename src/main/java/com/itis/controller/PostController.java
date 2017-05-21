@@ -1,6 +1,6 @@
 package com.itis.controller;
 
-import com.itis.form.PostForm;
+import com.itis.form.PostCreationForm;
 import com.itis.model.Post;
 import com.itis.service.PostService;
 import com.itis.utils.ApplicationUrls;
@@ -27,17 +27,17 @@ public class PostController {
     }
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/new", method = RequestMethod.POST)
-    public String postCreate(@ModelAttribute(name = "post") PostForm postForm) {
-        postService.createByForm(postForm);
+    public String postCreate(@ModelAttribute(name = "post") PostCreationForm postCreationForm) {
+        postService.createByForm(postCreationForm);
         return "redirect:/news";
     }
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/{post_id:\\d+}", method = RequestMethod.POST)
-    public String postUpdate(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long post_id) {
+    public String postUpdate(@ModelAttribute(name = "post") PostCreationForm postCreationForm, @PathVariable long post_id) {
         Post post = postService.getById(post_id);
-        if ("update".equals(postForm.getAction())) {
-            postService.updateByForm(post, postForm);
-        } else if ("delete".equals(postForm.getAction())) {
+        if ("update".equals(postCreationForm.getAction())) {
+            postService.updateByForm(post, postCreationForm);
+        } else if ("delete".equals(postCreationForm.getAction())) {
             postService.delete(post);
         }
 

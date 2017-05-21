@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by softi on 06.05.2017.
  */
-public class PostForm {
+public class PostCreationForm {
     private String Title;
     private String Text;
     private String action;

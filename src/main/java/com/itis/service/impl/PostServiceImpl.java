@@ -1,10 +1,11 @@
 package com.itis.service.impl;
 
-import com.itis.form.PostForm;
+import com.itis.form.PostCreationForm;
 import com.itis.model.Post;
 import com.itis.repository.PostRepository;
 import com.itis.service.PostService;
-import com.itis.transformers.PostFormToPostTransformer;
+import com.itis.transformers.PostCreationFormToPostTransformer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by softi on 01.05.2017.
+ * @author softi on 01.05.2017.
  */
 @Service
 @Transactional
@@ -22,7 +23,7 @@ public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
 
     @Autowired
-    private PostFormToPostTransformer transformer;
+    private PostCreationFormToPostTransformer transformer;
 
 
     public List<Post> getAllOrderByDateDesc() {
@@ -40,8 +41,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post updateByForm(Post post, PostForm postForm) {
-        Post post1 = transformer.apply(postForm);
+    public Post updateByForm(Post post, PostCreationForm form) {
+        Post post1 = transformer.apply(form);
         post1.setId(post.getId());
         return postRepository.save(post1);
     }
@@ -58,8 +59,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post createByForm(PostForm postForm) {
-        Post post = transformer.apply(postForm);
+    public Post createByForm(PostCreationForm postCreationForm) {
+        Post post = transformer.apply(postCreationForm);
         return postRepository.save(post);
     }
 
