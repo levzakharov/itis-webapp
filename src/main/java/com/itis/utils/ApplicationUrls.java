@@ -34,7 +34,7 @@ public interface ApplicationUrls {
 
     interface WebAppUrls {
 
-        String SIGN_IN = "/signIn";
+        String LOGIN = "/login";
 
         String BASE_SCHEDULE_URL = "/schedule";
 

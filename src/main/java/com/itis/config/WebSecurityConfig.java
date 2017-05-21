@@ -5,20 +5,24 @@ import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
-import static com.itis.utils.ApplicationUrls.WebAppUrls.BASE_NEWS_URL;
-import static com.itis.utils.ApplicationUrls.WebAppUrls.SIGN_IN;
+import static com.itis.utils.ApplicationUrls.WebAppUrls.LOGIN;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final CustomUserDetailsService userDetailsService;
+
     @Autowired
-    private CustomUserDetailsService userDetailsService;
+    public WebSecurityConfig(CustomUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -34,17 +38,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-                .loginPage(SIGN_IN).permitAll()
-                .loginProcessingUrl("/login")
-                .defaultSuccessUrl(BASE_NEWS_URL)
+                .loginPage(ApplicationUrls.WebAppUrls.LOGIN)
+                .permitAll()
+                .loginProcessingUrl(ApplicationUrls.WebAppUrls.LOGIN + "/process")
+                .defaultSuccessUrl(ApplicationUrls.WebAppUrls.BASE_NEWS_URL)
+                .failureUrl(LOGIN + "?error=true")
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
-                .antMatchers(ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/new",
-                        ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/update/**",
-                        ApplicationUrls.WebAppUrls.BASE_NEWS_URL + "/delete/**").hasAnyRole("ADMIN", "WORKER")
-                .antMatchers(HttpMethod.POST, "/api/v2/users").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/v2/news").permitAll()
-
+                .antMatchers(LOGIN + "**").permitAll()
+                .antMatchers(ApplicationUrls.ApiUrls.BASE_USERS_URL).permitAll()
+                .antMatchers(ApplicationUrls.ApiUrls.BASE_NEWS_URL).permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
         ;

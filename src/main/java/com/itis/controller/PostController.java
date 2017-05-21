@@ -1,8 +1,8 @@
 package com.itis.controller;
 
 import com.itis.model.Image;
+import com.itis.form.PostCreationForm;
 import com.itis.model.Post;
-import com.itis.form.PostForm;
 import com.itis.model.User;
 import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
@@ -43,15 +43,15 @@ public class PostController {
     }
 
     @PostMapping(value = ApplicationUrls.WebAppUrls.CREATE_NEWS_URL)
-    public String createPost(@ModelAttribute(name = "post") PostForm postForm) {
-        postService.createByForm(postForm);
+    public String createPost(@ModelAttribute(name = "post") PostCreationForm postCreationForm) {
+        postService.createByForm(postCreationForm);
         return "redirect:/news";
     }
 
     @PostMapping(value = ApplicationUrls.WebAppUrls.UPDATE_NEWS_URL)
-    public String updatePost(@ModelAttribute(name = "post") PostForm postForm, @PathVariable long postId) {
+    public String updatePost(@ModelAttribute(name = "post") PostCreationForm postCreationForm, @PathVariable long postId) {
         Post post = postService.getById(postId);
-        postService.updateByForm(post, postForm);
+        postService.updateByForm(post, postCreationForm);
         return "redirect:/news";
     }
 

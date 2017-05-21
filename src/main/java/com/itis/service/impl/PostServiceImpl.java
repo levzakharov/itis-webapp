@@ -1,13 +1,13 @@
 package com.itis.service.impl;
 
-import com.itis.form.PostForm;
 import com.itis.model.Image;
+import com.itis.form.PostCreationForm;
 import com.itis.model.Post;
 import com.itis.repository.PostRepository;
 import com.itis.service.ImageService;
 import com.itis.service.PostService;
 import com.itis.storage.StorageService;
-import com.itis.transformers.PostFormToPostTransformer;
+import com.itis.transformers.PostCreationFormToPostTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by softi on 01.05.2017.
+ * @author softi on 01.05.2017.
  */
 @Service
 @Transactional
@@ -27,7 +27,7 @@ public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
 
     @Autowired
-    private PostFormToPostTransformer transformer;
+    private PostCreationFormToPostTransformer transformer;
 
     @Autowired
     private ImageService imageService;
@@ -50,11 +50,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post updateByForm(Post post, PostForm postForm) {
-        Post post1 = transformer.apply(postForm);
-        post.setText(post1.getText());
-        post.setTitle(post1.getTitle());
-        return postRepository.save(post);
+    public Post updateByForm(Post post, PostCreationForm form) {
+        Post post1 = transformer.apply(form);
+        post1.setId(post.getId());
+        return postRepository.save(post1);
     }
 
 
@@ -69,11 +68,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post createByForm(PostForm postForm) {
-        Post post = transformer.apply(postForm);
-        if (postForm.getImages() != null && postForm.getImages().get(0).getOriginalFilename().length() > 0) {
+    public Post createByForm(PostCreationForm postCreationForm) {
+        Post post = transformer.apply(postCreationForm);
+        if (postCreationForm.getImages() != null && postCreationForm.getImages().get(0).getOriginalFilename().length() > 0) {
             List<Image> images = new ArrayList<>();
-            for (MultipartFile multipartFile : postForm.getImages()) {
+            for (MultipartFile multipartFile : postCreationForm.getImages()) {
                 Image image = imageService.createImage(storageService.store(multipartFile));
                 images.add(image);
             }

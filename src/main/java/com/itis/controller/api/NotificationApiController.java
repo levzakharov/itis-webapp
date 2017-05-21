@@ -1,5 +1,6 @@
 package com.itis.controller.api;
 
+import com.itis.form.NotificationCreationForm;
 import com.itis.model.Notification;
 import com.itis.model.UserNotification;
 import com.itis.service.NotificationService;
@@ -7,17 +8,14 @@ import com.itis.service.UserNotificationService;
 import com.itis.utils.ApplicationUrls;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
  * Created by r.khakov
  */
-@Controller
+@RestController
 @RequestMapping(ApplicationUrls.ApiUrls.BASE_NOTIFICATIONS_URL)
 public class NotificationApiController {
     private final NotificationService notificationService;
@@ -29,22 +27,26 @@ public class NotificationApiController {
         this.userNotificationService = userNotificationService;
     }
 
-    @ApiOperation("List of send notifications")
+    @ApiOperation("Get list of send notifications (for decanat workers and starosta)")
     @GetMapping("/send")
-    @ResponseBody
     public List<Notification> sendNotificationsApi() {
         return notificationService.getCurrentUserSentNotifications();
     }
-    @ApiOperation("List of all notifications")
+    @ApiOperation("Get list of all notifications")
     @GetMapping()
     @ResponseBody
     public List<UserNotification> comeUserNotificationsApi() {
         return userNotificationService.getCurrentUserUserNotifications();
     }
-    @ApiOperation("List of unread notifications")
+    @ApiOperation("Get list of unread notifications")
     @GetMapping("/unread")
-    @ResponseBody
     public List<UserNotification> readUserNotificationsApi() {
         return userNotificationService.getCurrentUserUnreadUserNotifications();
+    }
+    @ApiOperation("Add new notification. This method have validate for user notification")
+    @PostMapping("add/new/notification")
+    public Notification createNotification(
+            @RequestBody NotificationCreationForm notificationCreationForm){
+        return notificationService.sendNotification(notificationCreationForm);
     }
 }
