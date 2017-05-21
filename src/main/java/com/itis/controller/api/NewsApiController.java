@@ -14,20 +14,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import io.swagger.annotations.ApiOperation;
 
 /**
- * Created by softi on 14.05.2017.
+ * @author softi on 14.05.2017.
  */
 @RestController
-public class PostApiController {
+public class NewsApiController {
 
     private final PostService postService;
 
     @Autowired
-    public PostApiController(PostService postService) {
+    public NewsApiController(PostService postService) {
         this.postService = postService;
     }
 
@@ -37,7 +40,7 @@ public class PostApiController {
         return new ResponseEntity<>(postService.createByForm(postCreationForm), HttpStatus.OK);
     }
 
-    @ApiOperation("Get post by id")
+    @ApiOperation("Get news by id")
     @GetMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL + "/{postId}")
     public ResponseEntity<Post> postRead(@PathVariable Long postId) {
         return new ResponseEntity<>(postService.getById(postId), HttpStatus.OK);
@@ -54,5 +57,11 @@ public class PostApiController {
     public ResponseEntity postDelete(@RequestBody Post post) {
         postService.delete(post);
         return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation("List Posts")
+    @GetMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL)
+    public List<Post> postIndex() {
+        return postService.getAllOrderByDateDesc();
     }
 }

@@ -3,32 +3,35 @@ package com.itis.form;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by softi on 06.05.2017.
+ * @author softi on 06.05.2017.
  */
 public class PostCreationForm {
-    private String Title;
-    private String Text;
-    private String action;
 
     @NotNull(message = "Отсутствует заголовок")
+    private String title;
+
+    @NotNull(message = "Пустой текст")
+    private String text;
+
+    @NotNull(message = "Нет действия")
+    private String action;
+
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        title = title;
     }
 
-    @NotNull(message = "Пустой текст")
     public String getText() {
-        return Text;
+        return text;
     }
 
     public void setText(String text) {
-        Text = text;
+        text = text;
     }
 
-    @NotNull(message = "Нет действия")
     public String getAction() {
         return action;
     }
