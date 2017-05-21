@@ -25,7 +25,7 @@ import java.util.List;
  * Created by softi on 01.05.2017.
  */
 @Controller
-public class NewController {
+public class NewsController {
     @Autowired
     PostService postService;
 
