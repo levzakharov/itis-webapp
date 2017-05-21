@@ -9,11 +9,8 @@ import java.util.stream.Stream;
 
 
 public interface StorageService {
-    void init();
 
     String store(MultipartFile file);
-
-    Stream<Path> loadAll();
 
     Path load(String filename);
 

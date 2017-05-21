@@ -13,8 +13,6 @@
     <include file="changelog/initial/event_user.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial/document.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial/post.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/custom/image.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/custom/post_image.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial/document_post.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial/notification.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial/request.xml" relativeToChangelogFile="true"/>
@@ -25,5 +23,7 @@
     <include file="seeds.xml" relativeToChangelogFile="true"/>
 
     <!--Custom changelog-->
+    <include file="changelog/custom/image.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/custom/post_image.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

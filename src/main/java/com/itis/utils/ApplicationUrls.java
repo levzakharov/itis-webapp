@@ -19,9 +19,9 @@ public interface ApplicationUrls {
 
         String CREATE_NEWS_URL = BASE_NEWS_URL + "/new";
 
-        String UPDATE_NEWS_URL = BASE_NEWS_URL + "/update/{postId}";
+        String UPDATE_NEWS_URL = BASE_NEWS_URL + "/{postId}/update";
 
-        String DELETE_NEWS_URL = BASE_NEWS_URL + "/delete/{postId}";
+        String DELETE_NEWS_URL = BASE_NEWS_URL + "/{postId}/delete";
 
         String IMPORT_USERS_URL = BASE_USERS_URL + "/import";
 
@@ -42,9 +42,9 @@ public interface ApplicationUrls {
 
         String CREATE_NEWS_URL = BASE_NEWS_URL + "/new";
 
-        String UPDATE_NEWS_URL = BASE_NEWS_URL + "/update/{postId}";
+        String UPDATE_NEWS_URL = BASE_NEWS_URL + "/{postId}/update";
 
-        String DELETE_NEWS_URL = BASE_NEWS_URL + "/delete/{postId}";
+        String DELETE_NEWS_URL = BASE_NEWS_URL + "/{postId}/delete";
 
         String BASE_FILES_URL = "/files";
 
