@@ -71,7 +71,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post createByForm(PostForm postForm) {
         Post post = transformer.apply(postForm);
-        if (postForm.getImages() != null) {
+        if (postForm.getImages() != null && postForm.getImages().get(0).getOriginalFilename().length() > 0) {
             List<Image> images = new ArrayList<>();
             for (MultipartFile multipartFile : postForm.getImages()) {
                 Image image = imageService.createImage(storageService.store(multipartFile));

@@ -31,6 +31,7 @@ public class PostForm {
         Text = text;
     }
 
+
     public List<MultipartFile> getImages() {
         return images;
     }
