@@ -22,5 +22,5 @@ public interface NotificationService {
 
     List<Notification> getSentNotificationsByUser(User user);
 
-    void sendNotification(NotificationCreationForm notificationCreationForm);
+    Notification sendNotification(NotificationCreationForm notificationCreationForm);
 }

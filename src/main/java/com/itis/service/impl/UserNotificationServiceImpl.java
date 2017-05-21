@@ -27,7 +27,7 @@ public class UserNotificationServiceImpl implements UserNotificationService {
 
     @Override
     public List<UserNotification> getUserNotificationsByUser(User user) {
-        return userNotificationRepository.findByUser(user);
+        return userNotificationRepository.findByUserOrderByNotificationDesc(user);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class UserNotificationServiceImpl implements UserNotificationService {
 
     @Override
     public List<UserNotification> getCurrentUserUnreadUserNotifications() {
-        return userNotificationRepository.findByUserAndIsRead(
+        return userNotificationRepository.findByUserAndIsReadOrderByNotificationDesc(
                 SecurityUtils.getCurrentUser(), false);
     }
 
