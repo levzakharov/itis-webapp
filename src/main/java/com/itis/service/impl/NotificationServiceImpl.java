@@ -65,11 +65,11 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public List<Notification> getSentNotificationsByUser(User user) {
-        return notificationRepository.findByUser(user);
+        return notificationRepository.findByUserOrderByDateDesc(user);
     }
 
     @Override
-    public void sendNotification(NotificationCreationForm notificationCreationForm) {
+    public Notification sendNotification(NotificationCreationForm notificationCreationForm) {
         User currentUser = SecurityUtils.getCurrentUser();
 
         Notification notification = creationFormToNotificationTransformer.apply(notificationCreationForm);
@@ -82,5 +82,6 @@ public class NotificationServiceImpl implements NotificationService {
                     userGroupService.getUserGroupsFromNotificationCreationForm(notificationCreationForm);
             userNotificationService.createUserNotificationsByGroups(notification, userGroups);
         }
+        return notification;
     }
 }
