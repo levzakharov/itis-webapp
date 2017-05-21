@@ -28,8 +28,6 @@ public interface ApplicationUrls {
         String FIND_USER_URL = BASE_USERS_URL + "/search";
 
         String USER_URL = BASE_USERS_URL + "/{id}";
-
-
     }
 
     interface WebAppUrls {
@@ -51,6 +49,8 @@ public interface ApplicationUrls {
         String BASE_FILES_URL = "/files";
 
         String FILE_URL = BASE_FILES_URL + "/{fileName:.+}";
+
+        String NEW = BASE_NEWS_URL + "/{newId}";
     }
 
 }

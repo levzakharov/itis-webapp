@@ -6,31 +6,33 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * Created by softi on 06.05.2017.
+ * @author softi on 06.05.2017.
  */
 public class PostCreationForm {
-    private String Title;
-    private String Text;
-    private List<MultipartFile> images;
 
     @NotNull(message = "Отсутствует заголовок")
+    private String title;
+
+    @NotNull(message = "Пустой текст")
+    private String text;
+
+    private List<MultipartFile> images;
+
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
-    @NotNull(message = "Пустой текст")
     public String getText() {
-        return Text;
+        return text;
     }
 
     public void setText(String text) {
-        Text = text;
+        this.text = text;
     }
-
 
     public List<MultipartFile> getImages() {
         return images;

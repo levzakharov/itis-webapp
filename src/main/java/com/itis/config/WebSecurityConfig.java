@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import static com.itis.utils.ApplicationUrls.WebAppUrls.LOGIN;
 
@@ -40,9 +39,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage(ApplicationUrls.WebAppUrls.LOGIN)
                 .permitAll()
+                .passwordParameter("password")
+                .usernameParameter("login")
                 .loginProcessingUrl(ApplicationUrls.WebAppUrls.LOGIN + "/process")
                 .defaultSuccessUrl(ApplicationUrls.WebAppUrls.BASE_NEWS_URL)
                 .failureUrl(LOGIN + "?error=true")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login")
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .antMatchers(LOGIN + "**").permitAll()

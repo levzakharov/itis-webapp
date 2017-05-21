@@ -2,26 +2,31 @@
 
 <#macro m_body>
 <div class="blocks">
-    <div class="add">
-        <div class="button">Добавить новость</div>
-        <div class="cancel">Отменить</div>
-        <div class="block">
-            <div class="title">Создание новости</div>
-            <form action="/news/new" method="post" enctype="multipart/form-data">
-                <div class="name">
-                    <input type="text" name="title" placeholder="Название" required>
-                </div>
-                <div class="text">
-                    <textarea placeholder="Текст" name="text" required maxlength="1024"></textarea>
-                </div>
-                <input type="file" multiple name="images">
-                <input type="submit" value="Применить">
-            </form>
+    <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
+        <div class="add">
+            <div class="button">Добавить новость</div>
+            <div class="cancel">Отменить</div>
+            <div class="block">
+                <div class="title">Создание новости</div>
+                <form action="/news/new" method="post" enctype="multipart/form-data">
+                    <div class="name">
+                        <input type="text" name="title" placeholder="Название" required>
+                    </div>
+                    <div class="text">
+                        <textarea placeholder="Текст" name="text" required maxlength="1024"></textarea>
+                    </div>
+                    <input type="file" multiple name="images">
+                    <input type="submit" value="Применить">
+                </form>
+            </div>
         </div>
-    </div>
+    </@security.authorize>
+
 
     <#list posts as post>
         <div class="block">
+            <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
+
                 <div class="edit">
                     <div class="title">Редактирование новости</div>
                     <form action="/news/update/${post.id}" method="post">
@@ -43,6 +48,8 @@
                         <div class="button" onclick="document.forms['delete_${post.id}'].submit();">Удалить</div>
                     </form>
                 </div>
+            </@security.authorize>
+
             <div class="name">${post.title}</div>
             <div class="date">${post.date?number_to_datetime}</div>
             <div class="text">${post.text}</div>

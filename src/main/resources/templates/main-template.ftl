@@ -1,4 +1,6 @@
 <#macro main title="ИТИС" customScripts=[] customStyles=[] customFonts=[] customClass=[]>
+    <#assign spring=JspTaglibs["/META-INF/spring.tld"] />
+    <#assign security=JspTaglibs["/META-INF/security.tld"] />
 <!DOCTYPE html>
 <html>
 <head>

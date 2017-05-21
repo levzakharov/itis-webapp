@@ -4,18 +4,29 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
- * Created by softi on 01.05.2017.
+ * @author softi on 01.05.2017.
  */
 @Entity
 @Table(name = "post", schema = "public")
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_id_sequence")
     @SequenceGenerator(name = "post_id_sequence", sequenceName = "post_seq", allocationSize = 1, initialValue = 50)
     private Long id;
+
     private String title;
+
     private String text;
 
     @ManyToMany
@@ -28,7 +39,6 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-
 
     public Long getId() {
         return id;

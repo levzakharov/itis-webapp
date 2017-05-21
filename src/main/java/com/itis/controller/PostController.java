@@ -36,14 +36,13 @@ public class PostController {
     ImageService imageService;
 
     @RequestMapping(value = ApplicationUrls.WebAppUrls.BASE_NEWS_URL, method = RequestMethod.GET)
-
     public String getPostsPage(ModelMap modelMap) {
         modelMap.put("posts", postService.getAllOrderByDateDesc());
         return "post/index";
     }
 
     @PostMapping(value = ApplicationUrls.WebAppUrls.CREATE_NEWS_URL)
-    public String createPost(@ModelAttribute(name = "post") PostCreationForm postCreationForm) {
+    public String createPost(@ModelAttribute PostCreationForm postCreationForm) {
         postService.createByForm(postCreationForm);
         return "redirect:/news";
     }
