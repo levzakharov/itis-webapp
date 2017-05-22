@@ -2,7 +2,6 @@ package com.itis.config;
 
 import com.itis.security.CustomUserDetailsService;
 import com.itis.utils.ApplicationUrls;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(ApplicationUrls.ApiUrls.BASE_USERS_URL).permitAll()
                 .antMatchers(ApplicationUrls.ApiUrls.BASE_NEWS_URL).permitAll()
                 .anyRequest().authenticated()
-                .and().csrf().disable();
+                .and().csrf().disable()
+        ;
     }
 }
