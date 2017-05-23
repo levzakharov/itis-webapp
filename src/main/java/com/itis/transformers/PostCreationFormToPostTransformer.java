@@ -21,7 +21,7 @@ public class PostCreationFormToPostTransformer implements Function<PostCreationF
         User user = SecurityUtils.getCurrentUser();
         Post post = new Post();
         post.setTitle(form.getTitle());
-        post.setText(form.getText());
+        post.setText(form.getText().replace("\n", "<br />\n"));
         Long date = new Date().getTime();
         post.setDate(date);
         post.setUser(user);

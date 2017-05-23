@@ -1,9 +1,11 @@
 package com.itis.service.impl;
 
+import com.itis.model.Document;
 import com.itis.model.Image;
 import com.itis.form.PostCreationForm;
 import com.itis.model.Post;
 import com.itis.repository.PostRepository;
+import com.itis.service.DocumentService;
 import com.itis.service.ImageService;
 import com.itis.service.PostService;
 import com.itis.storage.StorageService;
@@ -31,6 +33,9 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     private ImageService imageService;
+
+    @Autowired
+    private DocumentService documentService;
 
     @Autowired
     private StorageService storageService;
@@ -78,6 +83,14 @@ public class PostServiceImpl implements PostService {
                 images.add(image);
             }
             post.setImages(images);
+        }
+        if (postCreationForm.getDocuments() != null && postCreationForm.getDocuments().get(0).getOriginalFilename().length() > 0) {
+            List<Document> documents = new ArrayList<>();
+            for (MultipartFile multipartFile : postCreationForm.getDocuments()) {
+                Document document = documentService.createDocument(multipartFile);
+                documents.add(document);
+            }
+            post.setDocuments(documents);
         }
         return postRepository.save(post);
     }

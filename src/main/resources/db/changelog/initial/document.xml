@@ -37,4 +37,8 @@
                                  referencedTableName="users"/>
     </changeSet>
 
+    <changeSet id="document_4" author="i.nasibullin">
+        <dropColumn tableName="document" columnName="data"/>
+    </changeSet>
+
 </databaseChangeLog>

@@ -15,8 +15,15 @@
                     <div class="text">
                         <textarea placeholder="Текст" name="text" required maxlength="1024"></textarea>
                     </div>
-                    <input type="file" multiple name="images">
-                    <input type="submit" value="Применить">
+                    <div class="name">
+                        <lavel>Изображения
+                            <input type="file" multiple name="images" accept="image/*"></lavel>
+                    </div>
+                    <div class="name">
+                        <label> Документы
+                            <input type="file" multiple name="documents"></label>
+                    </div>
+                    <input type="submit" value="Добавить новость">
                 </form>
             </div>
         </div>
@@ -57,6 +64,13 @@
                 <#list post.images as image>
                     <div class="image">
                         <img src="/files/${image.title}">
+                    </div>
+                </#list>
+            </#if>
+            <#if post.documents?size != 0 >
+                <#list post.documents as document>
+                    <div class="image">
+                        <a href="/files/${document.path}">${document.name}</a>
                     </div>
                 </#list>
             </#if>
