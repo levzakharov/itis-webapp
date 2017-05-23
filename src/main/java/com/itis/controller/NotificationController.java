@@ -12,11 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.CollectionUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -62,8 +64,7 @@ public class NotificationController {
 
         modelMap.put("sent_notifications", notificationService.getCurrentUserSentNotifications());
         modelMap.put("received_notifications", userNotificationService.getCurrentUserUserNotifications());
-        modelMap.put("isStarosta", currentUser.getRoles().contains(Role.STAROSTA));
-        modelMap.put("username", currentUser.getFullName());
+        modelMap.put("notification_creation_form", new NotificationCreationForm());
         modelMap.put("groups_1", userGroupService.getUserGroupsByCourse(1));
         modelMap.put("groups_2", userGroupService.getUserGroupsByCourse(2));
         modelMap.put("groups_3", userGroupService.getUserGroupsByCourse(3));
@@ -75,8 +76,23 @@ public class NotificationController {
     }
 
     @PostMapping("/add")
-    public String sendNotification(@ModelAttribute(name = "notification")
-                                           NotificationCreationForm notificationCreationForm) {
+    public String sendNotification(@ModelAttribute(name = "notification_creation_form") @Valid
+                                           NotificationCreationForm notificationCreationForm,
+                                   BindingResult result, ModelMap modelMap) {
+
+        if (result.hasErrors()) {
+            modelMap.put("sent_notifications", notificationService.getCurrentUserSentNotifications());
+            modelMap.put("received_notifications", userNotificationService.getCurrentUserUserNotifications());
+            modelMap.put("groups_1", userGroupService.getUserGroupsByCourse(1));
+            modelMap.put("groups_2", userGroupService.getUserGroupsByCourse(2));
+            modelMap.put("groups_3", userGroupService.getUserGroupsByCourse(3));
+            modelMap.put("groups_4", userGroupService.getUserGroupsByCourse(4));
+            modelMap.put("groups_5", userGroupService.getUserGroupsByCourse(5));
+            modelMap.put("groups_6", userGroupService.getUserGroupsByCourse(6));
+
+            return "notification/extended-notifications";
+        }
+
         notificationService.sendNotification(notificationCreationForm);
 
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL + "/extended";
