@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="document_0" author="r.khakov">
+        <createTable tableName="document">
+            <column name="id" type="bigint"/>
+            <column name="user_id" type="bigint"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="path" type="varchar(255)"/>
+            <column name="data" type="bytea"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="document_1" author="r.khakov">
+        <addPrimaryKey tableName="document"
+                       columnNames="id"
+                       constraintName="document_pk"/>
+    </changeSet>
+
+    <changeSet id="document_2" author="r.khakov">
+        <createSequence sequenceName="document_seq"
+                        startValue="50"
+                        incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="document_3" author="al.leontyev">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="document"
+                                 constraintName="document_user_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>

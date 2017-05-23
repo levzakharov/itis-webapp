@@ -1,24 +1,35 @@
 package com.itis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Objects;
 
 /**
  * @author alt
  */
 @Entity
 @Table(name = "notification")
+@SequenceGenerator(name = "notification_seq",
+        sequenceName = "notification_seq", allocationSize = 1, initialValue = 50)
 public class Notification {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_id_sequence")
-    @SequenceGenerator(name = "notification_id_sequence",
-            sequenceName = "notification_seq", allocationSize = 1)
-    private Long id;
-    private String theme;
-    private String text;
-    private Timestamp date;
 
-    public long getId() {
+    @Id
+    @GeneratedValue(generator = "notification_seq")
+    private Long id;
+
+    private String theme;
+
+    private String text;
+
+    private Long date;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @JsonIgnore
+    private User user;
+
+    public Long getId() {
         return id;
     }
 
@@ -42,12 +53,20 @@ public class Notification {
         this.text = text;
     }
 
-    public Timestamp getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Long date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -57,12 +76,10 @@ public class Notification {
 
         Notification that = (Notification) o;
 
-        if (id != that.id) return false;
-        if (theme != null ? !theme.equals(that.theme) : that.theme != null) return false;
-        if (text != null ? !text.equals(that.text) : that.text != null) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-
-        return true;
+        return Objects.equals(id, that.id) &&
+                (theme != null ? theme.equals(that.theme) : that.theme == null) &&
+                (text != null ? text.equals(that.text) : that.text == null) &&
+                (date != null ? date.equals(that.date) : that.date == null);
     }
 
     @Override

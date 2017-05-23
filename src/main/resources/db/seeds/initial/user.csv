@@ -1,0 +1,4 @@
+ID,EMAIL,PHONE,FULL_NAME,PASSWORD,USER_GROUP_ID
+1,test@test.com,+121,Джон Дое,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,1
+2,student@test.com,NULL,Джон Дое мл.,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,1
+3,admin@test.com,NULL,Джон Дое мл. мл.,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,NULL

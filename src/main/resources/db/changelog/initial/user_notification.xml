@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="user_notification_0" author="al.leontyev">
+        <createTable tableName="user_notification">
+            <column name="user_id" type="bigint"/>
+            <column name="notification_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="user_notification_1" author="al.leontyev">
+        <addPrimaryKey tableName="user_notification"
+                       columnNames="user_id, notification_id"
+                       constraintName="user_notification_pk"/>
+    </changeSet>
+
+    <changeSet id="user_notification_2" author="al.leontyev">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_notification"
+                                 constraintName="user_notification_user_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+    <changeSet id="user_notification_3" author="al.leontyev">
+        <addForeignKeyConstraint baseColumnNames="notification_id"
+                                 baseTableName="user_notification"
+                                 constraintName="user_notification_notification_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="notification"/>
+    </changeSet>
+
+</databaseChangeLog>
