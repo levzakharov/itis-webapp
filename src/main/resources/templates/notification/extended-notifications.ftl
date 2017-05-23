@@ -7,11 +7,10 @@
     <div class="block">
         <div class="title">Создание уведомления</div>
         <form name="notification" action="/notifications/add" method="post">
-            <#if isStarosta>
-            <#else>
+            <@security.authorize access="hasAnyRole('WORKER', 'ADMIN','TEACHER')">
                 <div class="name">
                     <div class="sub">Кому</div>
-                    <select name="groups" multiple="multiple">
+                    <select name="groups" multiple="multiple" required>
                         <optgroup label="1 курс">
                             <#list groups_1 as group>
                                 <option value="${group.id}">${group.number}</option>
@@ -44,14 +43,14 @@
                         </optgroup>
                     </select>
                 </div>
-            </#if>
+            </@security.authorize>
 
             <div class="text">
-                <label> Тема <input name="theme" type="text"/> </label>
+                <label> Тема <input name="theme" type="text" required maxlength="255"/> </label>
             </div>
             <br>
             <div class="text">
-                <textarea name="text" placeholder="Текст"></textarea>
+                <textarea name="text" placeholder="Текст" required></textarea>
             </div>
             <img>
             <input type="submit" value="Создать">
