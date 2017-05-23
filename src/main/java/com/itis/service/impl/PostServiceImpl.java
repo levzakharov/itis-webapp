@@ -52,7 +52,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post updateByForm(Post post, PostCreationForm form) {
         Post post1 = transformer.apply(form);
-        post1.setId(post.getId());
+        post.setTitle(post1.getTitle());
+        post.setText(post1.getText());
         return postRepository.save(post1);
     }
 

@@ -17,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 @Service
@@ -35,7 +36,7 @@ public class FileSystemStorageService implements StorageService {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
-            String name = "image" + new Date().getTime() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+            String name = UUID.randomUUID() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
             Files.copy(file.getInputStream(), this.rootLocation.resolve(name));
             return name;
         } catch (IOException e) {
