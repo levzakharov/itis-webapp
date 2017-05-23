@@ -34,15 +34,15 @@ public class EventServiceImpl implements EventService {
         this.userGroupRepository = userGroupRepository;
     }
 
-    @Override
-    public List<Event> getEventsByUser(User user) {
-        return eventRepository.findByUser(user);
-    }
+//    @Override
+//    public List<Event> getEventsByUser(User user) {
+//        return eventRepository.findByUser(user);
+//    }
 
-    @Override
-    public List<Event> getCurrentUserEvents() {
-        return getEventsByUser(SecurityUtils.getCurrentUser());
-    }
+//    @Override
+//    public List<Event> getCurrentUserEvents() {
+//        return getEventsByUser(SecurityUtils.getCurrentUser());
+//    }
 
     @Override
     public List<Event> getScheduleByGroup(UserGroup userGroup) {
@@ -54,31 +54,31 @@ public class EventServiceImpl implements EventService {
         return eventRepository.findOne(id);
     }
 
-    @Override
-    public Map<UserGroup, Map<String, List<Event>>> getScheduleBetween(Long startDate,
-                                                                       Long endDate) {
-        return generateSchedule(
-                eventRepository.findByDateGreaterThanAndDateLessThan(startDate, endDate));
-    }
+//    @Override
+//    public Map<UserGroup, Map<String, List<Event>>> getScheduleBetween(Long startDate,
+//                                                                       Long endDate) {
+//        return generateSchedule(
+//                eventRepository.findByDateGreaterThanAndDateLessThan(startDate, endDate));
+//    }
 
-    @Override
-    public Map<String, List<Event>> getScheduledBetweenByGroup(Long startDate,
-                                                               Long endDate,
-                                                               Long userGroupId) {
-        return getScheduleBetween(startDate, endDate)
-                .get(userGroupRepository.findOne(userGroupId));
-    }
+//    @Override
+//    public Map<String, List<Event>> getScheduledBetweenByGroup(Long startDate,
+//                                                               Long endDate,
+//                                                               Long userGroupId) {
+//        return getScheduleBetween(startDate, endDate)
+//                .get(userGroupRepository.findOne(userGroupId));
+//    }
 
-    private Map<UserGroup, Map<String, List<Event>>> generateSchedule(List<Event> events) {
-        Map<UserGroup, Map<String, List<Event>>> schedule = new HashMap<>();
-        events.forEach(event -> event.getUsers().forEach(user -> {
-                    UserGroup userGroup = user.getUserGroup();
-                    String dayOfWeek = SIMPLE_DATE_FORMAT.format(event.getDate());
-                    if (!schedule.get(userGroup).get(dayOfWeek).contains(event)) {
-                        schedule.get(userGroup).get(dayOfWeek).add(event);
-                    }
-                }
-        ));
-        return schedule;
-    }
+//    private Map<UserGroup, Map<String, List<Event>>> generateSchedule(List<Event> events) {
+//        Map<UserGroup, Map<String, List<Event>>> schedule = new HashMap<>();
+//        events.forEach(event -> event.getUsers().forEach(user -> {
+//                    UserGroup userGroup = user.getUserGroup();
+//                    String dayOfWeek = SIMPLE_DATE_FORMAT.format(event.getDate());
+//                    if (!schedule.get(userGroup).get(dayOfWeek).contains(event)) {
+//                        schedule.get(userGroup).get(dayOfWeek).add(event);
+//                    }
+//                }
+//        ));
+//        return schedule;
+//    }
 }

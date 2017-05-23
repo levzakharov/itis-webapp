@@ -25,5 +25,6 @@
     <!--Custom changelog-->
     <include file="changelog/custom/image.xml" relativeToChangelogFile="true"/>
     <include file="changelog/custom/post_image.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/custom/23051708.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

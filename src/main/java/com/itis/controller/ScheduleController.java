@@ -29,20 +29,20 @@ public class ScheduleController {
         return "schedule/index";
     }
 
-    @GetMapping("/period")
-    public String getScheduleByPeriod(@RequestParam Long startDate,
-                                      @RequestParam Long endDate, Model model) {
-        model.addAttribute("schedule", eventService.getScheduleBetween(startDate, endDate));
-        return "schedule";
-    }
-
-    @GetMapping("/period/group/{userGroupId}")
-    public String getUserGroupScheduleByPeriod(@PathVariable("userGroupId") Long userGroupId,
-                                               @RequestParam Long startDate,
-                                               @RequestParam Long endDate, Model model) {
-        model.addAttribute("schedule",
-                eventService.getScheduledBetweenByGroup(startDate, endDate, userGroupId));
-        return "group_schedule";
-    }
+//    @GetMapping("/period")
+//    public String getScheduleByPeriod(@RequestParam Long startDate,
+//                                      @RequestParam Long endDate, Model model) {
+//        model.addAttribute("schedule", eventService.getScheduleBetween(startDate, endDate));
+//        return "schedule";
+//    }
+//
+//    @GetMapping("/period/group/{userGroupId}")
+//    public String getUserGroupScheduleByPeriod(@PathVariable("userGroupId") Long userGroupId,
+//                                               @RequestParam Long startDate,
+//                                               @RequestParam Long endDate, Model model) {
+//        model.addAttribute("schedule",
+//                eventService.getScheduledBetweenByGroup(startDate, endDate, userGroupId));
+//        return "group_schedule";
+//    }
 
 }

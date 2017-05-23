@@ -12,15 +12,15 @@ import java.util.Map;
  */
 public interface EventService {
 
-    List<Event> getEventsByUser(User user);
+//    List<Event> getEventsByUser(User user);
 
-    List<Event> getCurrentUserEvents();
+//    List<Event> getCurrentUserEvents();
 
     List<Event> getScheduleByGroup(UserGroup userGroup);
 
     Event getOne(Long id);
 
-    Map<UserGroup, Map<String, List<Event>>> getScheduleBetween(Long startDate, Long endDate);
+//    Map<UserGroup, Map<String, List<Event>>> getScheduleBetween(Long startDate, Long endDate);
 
-    Map<String, List<Event>> getScheduledBetweenByGroup(Long startDate, Long endDate, Long userGroupId);
+//    Map<String, List<Event>> getScheduledBetweenByGroup(Long startDate, Long endDate, Long userGroupId);
 }

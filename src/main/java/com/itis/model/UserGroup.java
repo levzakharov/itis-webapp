@@ -5,6 +5,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +26,10 @@ public class UserGroup {
 
     @Column(name = "start_year")
     private Integer startYear;
+
+    @OneToMany(mappedBy = "userGroup")
+    @JsonIgnore
+    private List<Event> events;
 
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -61,5 +67,13 @@ public class UserGroup {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }
