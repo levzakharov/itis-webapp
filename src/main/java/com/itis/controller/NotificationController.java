@@ -1,7 +1,6 @@
 package com.itis.controller;
 
 import com.itis.form.NotificationCreationForm;
-import com.itis.model.User;
 import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
 import com.itis.service.NotificationService;
@@ -60,8 +59,6 @@ public class NotificationController {
 
     @GetMapping("/extended")
     public String getSentNotificationsPage(ModelMap modelMap) {
-        User currentUser = SecurityUtils.getCurrentUser();
-
         modelMap.put("sent_notifications", notificationService.getCurrentUserSentNotifications());
         modelMap.put("received_notifications", userNotificationService.getCurrentUserUserNotifications());
         modelMap.put("notification_creation_form", new NotificationCreationForm());
@@ -80,7 +77,7 @@ public class NotificationController {
                                            NotificationCreationForm notificationCreationForm,
                                    BindingResult result, ModelMap modelMap) {
 
-        if (result.hasErrors()) {
+        if (result.hasErrors() || notificationService.sendNotification(notificationCreationForm) == null) {
             modelMap.put("sent_notifications", notificationService.getCurrentUserSentNotifications());
             modelMap.put("received_notifications", userNotificationService.getCurrentUserUserNotifications());
             modelMap.put("groups_1", userGroupService.getUserGroupsByCourse(1));
@@ -92,9 +89,6 @@ public class NotificationController {
 
             return "notification/extended-notifications";
         }
-
-        notificationService.sendNotification(notificationCreationForm);
-
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL + "/extended";
     }
 }
