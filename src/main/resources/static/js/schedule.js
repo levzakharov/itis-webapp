@@ -1,59 +1,43 @@
-var selectSize, selectType, selectDay;
+var transl = {
+    'День' : 'day',
+    'Неделя' : 'week',
+    'Личный' : 'private',
+    'Общий' : 'overall',
+}
+
+
 
 $(document).ready(function() {
-
-    selectSize = $('.size select').attr('name');
-    // add a hidden element with the same name as the select
-    var hidden = $('<input type="hidden" name="'+selectSize+'">');
-    hidden.val($('.size select').val());
-    hidden.insertAfter($('.size select'));
-
-    $(".size select option").unwrap().each(function() {
-        var btn = $('<div class="button">'+$(this).text()+'</div>');
-        if($(this).is(':checked')) btn.addClass('active');
-        $(this).replaceWith(btn);
+    $('.schedule-form').submit(function (event) {
+        event.preventDefault();
+        var dataForm = $(this).serialize();
+        console.log(dataForm);
+        $.ajax({
+            url : 'ajax',
+            data : dataForm,
+            success : function(response){
+                $('.response-container').html(response);
+            },
+        });
     });
-
-    selectType = $('.type select').attr('name');
-    // add a hidden element with the same name as the select
-    var hidden = $('<input type="hidden" name="'+selectType+'">');
-    hidden.val($('.type select').val());
-    hidden.insertAfter($('.type select'));
-
-    $(".type select option").unwrap().each(function() {
-        var btn = $('<div class="button">'+$(this).text()+'</div>');
-        if($(this).is(':checked')) btn.addClass('active');
-        $(this).replaceWith(btn);
-    });
-
-    selectDay = $('.days select').attr('name');
-    // add a hidden element with the same name as the select
-    var hidden = $('<input type="hidden" name="'+selectDay+'">');
-    hidden.val($('.days select').val());
-    hidden.insertAfter($('.days select'));
-
-    $(".days select option").unwrap().each(function() {
-        var btn = $('<div class="button">'+$(this).text()+'</div>');
-        if($(this).is(':checked')) btn.addClass('active');
-        $(this).replaceWith(btn);
-    });
+    $('.schedule-form').submit();
 });
 
 $(document).on('click', '.size .button', function() {
     $('.size .button').removeClass('active');
     $(this).addClass('active');
-    $('.size input[name="'+selectSize+'"]').val($(this).text());
+    $('.size input[name="interval"]').val(transl[$(this).text()]);
 });
 
-$(document).on('click', '.days .button', function() {
+/*$(document).on('click', '.days .button', function() {
     $('.days .button').removeClass('active');
     $(this).addClass('active');
-    $('.days input[name="'+selectDay+'"]').val($(this).text());
-});
+    $('.days input[name="interval"]').val(transl[$(this).text()]);
+});*/
 
 $(document).on('click', '.type .button', function() {
     $('.type .button').removeClass('active');
     $(this).addClass('active');
-    $('.type input[name="'+selectType+'"]').val($(this).text());
+    $('.type input[name="personality"]').val(transl[$(this).text()]);
 });
 

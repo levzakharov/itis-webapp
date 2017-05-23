@@ -24,7 +24,7 @@ public class ScheduleController {
         this.eventService = eventService;
     }
 
-    @GetMapping
+    @GetMapping()
     public String getSchedulePage() {
         return "schedule/index";
     }
