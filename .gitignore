@@ -21,8 +21,6 @@ hs_err_pid*
 
 src/main/resources/application.properties
 
-
-src/main/resources/upload-dir
 *.jpg
 *.jpeg
 *.png
