@@ -1,3 +1,4 @@
+<#include "days_form.ftl">
 <div class="table">
     <table>
         <thead>

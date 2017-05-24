@@ -1,8 +1,15 @@
 var transl = {
-    'День' : 'day',
+    'День' : 'monday',
     'Неделя' : 'week',
     'Личный' : 'private',
     'Общий' : 'overall',
+    'Пн' : 'monday',
+    'Вт' : 'tuesday',
+    'Ср' : 'wednesday',
+    'Чт' : 'thursday',
+    'Пт' : 'friday',
+    'Сб' : 'saturday',
+    'Вс'  : 'sunday'
 }
 
 
@@ -13,7 +20,7 @@ $(document).ready(function() {
         var dataForm = $(this).serialize();
         console.log(dataForm);
         $.ajax({
-            url : 'ajax',
+            url : '/timetable/search',
             data : dataForm,
             success : function(response){
                 $('.response-container').html(response);
@@ -26,14 +33,19 @@ $(document).ready(function() {
 $(document).on('click', '.size .button', function() {
     $('.size .button').removeClass('active');
     $(this).addClass('active');
+    if (transl[$(this).text()] == 'week'){
+        $('.days .button').removeClass('active');
+    }
     $('.size input[name="interval"]').val(transl[$(this).text()]);
 });
 
-/*$(document).on('click', '.days .button', function() {
+$(document).on('click', '.days .button', function() {
     $('.days .button').removeClass('active');
+    $('.size .button').removeClass('active');
+    $('.size .button:first-child').addClass('active');
     $(this).addClass('active');
-    $('.days input[name="interval"]').val(transl[$(this).text()]);
-});*/
+    $('.size input[name="interval"]').val(transl[$(this).text()]);
+});
 
 $(document).on('click', '.type .button', function() {
     $('.type .button').removeClass('active');

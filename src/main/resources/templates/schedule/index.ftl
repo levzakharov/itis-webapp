@@ -22,19 +22,7 @@
         </div>
     </form>
 </div>
-<#--<div class="panel">
-    <div class="days">
-        <select name="days">
-            <option>Пн</option>
-            <option>Вт</option>
-            <option>Ср</option>
-            <option>Чт</option>
-            <option>Пт</option>
-            <option>Сб</option>
-            <option>Вс</option>
-        </select>
-    </div>
-</div>-->
+
 <div class="response-container">
 
 </div>

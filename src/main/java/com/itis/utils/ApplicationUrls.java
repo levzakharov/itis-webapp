@@ -34,7 +34,7 @@ public interface ApplicationUrls {
 
         String LOGIN = "/login";
 
-        String BASE_SCHEDULE_URL = "/schedule";
+        String BASE_SCHEDULE_URL = "/timetable";
 
         String BASE_NOTIFICATIONS_URL = "/notifications";
 

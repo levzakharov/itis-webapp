@@ -29,7 +29,7 @@ public class ScheduleController {
         return "schedule/index";
     }
 
-    @GetMapping("/ajax")
+    @GetMapping("/search")
     public String getSchedule() {
         return "schedule/week_overall";
     }
