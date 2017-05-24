@@ -51,6 +51,8 @@ public interface ApplicationUrls {
         String FILE_URL = BASE_FILES_URL + "/{fileName:.+}";
 
         String NEW = BASE_NEWS_URL + "/{newId}";
+
+        String BASE_CERTIFICATE_URL = "/certificates";
     }
 
 }
