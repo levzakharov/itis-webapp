@@ -70,17 +70,24 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public Notification sendNotification(NotificationCreationForm notificationCreationForm) {
+
         User currentUser = SecurityUtils.getCurrentUser();
 
         Notification notification = creationFormToNotificationTransformer.apply(notificationCreationForm);
-        this.create(notification);
 
         if (currentUser.getRoles().contains(Role.STAROSTA)) {
+            this.create(notification);
+
             userNotificationService.createUserNotificationsByGroup(notification, currentUser.getUserGroup());
         } else {
-            List<UserGroup> userGroups =
-                    userGroupService.getUserGroupsFromNotificationCreationForm(notificationCreationForm);
-            userNotificationService.createUserNotificationsByGroups(notification, userGroups);
+            if (notificationCreationForm.getGroups() != null) {
+                List<UserGroup> userGroups =
+                        userGroupService.getUserGroupsFromNotificationCreationForm(notificationCreationForm);
+                this.create(notification);
+                userNotificationService.createUserNotificationsByGroups(notification, userGroups);
+            } else {
+                return null;
+            }
         }
         return notification;
     }
