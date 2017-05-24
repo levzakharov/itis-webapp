@@ -46,4 +46,10 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="23051708_7" author="al.pliskin">
+        <addColumn tableName="event">
+            <column name="interval" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

@@ -11,7 +11,7 @@
             <div class="size">
                 <div class="button active">День</div>
                 <div class="button">Неделя</div>
-                <input type="hidden" name="interval" value="day">
+                <input type="hidden" name="interval" value="monday">
             </div>
             <div class="type">
                 <div class="button active">Личный</div>
@@ -40,4 +40,4 @@
 </div>
 </#macro>
 
-<@main title="Расписание" customScripts=["/js/jquery-1.11.3.min.js", "/js/schedule.js"]/>
+<@main title="Расписание" customScripts=["/js/timetable.js"]/>

@@ -3,20 +3,10 @@ package com.itis.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.itis.model.enums.EventInterval;
 
+import javax.persistence.*;
 import java.time.DayOfWeek;
-
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
@@ -37,6 +27,9 @@ public class Event {
 
     @Enumerated(EnumType.STRING)
     private DayOfWeek day;
+
+    @Enumerated(EnumType.STRING)
+    private EventInterval interval;
 
     private String place;
 
@@ -91,5 +84,13 @@ public class Event {
 
     public void setUserGroup(UserGroup userGroup) {
         this.userGroup = userGroup;
+    }
+
+    public EventInterval getInterval() {
+        return interval;
+    }
+
+    public void setInterval(EventInterval interval) {
+        this.interval = interval;
     }
 }

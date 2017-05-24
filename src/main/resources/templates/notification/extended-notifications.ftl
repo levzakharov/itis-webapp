@@ -87,4 +87,4 @@
 
 </#macro>
 
-<@main title="Уведомления" customScripts=["/js/jquery-1.11.3.min.js", "/js/multiple-select.js", "/js/notifications.js"] customStyles=["/css/multiple-select.css"] customClass=["notifications"]/>
+<@main title="Уведомления" customScripts=["/js/multiple-select.js", "/js/notifications.js"] customStyles=["/css/multiple-select.css"] customClass=["notifications"]/>
