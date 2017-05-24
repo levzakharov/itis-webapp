@@ -1,6 +1,7 @@
 package com.itis.form;
 
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.List;
 
 /**
@@ -8,10 +9,10 @@ import java.util.List;
  */
 public class NotificationCreationForm {
 
-    @NotNull(message = "отстутствует тема")
+    @NotBlank(message = "Отстутствует тема")
     private String theme;
 
-    @NotNull(message = "отстутствует текст уведомления")
+    @NotBlank(message = "Отстутствует текст уведомления")
     private String text;
 
     private List<String> groups;

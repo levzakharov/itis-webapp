@@ -6,12 +6,12 @@
     <div class="cancel">Отменить</div>
     <div class="block">
         <div class="title">Создание уведомления</div>
-        <form name="notification" action="/notifications/add" method="post">
-            <#if isStarosta>
-            <#else>
+
+        <@form.form commandName="notification_creation_form" action="/notifications/add" method="post">
+            <@security.authorize access="hasAnyRole('WORKER', 'ADMIN','TEACHER')">
                 <div class="name">
                     <div class="sub">Кому</div>
-                    <select name="groups" multiple="multiple">
+                    <@form.select name="groups" multiple="multiple" required="required">
                         <optgroup label="1 курс">
                             <#list groups_1 as group>
                                 <option value="${group.id}">${group.number}</option>
@@ -42,20 +42,26 @@
                                 <option value="${group.id}">${group.number}</option>
                             </#list>
                         </optgroup>
-                    </select>
+                    </@form.select>
                 </div>
-            </#if>
+            </@security.authorize>
 
             <div class="text">
-                <label> Тема <input name="theme" type="text"/> </label>
+                <label> Тема <@form.input path="theme" type="text" required="required" maxlength="255"/>
+            </div>
+            <div class="text">
+                <@form.errors path="theme" cssStyle="color: #ab2020;"/>
             </div>
             <br>
             <div class="text">
-                <textarea name="text" placeholder="Текст"></textarea>
+                <@form.textarea path="text" required="required" placeholder="Текст"/>
             </div>
+        <div class="text">
+            <@form.errors path="text" cssStyle="color: #ab2020;"/>
+        </div>
             <img>
             <input type="submit" value="Создать">
-        </form>
+        </@form.form>
     </div>
 </div>
 
