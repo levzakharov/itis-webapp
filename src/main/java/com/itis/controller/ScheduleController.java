@@ -24,16 +24,14 @@ public class ScheduleController {
         this.eventService = eventService;
     }
 
-    @GetMapping
+    @GetMapping()
     public String getSchedulePage() {
         return "schedule/index";
     }
 
-    @GetMapping("/period")
-    public String getScheduleByPeriod(@RequestParam Long startDate,
-                                      @RequestParam Long endDate, Model model) {
-        model.addAttribute("schedule", eventService.getScheduleBetween(startDate, endDate));
-        return "schedule";
+    @GetMapping("/ajax")
+    public String getSchedule() {
+        return "schedule/week_overall";
     }
 
     @GetMapping("/period/group/{userGroupId}")
