@@ -8,7 +8,7 @@ public enum EventInterval {
     I_8_30_10_00 {
         @Override
         public String toString() {
-            return "8:30-10:00";
+            return "08:30-10:00";
         }
     },
     I_10_10_11_40 {

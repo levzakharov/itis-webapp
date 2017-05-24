@@ -21,8 +21,6 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_gen")
     private Long id;
 
-    private String number;
-
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -43,14 +41,6 @@ public class Event {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     public String getDescription() {
@@ -92,5 +82,15 @@ public class Event {
 
     public void setInterval(EventInterval interval) {
         this.interval = interval;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

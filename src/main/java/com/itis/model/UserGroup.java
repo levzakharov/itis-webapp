@@ -76,4 +76,14 @@ public class UserGroup {
     public void setEvents(List<Event> events) {
         this.events = events;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

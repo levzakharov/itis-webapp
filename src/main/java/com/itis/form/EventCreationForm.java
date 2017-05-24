@@ -10,9 +10,6 @@ import java.util.Date;
  */
 public class EventCreationForm {
 
-    @NotNull(message = "неверный номер")
-    private String number;
-
     @NotNull(message = "неверный день")
     private String day;
 
@@ -22,19 +19,10 @@ public class EventCreationForm {
     @NotNull(message = "отсутствует место проведения")
     private String place;
 
-    public EventCreationForm(String number, DayOfWeek day, String description, String place) {
-        this.number = number;
+    public EventCreationForm(DayOfWeek day, String description, String place) {
         this.day = day.toString();
         this.description = description;
         this.place = place;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     public String getDay() {

@@ -1,13 +1,12 @@
 package com.itis.controller;
 
+import com.itis.criteria.TimetableSearchCriteria;
 import com.itis.service.EventService;
 import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -29,10 +28,9 @@ public class TimetableController {
     }
 
     @GetMapping(ApplicationUrls.WebAppUrls.TIMETABLE_SEARCH)
-    public String getSchedule(@RequestParam String interval,
-                              @RequestParam String personality,
+    public String getSchedule(@ModelAttribute TimetableSearchCriteria criteria,
                               Model model) {
-        model.addAttribute("timetable", eventService.getTimetable(interval, personality));
+        model.addAttribute("timetable", eventService.getTimetable(criteria));
         return "timetable/panel";
     }
 

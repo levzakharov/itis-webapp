@@ -1,9 +1,11 @@
 <#include "../main-template.ftl">
 
 <#macro m_body>
-<div class="upload">
-    <a href="#">Загрузить расписание через csv файл</a>
-</div>
+    <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
+    <div class="upload">
+        <a href="#">Загрузить расписание через csv файл</a>
+    </div>
+    </@security.authorize>
 <div class="filter">
     <div class="title">Выберите формат:</div>
     <form class="schedule-form">

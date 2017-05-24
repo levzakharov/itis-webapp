@@ -19,7 +19,6 @@ public class EventCreationFormToEventTransformer implements Function<EventCreati
         Event event = new Event();
         event.setDescription(eventCreationForm.getDescription());
         event.setPlace(eventCreationForm.getPlace());
-        event.setNumber(eventCreationForm.getNumber());
         event.setDay(DayOfWeek.valueOf(eventCreationForm.getDay().toUpperCase()));
         return event;
     }
