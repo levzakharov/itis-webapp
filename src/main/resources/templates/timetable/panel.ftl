@@ -6,6 +6,7 @@
         <tr>
             <th></th>
             <th></th>
+            <th></th>
         <#list groups as group>
             <th>${group.number}</th>
         </#list>
