@@ -1,5 +1,6 @@
 package com.itis.controller;
 
+import com.itis.utils.ApplicationUrls;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import static com.itis.utils.ApplicationUrls.WebAppUrls.LOGIN;
 @Controller
 public class LoginController {
 
-    private static final String LOGIN_PAGE = "login";
+    private static final String LOGIN_PAGE = ApplicationUrls.WebAppUrls.LOGIN;
 
     @GetMapping(value = LOGIN)
     public String getLoginPage(@RequestParam(name = "error", required = false) Boolean error,
