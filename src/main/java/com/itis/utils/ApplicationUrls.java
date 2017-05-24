@@ -53,6 +53,9 @@ public interface ApplicationUrls {
         String NEW = BASE_NEWS_URL + "/{newId}";
 
         String BASE_CERTIFICATE_URL = "/certificates";
+        String BASE_DOCUMENTS_URL = "/documents";
+
+        String CREATE_DOCUMENT_URL = BASE_DOCUMENTS_URL + "/new";
     }
 
 }

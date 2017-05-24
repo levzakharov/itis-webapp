@@ -69,8 +69,10 @@
             </#if>
             <#if post.documents?size != 0 >
                 <#list post.documents as document>
-                    <div class="image">
-                        <a href="/files/${document.path}">${document.name}</a>
+                    <div style="display: table-cell; margin-bottom: auto" class="image"><a href="/files/${document.path}">
+                        <img style="width: 100px, height: auto;" src="/images/docicon.png"/>
+                        <p>${document.name}</p>
+                    </a>
                     </div>
                 </#list>
             </#if>

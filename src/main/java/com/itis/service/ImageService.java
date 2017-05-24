@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface ImageService {
 
-    Image createImage(String name);
+    Image create(MultipartFile multipartFile);
 
+    List<Image> create(List<MultipartFile> multipartFiles);
 }
