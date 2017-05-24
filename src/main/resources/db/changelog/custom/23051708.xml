@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="23051708_0" author="al.pliskin">
+        <dropForeignKeyConstraint
+                baseTableName="event_user"
+                constraintName="event_user_event_fk"/>
+    </changeSet>
+
+    <changeSet id="23051708_1" author="al.pliskin">
+        <dropForeignKeyConstraint
+                baseTableName="event_user"
+                constraintName="event_user_user_fk"/>
+    </changeSet>
+
+    <changeSet id="23051708_2" author="al.pliskin">
+        <dropTable tableName="event_user"/>
+    </changeSet>
+
+    <changeSet id="23051708_3" author="al.pliskin">
+        <addColumn tableName="event">
+            <column name="user_group_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="23051708_4" author="al.pliskin">
+        <addForeignKeyConstraint baseTableName="event"
+                                 baseColumnNames="user_group_id"
+                                 constraintName="event_user_group_fk"
+                                 referencedTableName="user_group"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="23051708_5" author="al.pliskin">
+        <dropColumn tableName="event"
+                    columnName="date"/>
+    </changeSet>
+
+    <changeSet id="23051708_6" author="al.pliskin">
+        <addColumn tableName="event">
+            <column name="day" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="23051708_7" author="al.pliskin">
+        <addColumn tableName="event">
+            <column name="interval" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

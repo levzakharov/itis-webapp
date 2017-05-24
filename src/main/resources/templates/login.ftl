@@ -14,10 +14,13 @@
             <img src="images/logo.png">
         </div>
         <div class="signin-content">
-            <form action="/login" method="post">
-                <input name="username" type="text" placeholder="Логин">
-                <input name="password" type="text" placeholder="Пароль">
+            <form action="/login/process" method="post">
+                <input name="login" type="text" placeholder="Логин">
+                <input name="password" type="password" placeholder="Пароль">
                 <input type="submit" class="button" value="Войти">
+            <#if error??>
+                <div class="error-msg">Неправильный логин или пароль</div>
+            </#if>
             </form>
             <div class="forgot">
                 <a href="#">Забыли свой пароль?</a>

@@ -1,8 +1,8 @@
 package com.itis.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -18,19 +18,23 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
     @Bean
-    public Docket api() {
+    @Autowired
+    public Docket api(final ApiInfo apiInfo) {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.itis.controller.api"))
-                .paths(PathSelectors.any())
-                .build();
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.regex("(/api/.*)|(/oauth/(token|authorize))"))
+                .build()
+                .apiInfo(apiInfo);
     }
 
     @Bean
     public ApiInfo apiInfo() {
-        final ApiInfoBuilder builder = new ApiInfoBuilder();
-        builder.title("ITIS-Portal API").version("1.0.0").license("(C) 11-401 ITIS 2017")
-                .description("The API for ITIS-Portal");
-        return builder.build();
+        return new ApiInfoBuilder()
+                .title("ITIS-Portal API")
+                .version("1.0.0")
+                .license("(C) 11-401 ITIS 2017")
+                .description("The API for ITIS-Portal")
+                .build();
     }
 }

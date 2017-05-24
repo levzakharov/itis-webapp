@@ -1,16 +1,13 @@
 package com.itis.model;
 
-import java.util.List;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
@@ -30,7 +27,14 @@ public class UserGroup {
     @Column(name = "start_year")
     private Integer startYear;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userGroup")
+    @OneToMany(mappedBy = "userGroup")
+    @JsonIgnore
+    private List<Event> events;
+
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "user_group_id")
+    @JsonIgnore
     private List<User> users;
 
     public Long getId() {
@@ -63,5 +67,13 @@ public class UserGroup {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }

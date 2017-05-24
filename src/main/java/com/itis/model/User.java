@@ -1,31 +1,23 @@
 package com.itis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itis.model.enums.Role;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
 @SequenceGenerator(name = "user_seq",
         sequenceName = "user_seq", allocationSize = 1, initialValue = 50)
-public class User {
-
+public class User implements UserDetails {
     @Id
     @GeneratedValue(generator = "user_seq")
     private Long id;
@@ -40,17 +32,19 @@ public class User {
     private String phone;
 
     @ManyToOne
-    @JoinColumn(name = "user_group_id")
     private UserGroup userGroup;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany(mappedBy = "users")
-    private List<Event> events;
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "user_id")
+    private List<UserNotification> userNotifications;
+
 
     public Long getId() {
         return id;
@@ -76,10 +70,13 @@ public class User {
         this.fullName = fullName;
     }
 
+    @Override
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -108,11 +105,45 @@ public class User {
         this.roles = roles;
     }
 
-    public List<Event> getEvents() {
-        return events;
+    @Override
+    public String getUsername() {
+        return email;
     }
 
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles.stream().map((role) ->
+                new SimpleGrantedAuthority(
+                        role.name().startsWith("ROLE_") ? role.name() : "ROLE_" + role.name()
+                )
+        ).collect(Collectors.toSet());
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public List<UserNotification> getUserNotifications() {
+        return userNotifications;
+    }
+
+    public void setUserNotifications(List<UserNotification> userNotifications) {
+        this.userNotifications = userNotifications;
     }
 }

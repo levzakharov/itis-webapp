@@ -1,8 +1,9 @@
 package com.itis.form;
 
-import java.util.Date;
-
 import javax.validation.constraints.NotNull;
+
+import java.time.DayOfWeek;
+import java.util.Date;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
@@ -12,8 +13,8 @@ public class EventCreationForm {
     @NotNull(message = "неверный номер")
     private String number;
 
-    @NotNull(message = "неверная дата проведения")
-    private Date date;
+    @NotNull(message = "неверный день")
+    private String day;
 
     @NotNull(message = "отсутствует описание")
     private String description;
@@ -21,9 +22,9 @@ public class EventCreationForm {
     @NotNull(message = "отсутствует место проведения")
     private String place;
 
-    public EventCreationForm(String number, Date date, String description, String place) {
+    public EventCreationForm(String number, DayOfWeek day, String description, String place) {
         this.number = number;
-        this.date = date;
+        this.day = day.toString();
         this.description = description;
         this.place = place;
     }
@@ -36,12 +37,12 @@ public class EventCreationForm {
         this.number = number;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDay() {
+        return day;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public String getDescription() {

@@ -18,10 +18,13 @@
     <include file="changelog/initial/request.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial/user_notification.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial/user_role.xml" relativeToChangelogFile="true"/>
-
+    <include file="20170513.xml" relativeToChangelogFile="true"/>
     <!--Initial seeds-->
     <include file="seeds.xml" relativeToChangelogFile="true"/>
 
     <!--Custom changelog-->
+    <include file="changelog/custom/image.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/custom/post_image.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/custom/23051708.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

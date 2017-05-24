@@ -1,7 +1,7 @@
 package com.itis.config;
 
 import com.itis.security.CustomUserDetailsService;
-
+import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +11,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static com.itis.utils.ApplicationUrls.WebAppUrls.BASE_NEWS_URL;
-import static com.itis.utils.ApplicationUrls.WebAppUrls.SIGN_IN;
+import static com.itis.utils.ApplicationUrls.WebAppUrls.LOGIN;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final CustomUserDetailsService userDetailsService;
+
     @Autowired
-    private CustomUserDetailsService userDetailsService;
+    public WebSecurityConfig(CustomUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -33,12 +37,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-                .loginPage(SIGN_IN).permitAll()
-                .loginProcessingUrl("/login")
-                .defaultSuccessUrl(BASE_NEWS_URL)
+                .loginPage(ApplicationUrls.WebAppUrls.LOGIN)
+                .permitAll()
+                .passwordParameter("password")
+                .usernameParameter("login")
+                .loginProcessingUrl(ApplicationUrls.WebAppUrls.LOGIN + "/process")
+                .defaultSuccessUrl(ApplicationUrls.WebAppUrls.BASE_NEWS_URL)
+                .failureUrl(LOGIN + "?error=true")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login")
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
-                .and().csrf().disable();
+                .antMatchers(LOGIN + "**").permitAll()
+                .antMatchers(ApplicationUrls.ApiUrls.BASE_USERS_URL).permitAll()
+                .antMatchers(ApplicationUrls.ApiUrls.BASE_NEWS_URL).permitAll()
+                .anyRequest().authenticated()
+                .and().csrf().disable()
+        ;
     }
 }
-

@@ -1,0 +1,13 @@
+ID,EMAIL,PHONE,FULL_NAME,PASSWORD,USER_GROUP_ID
+1,starosta-304@test.com,+1111,Староста 11-304,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,1
+2,stud-304@test.com,+1111,Студент 11-304,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,1
+6,stud-405@test.com,+12315,Студент 11-405,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,16
+7,stud-601@test.com,+155,Студент 11-601,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,2
+8,stud-501@test.com,+1665,Студент 11-501,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,7
+9,stud-401@test.com,+156,Студент 11-401,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,12
+10,stud-302@test.com,+145,Студент 11-302,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,21
+11,stud-201@test.com,+155,Студент 11-201,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,23
+12,stud-101@test.com,+155,Студент 11-101,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,26
+13,stud-402@test.com,+155,Студент 11-402,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,13
+14,stud-502@test.com,+155,Студент 11-502,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,8
+15,stud-303@test.com,+155,Студент 11-303,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,22

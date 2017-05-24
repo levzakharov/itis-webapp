@@ -1,52 +1,4 @@
-<#include "../main-template.ftl">
-
-<#macro m_body>
-<div class="upload">
-    <a href="#">Загрузить расписание через csv файл</a>
-</div>
-<div class="filter">
-    <div class="title">Выберите формат:</div>
-    <form>
-        <div class="modes">
-            <div class="size">
-                <select name="size">
-                    <option>День</option>
-                    <option>Неделя</option>
-                </select>
-            </div>
-            <div class="type">
-                <select name="type">
-                    <option>Личный</option>
-                    <option>Общий</option>
-                </select>
-            </div>
-            <div class="button enter">Изменить</div>
-        </div>
-    </form>
-</div>
-<div class="panel">
-    <div class="days">
-        <select name="days">
-            <option>Пн</option>
-            <option>Вт</option>
-            <option>Ср</option>
-            <option>Чт</option>
-            <option>Пт</option>
-            <option>Сб</option>
-            <option>Вс</option>
-        </select>
-    </div>
-    <div class="group">
-        <div class="title">Группа:</div>
-        <select name="group">
-            <option>11-401</option>
-            <option>11-402</option>
-            <option>11-403</option>
-            <option>11-404</option>
-            <option>11-405</option>
-        </select>
-    </div>
-</div>
+<#include "days_form.ftl">
 <div class="table">
     <table>
         <thead>
@@ -370,6 +322,3 @@
         </tbody>
     </table>
 </div>
-</#macro>
-
-<@main title="Расписание" username="Имя пользователя" customScripts=["/js/jquery-1.11.3.min.js", "/js/schedule.js"]/>

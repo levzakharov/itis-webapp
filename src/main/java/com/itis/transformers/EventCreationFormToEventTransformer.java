@@ -5,6 +5,7 @@ import com.itis.model.Event;
 
 import org.springframework.stereotype.Component;
 
+import java.time.DayOfWeek;
 import java.util.function.Function;
 
 /**
@@ -19,7 +20,7 @@ public class EventCreationFormToEventTransformer implements Function<EventCreati
         event.setDescription(eventCreationForm.getDescription());
         event.setPlace(eventCreationForm.getPlace());
         event.setNumber(eventCreationForm.getNumber());
-        event.setDate(eventCreationForm.getDate().getTime());
+        event.setDay(DayOfWeek.valueOf(eventCreationForm.getDay().toUpperCase()));
         return event;
     }
 }
