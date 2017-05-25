@@ -131,6 +131,10 @@ public class User implements UserDetails {
         ).collect(Collectors.toSet());
     }
 
+    public boolean hasRole(Role role) {
+        return this.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_" + role));
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
