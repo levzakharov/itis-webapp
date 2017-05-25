@@ -34,7 +34,9 @@ public interface ApplicationUrls {
 
         String LOGIN = "/login";
 
-        String BASE_SCHEDULE_URL = "/schedule";
+        String BASE_TIMETABLE_URL = "/timetable";
+        String TIMETABLE_SEARCH = BASE_TIMETABLE_URL + "/search";
+        String TIMETABLE_CSV = BASE_TIMETABLE_URL + "/csv";
 
         String BASE_NOTIFICATIONS_URL = "/notifications";
 
@@ -53,6 +55,7 @@ public interface ApplicationUrls {
         String NEW = BASE_NEWS_URL + "/{newId}";
 
         String BASE_CERTIFICATE_URL = "/certificates";
+
     }
 
 }

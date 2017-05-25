@@ -16,6 +16,9 @@
     <#list customStyles as style>
         <link href="${style}" type="text/css" rel="stylesheet"/>
     </#list>
+
+    <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+
     <#list customScripts as script>
         <script src="${script}" type="text/javascript"></script>
     </#list>

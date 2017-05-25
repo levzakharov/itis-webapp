@@ -40,10 +40,6 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany(mappedBy = "users")
-    @JsonIgnore
-    private List<Event> events = new ArrayList<>();
-
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "user_id")
@@ -107,14 +103,6 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
     }
 
     @Override

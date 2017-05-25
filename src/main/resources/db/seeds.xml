@@ -67,5 +67,11 @@
             <column name="id" type="numeric"/>
         </loadUpdateData>
     </changeSet>
-
+    <changeSet id="seeds_10" author="al.pliskin">
+        <loadUpdateData tableName="event"
+                        primaryKey="id"
+                        file="db/seeds/changes/25050038/event.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
 </databaseChangeLog>
