@@ -50,4 +50,9 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<Document> getAll() {
         return documentRepository.findAll();
     }
+
+    @Override
+    public List<Document> getByUserId(long userId) {
+        return documentRepository.findByUserId(userId);
+    }
 }

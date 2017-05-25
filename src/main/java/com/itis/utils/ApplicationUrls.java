@@ -53,9 +53,17 @@ public interface ApplicationUrls {
         String NEW = BASE_NEWS_URL + "/{newId}";
 
         String BASE_CERTIFICATE_URL = "/certificates";
+
         String BASE_DOCUMENTS_URL = "/documents";
 
         String CREATE_DOCUMENT_URL = BASE_DOCUMENTS_URL + "/new";
+
+        String TEACHER_FOLDERS_URL = BASE_DOCUMENTS_URL + "/teachers";
+
+        String TEACHER_DOCUMENTS_URL = TEACHER_FOLDERS_URL + "/{userId}";
+
+        String DEAN_DOCUMENTS_URK = BASE_DOCUMENTS_URL + "/dean";
+
     }
 
 }

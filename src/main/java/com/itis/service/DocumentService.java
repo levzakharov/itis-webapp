@@ -18,4 +18,5 @@ public interface DocumentService {
 
     List<Document> getAll();
 
+    List<Document> getByUserId(long userId);
 }

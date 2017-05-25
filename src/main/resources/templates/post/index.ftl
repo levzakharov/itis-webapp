@@ -69,9 +69,13 @@
             </#if>
             <#if post.documents?size != 0 >
                 <#list post.documents as document>
-                    <div style="display: table-cell; margin-bottom: auto" class="image"><a href="/files/${document.path}">
-                        <img style="width: 100px, height: auto;" src="/images/docicon.png"/>
-                        <p>${document.name}</p>
+                    <div style="display: table-cell; padding-right: 20px; text-align: center" class="image"><a
+                            href="/files/${document.path}">
+                        <img style="width: 50px;" src="/images/docicon.png"/>
+                        <p style="max-width: 50px; display: block; width: 100%; ">
+                        ${document.name?split(".")[1]} </p>
+                        <p style="max-width: 50px; overflow: hidden; display: block; width: 100%; word-wrap: break-word; max-height: 50px">
+                        ${document.name?substring(0, document.name?last_index_of("."))} </p>
                     </a>
                     </div>
                 </#list>
