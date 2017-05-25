@@ -1,8 +1,9 @@
 package com.itis.service;
 
+import com.itis.criteria.TimetableSearchCriteria;
 import com.itis.model.Event;
-import com.itis.model.User;
 import com.itis.model.UserGroup;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -12,15 +13,7 @@ import java.util.Map;
  */
 public interface EventService {
 
-    List<Event> getEventsByUser(User user);
+    Map<UserGroup, List<Event>> getTimetable(TimetableSearchCriteria criteria);
 
-    List<Event> getCurrentUserEvents();
-
-    List<Event> getScheduleByGroup(UserGroup userGroup);
-
-    Event getOne(Long id);
-
-    Map<UserGroup, Map<String, List<Event>>> getScheduleBetween(Long startDate, Long endDate);
-
-    Map<String, List<Event>> getScheduledBetweenByGroup(Long startDate, Long endDate, Long userGroupId);
+    void createTimetable(MultipartFile file);
 }

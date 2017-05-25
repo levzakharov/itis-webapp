@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 /**
  * Created by r.khakov
  */
-@ControllerAdvice
+@ControllerAdvice("com.itis.controller")
 public class GlobalController {
     private final UserNotificationService userNotificationService;
 
