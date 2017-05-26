@@ -62,7 +62,7 @@ public interface ApplicationUrls {
 
         String TEACHER_DOCUMENTS_URL = TEACHER_FOLDERS_URL + "/{userId}";
 
-        String DEAN_DOCUMENTS_URK = BASE_DOCUMENTS_URL + "/dean";
+        String DEAN_DOCUMENTS_URL = BASE_DOCUMENTS_URL + "/dean";
 
     }
 
