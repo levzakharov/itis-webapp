@@ -56,6 +56,7 @@ public interface ApplicationUrls {
 
         String BASE_CERTIFICATE_URL = "/certificates";
 
+        String BASE_RAITING_URL = "/raiting";
     }
 
 }
