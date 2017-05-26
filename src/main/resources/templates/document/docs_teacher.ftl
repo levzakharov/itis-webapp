@@ -9,20 +9,22 @@
             href="/documents/teachers/>${documents[0].user.id}">${documents[0].user.fullName}</a>
 </div>
     <@security.authorize access="hasAnyRole('TEACHER')">
-    <div class="add">
-        <div class="button">Добавить документ</div>
-        <div class="cancel">Отменить</div>
-        <div class="block">
-            <div class="title">Загрузка документа</div>
-            <form action="/documents/new" method="post" enctype="multipart/form-data">
-                <div class="name">
-                    <label> Документы
-                        <input type="file" multiple name="documents"></label>
-                </div>
-                <input type="submit" value="Загрузить">
-            </form>
+        <#if isOwner>
+        <div class="add">
+            <div class="button">Добавить документ</div>
+            <div class="cancel">Отменить</div>
+            <div class="block">
+                <div class="title">Загрузка документа</div>
+                <form action="/documents/new" method="post" enctype="multipart/form-data">
+                    <div class="name">
+                        <label> Документы
+                            <input type="file" multiple name="documents"></label>
+                    </div>
+                    <input type="submit" value="Загрузить">
+                </form>
+            </div>
         </div>
-    </div>
+        </#if>
     </@security.authorize>
 <div class="blocks">
     <#list documents as document>
