@@ -34,7 +34,9 @@ public interface ApplicationUrls {
 
         String LOGIN = "/login";
 
-        String BASE_SCHEDULE_URL = "/schedule";
+        String BASE_TIMETABLE_URL = "/timetable";
+        String TIMETABLE_SEARCH = BASE_TIMETABLE_URL + "/search";
+        String TIMETABLE_CSV = BASE_TIMETABLE_URL + "/csv";
 
         String BASE_NOTIFICATIONS_URL = "/notifications";
 
@@ -54,6 +56,7 @@ public interface ApplicationUrls {
 
         String BASE_CERTIFICATE_URL = "/certificates";
 
+<<<<<<< HEAD
         String BASE_DOCUMENTS_URL = "/documents";
 
         String CREATE_DOCUMENT_URL = BASE_DOCUMENTS_URL + "/new";
@@ -64,6 +67,8 @@ public interface ApplicationUrls {
 
         String DEAN_DOCUMENTS_URL = BASE_DOCUMENTS_URL + "/dean";
 
+=======
+>>>>>>> 5a397e5c043136174ae353e11244a7e11381210a
     }
 
 }

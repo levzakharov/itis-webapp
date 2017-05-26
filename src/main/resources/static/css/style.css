@@ -1,27 +1,22 @@
 html, body {
-    font-family: 'Open Sans', sans-serif;
-    width: 100%;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	width: 100%;
+	-webkit-font-smoothing: antialiased;
+	min-height: 100%;
 }
 
 * {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    margin: 0;
-    padding: 0;
-    color: #000;
-    -webkit-font-smoothing: antialiased;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: none;
 	text-decoration: none;
 	border: none;
 	border-radius: 0;
 	box-shadow: none;
-}
-
-input {
-	box-shadow: none;
-	outline: none;
 }
 
 /* MAIN STYLES */
@@ -329,6 +324,7 @@ header .user .notif .count span {
 	border: none ;
 	margin-top: 10px;
 	padding: 0;
+	cursor: pointer;
 }
 
 .container .content .blocks .block {
@@ -537,7 +533,7 @@ header .user .notif .count span {
 	min-width: 130px;
 	border: 1px solid #ddd;
 	padding: 5px;
-} 
+}
 
 .container .content .table table td:first-child, .container .content .table table th:first-child {
 	min-width: 100px;
@@ -581,74 +577,8 @@ header .user .notif .count span {
 	display: none;
 }
 
-.raiting iframe {
-	display: block ;
-	clear: both ;
-}
-
-/* CERTIFICATES PAGE */
-
-.certificates .title {
-	display: block;
-	float: none !important;
-	margin-bottom: 20px;
-}
-
-.certificates .filter {
-	display: block;
-	padding-bottom: 40px;
-	margin-bottom: 40px;
-	border-bottom: 1px solid #ddd;
-}
-
-.certificates .filter .button {
-	border-color: transparent !important;
-	background: #344c6d;
-	color: #fff;
-}
-
-.certificates .filter input {
-	border: 1px solid #ddd;
-	width: 40px;
-	height: 26px;
-	margin: 0 20px;
-	outline: none;
-	padding: 0 10px;
-}
-
-.certificates table {
+.response-container{
 	width: 100%;
-	text-align: center;
-	border-collapse: collapse;
-}
-
-.certificates table td, .certificates table th {
-	padding: 15px 0;
-	border: 1px solid #ddd;
-} 
-
-.certificates table td.ready {
-	background: rgba(0, 128, 0, 0.4);
-}
-
-.certificates table td.during {
-	background: rgba(255, 255, 0, 0.4);
-}
-
-.certificates .history .title {
-	font-size: 22px;
-}
-
-.container .history .button {
-	padding: 8px 24px;
-	border: 2px solid #ddd;
-	border-radius: 90px;
-	cursor: pointer;
-	border-color: transparent !important;
-	background: #344c6d;
-	color: #fff;
-	display: inline-block;
-	font-weight: 600;
 }
 
 /* MEDIA QUERIES */
@@ -675,7 +605,7 @@ header .user .notif .count span {
 	.signin-container .signin .logo img {
 		width: 220px;
 	}
-	
+
 	.signin-container .signin {
 		width: 300px;
 		margin-left: -200px;
@@ -720,4 +650,5 @@ header .user .notif .count span {
 		height: auto;
 	}
 }
+
 
