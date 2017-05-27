@@ -28,6 +28,8 @@ import java.util.Arrays;
 @RequestMapping(ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL)
 public class NotificationController {
 
+    private final String TEMPLATES_FOLDER = "notification/";
+
     private final NotificationService notificationService;
     private final UserNotificationService userNotificationService;
     private final UserGroupService userGroupService;
@@ -49,12 +51,11 @@ public class NotificationController {
                 (Arrays.asList(Role.STAROSTA, Role.WORKER, Role.TEACHER));
 
         if (CollectionUtils.containsAny(SecurityUtils.getCurrentUser().getRoles(), redirectRoles)) {
-            return "redirect:" + ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL + "/extended";
+            return "redirect:" + ApplicationUrls.WebAppUrls.EXTENDED_NOTIFICATIONS_URL;
         }
         modelMap.put("user_notifications", userNotificationService.getCurrentUserUserNotifications());
-        modelMap.put("username", SecurityUtils.getCurrentUser().getFullName());
 
-        return "notification/basic-notifications";
+        return TEMPLATES_FOLDER + "basic";
     }
 
     @GetMapping("/extended")
@@ -69,7 +70,7 @@ public class NotificationController {
         modelMap.put("groups_5", userGroupService.getUserGroupsByCourse(5));
         modelMap.put("groups_6", userGroupService.getUserGroupsByCourse(6));
 
-        return "notification/extended-notifications";
+        return TEMPLATES_FOLDER + "extended";
     }
 
     @PostMapping("/add")
@@ -87,8 +88,8 @@ public class NotificationController {
             modelMap.put("groups_5", userGroupService.getUserGroupsByCourse(5));
             modelMap.put("groups_6", userGroupService.getUserGroupsByCourse(6));
 
-            return "notification/extended-notifications";
+            return TEMPLATES_FOLDER + "extended";
         }
-        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL + "/extended";
+        return "redirect:" + ApplicationUrls.WebAppUrls.EXTENDED_NOTIFICATIONS_URL;
     }
 }

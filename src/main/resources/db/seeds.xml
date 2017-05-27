@@ -74,4 +74,11 @@
             <column name="id" type="numeric"/>
         </loadUpdateData>
     </changeSet>
+    <changeSet id="seeds_11" author="r.khakov">
+        <loadUpdateData tableName="decrees"
+                        primaryKey="id"
+                        file="db/seeds/changes/27051824/decrees.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
 </databaseChangeLog>

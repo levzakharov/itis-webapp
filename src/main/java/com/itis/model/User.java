@@ -45,6 +45,9 @@ public class User implements UserDetails {
     @JoinColumn(name = "user_id")
     private List<UserNotification> userNotifications;
 
+    private boolean contract;
+
+    private Long birthday;
 
     public Long getId() {
         return id;
@@ -149,5 +152,21 @@ public class User implements UserDetails {
 
     public void setUserNotifications(List<UserNotification> userNotifications) {
         this.userNotifications = userNotifications;
+    }
+
+    public boolean isContract() {
+        return contract;
+    }
+
+    public void setContract(boolean contract) {
+        contract = contract;
+    }
+
+    public Long getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Long birthday) {
+        this.birthday = birthday;
     }
 }
