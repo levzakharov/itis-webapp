@@ -19,4 +19,6 @@ public interface RequestService {
 
     void declineRequest(Long id);
 
+    String generateCertificate(String fullName);
+
 }

@@ -6,13 +6,14 @@ import com.itis.model.enums.RequestStatus;
 import com.itis.repository.RequestRepository;
 import com.itis.security.SecurityUtils;
 import com.itis.service.RequestService;
+import com.itis.utils.DocumentGenerator;
 import org.apache.log4j.Logger;
-import org.hibernate.exception.SQLGrammarException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -73,5 +74,15 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public void declineRequest(Long id) {
         requestRepository.decline(id);
+    }
+
+    @Override
+    public String generateCertificate(String fullName) {
+        try {
+            return DocumentGenerator.generateDocument(fullName);
+        } catch (IOException e) {
+            LOGGER.error("problems with generating file", e);
+            return null;
+        }
     }
 }
