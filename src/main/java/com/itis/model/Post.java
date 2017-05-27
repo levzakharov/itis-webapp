@@ -34,6 +34,11 @@ public class Post {
     @JoinColumn(name = "image_id"))
     private List<Image> images;
 
+    @ManyToMany
+    @JoinTable(name = "document_post", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns =
+    @JoinColumn(name = "document_id"))
+    private List<Document> documents;
+
     private long date;
 
     @ManyToOne
@@ -86,5 +91,13 @@ public class Post {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
     }
 }
