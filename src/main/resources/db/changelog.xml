@@ -25,6 +25,7 @@
     <include file="changelog/custom/post_image.xml" relativeToChangelogFile="true"/>
     <include file="changelog/custom/23051708.xml" relativeToChangelogFile="true"/>
     <include file="changelog/custom/26050146.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/custom/27051136.xml" relativeToChangelogFile="true"/>
 
     <!--Seeds-->
     <include file="seeds.xml" relativeToChangelogFile="true"/>
