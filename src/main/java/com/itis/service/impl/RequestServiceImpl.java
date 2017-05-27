@@ -36,7 +36,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<Request> getPendingRequests() {
         try {
-            return requestRepository.findByStatus(RequestStatus.PENDING);
+            return requestRepository.findByStatusOrderByDateDesc(RequestStatus.PENDING);
         } catch (Exception e) {
             LOGGER.error("No requests found in the database", e);
             return null;

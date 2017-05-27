@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class RequestController {
+
     private static final String TEMPLATES_FOLDER = "certificates/";
 
     private final RequestService requestService;
@@ -29,7 +30,6 @@ public class RequestController {
 
     @GetMapping(ApplicationUrls.WebAppUrls.BASE_REQUESTS_URL)
     public String getRequestsPage(Model model) {
-        System.out.println(ApplicationUrls.WebAppUrls.CREATE_REQUEST_URL);
 
         if (SecurityUtils.getCurrentUser().hasRole(Role.WORKER)) {
             model.addAttribute("pending_requests", requestService.getPendingRequests());
