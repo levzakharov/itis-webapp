@@ -19,8 +19,12 @@
                 <td>${request.user.fullName}</td>
                 <td>${request.amount}</td>
                 <td>
-                    <div class="button">Одобрить</div>
-                    <div class="button">Отклонить</div>
+                    <button class="button accept" value="${request.id}">
+                        Одобрить
+                    </button>
+                    <button class="button decline" value="${request.id}">
+                        Отклонить
+                    </button>
                 </td>
             </tr>
             </#list>
@@ -29,4 +33,4 @@
 </div>
 </#macro>
 
-<@main title="Справки" customClass=["certificates"]/>
+<@main title="Справки" customClass=["certificates"] customScripts=["/js/certificates.js"]/>
