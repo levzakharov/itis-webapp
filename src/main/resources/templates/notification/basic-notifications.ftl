@@ -7,6 +7,9 @@
 <div class="blocks">
     <#list user_notifications as user_notification>
         <div class="block">
+            <div class="image">
+                <a>Д</a>
+            </div>
             <div class="name">${user_notification.notification.theme}</div>
             <div class="date">${user_notification.notification.date?number_to_datetime}</div>
             <div class="text">${user_notification.notification.text}</div>

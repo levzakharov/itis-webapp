@@ -74,6 +74,9 @@
 <div class="blocks received">
     <#list received_notifications as user_notification>
         <div class="block">
+            <div class="image">
+                <a>Д</a>
+            </div>
             <div class="name">${user_notification.notification.theme}</div>
             <div class="date">${user_notification.notification.date?number_to_datetime}</div>
             <div class="text">${user_notification.notification.text}</div>
@@ -84,6 +87,9 @@
 <div class="blocks sent">
     <#list sent_notifications as notification>
         <div class="block">
+            <div class="image">
+                <a>Д</a>
+            </div>
             <div class="name">${notification.theme}</div>
             <div class="date">${notification.date?number_to_datetime}</div>
             <div class="text">${notification.text}</div>
