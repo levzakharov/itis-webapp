@@ -6,9 +6,9 @@
         <ul>
             <li><a href="/news">Новости</a></li>
             <li><a href="/timetable">Расписание</a></li>
-            <li><a href="#">Баллы</a></li>
+            <li><a href="/raiting">Баллы</a></li>
             <li><a href="#">Запрос в деканат</a></li>
-            <li><a href="#">Документы</a></li>
+            <li><a href="/documents">Документы</a></li>
         </ul>
     </div>
     <div class="exit">
