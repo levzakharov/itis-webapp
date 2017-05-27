@@ -28,6 +28,9 @@ public interface ApplicationUrls {
         String FIND_USER_URL = BASE_USERS_URL + "/search";
 
         String USER_URL = BASE_USERS_URL + "/{id}";
+
+        String BASE_TIMETABLE_URL = BASE_API_URL + "/timetable";
+
     }
 
     interface WebAppUrls {
