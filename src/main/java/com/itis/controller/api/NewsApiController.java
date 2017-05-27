@@ -8,21 +8,15 @@ import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 import io.swagger.annotations.ApiOperation;
-
-import java.util.List;
 
 /**
  * @author softi on 14.05.2017.
@@ -40,7 +34,7 @@ public class NewsApiController {
     @ApiOperation("Create Post. This method is expecting an object of class PostCreationForm for validation. There also should be a parametr 'action'")
     @PostMapping(value = ApplicationUrls.ApiUrls.BASE_NEWS_URL)
     public ResponseEntity<Post> createPost(@RequestBody PostCreationForm postCreationForm) {
-        return new ResponseEntity<>(postService.createByForm(postCreationForm), HttpStatus.OK);
+        return new ResponseEntity<>(postService.create(postCreationForm), HttpStatus.OK);
     }
 
     @ApiOperation("Get post by id")

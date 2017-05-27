@@ -581,6 +581,76 @@ header .user .notif .count span {
 	width: 100%;
 }
 
+.raiting iframe {
+	display: block ;
+	clear: both ;
+}
+
+/* CERTIFICATES PAGE */
+
+.certificates .title {
+	display: block;
+	float: none !important;
+	margin-bottom: 20px;
+}
+
+.certificates .filter {
+	display: block;
+	padding-bottom: 40px;
+	margin-bottom: 40px;
+	border-bottom: 1px solid #ddd;
+}
+
+.certificates .filter .button {
+	border-color: transparent !important;
+	background: #344c6d;
+	color: #fff;
+}
+
+.certificates .filter input {
+	border: 1px solid #ddd;
+	width: 40px;
+	height: 26px;
+	margin: 0 20px;
+	outline: none;
+	padding: 0 10px;
+}
+
+.certificates table {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.certificates table td, .certificates table th {
+	padding: 15px 0;
+	border: 1px solid #ddd;
+}
+
+.certificates table td.ready {
+	background: rgba(0, 128, 0, 0.4);
+}
+
+.certificates table td.during {
+	background: rgba(255, 255, 0, 0.4);
+}
+
+.certificates .history .title {
+	font-size: 22px;
+}
+
+.container .history .button {
+	padding: 8px 24px;
+	border: 2px solid #ddd;
+	border-radius: 90px;
+	cursor: pointer;
+	border-color: transparent !important;
+	background: #344c6d;
+	color: #fff;
+	display: inline-block;
+	font-weight: 600;
+}
+
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 1000px) {

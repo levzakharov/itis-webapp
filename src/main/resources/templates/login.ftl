@@ -3,15 +3,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Войти</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic" rel="stylesheet">
     <link href="/css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/window.css" type="text/css" rel="stylesheet" />
+    <link href="/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/js/window.js"></script>
 </head>
 <body>
+<div class="modal-container">
+    <div class="modal">
+        <i class="fa fa-times close" aria-hidden="true"></i>
+        <a>За восстановлением пароля обратитесь к администратору</a>
+    </div>
+</div>
 <div class="signin-container">
     <div class="signin">
         <div class="logo">
-            <img src="images/logo.png">
+            <img src="/images/logo.png">
         </div>
         <div class="signin-content">
             <form action="/login/process" method="post">
@@ -23,7 +33,7 @@
             </#if>
             </form>
             <div class="forgot">
-                <a href="#">Забыли свой пароль?</a>
+                <a>Забыли свой пароль?</a>
             </div>
         </div>
     </div>
