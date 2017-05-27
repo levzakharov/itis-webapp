@@ -1,9 +1,7 @@
 package com.itis.service.impl;
 
 import com.itis.model.User;
-import com.itis.model.UserGroup;
 import com.itis.repository.DecreesRepository;
-import com.itis.repository.UserGroupRepository;
 import com.itis.service.DecreeService;
 import org.springframework.beans.factory.annotation.Autowired;
 

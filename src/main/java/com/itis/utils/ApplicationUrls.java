@@ -64,6 +64,9 @@ public interface ApplicationUrls {
         String BASE_DOCUMENTS_URL = "/documents";
 
         String BASE_RAITING_URL = "/raiting";
+
+        String BASE_REQUESTS_URL = "/certificates";
+
     }
 
 }
