@@ -15,6 +15,8 @@ public interface ApplicationUrls {
 
         String BASE_NEWS_URL = BASE_API_URL + "/news";
 
+        String BASE_GROUPS_URL = BASE_API_URL + "/groups";
+
         String NEW_URL = BASE_NEWS_URL + "{postId}";
 
         String CREATE_NEWS_URL = BASE_NEWS_URL + "/new";
@@ -28,6 +30,8 @@ public interface ApplicationUrls {
         String FIND_USER_URL = BASE_USERS_URL + "/search";
 
         String USER_URL = BASE_USERS_URL + "/{id}";
+
+        String GROUPS_BY_COURSE = BASE_GROUPS_URL + "/{courseNumber}";
 
         String BASE_TIMETABLE_URL = BASE_API_URL + "/timetable";
 
