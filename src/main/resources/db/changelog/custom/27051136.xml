@@ -43,4 +43,18 @@
             UPDATE users SET birthday = 123456789123546;
         </rollback>
     </changeSet>
+
+    <changeSet id="27051136_5" author="al.leontyev">
+        <addColumn tableName="request">
+            <column name="amount" type="int"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="27051136_6" author="al.leontyev">
+        <dropColumn tableName="request" columnName="theme"/>
+        <dropColumn tableName="request" columnName="text"/>
+    </changeSet>
+
+
+
 </databaseChangeLog>

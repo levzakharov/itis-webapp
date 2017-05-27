@@ -607,7 +607,7 @@ header .user .notif .count span {
 	color: #fff;
 }
 
-.certificates .filter input {
+.certificates .filter input[type="number"] {
 	border: 1px solid #ddd;
 	width: 40px;
 	height: 26px;
@@ -633,6 +633,10 @@ header .user .notif .count span {
 
 .certificates table td.during {
 	background: rgba(255, 255, 0, 0.4);
+}
+
+.certificates table td.declined {
+	background: rgba(255, 0, 17, 0.64);
 }
 
 .certificates .history .title {

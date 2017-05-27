@@ -49,6 +49,8 @@ public interface ApplicationUrls {
 
         String EXTENDED_NOTIFICATIONS_URL = BASE_NOTIFICATIONS_URL + "/extended";
 
+        String CREATE_NOTIFICATION_URL = BASE_NOTIFICATIONS_URL + "/new";
+
         String BASE_NEWS_URL = "/news";
 
         String CREATE_NEWS_URL = BASE_NEWS_URL + "/new";
@@ -77,6 +79,11 @@ public interface ApplicationUrls {
 
         String BASE_REQUESTS_URL = "/certificates";
 
-    }
+        String CREATE_REQUEST_URL = BASE_REQUESTS_URL + "/new";
 
+        String ACCEPT_REQUEST_URL = BASE_REQUESTS_URL + "/{requestId}/accept";
+
+        String DECLINE_REQUEST_URL = BASE_REQUESTS_URL + "/{requestId}/decline";
+
+    }
 }

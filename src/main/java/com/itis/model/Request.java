@@ -17,9 +17,7 @@ public class Request {
     @GeneratedValue(generator = "request_gen", strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String theme;
-
-    private String text;
+    private Integer amount;
 
     private Long date;
 
@@ -36,22 +34,6 @@ public class Request {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTheme() {
-        return theme;
-    }
-
-    public void setTheme(String theme) {
-        this.theme = theme;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public Long getDate() {
@@ -76,5 +58,13 @@ public class Request {
 
     public void setStatus(RequestStatus status) {
         this.status = status;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }

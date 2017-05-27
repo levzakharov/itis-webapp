@@ -3,9 +3,11 @@
 <#macro m_body>
 <div class="title">Запросить справку</div>
 <div class="filter">
-    <a>Запросить справку об учебе в количестве: </a>
-    <input type="text">
-    <div class="button">Запросить</div>
+    <@form.form commandName="request_creation_form" action="/certificates/new" method="post">
+        <a>Запросить справку об учебе в количестве: </a>
+        <@form.input type="number" min="1" step="1" path="amount" />
+        <input type="submit" class="button" value="Запросить">
+    </@form.form>
 </div>
 <div class="history">
     <div class="title">История</div>
@@ -13,18 +15,27 @@
         <thead>
         <tr>
             <th>Дата запроса</th>
+            <th>Количество</th>
             <th>Готовность</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>19.01.17</td>
-            <td class="ready">Готово</td>
-        </tr>
-        <tr>
-            <td>21.01.17</td>
-            <td class="during">В процессе</td>
-        </tr>
+            <#list requests as request>
+                <#assign status = "${request.status}">
+            <tr>
+                <td>${request.date?number_to_datetime}</td>
+                <td>${request.amount}</td>
+                <#if status == 'ACCEPTED'>
+                    <td class="ready">Одобрено</td>
+                </#if>
+                <#if status == 'PENDING'>
+                    <td class="during">В процессе</td>
+                </#if>
+                <#if status == 'DECLINED'>
+                    <td class="declined">Отказано</td>
+                </#if>
+            </tr>
+            </#list>
         </tbody>
     </table>
 </div>

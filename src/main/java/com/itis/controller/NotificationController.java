@@ -15,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ import java.util.Arrays;
  * @author alt
  */
 @Controller
-@RequestMapping(ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL)
 public class NotificationController {
 
     private final String TEMPLATES_FOLDER = "notification/";
@@ -43,7 +41,7 @@ public class NotificationController {
         this.userGroupService = userGroupService;
     }
 
-    @GetMapping
+    @GetMapping(ApplicationUrls.WebAppUrls.BASE_NOTIFICATIONS_URL)
     public String getNotificationsPage(ModelMap modelMap) {
         userNotificationService.markUnreadNotificationsAsRead();
 
@@ -58,7 +56,7 @@ public class NotificationController {
         return TEMPLATES_FOLDER + "basic";
     }
 
-    @GetMapping("/extended")
+    @GetMapping(ApplicationUrls.WebAppUrls.EXTENDED_NOTIFICATIONS_URL)
     public String getSentNotificationsPage(ModelMap modelMap) {
         modelMap.put("sent_notifications", notificationService.getCurrentUserSentNotifications());
         modelMap.put("received_notifications", userNotificationService.getCurrentUserUserNotifications());
@@ -73,7 +71,7 @@ public class NotificationController {
         return TEMPLATES_FOLDER + "extended";
     }
 
-    @PostMapping("/add")
+    @PostMapping(ApplicationUrls.WebAppUrls.CREATE_NOTIFICATION_URL)
     public String sendNotification(@ModelAttribute(name = "notification_creation_form") @Valid
                                            NotificationCreationForm notificationCreationForm,
                                    BindingResult result, ModelMap modelMap) {

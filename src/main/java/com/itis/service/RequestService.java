@@ -11,7 +11,7 @@ import java.util.List;
 public interface RequestService {
     List<Request> getPendingRequests();
 
-    List<Request> getUserRequests();
+    List<Request> getCurrentUserRequests();
 
     void createRequest(RequestCreationForm form);
 

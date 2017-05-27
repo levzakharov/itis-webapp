@@ -18,7 +18,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
     List<Request> findByStatus(RequestStatus status);
 
-    List<Request> findByUser(User user);
+    List<Request> findByUserOrderByDateDesc(User user);
 
     @Query("UPDATE Request r SET r.status = 'ACCEPTED' WHERE r.id = :id")
     @Modifying

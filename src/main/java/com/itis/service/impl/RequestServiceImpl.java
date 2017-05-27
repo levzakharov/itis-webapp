@@ -44,9 +44,9 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public List<Request> getUserRequests() {
+    public List<Request> getCurrentUserRequests() {
         try {
-            return requestRepository.findByUser(SecurityUtils.getCurrentUser());
+            return requestRepository.findByUserOrderByDateDesc(SecurityUtils.getCurrentUser());
         } catch (Exception e) {
             LOGGER.error("No requests found in the database", e);
             return null;
@@ -59,8 +59,7 @@ public class RequestServiceImpl implements RequestService {
         request.setDate(new Date().getTime());
         request.setStatus(RequestStatus.PENDING);
         request.setUser(SecurityUtils.getCurrentUser());
-        request.setText("text");
-        request.setTheme("theme");
+        request.setAmount(form.getAmount());
         requestRepository.save(request);
     }
 

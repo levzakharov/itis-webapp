@@ -6,40 +6,24 @@
     <table>
         <thead>
         <tr>
+            <th>Дата запроса</th>
             <th>ФИО студента</th>
             <th>Количество</th>
             <th>Одобрить</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Шарипова Лия Ильдаровна</td>
-            <td>3</td>
-            <td>
-                <div class="button">Одобрить</div>
-            </td>
-        </tr>
-        <tr>
-            <td>Красноперова Елена Андреевна</td>
-            <td>1</td>
-            <td>
-                <div class="button">Одобрить</div>
-            </td>
-        </tr>
-        <tr>
-            <td>Шарипова Лия Ильдаровна</td>
-            <td>3</td>
-            <td>
-                <div class="button">Одобрить</div>
-            </td>
-        </tr>
-        <tr>
-            <td>Красноперова Елена Андреевна</td>
-            <td>1</td>
-            <td>
-                <div class="button">Одобрить</div>
-            </td>
-        </tr>
+            <#list pending_requests as request>
+            <tr>
+                <td>${request.date?number_to_datetime}</td>
+                <td>${request.user.fullName}</td>
+                <td>${request.amount}</td>
+                <td>
+                    <div class="button">Одобрить</div>
+                    <div class="button">Отклонить</div>
+                </td>
+            </tr>
+            </#list>
         </tbody>
     </table>
 </div>
