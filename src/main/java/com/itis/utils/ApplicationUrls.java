@@ -47,6 +47,8 @@ public interface ApplicationUrls {
 
         String BASE_NOTIFICATIONS_URL = "/notifications";
 
+        String EXTENDED_NOTIFICATIONS_URL = BASE_NOTIFICATIONS_URL + "/extended";
+
         String BASE_NEWS_URL = "/news";
 
         String CREATE_NEWS_URL = BASE_NEWS_URL + "/new";
