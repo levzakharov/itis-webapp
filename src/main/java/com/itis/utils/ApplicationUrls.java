@@ -33,6 +33,8 @@ public interface ApplicationUrls {
 
         String GROUPS_BY_COURSE = BASE_GROUPS_URL + "/{courseNumber}";
 
+        String BASE_TIMETABLE_URL = BASE_API_URL + "/timetable";
+
     }
 
     interface WebAppUrls {

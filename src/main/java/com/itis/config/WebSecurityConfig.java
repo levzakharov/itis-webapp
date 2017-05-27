@@ -3,8 +3,10 @@ package com.itis.config;
 import com.itis.security.CustomUserDetailsService;
 import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -14,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static com.itis.utils.ApplicationUrls.WebAppUrls.LOGIN;
 
+@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -49,10 +52,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/login")
                 .and()
-                .authorizeRequests().anyRequest().authenticated()
-                .antMatchers(LOGIN + "**").permitAll()
-                .antMatchers(ApplicationUrls.ApiUrls.BASE_USERS_URL).permitAll()
-                .antMatchers(ApplicationUrls.ApiUrls.BASE_NEWS_URL).permitAll()
+                .authorizeRequests()
+                .antMatchers("/swagger-ui.html").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
         ;
