@@ -655,6 +655,30 @@ header .user .notif .count span {
 	font-weight: 600;
 }
 
+.container .history .success{
+	padding: 8px 24px;
+	border: 2px solid #ddd;
+	border-radius: 90px;
+	cursor: pointer;
+	border-color: transparent !important;
+	background: #32bb5f;
+	color: #fff;
+	display: inline-block;
+	font-weight: 600;
+}
+
+.container .history .unsuccess{
+	padding: 8px 24px;
+	border: 2px solid #ddd;
+	border-radius: 90px;
+	cursor: pointer;
+	border-color: transparent !important;
+	background: #c54239;
+	color: #fff;
+	display: inline-block;
+	font-weight: 600;
+}
+
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 1000px) {
