@@ -52,6 +52,7 @@ public class NotificationController {
             return "redirect:" + ApplicationUrls.WebAppUrls.EXTENDED_NOTIFICATIONS_URL;
         }
         modelMap.put("user_notifications", userNotificationService.getCurrentUserUserNotifications());
+        modelMap.put("unread_notifications_count", userNotificationService.getCurrentUserUnreadUserNotifications().size());
 
         return TEMPLATES_FOLDER + "basic";
     }

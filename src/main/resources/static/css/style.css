@@ -577,6 +577,25 @@ header .user .notif .count span {
 	display: none;
 }
 
+.container .content.notifications .blocks .block .image {
+	width: 30px;
+	height: 30px;
+	text-align: center ;
+	line-height: 28px;
+	border: 1px solid #222;
+	border-radius: 90px;
+	float: left;
+	margin-right: 20px;
+}
+
+.container .content.notifications .blocks .block .image a {
+	font-size: 18px;
+}
+
+.container .content.notifications .blocks .block .text {
+	clear: both;
+}
+
 .response-container{
 	width: 100%;
 }
