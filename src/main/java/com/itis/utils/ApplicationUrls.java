@@ -69,6 +69,8 @@ public interface ApplicationUrls {
 
         String CREATE_DOCUMENT_URL = BASE_DOCUMENTS_URL + "/new";
 
+        String DELETE_DOCUMENT_URL = BASE_DOCUMENTS_URL + "/{documentId}/delete";
+
         String TEACHER_FOLDERS_URL = BASE_DOCUMENTS_URL + "/teachers";
 
         String TEACHER_DOCUMENTS_URL = TEACHER_FOLDERS_URL + "/{userId}";

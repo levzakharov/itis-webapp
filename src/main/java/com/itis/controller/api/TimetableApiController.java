@@ -39,8 +39,6 @@ public class TimetableApiController {
             @ApiImplicitParam(name = "personality")
     })
 
-    @ApiOperation("get table. In map you have a Day key and Timeline value. Timeline is Map with Time key and Event list values. " +
-            "For more information about parsing see timetable/*.ftl files")
     public Map<DayOfWeek, Map<EventInterval, List<Event>>> getSchedule(@ModelAttribute TimetableSearchCriteria criteria) {
         return eventService.getTimetable(criteria);
     }

@@ -47,7 +47,10 @@
             </#if>
         ${document.name}</a>
             <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <a href="#" onclick="document.forms['delete_${document.id}'].submit();"><i class="fa fa-times"
+                                                                                           aria-hidden="true"></i></a>
+                <form hidden action="/documents/${document.id}/delete" name="delete_${document.id}" method="post">
+                </form>
             </@security.authorize>
 
         </div>

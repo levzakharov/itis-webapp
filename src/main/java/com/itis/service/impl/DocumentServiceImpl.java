@@ -58,4 +58,15 @@ public class DocumentServiceImpl implements DocumentService {
     public List<Document> getByUserId(long userId) {
         return documentRepository.findByUserId(userId);
     }
+
+    @Override
+    public Document getById(long documentId) {
+        return documentRepository.findOne(documentId);
+    }
+
+    @Override
+    public void delete(Document document) {
+        storageService.delete(document.getPath());
+        documentRepository.delete(document);
+    }
 }

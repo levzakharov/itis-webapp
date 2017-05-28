@@ -48,6 +48,14 @@
                 <i class="fa fa-file" aria-hidden="true"></i>
             </#if>
         ${document.name}</a>
+            <@security.authorize access="hasAnyRole('TEACHER')">
+                <#if isOwner>
+                    <a href="#" onclick="document.forms['delete_${document.id}'].submit();"><i class="fa fa-times"
+                                                                                               aria-hidden="true"></i></a>
+                    <form hidden action="/documents/${document.id}/delete" name="delete_${document.id}" method="post">
+                    </form>
+                </#if>
+            </@security.authorize>
         </div>
     </#list>
 </div>

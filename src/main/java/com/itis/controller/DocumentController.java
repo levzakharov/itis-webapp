@@ -2,6 +2,7 @@ package com.itis.controller;
 
 import com.itis.form.DocumentCreationForm;
 import com.itis.model.Document;
+import com.itis.model.Post;
 import com.itis.model.User;
 import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
@@ -73,5 +74,20 @@ public class DocumentController {
             return "redirect:" + ApplicationUrls.WebAppUrls.TEACHER_FOLDERS_URL + "/" + user.getId();
         }
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_DOCUMENTS_URL;
+    }
+
+    @PostMapping(value = ApplicationUrls.WebAppUrls.DELETE_DOCUMENT_URL)
+    public String deletePost(@PathVariable long documentId) {
+        Document document = documentService.getById(documentId);
+        documentService.delete(document);
+
+        User user = SecurityUtils.getCurrentUser();
+        if (user.getRoles().contains(Role.ADMIN) || user.getRoles().contains(Role.WORKER)) {
+            return "redirect:" + ApplicationUrls.WebAppUrls.DEAN_DOCUMENTS_URL;
+        } else if (user.getRoles().contains(Role.TEACHER)) {
+            return "redirect:" + ApplicationUrls.WebAppUrls.TEACHER_FOLDERS_URL + "/" + user.getId();
+        }
+        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_DOCUMENTS_URL;
+
     }
 }
