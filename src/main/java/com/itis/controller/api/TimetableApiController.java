@@ -6,6 +6,7 @@ import com.itis.model.UserGroup;
 import com.itis.model.enums.EventInterval;
 import com.itis.service.EventService;
 import com.itis.utils.ApplicationUrls;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -38,6 +39,8 @@ public class TimetableApiController {
             @ApiImplicitParam(name = "personality")
     })
 
+    @ApiOperation("get table. In map you have a Day key and Timeline value. Timeline is Map with Time key and Event list values. " +
+            "For more information about parsing see timetable/*.ftl files")
     public Map<DayOfWeek, Map<EventInterval, List<Event>>> getSchedule(@ModelAttribute TimetableSearchCriteria criteria) {
         return eventService.getTimetable(criteria);
     }
