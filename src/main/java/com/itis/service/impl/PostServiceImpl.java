@@ -54,7 +54,7 @@ public class PostServiceImpl implements PostService {
         Post post1 = transformer.apply(form);
         post.setTitle(post1.getTitle());
         post.setText(post1.getText());
-        return postRepository.save(post1);
+        return postRepository.save(post);
     }
 
     @Override
