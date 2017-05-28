@@ -89,4 +89,18 @@ public interface ApplicationUrls {
 
         String GENERATE_CERTIFICATE_URL = BASE_REQUESTS_URL + "/{requestId}/generate";
     }
+
+    interface WebSocketsUrls {
+        String BASE_MESSAGES_URL = "/messages";
+
+        String MESSAGES_PREVIEW_URL = BASE_MESSAGES_URL + "-preview";
+
+        String MESSAGE_URL = BASE_MESSAGES_URL + "/{id}";
+
+        String READ_MESSAGE_URL = MESSAGE_URL + "/read";
+
+        String MESSAGES_FROM_USER_URL = BASE_MESSAGES_URL + "/{user}";
+
+        String MESSAGES_QUEUE_URL = "/queue/messages";
+    }
 }
