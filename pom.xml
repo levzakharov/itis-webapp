@@ -9,7 +9,7 @@
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <content>itis-webapp</content>
+    <name>itis-webapp</name>
     <description>ITIS CRM</description>
 
     <parent>
