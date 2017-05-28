@@ -2,7 +2,6 @@ package com.itis.service.impl;
 
 import com.itis.form.RequestCreationForm;
 import com.itis.model.Request;
-import com.itis.model.User;
 import com.itis.model.enums.RequestStatus;
 import com.itis.repository.RequestRepository;
 import com.itis.security.SecurityUtils;
@@ -109,9 +108,9 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public String generateCertificate(User user) {
+    public String generateCertificate(Long requestId) {
         try {
-            return documentGenerator.generateDocument(user);
+            return documentGenerator.generateDocument(requestRepository.findOne(requestId).getUser());
         } catch (IOException e) {
             LOGGER.error("problems with generating file", e);
             return null;

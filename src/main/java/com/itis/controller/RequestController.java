@@ -1,25 +1,19 @@
 package com.itis.controller;
 
 import com.itis.form.RequestCreationForm;
-import com.itis.model.User;
 import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
 import com.itis.service.RequestService;
 import com.itis.service.UserService;
 import com.itis.storage.StorageService;
 import com.itis.utils.ApplicationUrls;
-import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * @author r.khakov
@@ -65,23 +59,25 @@ public class RequestController {
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_REQUESTS_URL;
     }
 
+    @ResponseBody
     @PostMapping(ApplicationUrls.WebAppUrls.ACCEPT_REQUEST_URL)
     public String acceptRequest(@PathVariable long requestId) {
         requestService.acceptRequest(requestId);
-        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_REQUESTS_URL;
+        return "success";
     }
 
+    @ResponseBody
     @PostMapping(ApplicationUrls.WebAppUrls.DECLINE_REQUEST_URL)
     public String declineRequest(@PathVariable long requestId) {
         requestService.declineRequest(requestId);
-        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_REQUESTS_URL;
+        return "success";
     }
 
-    @GetMapping(value = "/document")
+    @GetMapping(value = ApplicationUrls.WebAppUrls.GENERATE_CERTIFICATE_URL, produces = "application/docx")
     @ResponseBody
-    public ResponseEntity<Resource> getDocument() {
-        User user = userService.getByRole(Role.STUDENT).get(2);
-        Resource file = storageService.loadAsResourceDocument(requestService.generateCertificate(user));
+    public ResponseEntity<Resource> generateCertificate(@PathVariable long requestId) {
+
+        Resource file = storageService.loadAsResourceDocument(requestService.generateCertificate(requestId));
         return ResponseEntity
                 .ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")

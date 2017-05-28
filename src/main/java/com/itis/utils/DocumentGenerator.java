@@ -39,18 +39,20 @@ public class DocumentGenerator {
 
     private final DecreeService decreeService;
     private final UserGroupService userGroupService;
+    private final Transliterator transliterator;
 
     @Autowired
     public DocumentGenerator(DecreeService decreeService, UserGroupService userGroupService,
-                             StorageProperties storageProperties) {
+                             StorageProperties storageProperties, Transliterator transliterator) {
         this.decreeService = decreeService;
         this.userGroupService = userGroupService;
+        this.transliterator = transliterator;
         this.DOCUMENT_LOCATION = storageProperties.getDocumentLocation() + "/";
     }
 
     public String generateDocument(User user) throws IOException {
         String filePath = DOCUMENT_LOCATION + DOCUMENT_NAME;
-        String documentName = user.getFullName() + "-" + new Date().getTime() + ".docx";
+        String documentName = transliterator.transliterate(user.getFullName()) + "-" + new Date().getTime() + ".docx";
         String outPath = DOCUMENT_LOCATION + documentName;
         Calendar birthday = Calendar.getInstance();
         birthday.setTimeInMillis(user.getBirthday());
@@ -79,7 +81,6 @@ public class DocumentGenerator {
                 text = text.replace(DECREES_TO_REPLACE, decreeService.getDecreeTextByUser(user));
                 text = text.replace(END_DATE_TO_REPLACE, (user.getUserGroup().getStartYear() + 4) + "");
                 text = text.replace(CURRENT_DATE_TO_REPLACE, sdf.format(new Date()));
-                System.out.println(text);
                 // Add new run with updated text
                 for (int i = numberOfRuns -1; i>-1;i--) {
                     p.removeRun(i);

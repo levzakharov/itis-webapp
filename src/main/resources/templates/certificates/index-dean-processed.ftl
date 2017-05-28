@@ -20,7 +20,9 @@
                 <td>${request.user.fullName}</td>
                 <td>${request.amount}</td>
                 <#if status == 'ACCEPTED'>
-                    <td class="ready">Одобрено</td>
+                    <td class="ready">
+                        <a href="/certificates/${request.id}/generate"><i class="fa fa-file-word-o" aria-hidden="true"></i></a> Одобрено
+                    </td>
                 </#if>
                 <#if status == 'DECLINED'>
                     <td class="declined">Отказано</td>
