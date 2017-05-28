@@ -26,6 +26,7 @@ public class GlobalController {
     public void getFullName(ModelMap model) {
         if (SecurityContextHolder.getContext().getAuthentication() instanceof UsernamePasswordAuthenticationToken) {
             model.addAttribute("username", SecurityUtils.getCurrentUser().getFullName());
+            model.addAttribute("docuser", SecurityUtils.getCurrentUser());
         }
     }
 

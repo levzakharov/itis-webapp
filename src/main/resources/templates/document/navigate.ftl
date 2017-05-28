@@ -2,6 +2,14 @@
 
 <#macro m_body>
 <div class="title"><a href="/documents">Документы</a></div>
+<div class="title">
+    <@security.authorize access="hasAnyRole('TEACHER')">
+        (<a href="/documents">Все</a> / <a href="/documents/teachers/${docuser.id}">Мои</a>)
+    </@security.authorize>
+    <@security.authorize access="hasAnyRole('ADMIN', 'WORKER')">
+        (<a href="/documents">Все</a> / <a href="/documents/dean">Мои</a>)
+    </@security.authorize>
+</div>
 <div class="blocks">
     <div class="block">
         <i class="fa fa-folder" aria-hidden="true"></i>

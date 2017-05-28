@@ -45,7 +45,10 @@ public class UserGroupServiceImpl implements UserGroupService {
         return userGroups;
     }
 
-    @Override
+    public UserGroup getUserGroup(long id) {
+        return userGroupRepository.findOne(id);
+    }
+
     public Integer getCourseByUserGroups(UserGroup userGroup) {
         Calendar currentDate = Calendar.getInstance();
         int currentMonth = currentDate.get(Calendar.MONTH);

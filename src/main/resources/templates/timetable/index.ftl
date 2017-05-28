@@ -2,8 +2,19 @@
 
 <#macro m_body>
     <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
-    <div class="upload">
-        <a href="#">Загрузить расписание через csv файл</a>
+    <div class="add">
+        <div class="button">Загрузить расписание через csv файл</div>
+        <div class="cancel">Отменить</div>
+        <div class="block">
+            <div class="title">Загрузка документа</div>
+            <form action="/timetable/csv" method="post" enctype="multipart/form-data">
+                <div class="name">
+                    <label> CSV-файл
+                        <input type="file" name="file"></label>
+                </div>
+                <input type="submit" value="Загрузить">
+            </form>
+        </div>
     </div>
     </@security.authorize>
 <div class="filter">
@@ -30,4 +41,4 @@
 </div>
 </#macro>
 
-<@main title="Расписание" customScripts=["/js/timetable.js"]/>
+<@main title="Расписание" customScripts=["/js/timetable.js", "/js/jquery-1.11.3.min.js",  "/js/news.js"]/>
