@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by maratgatin on 27/05/2017.
+ * @author maratgatin on 27/05/2017.
  */
 @Controller
 @RequestMapping(ApplicationUrls.WebAppUrls.BASE_RAITING_URL)

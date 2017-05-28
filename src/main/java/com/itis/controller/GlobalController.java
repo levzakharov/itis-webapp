@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
- * Created by r.khakov
+ * @author r.khakov
  */
 @ControllerAdvice("com.itis.controller")
 public class GlobalController {

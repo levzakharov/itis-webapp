@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface DecreesRepository extends JpaRepository<Decree, Long> {
+
     Decree getDecreeByStartsYear(Integer startsYear);
+
 }

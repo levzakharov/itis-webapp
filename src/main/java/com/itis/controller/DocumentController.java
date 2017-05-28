@@ -19,15 +19,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by softi on 24.05.2017.
+ * @author softi on 24.05.2017.
  */
 @Controller
 public class DocumentController {
-    @Autowired
-    private DocumentService documentService;
+
+    private final DocumentService documentService;
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
+    public DocumentController(DocumentService documentService, UserService userService) {
+        this.documentService = documentService;
+        this.userService = userService;
+    }
 
     @GetMapping(value = ApplicationUrls.WebAppUrls.BASE_DOCUMENTS_URL)
     public String getDocumentsPage() {

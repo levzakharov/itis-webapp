@@ -1,22 +1,20 @@
 package com.itis.form;
 
 import javax.validation.constraints.NotNull;
-
 import java.time.DayOfWeek;
-import java.util.Date;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
  */
 public class EventCreationForm {
 
-    @NotNull(message = "неверный день")
+    @NotNull(message = "Неверный день")
     private String day;
 
-    @NotNull(message = "отсутствует описание")
+    @NotNull(message = "Отсутствует описание")
     private String description;
 
-    @NotNull(message = "отсутствует место проведения")
+    @NotNull(message = "Отсутствует место проведения")
     private String place;
 
     public EventCreationForm(DayOfWeek day, String description, String place) {

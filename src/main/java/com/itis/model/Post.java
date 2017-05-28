@@ -1,17 +1,7 @@
 package com.itis.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 /**
  * @author softi on 01.05.2017.

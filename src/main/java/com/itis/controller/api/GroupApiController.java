@@ -19,6 +19,7 @@ import java.util.Map;
  */
 @RestController
 public class GroupApiController {
+
     private final UserGroupService userGroupService;
 
     @Autowired

@@ -12,10 +12,11 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by r.khakov
+ * @author r.khakov
  */
 @Service
 public class UserGroupServiceImpl implements UserGroupService {
+
     private final UserGroupRepository userGroupRepository;
 
     @Autowired
@@ -43,6 +44,7 @@ public class UserGroupServiceImpl implements UserGroupService {
         }
         return userGroups;
     }
+
     @Override
     public Integer getCourseByUserGroups(UserGroup userGroup) {
         Calendar currentDate = Calendar.getInstance();

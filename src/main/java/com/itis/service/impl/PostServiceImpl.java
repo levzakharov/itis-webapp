@@ -1,6 +1,5 @@
 package com.itis.service.impl;
 
-import com.itis.model.Image;
 import com.itis.form.PostCreationForm;
 import com.itis.model.Post;
 import com.itis.repository.PostRepository;
@@ -12,9 +11,7 @@ import com.itis.transformers.PostCreationFormToPostTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,20 +21,19 @@ import java.util.List;
 @Transactional
 public class PostServiceImpl implements PostService {
 
-    @Autowired
     private PostRepository postRepository;
-
-    @Autowired
     private PostCreationFormToPostTransformer transformer;
-
-    @Autowired
     private ImageService imageService;
-
-    @Autowired
     private DocumentService documentService;
 
     @Autowired
-    private StorageService storageService;
+    public PostServiceImpl(PostRepository postRepository, PostCreationFormToPostTransformer transformer,
+                           ImageService imageService, DocumentService documentService, StorageService storageService) {
+        this.postRepository = postRepository;
+        this.transformer = transformer;
+        this.imageService = imageService;
+        this.documentService = documentService;
+    }
 
     public List<Post> getAllOrderByDateDesc() {
         return postRepository.findAllByOrderByDateDesc();
@@ -61,7 +57,6 @@ public class PostServiceImpl implements PostService {
         return postRepository.save(post1);
     }
 
-
     @Override
     public void delete(Post post) {
         postRepository.delete(post);
@@ -75,6 +70,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post create(PostCreationForm postCreationForm) {
         Post post = transformer.apply(postCreationForm);
+
         if (postCreationForm.getImages() != null && postCreationForm.getImages().get(0).getOriginalFilename().length() > 0) {
             post.setImages(imageService.create(postCreationForm.getImages()));
         }
@@ -83,5 +79,4 @@ public class PostServiceImpl implements PostService {
         }
         return postRepository.save(post);
     }
-
 }

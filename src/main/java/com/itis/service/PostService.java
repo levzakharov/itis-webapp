@@ -6,7 +6,7 @@ import com.itis.model.Post;
 import java.util.List;
 
 /**
- * Created by softi on 01.05.2017.
+ * @author softi on 01.05.2017.
  */
 public interface PostService {
 
