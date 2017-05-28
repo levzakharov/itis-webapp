@@ -2,6 +2,7 @@ package com.itis.service.impl;
 
 import com.itis.form.RequestCreationForm;
 import com.itis.model.Request;
+import com.itis.model.User;
 import com.itis.model.enums.RequestStatus;
 import com.itis.repository.RequestRepository;
 import com.itis.security.SecurityUtils;
@@ -27,10 +28,11 @@ public class RequestServiceImpl implements RequestService {
 
     @Lazy
     private final RequestRepository requestRepository;
-
+    private final DocumentGenerator documentGenerator;
     @Autowired
-    public RequestServiceImpl(RequestRepository requestRepository) {
+    public RequestServiceImpl(RequestRepository requestRepository, DocumentGenerator documentGenerator) {
         this.requestRepository = requestRepository;
+        this.documentGenerator = documentGenerator;
     }
 
     @Override
@@ -96,9 +98,9 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public String generateCertificate(String fullName) {
+    public String generateCertificate(User user) {
         try {
-            return DocumentGenerator.generateDocument(fullName);
+            return documentGenerator.generateDocument(user);
         } catch (IOException e) {
             LOGGER.error("problems with generating file", e);
             return null;
