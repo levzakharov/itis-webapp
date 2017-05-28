@@ -1,7 +1,6 @@
 package com.itis.storage;
 
 
-import liquibase.util.FileUtil;
 import liquibase.util.file.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -10,24 +9,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Date;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 @Service
 public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;
+    private final Path documentLocation;
 
     @Autowired
     public FileSystemStorageService(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
+        this.documentLocation = Paths.get(properties.getDocumentLocation());
     }
 
     @Override
@@ -50,18 +48,27 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public Resource loadAsResource(String filename) {
+    public Resource loadAsResourceFile(String filename) {
+        return loadAsResource(load(filename));
+    }
+
+    @Override
+    public Resource loadAsResourceDocument(String documentName) {
+        return loadAsResource(documentLocation.resolve(documentName));
+    }
+
+    @Override
+    public Resource loadAsResource(Path file) {
         try {
-            Path file = load(filename);
             Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
                 return resource;
             } else {
-                throw new StorageFileNotFoundException("Could not read file: " + filename);
+                throw new StorageFileNotFoundException("Could not read file: " + file.getFileName());
 
             }
         } catch (MalformedURLException e) {
-            throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+            throw new StorageFileNotFoundException("Could not read file: " + file.getFileName(), e);
         }
     }
 

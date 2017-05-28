@@ -12,10 +12,11 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by r.khakov
+ * @author r.khakov
  */
 @Service
 public class UserGroupServiceImpl implements UserGroupService {
+
     private final UserGroupRepository userGroupRepository;
 
     @Autowired
@@ -44,8 +45,17 @@ public class UserGroupServiceImpl implements UserGroupService {
         return userGroups;
     }
 
-    @Override
     public UserGroup getUserGroup(long id) {
         return userGroupRepository.findOne(id);
+    }
+
+    public Integer getCourseByUserGroups(UserGroup userGroup) {
+        Calendar currentDate = Calendar.getInstance();
+        int currentMonth = currentDate.get(Calendar.MONTH);
+        int groupsStartYear = userGroup.getStartYear();
+        if (currentMonth > 8) {
+            groupsStartYear--;
+        }
+        return currentDate.get(Calendar.YEAR) - groupsStartYear;
     }
 }

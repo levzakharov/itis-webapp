@@ -13,17 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by softi on 19.05.2017.
+ * @author softi on 19.05.2017.
  */
 @Service
 @Transactional
 public class ImageServiceImpl implements ImageService {
 
-    @Autowired
-    ImageRepository imageRepository;
+    private final ImageRepository imageRepository;
+    private final StorageService storageService;
 
     @Autowired
-    StorageService storageService;
+    public ImageServiceImpl(ImageRepository imageRepository, StorageService storageService) {
+        this.imageRepository = imageRepository;
+        this.storageService = storageService;
+    }
 
     public Image create(MultipartFile multipartFile) {
         Image image = new Image();

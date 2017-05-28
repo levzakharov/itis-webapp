@@ -577,6 +577,25 @@ header .user .notif .count span {
 	display: none;
 }
 
+.container .content.notifications .blocks .block .image {
+	width: 30px;
+	height: 30px;
+	text-align: center ;
+	line-height: 28px;
+	border: 1px solid #222;
+	border-radius: 90px;
+	float: left;
+	margin-right: 20px;
+}
+
+.container .content.notifications .blocks .block .image a {
+	font-size: 18px;
+}
+
+.container .content.notifications .blocks .block .text {
+	clear: both;
+}
+
 .response-container{
 	width: 100%;
 }
@@ -589,7 +608,6 @@ header .user .notif .count span {
 /* CERTIFICATES PAGE */
 
 .certificates .title {
-	display: block;
 	float: none !important;
 	margin-bottom: 20px;
 }
@@ -607,7 +625,7 @@ header .user .notif .count span {
 	color: #fff;
 }
 
-.certificates .filter input {
+.certificates .filter input[type="number"] {
 	border: 1px solid #ddd;
 	width: 40px;
 	height: 26px;
@@ -635,6 +653,10 @@ header .user .notif .count span {
 	background: rgba(255, 255, 0, 0.4);
 }
 
+.certificates table td.declined {
+	background: rgba(255, 0, 17, 0.64);
+}
+
 .certificates .history .title {
 	font-size: 22px;
 }
@@ -650,6 +672,49 @@ header .user .notif .count span {
 	display: inline-block;
 	font-weight: 600;
 }
+
+.container .history .success{
+	padding: 8px 24px;
+	border: 2px solid #ddd;
+	border-radius: 90px;
+	cursor: pointer;
+	border-color: transparent !important;
+	background: #32bb5f;
+	color: #fff;
+	display: inline-block;
+	font-weight: 600;
+}
+
+.container .history .unsuccess{
+	padding: 8px 24px;
+	border: 2px solid #ddd;
+	border-radius: 90px;
+	cursor: pointer;
+	border-color: transparent !important;
+	background: #c54239;
+	color: #fff;
+	display: inline-block;
+	font-weight: 600;
+}
+
+.justify-container{
+	text-align: justify;
+}
+
+.justify-block{
+	display: inline-block;
+	*display: inline;
+	zoom: 1
+}
+
+.stretch{
+	width: 100%;
+	display: inline-block;
+	font-size: 0;
+	line-height: 0
+}
+
+
 
 /* MEDIA QUERIES */
 

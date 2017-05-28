@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * Created by softi on 23.05.2017.
+ * @author softi on 23.05.2017.
  */
 public interface DocumentRepository extends JpaRepository<Document, Long> {
 

@@ -112,6 +112,7 @@
             <version>1.4</version>
         </dependency>
 
+        <!--Servlet API-->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
@@ -122,6 +123,24 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
+
+        <!--Apache poi-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>3.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.12</version>
+        </dependency>
+
 
     </dependencies>
 

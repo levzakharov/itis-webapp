@@ -25,7 +25,7 @@ public class Notification {
     private Long date;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
 

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @SequenceGenerator(name = "user_seq",
         sequenceName = "user_seq", allocationSize = 1, initialValue = 50)
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(generator = "user_seq")
     private Long id;
@@ -45,6 +46,9 @@ public class User implements UserDetails {
     @JoinColumn(name = "user_id")
     private List<UserNotification> userNotifications;
 
+    private boolean contract;
+
+    private Long birthday;
 
     public Long getId() {
         return id;
@@ -119,6 +123,10 @@ public class User implements UserDetails {
         ).collect(Collectors.toSet());
     }
 
+    public boolean hasRole(Role role) {
+        return this.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_" + role));
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -145,5 +153,21 @@ public class User implements UserDetails {
 
     public void setUserNotifications(List<UserNotification> userNotifications) {
         this.userNotifications = userNotifications;
+    }
+
+    public boolean isContract() {
+        return contract;
+    }
+
+    public void setContract(boolean contract) {
+        contract = contract;
+    }
+
+    public Long getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Long birthday) {
+        this.birthday = birthday;
     }
 }

@@ -19,15 +19,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by softi on 24.05.2017.
+ * @author softi on 24.05.2017.
  */
 @Controller
 public class DocumentController {
-    @Autowired
-    private DocumentService documentService;
+
+    private final DocumentService documentService;
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
+    public DocumentController(DocumentService documentService, UserService userService) {
+        this.documentService = documentService;
+        this.userService = userService;
+    }
 
     @GetMapping(value = ApplicationUrls.WebAppUrls.BASE_DOCUMENTS_URL)
     public String getDocumentsPage() {
@@ -41,7 +45,7 @@ public class DocumentController {
     }
 
     @GetMapping(value = ApplicationUrls.WebAppUrls.TEACHER_DOCUMENTS_URL)
-    public String getTeacherDocumentsPage(@PathVariable int userId, ModelMap modelMap ) {
+    public String getTeacherDocumentsPage(@PathVariable int userId, ModelMap modelMap) {
         boolean isOwner = SecurityUtils.getCurrentUser().getId() == userId;
         modelMap.put("documents", documentService.getByUserId(userId));
         modelMap.put("isOwner", isOwner);
@@ -69,6 +73,5 @@ public class DocumentController {
             return "redirect:" + ApplicationUrls.WebAppUrls.TEACHER_FOLDERS_URL + "/" + user.getId();
         }
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_DOCUMENTS_URL;
-
     }
 }

@@ -47,6 +47,10 @@ public interface ApplicationUrls {
 
         String BASE_NOTIFICATIONS_URL = "/notifications";
 
+        String EXTENDED_NOTIFICATIONS_URL = BASE_NOTIFICATIONS_URL + "/extended";
+
+        String CREATE_NOTIFICATION_URL = BASE_NOTIFICATIONS_URL + "/new";
+
         String BASE_NEWS_URL = "/news";
 
         String CREATE_NEWS_URL = BASE_NEWS_URL + "/new";
@@ -61,8 +65,6 @@ public interface ApplicationUrls {
 
         String NEW = BASE_NEWS_URL + "/{newId}";
 
-        String BASE_CERTIFICATE_URL = "/certificates";
-
         String BASE_DOCUMENTS_URL = "/documents";
 
         String CREATE_DOCUMENT_URL = BASE_DOCUMENTS_URL + "/new";
@@ -74,6 +76,17 @@ public interface ApplicationUrls {
         String DEAN_DOCUMENTS_URL = BASE_DOCUMENTS_URL + "/dean";
 
         String BASE_RAITING_URL = "/raiting";
-    }
 
+        String BASE_REQUESTS_URL = "/certificates";
+
+        String PROCESSED_REQUESTS_URL = BASE_REQUESTS_URL + "/processed";
+
+        String CREATE_REQUEST_URL = BASE_REQUESTS_URL + "/new";
+
+        String ACCEPT_REQUEST_URL = BASE_REQUESTS_URL + "/{requestId}/accept";
+
+        String DECLINE_REQUEST_URL = BASE_REQUESTS_URL + "/{requestId}/decline";
+
+        String GENERATE_CERTIFICATE_URL = BASE_REQUESTS_URL + "/{requestId}/generate";
+    }
 }

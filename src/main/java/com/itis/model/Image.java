@@ -4,11 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Created by softi on 15.05.2017.
+ * @author softi on 15.05.2017.
  */
 @Entity
 @Table(name = "image", schema = "public")
 public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image_id_sequence")
     @SequenceGenerator(name = "image_id_sequence", sequenceName = "image_seq", allocationSize = 1, initialValue = 50)

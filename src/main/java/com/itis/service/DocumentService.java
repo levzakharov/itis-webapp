@@ -7,9 +7,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * Created by softi on 23.05.2017.
+ * @author softi on 23.05.2017.
  */
 public interface DocumentService {
+
     Document create(MultipartFile multipartFile);
 
     List<Document> create(List<MultipartFile> multipartFiles);
@@ -19,4 +20,5 @@ public interface DocumentService {
     List<Document> getAll();
 
     List<Document> getByUserId(long userId);
+
 }

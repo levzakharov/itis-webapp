@@ -14,16 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by softi on 23.05.2017.
+ * @author softi on 23.05.2017.
  */
 @Service
-public class DocumentServiceIMPL implements DocumentService {
+public class DocumentServiceImpl implements DocumentService {
 
-    @Autowired
     private DocumentRepository documentRepository;
+    private StorageService storageService;
 
     @Autowired
-    private StorageService storageService;
+    public DocumentServiceImpl(DocumentRepository documentRepository, StorageService storageService) {
+        this.documentRepository = documentRepository;
+        this.storageService = storageService;
+    }
 
     @Override
     public Document create(MultipartFile multipartFile) {

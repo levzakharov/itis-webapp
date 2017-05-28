@@ -7,7 +7,7 @@
     <div class="block">
         <div class="title">Создание уведомления</div>
 
-        <@form.form commandName="notification_creation_form" action="/notifications/add" method="post">
+        <@form.form commandName="notification_creation_form" action="/notifications/new" method="post">
             <@security.authorize access="hasAnyRole('WORKER', 'ADMIN','TEACHER')">
                 <div class="name">
                     <div class="sub">Кому</div>
@@ -56,9 +56,9 @@
             <div class="text">
                 <@form.textarea path="text" required="required" placeholder="Текст"/>
             </div>
-        <div class="text">
-            <@form.errors path="text" cssStyle="color: #ab2020;"/>
-        </div>
+            <div class="text">
+                <@form.errors path="text" cssStyle="color: #ab2020;"/>
+            </div>
             <img>
             <input type="submit" value="Создать">
         </@form.form>
@@ -74,8 +74,31 @@
 <div class="blocks received">
     <#list received_notifications as user_notification>
         <div class="block">
+            <div class="image">
+                <a>
+                    <#list user_notification.notification.user.roles as role >
+                        <#assign userRole = "${role}">
+
+                        <#if userRole == 'STAROSTA'>
+                            С
+                            <#break>
+                        </#if>
+
+                        <#if userRole == 'TEACHER'>
+                            П
+                            <#break>
+                        </#if>
+
+                        <#if userRole == 'WORKER'>
+                            Д
+                            <#break>
+                        </#if>
+                    </#list>
+                </a>
+            </div>
             <div class="name">${user_notification.notification.theme}</div>
-            <div class="date">${user_notification.notification.date?number_to_datetime}</div>
+            <div class="date">${user_notification.notification.date?number_to_datetime}
+                от ${user_notification.notification.user.fullName}</div>
             <div class="text">${user_notification.notification.text}</div>
         </div>
     </#list>
@@ -84,6 +107,28 @@
 <div class="blocks sent">
     <#list sent_notifications as notification>
         <div class="block">
+            <div class="image">
+                <a>
+                    <#list notification.user.roles as role >
+                        <#assign userRole = "${role}">
+
+                        <#if userRole == 'STAROSTA'>
+                            С
+                            <#break>
+                        </#if>
+
+                        <#if userRole == 'TEACHER'>
+                            П
+                            <#break>
+                        </#if>
+
+                        <#if userRole == 'WORKER'>
+                            Д
+                            <#break>
+                        </#if>
+                    </#list>
+                </a>
+            </div>
             <div class="name">${notification.theme}</div>
             <div class="date">${notification.date?number_to_datetime}</div>
             <div class="text">${notification.text}</div>

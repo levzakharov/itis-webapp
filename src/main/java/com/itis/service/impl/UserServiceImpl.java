@@ -11,14 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by softi on 25.05.2017.
+ * @author softi on 25.05.2017.
  */
 @Service
-public class UserServiceIMPL implements UserService {
+public class UserServiceImpl implements UserService {
 
-    @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public List<User> getAll() {
@@ -29,7 +32,7 @@ public class UserServiceIMPL implements UserService {
     public List<User> getByRole(Role role) {
         List<User> users = getAll();
         List<User> teachers = new ArrayList<>();
-        for (User user : users){
+        for (User user : users) {
             if (user.getRoles().contains(role)) {
                 teachers.add(user);
             }
