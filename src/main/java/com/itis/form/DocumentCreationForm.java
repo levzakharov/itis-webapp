@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class DocumentCreationForm {
 
-    @NotNull(message = "Documents requered!")
+    @NotNull(message = "Отсутствуют документы")
     private List<MultipartFile> documents;
 
     public List<MultipartFile> getDocuments() {

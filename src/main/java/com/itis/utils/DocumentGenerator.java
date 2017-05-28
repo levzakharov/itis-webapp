@@ -57,8 +57,10 @@ public class DocumentGenerator {
         Calendar birthday = Calendar.getInstance();
         birthday.setTimeInMillis(user.getBirthday());
         String userCourse = userGroupService.getCourseByUserGroups(user.getUserGroup()).toString();
-        String contract = user.isContract()?"контракт":"бюджет";
+        String contract = user.isContract() ? "контракт" : "бюджет";
+
         XWPFDocument doc = new XWPFDocument(new FileInputStream(filePath));
+
         for (XWPFParagraph p : doc.getParagraphs()) {
             int numberOfRuns = p.getRuns().size();
             // Collate text of all runs
@@ -82,7 +84,7 @@ public class DocumentGenerator {
                 text = text.replace(END_DATE_TO_REPLACE, (user.getUserGroup().getStartYear() + 4) + "");
                 text = text.replace(CURRENT_DATE_TO_REPLACE, sdf.format(new Date()));
                 // Add new run with updated text
-                for (int i = numberOfRuns -1; i>-1;i--) {
+                for (int i = numberOfRuns - 1; i > -1; i--) {
                     p.removeRun(i);
                 }
                 XWPFRun run = p.createRun();

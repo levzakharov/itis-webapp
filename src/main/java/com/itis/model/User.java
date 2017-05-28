@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @SequenceGenerator(name = "user_seq",
         sequenceName = "user_seq", allocationSize = 1, initialValue = 50)
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(generator = "user_seq")
     private Long id;

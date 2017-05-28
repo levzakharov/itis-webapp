@@ -6,9 +6,10 @@ import com.itis.model.enums.Role;
 import java.util.List;
 
 /**
- * Created by softi on 25.05.2017.
+ * @author softi on 25.05.2017.
  */
 public interface UserService {
+
     List<User> getAll();
 
     List<User> getByRole(Role role);

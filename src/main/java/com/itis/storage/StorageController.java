@@ -1,6 +1,5 @@
 package com.itis.storage;
 
-import com.itis.storage.StorageService;
 import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,14 +12,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by softi on 15.05.2017.
+ * @author softi on 15.05.2017.
  */
 @Controller
 @EnableAutoConfiguration
 public class StorageController {
 
+    private final StorageService storageService;
+
     @Autowired
-    StorageService storageService;
+    public StorageController(StorageService storageService) {
+        this.storageService = storageService;
+    }
 
     @GetMapping(value = ApplicationUrls.WebAppUrls.FILE_URL)
     @ResponseBody

@@ -16,4 +16,5 @@ public interface EventService {
     Map<UserGroup, List<Event>> getTimetable(TimetableSearchCriteria criteria);
 
     void createTimetable(MultipartFile file);
+
 }

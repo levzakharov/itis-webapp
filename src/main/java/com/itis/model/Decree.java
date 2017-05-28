@@ -10,6 +10,7 @@ import javax.persistence.*;
 @SequenceGenerator(name = "decrees_seq",
         sequenceName = "decrees_seq", allocationSize = 1, initialValue = 50)
 public class Decree {
+
     @Id
     @GeneratedValue(generator = "decrees_seq")
     private Long id;

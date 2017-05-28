@@ -9,6 +9,7 @@ import java.util.List;
  * @author aleksandrpliskin on 25.05.17.
  */
 public interface RequestService {
+
     List<Request> getPendingRequests();
 
     List<Request> getAcceptedRequests();
