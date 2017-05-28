@@ -3,7 +3,7 @@
 <#macro m_body>
 <div class="justify-container">
     <div class="title justify-block">Запросы на справки</div>
-    <a class="justify-block" href="/certificates">Не обработанные</a>
+    <a class="justify-block" href="/certificates">Необработанные</a>
     <div class="stretch"></div>
 </div>
 <div class="history">
