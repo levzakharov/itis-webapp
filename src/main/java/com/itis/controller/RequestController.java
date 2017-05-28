@@ -40,6 +40,18 @@ public class RequestController {
         return TEMPLATES_FOLDER + "index";
     }
 
+    @GetMapping(ApplicationUrls.WebAppUrls.ACCEPTED_REQUESTS_URL)
+    public String getAcceptedRequestsPage(Model model) {
+        model.addAttribute("accepted_requests", requestService.getAcceptedRequests());
+        return TEMPLATES_FOLDER + "index-dean-accepted";
+    }
+
+    @GetMapping(ApplicationUrls.WebAppUrls.DECLINED_REQUESTS_URL)
+    public String getDeclinedRequestsPage(Model model) {
+        model.addAttribute("declined_requests", requestService.getDeclinedRequests());
+        return TEMPLATES_FOLDER + "index-dean-declined";
+    }
+
     @PostMapping(ApplicationUrls.WebAppUrls.CREATE_REQUEST_URL)
     public String createRequest(@ModelAttribute("request_creation_form") RequestCreationForm form) {
         requestService.createRequest(form);

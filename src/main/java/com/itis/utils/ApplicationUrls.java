@@ -79,6 +79,10 @@ public interface ApplicationUrls {
 
         String BASE_REQUESTS_URL = "/certificates";
 
+        String ACCEPTED_REQUESTS_URL = BASE_REQUESTS_URL + "/accepted";
+
+        String DECLINED_REQUESTS_URL = BASE_REQUESTS_URL + "/declined";
+
         String CREATE_REQUEST_URL = BASE_REQUESTS_URL + "/new";
 
         String ACCEPT_REQUEST_URL = BASE_REQUESTS_URL + "/{requestId}/accept";

@@ -44,6 +44,26 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public List<Request> getAcceptedRequests() {
+        try {
+            return requestRepository.findByStatusOrderByDateDesc(RequestStatus.ACCEPTED);
+        } catch (Exception e) {
+            LOGGER.error("No requests found in the database", e);
+            return null;
+        }
+    }
+
+    @Override
+    public List<Request> getDeclinedRequests() {
+        try {
+            return requestRepository.findByStatusOrderByDateDesc(RequestStatus.DECLINED);
+        } catch (Exception e) {
+            LOGGER.error("No requests found in the database", e);
+            return null;
+        }
+    }
+
+    @Override
     public List<Request> getCurrentUserRequests() {
         try {
             return requestRepository.findByUserOrderByDateDesc(SecurityUtils.getCurrentUser());
