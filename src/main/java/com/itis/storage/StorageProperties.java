@@ -11,10 +11,13 @@ public class StorageProperties {
      */
     private static final String LOCATION = "src/main/resources/upload-dir";
 
+    private static final String DOCUMENT_LOCATION = "src/main/resources/upload-dir";
+
     public String getLocation() {
         return LOCATION;
     }
 
-
-
+    public String getDocumentLocation() {
+        return DOCUMENT_LOCATION;
+    }
 }

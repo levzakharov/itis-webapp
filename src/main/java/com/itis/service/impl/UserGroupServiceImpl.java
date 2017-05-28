@@ -43,4 +43,14 @@ public class UserGroupServiceImpl implements UserGroupService {
         }
         return userGroups;
     }
+    @Override
+    public Integer getCourseByUserGroups(UserGroup userGroup) {
+        Calendar currentDate = Calendar.getInstance();
+        int currentMonth = currentDate.get(Calendar.MONTH);
+        int groupsStartYear = userGroup.getStartYear();
+        if (currentMonth > 8) {
+            groupsStartYear--;
+        }
+        return currentDate.get(Calendar.YEAR) - groupsStartYear;
+    }
 }

@@ -1,5 +1,6 @@
 package com.itis.repository;
 
+import com.itis.model.User;
 import com.itis.model.UserGroup;
 
 import org.springframework.data.jpa.repository.JpaRepository;
