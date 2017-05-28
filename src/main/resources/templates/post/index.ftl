@@ -51,6 +51,7 @@
             <div class="buttons">
                 <div class="button">Редактировать</div>
                 <form action="/news/${post.id}/delete" name="delete_${post.id}" method="post">
+                    <input type="hidden" name="action" value="delete">
                     <div class="button" onclick="document.forms['delete_${post.id}'].submit();">Удалить</div>
                 </form>
             </div>
