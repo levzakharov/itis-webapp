@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  */
 @ControllerAdvice("com.itis.controller")
 public class GlobalController {
+
     private final UserNotificationService userNotificationService;
 
     @Autowired

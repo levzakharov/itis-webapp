@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RaitingController {
 
     @GetMapping
-    public String getRaitingPage(){
+    public String getRaitingPage() {
         return "raiting/raiting";
     }
 }

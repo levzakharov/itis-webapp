@@ -50,7 +50,4 @@ public class NewsController {
         postService.delete(post);
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_NEWS_URL;
     }
-
-
-
 }

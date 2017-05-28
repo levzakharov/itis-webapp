@@ -11,10 +11,50 @@
                     type="bigint"/>
         </addColumn>
         <addColumn tableName="users">
-            <column name="is_contract"
+            <column name="contract"
                     type="boolean"
                     defaultValueBoolean="true"/>
         </addColumn>
     </changeSet>
+
+    <changeSet id="27051136_1" author="r.khakov">
+        <createTable tableName="decrees">
+            <column name="id" type="bigint"/>
+            <column name="text" type="text"/>
+            <column name="starts_year" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="27051136_2" author="r.khakov">
+        <addPrimaryKey tableName="decrees"
+                       columnNames="id"
+                       constraintName="decrees_pk"/>
+    </changeSet>
+
+    <changeSet id="27051136_3" author="r.khakov">
+        <createSequence sequenceName="decrees_seq"
+                        startValue="50"
+                        incrementBy="1"/>
+    </changeSet>
+    <changeSet id="27051136_4" author="r.khakov">
+        <sql>
+            UPDATE users SET birthday = 123456789123546;
+        </sql>
+        <rollback>
+            UPDATE users SET birthday = 123456789123546;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="27051136_5" author="al.leontyev">
+        <addColumn tableName="request">
+            <column name="amount" type="int"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="27051136_6" author="al.leontyev">
+        <dropColumn tableName="request" columnName="theme"/>
+        <dropColumn tableName="request" columnName="text"/>
+    </changeSet>
+
+
 
 </databaseChangeLog>

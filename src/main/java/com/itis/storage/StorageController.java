@@ -26,7 +26,7 @@ public class StorageController {
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String fileName) {
 
-        Resource file = storageService.loadAsResource(fileName);
+        Resource file = storageService.loadAsResourceFile(fileName);
         return ResponseEntity
                 .ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")

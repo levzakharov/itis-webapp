@@ -7,7 +7,7 @@
     <div class="block">
         <div class="title">Создание уведомления</div>
 
-        <@form.form commandName="notification_creation_form" action="/notifications/add" method="post">
+        <@form.form commandName="notification_creation_form" action="/notifications/new" method="post">
             <@security.authorize access="hasAnyRole('WORKER', 'ADMIN','TEACHER')">
                 <div class="name">
                     <div class="sub">Кому</div>
