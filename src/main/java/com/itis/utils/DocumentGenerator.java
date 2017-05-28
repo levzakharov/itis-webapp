@@ -3,6 +3,7 @@ package com.itis.utils;
 import com.itis.model.User;
 import com.itis.service.DecreeService;
 import com.itis.service.UserGroupService;
+import com.itis.storage.StorageProperties;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -23,7 +24,7 @@ import java.util.Date;
 @Component
 public class DocumentGenerator {
 
-    private static final String DOCUMENT_LOCATION = "src/main/resources/upload-dir/";
+    private String DOCUMENT_LOCATION;
     private static final String DOCUMENT_NAME = "certificate.docx";
     private static final String NAME_TO_REPLACE = "%fullName";
     private static final String BIRTHDAY_TO_REPLACE = "%birthday";
@@ -40,14 +41,17 @@ public class DocumentGenerator {
     private final UserGroupService userGroupService;
 
     @Autowired
-    public DocumentGenerator(DecreeService decreeService, UserGroupService userGroupService) {
+    public DocumentGenerator(DecreeService decreeService, UserGroupService userGroupService,
+                             StorageProperties storageProperties) {
         this.decreeService = decreeService;
         this.userGroupService = userGroupService;
+        this.DOCUMENT_LOCATION = storageProperties.getDocumentLocation() + "/";
     }
 
     public String generateDocument(User user) throws IOException {
         String filePath = DOCUMENT_LOCATION + DOCUMENT_NAME;
-        String outPath = DOCUMENT_LOCATION + user.getFullName() + "-" + new Date().getTime() + ".docx";
+        String documentName = user.getFullName() + "-" + new Date().getTime() + ".docx";
+        String outPath = DOCUMENT_LOCATION + documentName;
         Calendar birthday = Calendar.getInstance();
         birthday.setTimeInMillis(user.getBirthday());
         String userCourse = userGroupService.getCourseByUserGroups(user.getUserGroup()).toString();
@@ -66,9 +70,6 @@ public class DocumentGenerator {
             // Continue if there is text and contains "test"
             if (sb.length() > 0 && sb.toString().contains("%")) {
                 // Remove all existing runs
-                for (int i = 0; i < numberOfRuns; i++) {
-                    p.removeRun(i);
-                }
                 String text = sb.toString().replace(NAME_TO_REPLACE, user.getFullName());
                 text = text.replace(BIRTHDAY_TO_REPLACE, sdf.format(birthday.getTime()));
                 text = text.replace(COURSE_TO_REPLACE, userCourse);
@@ -80,12 +81,15 @@ public class DocumentGenerator {
                 text = text.replace(CURRENT_DATE_TO_REPLACE, sdf.format(new Date()));
                 System.out.println(text);
                 // Add new run with updated text
+                for (int i = numberOfRuns -1; i>-1;i--) {
+                    p.removeRun(i);
+                }
                 XWPFRun run = p.createRun();
                 run.setText(text);
                 p.addRun(run);
             }
         }
         doc.write(new FileOutputStream(outPath));
-        return outPath;
+        return documentName;
     }
 }

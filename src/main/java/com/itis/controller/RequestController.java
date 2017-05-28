@@ -6,10 +6,14 @@ import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
 import com.itis.service.RequestService;
 import com.itis.service.UserService;
+import com.itis.storage.StorageService;
 import com.itis.utils.ApplicationUrls;
 import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,11 +31,14 @@ public class RequestController {
 
     private final RequestService requestService;
     private final UserService userService;
+    private final StorageService storageService;
 
     @Autowired
-    public RequestController(RequestService requestService, UserService userService) {
+    public RequestController(RequestService requestService,
+                             UserService userService, StorageService storageService) {
         this.requestService = requestService;
         this.userService = userService;
+        this.storageService = storageService;
     }
 
     @GetMapping(ApplicationUrls.WebAppUrls.BASE_REQUESTS_URL)
@@ -70,11 +77,14 @@ public class RequestController {
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_REQUESTS_URL;
     }
 
-    @GetMapping(value = "/document", produces = "application/docx")
+    @GetMapping(value = "/document")
     @ResponseBody
-    public FileSystemResource getPdf(HttpServletResponse response) throws DocumentException, IOException {
+    public ResponseEntity<Resource> getDocument() {
         User user = userService.getByRole(Role.STUDENT).get(2);
-        response.setHeader("Content-Disposition", "attachment; filename=" + '"' + user.getFullName() + ".docx" + '"');
-        return new FileSystemResource(requestService.generateCertificate(user));
+        Resource file = storageService.loadAsResourceDocument(requestService.generateCertificate(user));
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
+                .body(file);
     }
 }
