@@ -1,7 +1,11 @@
 <#include "../main-template.ftl">
 
 <#macro m_body>
-<div class="title">Запросы на справки</div>
+<div class="justify-container">
+    <div class="title justify-block">Запросы на справки</div>
+    <a class="justify-block" href="/certificates/processed">Обработанные</a>
+    <div class="stretch"></div>
+</div>
 <div class="history">
     <table>
         <thead>
