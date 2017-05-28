@@ -2,6 +2,7 @@ package com.itis.service;
 
 import com.itis.form.RequestCreationForm;
 import com.itis.model.Request;
+import com.itis.model.User;
 
 import java.util.List;
 
@@ -19,6 +20,6 @@ public interface RequestService {
 
     void declineRequest(Long id);
 
-    String generateCertificate(String fullName);
+    String generateCertificate(User user);
 
 }

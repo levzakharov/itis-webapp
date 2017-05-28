@@ -12,4 +12,5 @@ public interface UserGroupService {
     List<UserGroup> getUserGroupsByCourse(Integer courseNumber);
     List<UserGroup> getUserGroupsFromNotificationCreationForm(
             NotificationCreationForm notificationCreationForm);
+    Integer getCourseByUserGroups(UserGroup userGroup);
 }
