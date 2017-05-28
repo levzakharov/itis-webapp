@@ -589,7 +589,6 @@ header .user .notif .count span {
 /* CERTIFICATES PAGE */
 
 .certificates .title {
-	display: block;
 	float: none !important;
 	margin-bottom: 20px;
 }
@@ -678,6 +677,25 @@ header .user .notif .count span {
 	display: inline-block;
 	font-weight: 600;
 }
+
+.justify-container{
+	text-align: justify;
+}
+
+.justify-block{
+	display: inline-block;
+	*display: inline;
+	zoom: 1
+}
+
+.stretch{
+	width: 100%;
+	display: inline-block;
+	font-size: 0;
+	line-height: 0
+}
+
+
 
 /* MEDIA QUERIES */
 
