@@ -8,6 +8,14 @@
     <i class="fa fa-chevron-right" aria-hidden="true"></i> <a
             href="/documents/teachers/>${documents[0].user.id}">${documents[0].user.fullName}</a>
 </div>
+<div class="title">
+    <@security.authorize access="hasAnyRole('TEACHER')">
+        (<a href="/documents">Все</a> / <a href="/documents/teachers/${docuser.id}">Мои</a>)
+    </@security.authorize>
+    <@security.authorize access="hasAnyRole('ADMIN', 'WORKER')">
+        (<a href="/documents">Все</a> / <a href="/documents/dean">Мои</a>)
+    </@security.authorize>
+</div>
     <@security.authorize access="hasAnyRole('TEACHER')">
         <#if isOwner>
         <div class="add">

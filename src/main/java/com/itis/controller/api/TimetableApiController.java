@@ -3,6 +3,7 @@ package com.itis.controller.api;
 import com.itis.criteria.TimetableSearchCriteria;
 import com.itis.model.Event;
 import com.itis.model.UserGroup;
+import com.itis.model.enums.EventInterval;
 import com.itis.service.EventService;
 import com.itis.utils.ApplicationUrls;
 import io.swagger.annotations.ApiImplicitParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +38,8 @@ public class TimetableApiController {
             @ApiImplicitParam(name = "interval"),
             @ApiImplicitParam(name = "personality")
     })
-    public Map<UserGroup, List<Event>> getSchedule(@ModelAttribute TimetableSearchCriteria criteria) {
+
+    public Map<DayOfWeek, Map<EventInterval, List<Event>>> getSchedule(@ModelAttribute TimetableSearchCriteria criteria) {
         return eventService.getTimetable(criteria);
     }
 }

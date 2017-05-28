@@ -1,6 +1,9 @@
 package com.itis.controller;
 
 import com.itis.criteria.TimetableSearchCriteria;
+import com.itis.model.Event;
+import com.itis.model.UserGroup;
+import com.itis.model.enums.EventInterval;
 import com.itis.service.EventService;
 import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.time.DayOfWeek;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static com.itis.criteria.TimetableSearchCriteria.INTERVAL_WEEK;
+import static com.itis.criteria.TimetableSearchCriteria.PERSONALITY_ALL;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
@@ -30,8 +41,25 @@ public class TimetableController {
     @GetMapping(ApplicationUrls.WebAppUrls.TIMETABLE_SEARCH)
     public String getSchedule(@ModelAttribute TimetableSearchCriteria criteria,
                               Model model) {
-        model.addAttribute("timetable", eventService.getTimetable(criteria));
-        return "timetable/panel";
+        if (PERSONALITY_ALL.equals(criteria.getPersonality())) {
+            if (INTERVAL_WEEK.equals(criteria.getInterval())) {
+                Map<DayOfWeek, Map<EventInterval, List<Event>>> timetable = eventService.getTimetable(criteria);
+                model.addAttribute("timetable", timetable);
+                List<UserGroup> userGroups = new ArrayList<>();
+                timetable.forEach((dayOfWeek, eventIntervalListMap) -> eventIntervalListMap.forEach((eventInterval, events) ->
+                        events.forEach(event -> {
+                            if (!userGroups.contains(event.getUserGroup())) {
+                                userGroups.add(event.getUserGroup());
+                            }
+                        })));
+                model.addAttribute("userGroups", userGroups);
+
+                return "timetable/week_overall";
+            }
+
+        }
+        return null;
+
     }
 
     @PostMapping(ApplicationUrls.WebAppUrls.TIMETABLE_CSV)

@@ -3,8 +3,18 @@
 <#macro m_body>
 
 
+
+
 <div class="title"><a href="/documents">Документы</a> <i class="fa fa-chevron-right" aria-hidden="true"></i> <a
         href="/documents/dean">Деканат</a>
+</div>
+<div class="title">
+    <@security.authorize access="hasAnyRole('TEACHER')">
+        (<a href="/documents">Все</a> / <a href="/documents/teachers/${docuser.id}">Мои</a>)
+    </@security.authorize>
+    <@security.authorize access="hasAnyRole('ADMIN', 'WORKER')">
+        (<a href="/documents">Все</a> / <a href="/documents/dean">Мои</a>)
+    </@security.authorize>
 </div>
     <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
     <div class="add">
@@ -36,7 +46,10 @@
                 <i class="fa fa-file" aria-hidden="true"></i>
             </#if>
         ${document.name}</a>
-            <#--<i class="fa fa-times" aria-hidden="true"></i>-->
+            <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </@security.authorize>
+
         </div>
     </#list>
 </div>
