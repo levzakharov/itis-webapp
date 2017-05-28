@@ -29,5 +29,5 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     @Modifying
     void decline(@Param("id") Long id);
 
-    List<Request> findByStatusOrStatus(RequestStatus firstStatus, RequestStatus secondStatus);
+    List<Request> findByStatusOrStatusOrderByDateDesc(RequestStatus firstStatus, RequestStatus secondStatus);
 }
