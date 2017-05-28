@@ -16,6 +16,8 @@ public interface RequestService {
 
     List<Request> getDeclinedRequests();
 
+    List<Request> getProcessedRequests();
+
     List<Request> getCurrentUserRequests();
 
     void createRequest(RequestCreationForm form);

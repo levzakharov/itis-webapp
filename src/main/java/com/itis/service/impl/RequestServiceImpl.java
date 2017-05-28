@@ -29,6 +29,7 @@ public class RequestServiceImpl implements RequestService {
     @Lazy
     private final RequestRepository requestRepository;
     private final DocumentGenerator documentGenerator;
+
     @Autowired
     public RequestServiceImpl(RequestRepository requestRepository, DocumentGenerator documentGenerator) {
         this.requestRepository = requestRepository;
@@ -59,6 +60,16 @@ public class RequestServiceImpl implements RequestService {
     public List<Request> getDeclinedRequests() {
         try {
             return requestRepository.findByStatusOrderByDateDesc(RequestStatus.DECLINED);
+        } catch (Exception e) {
+            LOGGER.error("No requests found in the database", e);
+            return null;
+        }
+    }
+
+    @Override
+    public List<Request> getProcessedRequests() {
+        try {
+            return requestRepository.findByStatusOrStatus(RequestStatus.ACCEPTED, RequestStatus.DECLINED);
         } catch (Exception e) {
             LOGGER.error("No requests found in the database", e);
             return null;

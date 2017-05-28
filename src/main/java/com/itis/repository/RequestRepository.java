@@ -28,4 +28,6 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     @Query("UPDATE Request r SET r.status = 'DECLINED' WHERE r.id = :id")
     @Modifying
     void decline(@Param("id") Long id);
+
+    List<Request> findByStatusOrStatus(RequestStatus firstStatus, RequestStatus secondStatus);
 }

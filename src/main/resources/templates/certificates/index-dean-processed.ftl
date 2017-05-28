@@ -1,7 +1,7 @@
 <#include "../main-template.ftl">
 
 <#macro m_body>
-<div class="title">Одобренные запросы на справки</div>
+<div class="title">Обработанные запросы на справки</div>
 <div class="history">
     <table>
         <thead>
@@ -13,16 +13,18 @@
         </tr>
         </thead>
         <tbody>
-            <#list accepted_requests as request>
+            <#list processed_requests as request>
+                <#assign status = "${request.status}">
             <tr>
                 <td>${request.date?number_to_datetime}</td>
                 <td>${request.user.fullName}</td>
                 <td>${request.amount}</td>
-                <td>
-                    <div class="success">
-                        Одобрено
-                    </div>
-                </td>
+                <#if status == 'ACCEPTED'>
+                    <td class="ready">Одобрено</td>
+                </#if>
+                <#if status == 'DECLINED'>
+                    <td class="declined">Отказано</td>
+                </#if>
             </tr>
             </#list>
         </tbody>
