@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "user_group")
 @SequenceGenerator(name = "user_group_gen",
         sequenceName = "user_group_seq", allocationSize = 1, initialValue = 50)
-public class UserGroup {
+public class UserGroup implements Comparable {
 
     @Id
     @GeneratedValue(generator = "user_group_gen", strategy = GenerationType.SEQUENCE)
@@ -86,4 +86,10 @@ public class UserGroup {
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.getNumber().compareTo(((UserGroup) o).getNumber());
+    }
+
 }

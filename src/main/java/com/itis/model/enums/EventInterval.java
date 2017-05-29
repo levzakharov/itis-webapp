@@ -41,17 +41,10 @@ public enum EventInterval {
             return "17:00-18:30";
         }
     },
-    I_18_00_19_30 {
+    I_18_40_20_10 {
         @Override
         public String toString() {
-            return "18:00-19:30";
+            return "18:40-20:10";
         }
     },
-    I_19_35_21_05 {
-        @Override
-        public String toString() {
-            return "19:35-21:05";
-        }
-    };
-
 }

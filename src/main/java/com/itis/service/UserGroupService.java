@@ -17,6 +17,8 @@ public interface UserGroupService {
 
     UserGroup getUserGroup(long id);
 
+    UserGroup getUserGroup(String number);
+
     Integer getCourseByUserGroups(UserGroup userGroup);
 
 }

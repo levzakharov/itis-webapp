@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.itis.criteria.TimetableSearchCriteria.INTERVAL_WEEK;
 import static com.itis.criteria.TimetableSearchCriteria.PERSONALITY_ALL;
@@ -52,6 +50,8 @@ public class TimetableController {
                                 userGroups.add(event.getUserGroup());
                             }
                         })));
+                Collections.sort(userGroups);
+                Collections.reverse(userGroups);
                 model.addAttribute("userGroups", userGroups);
 
                 return "timetable/week_overall";
@@ -86,6 +86,6 @@ public class TimetableController {
     @PostMapping(ApplicationUrls.WebAppUrls.TIMETABLE_CSV)
     public String createTimetableWithCsvFile(MultipartFile file) {
         eventService.createTimetable(file);
-        return "redirect:/" + ApplicationUrls.WebAppUrls.BASE_TIMETABLE_URL;
+        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_TIMETABLE_URL;
     }
 }

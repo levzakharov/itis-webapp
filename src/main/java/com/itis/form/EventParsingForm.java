@@ -20,7 +20,7 @@ public class EventParsingForm {
 
     private String place;
 
-    private Long userGroup;
+    private String userGroup;
 
     private String name;
 
@@ -56,11 +56,11 @@ public class EventParsingForm {
         this.place = place;
     }
 
-    public Long getUserGroup() {
+    public String getUserGroup() {
         return userGroup;
     }
 
-    public void setUserGroup(Long userGroup) {
+    public void setUserGroup(String userGroup) {
         this.userGroup = userGroup;
     }
 
