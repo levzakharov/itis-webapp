@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -89,7 +90,16 @@ public class UserGroup implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return this.getNumber().compareTo(((UserGroup) o).getNumber());
+        String num1 = this.getNumber();
+        String num2 = ((UserGroup) o).getNumber();
+        String course1 = num1.substring(0, 4);
+        String group1 = num1.substring(4);
+        String course2 = num2.substring(0, 4);
+        String group2 = num2.substring(4);
+        if (course1.equals(course2)) {
+            return group2.compareTo(group1);
+        }
+        return course1.compareTo(course2);
     }
 
 }

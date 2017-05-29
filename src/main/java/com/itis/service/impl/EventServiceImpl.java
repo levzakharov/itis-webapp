@@ -61,6 +61,7 @@ public class EventServiceImpl implements EventService {
         try {
             eventRepository.deleteAll();
             Set<EventParsingForm> eventParsingForms = CSVParser.parse(file.getBytes(), EventParsingForm.class);
+//            Set<EventParsingForm> eventParsingForms = CSVParser.parse(file.getBytes(), EventParsingForm.class);
             eventParsingForms.forEach(eventParsingForm -> {
                 Event event = transformer.apply(eventParsingForm);
                 eventRepository.save(event);
