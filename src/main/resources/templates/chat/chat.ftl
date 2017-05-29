@@ -44,4 +44,4 @@
 </div>
 </#macro>
 
-<@main title="Чат" customClass=["chat"] customStyles=["/css/chat.css"] customScripts=["/webjars/sockjs-client/sockjs.min.js", "/webjars/stomp-websocket/stomp.min.js"]/>
+<@main title="Чат" customClass=["chat"] customStyles=["/css/chat.css"] customScripts=["/webjars/sockjs-client/sockjs.min.js", "/webjars/stomp-websocket/stomp.min.js", "/js/chat.js"]/>
