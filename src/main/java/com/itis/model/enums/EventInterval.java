@@ -5,7 +5,7 @@ package com.itis.model.enums;
  */
 public enum EventInterval {
 
-    I_8_30_10_00 {
+    I_08_30_10_00 {
         @Override
         public String toString() {
             return "08:30-10:00";
