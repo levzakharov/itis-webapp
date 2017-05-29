@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @SequenceGenerator(name = "user_seq",
         sequenceName = "user_seq", allocationSize = 1, initialValue = 50)
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(generator = "user_seq")
     private Long id;
@@ -40,15 +41,14 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany(mappedBy = "users")
-    @JsonIgnore
-    private List<Event> events = new ArrayList<>();
-
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "user_id")
     private List<UserNotification> userNotifications;
 
+    private boolean contract;
+
+    private Long birthday;
 
     public Long getId() {
         return id;
@@ -109,14 +109,6 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
     @Override
     public String getUsername() {
         return email;
@@ -129,6 +121,10 @@ public class User implements UserDetails {
                         role.name().startsWith("ROLE_") ? role.name() : "ROLE_" + role.name()
                 )
         ).collect(Collectors.toSet());
+    }
+
+    public boolean hasRole(Role role) {
+        return this.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_" + role));
     }
 
     @Override
@@ -157,5 +153,21 @@ public class User implements UserDetails {
 
     public void setUserNotifications(List<UserNotification> userNotifications) {
         this.userNotifications = userNotifications;
+    }
+
+    public boolean isContract() {
+        return contract;
+    }
+
+    public void setContract(boolean contract) {
+        contract = contract;
+    }
+
+    public Long getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Long birthday) {
+        this.birthday = birthday;
     }
 }

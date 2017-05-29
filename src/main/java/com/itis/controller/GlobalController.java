@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
- * Created by r.khakov
+ * @author r.khakov
  */
-@ControllerAdvice
+@ControllerAdvice("com.itis.controller")
 public class GlobalController {
+
     private final UserNotificationService userNotificationService;
 
     @Autowired
@@ -25,6 +26,7 @@ public class GlobalController {
     public void getFullName(ModelMap model) {
         if (SecurityContextHolder.getContext().getAuthentication() instanceof UsernamePasswordAuthenticationToken) {
             model.addAttribute("username", SecurityUtils.getCurrentUser().getFullName());
+            model.addAttribute("docuser", SecurityUtils.getCurrentUser());
         }
     }
 

@@ -1,9 +1,9 @@
 package com.itis.service.impl;
 
-import com.itis.model.Image;
 import com.itis.form.PostCreationForm;
 import com.itis.model.Post;
 import com.itis.repository.PostRepository;
+import com.itis.service.DocumentService;
 import com.itis.service.ImageService;
 import com.itis.service.PostService;
 import com.itis.storage.StorageService;
@@ -11,9 +11,7 @@ import com.itis.transformers.PostCreationFormToPostTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,17 +21,19 @@ import java.util.List;
 @Transactional
 public class PostServiceImpl implements PostService {
 
-    @Autowired
     private PostRepository postRepository;
-
-    @Autowired
     private PostCreationFormToPostTransformer transformer;
-
-    @Autowired
     private ImageService imageService;
+    private DocumentService documentService;
 
     @Autowired
-    private StorageService storageService;
+    public PostServiceImpl(PostRepository postRepository, PostCreationFormToPostTransformer transformer,
+                           ImageService imageService, DocumentService documentService, StorageService storageService) {
+        this.postRepository = postRepository;
+        this.transformer = transformer;
+        this.imageService = imageService;
+        this.documentService = documentService;
+    }
 
     public List<Post> getAllOrderByDateDesc() {
         return postRepository.findAllByOrderByDateDesc();
@@ -50,12 +50,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post updateByForm(Post post, PostCreationForm form) {
+    public Post update(Post post, PostCreationForm form) {
         Post post1 = transformer.apply(form);
-        post1.setId(post.getId());
-        return postRepository.save(post1);
+        post.setTitle(post1.getTitle());
+        post.setText(post1.getText());
+        return postRepository.save(post);
     }
-
 
     @Override
     public void delete(Post post) {
@@ -68,17 +68,15 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post createByForm(PostCreationForm postCreationForm) {
+    public Post create(PostCreationForm postCreationForm) {
         Post post = transformer.apply(postCreationForm);
+
         if (postCreationForm.getImages() != null && postCreationForm.getImages().get(0).getOriginalFilename().length() > 0) {
-            List<Image> images = new ArrayList<>();
-            for (MultipartFile multipartFile : postCreationForm.getImages()) {
-                Image image = imageService.createImage(storageService.store(multipartFile));
-                images.add(image);
-            }
-            post.setImages(images);
+            post.setImages(imageService.create(postCreationForm.getImages()));
+        }
+        if (postCreationForm.getDocuments() != null && postCreationForm.getDocuments().get(0).getOriginalFilename().length() > 0) {
+            post.setDocuments(documentService.create(postCreationForm.getDocuments()));
         }
         return postRepository.save(post);
     }
-
 }

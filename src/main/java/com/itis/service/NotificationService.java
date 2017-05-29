@@ -10,6 +10,7 @@ import java.util.List;
  * @author alt
  */
 public interface NotificationService {
+
     Notification getOne(Long id);
 
     Notification update(Notification notification);

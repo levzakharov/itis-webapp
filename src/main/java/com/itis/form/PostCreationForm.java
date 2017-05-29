@@ -18,6 +18,8 @@ public class PostCreationForm {
 
     private List<MultipartFile> images;
 
+    private List<MultipartFile> documents;
+
     public String getTitle() {
         return title;
     }
@@ -40,5 +42,13 @@ public class PostCreationForm {
 
     public void setImages(List<MultipartFile> images) {
         this.images = images;
+    }
+
+    public List<MultipartFile> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<MultipartFile> documents) {
+        this.documents = documents;
     }
 }

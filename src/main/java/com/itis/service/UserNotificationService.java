@@ -8,13 +8,20 @@ import com.itis.model.UserNotification;
 import java.util.List;
 
 /**
- * Created by r.khakov
+ * @author r.khakov
  */
 public interface UserNotificationService {
+
     List<UserNotification> getUserNotificationsByUser(User user);
+
     List<UserNotification> getCurrentUserUserNotifications();
+
     List<UserNotification> getCurrentUserUnreadUserNotifications();
+
     void markUnreadNotificationsAsRead();
+
     void createUserNotificationsByGroup(Notification notification, UserGroup userGroup);
+
     void createUserNotificationsByGroups(Notification notification, List<UserGroup> userGroups);
+
 }

@@ -37,5 +37,21 @@
                                  referencedColumnNames="id"
                                  referencedTableName="post"/>
     </changeSet>
+    
+    <changeSet id="document_post_4" author="i.nasibullin">
+        <dropForeignKeyConstraint baseTableName="document_post"
+        constraintName="document_post_document_fk"/>
+    </changeSet>
+
+    <changeSet id="document_post_5" author="i.nasibullin">
+        <addForeignKeyConstraint baseColumnNames="document_id"
+                                 baseTableName="document_post"
+                                 constraintName="document_post_document_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document"
+        onDelete="CASCADE"/>
+    </changeSet>
 
 </databaseChangeLog>

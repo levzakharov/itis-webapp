@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by r.khakov
+ * @author r.khakov
  */
 @RestController
 @RequestMapping(ApplicationUrls.ApiUrls.BASE_NOTIFICATIONS_URL)
 public class NotificationApiController {
+
     private final NotificationService notificationService;
     private final UserNotificationService userNotificationService;
 
@@ -32,21 +33,24 @@ public class NotificationApiController {
     public List<Notification> sendNotificationsApi() {
         return notificationService.getCurrentUserSentNotifications();
     }
+
     @ApiOperation("Get list of all notifications")
     @GetMapping()
     @ResponseBody
     public List<UserNotification> comeUserNotificationsApi() {
         return userNotificationService.getCurrentUserUserNotifications();
     }
+
     @ApiOperation("Get list of unread notifications")
     @GetMapping("/unread")
     public List<UserNotification> readUserNotificationsApi() {
         return userNotificationService.getCurrentUserUnreadUserNotifications();
     }
+
     @ApiOperation("Add new notification. This method have validate for user notification")
     @PostMapping("add/new/notification")
     public Notification createNotification(
-            @RequestBody NotificationCreationForm notificationCreationForm){
+            @RequestBody NotificationCreationForm notificationCreationForm) {
         return notificationService.sendNotification(notificationCreationForm);
     }
 }

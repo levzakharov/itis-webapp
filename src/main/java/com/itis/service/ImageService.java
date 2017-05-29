@@ -6,10 +6,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * Created by softi on 15.05.2017.
+ * @author softi on 15.05.2017.
  */
 public interface ImageService {
 
-    Image createImage(String name);
+    Image create(MultipartFile multipartFile);
 
+    List<Image> create(List<MultipartFile> multipartFiles);
 }

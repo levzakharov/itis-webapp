@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by r.khakov
+ * @author r.khakov
  */
 @Service
 public class UserNotificationServiceImpl implements UserNotificationService {

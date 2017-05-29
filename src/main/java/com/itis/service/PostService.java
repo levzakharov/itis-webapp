@@ -6,7 +6,7 @@ import com.itis.model.Post;
 import java.util.List;
 
 /**
- * Created by softi on 01.05.2017.
+ * @author softi on 01.05.2017.
  */
 public interface PostService {
 
@@ -16,12 +16,12 @@ public interface PostService {
 
     Post update(Post post);
 
-    Post updateByForm(Post post, PostCreationForm form);
+    Post update(Post post, PostCreationForm form);
 
     void delete(Post post);
 
     Post create(Post post);
 
-    Post createByForm(PostCreationForm postCreationForm);
+    Post create(PostCreationForm postCreationForm);
 
 }

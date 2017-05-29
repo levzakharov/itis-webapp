@@ -6,12 +6,12 @@
     <div class="cancel">Отменить</div>
     <div class="block">
         <div class="title">Создание уведомления</div>
-        <form name="notification" action="/notifications/add" method="post">
-            <#if isStarosta>
-            <#else>
+
+        <@form.form commandName="notification_creation_form" action="/notifications/new" method="post">
+            <@security.authorize access="hasAnyRole('WORKER', 'ADMIN','TEACHER')">
                 <div class="name">
                     <div class="sub">Кому</div>
-                    <select name="groups" multiple="multiple">
+                    <@form.select name="groups" multiple="multiple" required="required">
                         <optgroup label="1 курс">
                             <#list groups_1 as group>
                                 <option value="${group.id}">${group.number}</option>
@@ -42,20 +42,26 @@
                                 <option value="${group.id}">${group.number}</option>
                             </#list>
                         </optgroup>
-                    </select>
+                    </@form.select>
                 </div>
-            </#if>
+            </@security.authorize>
 
             <div class="text">
-                <label> Тема <input name="theme" type="text"/> </label>
+                <label> Тема <@form.input path="theme" type="text" required="required" maxlength="255"/>
+            </div>
+            <div class="text">
+                <@form.errors path="theme" cssStyle="color: #ab2020;"/>
             </div>
             <br>
             <div class="text">
-                <textarea name="text" placeholder="Текст"></textarea>
+                <@form.textarea path="text" required="required" placeholder="Текст"/>
+            </div>
+            <div class="text">
+                <@form.errors path="text" cssStyle="color: #ab2020;"/>
             </div>
             <img>
             <input type="submit" value="Создать">
-        </form>
+        </@form.form>
     </div>
 </div>
 
@@ -68,8 +74,31 @@
 <div class="blocks received">
     <#list received_notifications as user_notification>
         <div class="block">
+            <div class="image">
+                <a>
+                    <#list user_notification.notification.user.roles as role >
+                        <#assign userRole = "${role}">
+
+                        <#if userRole == 'STAROSTA'>
+                            С
+                            <#break>
+                        </#if>
+
+                        <#if userRole == 'TEACHER'>
+                            П
+                            <#break>
+                        </#if>
+
+                        <#if userRole == 'WORKER'>
+                            Д
+                            <#break>
+                        </#if>
+                    </#list>
+                </a>
+            </div>
             <div class="name">${user_notification.notification.theme}</div>
-            <div class="date">${user_notification.notification.date?number_to_datetime}</div>
+            <div class="date">${user_notification.notification.date?number_to_datetime}
+                от ${user_notification.notification.user.fullName}</div>
             <div class="text">${user_notification.notification.text}</div>
         </div>
     </#list>
@@ -78,6 +107,28 @@
 <div class="blocks sent">
     <#list sent_notifications as notification>
         <div class="block">
+            <div class="image">
+                <a>
+                    <#list notification.user.roles as role >
+                        <#assign userRole = "${role}">
+
+                        <#if userRole == 'STAROSTA'>
+                            С
+                            <#break>
+                        </#if>
+
+                        <#if userRole == 'TEACHER'>
+                            П
+                            <#break>
+                        </#if>
+
+                        <#if userRole == 'WORKER'>
+                            Д
+                            <#break>
+                        </#if>
+                    </#list>
+                </a>
+            </div>
             <div class="name">${notification.theme}</div>
             <div class="date">${notification.date?number_to_datetime}</div>
             <div class="text">${notification.text}</div>
@@ -87,4 +138,4 @@
 
 </#macro>
 
-<@main title="Уведомления" customScripts=["/js/jquery-1.11.3.min.js", "/js/multiple-select.js", "/js/notifications.js"] customStyles=["/css/multiple-select.css"] customClass=["notifications"]/>
+<@main title="Уведомления" customScripts=["/js/multiple-select.js", "/js/notifications.js"] customStyles=["/css/multiple-select.css"] customClass=["notifications"]/>

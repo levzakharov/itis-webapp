@@ -1,6 +1,7 @@
 <#macro main title="ИТИС" customScripts=[] customStyles=[] customFonts=[] customClass=[]>
     <#assign spring=JspTaglibs["/META-INF/spring.tld"] />
     <#assign security=JspTaglibs["/META-INF/security.tld"] />
+    <#assign form=JspTaglibs["/META-INF/spring-form.tld"]>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,9 @@
     <#list customStyles as style>
         <link href="${style}" type="text/css" rel="stylesheet"/>
     </#list>
+
+    <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+
     <#list customScripts as script>
         <script src="${script}" type="text/javascript"></script>
     </#list>

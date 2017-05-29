@@ -1,0 +1,58 @@
+.modal-container {
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 2;
+
+	visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s linear, visibility 0s linear 0.3s, background 0.3s linear;
+}
+
+.modal {
+	background: #fff;
+	position: fixed;
+	box-sizing: border-box;
+	padding: 30px;
+	padding-right: 50px;
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	height: auto;
+	margin-left: -200px;
+	margin-top: -100px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.4s ease-in-out, visibility 0s linear 0.4s;
+}
+
+.modal .close {
+	position: absolute;
+	right: 20px;
+	top: 16px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.modal a {
+	font-size: 16px;
+}
+
+.modal-container.activate {
+    opacity: 1;
+    visibility: visible;
+    transition-delay:0s;
+}
+
+.modal.activate {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.signin-container .signin .forgot a {
+	cursor: pointer;
+}

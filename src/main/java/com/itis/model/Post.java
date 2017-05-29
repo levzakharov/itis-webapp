@@ -1,17 +1,7 @@
 package com.itis.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 /**
  * @author softi on 01.05.2017.
@@ -33,6 +23,11 @@ public class Post {
     @JoinTable(name = "post_image", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns =
     @JoinColumn(name = "image_id"))
     private List<Image> images;
+
+    @ManyToMany
+    @JoinTable(name = "document_post", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns =
+    @JoinColumn(name = "document_id"))
+    private List<Document> documents;
 
     private long date;
 
@@ -86,5 +81,13 @@ public class Post {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
     }
 }
