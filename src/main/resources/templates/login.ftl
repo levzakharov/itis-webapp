@@ -8,7 +8,7 @@
     <link href="/css/window.css" type="text/css" rel="stylesheet" />
     <link href="/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 
-    <script type="text/javascript" src=/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/js/window.js"></script>
 </head>
 <body>
@@ -27,6 +27,7 @@
             <form action="/login/process" method="post">
                 <input name="login" type="text" placeholder="Логин">
                 <input name="password" type="password" placeholder="Пароль">
+                <label>Remember Me: <input type="checkbox" name="remember-me" checked/> </label>
                 <input type="submit" class="button" value="Войти">
             <#if error??>
                 <div class="error-msg">Неправильный логин или пароль</div>
