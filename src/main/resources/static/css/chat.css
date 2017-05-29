@@ -1,0 +1,173 @@
+.container .content.chat .title {
+	float: none;
+	margin-bottom: 40px;
+}
+
+.container .content.chat {
+	font-size: 0;
+}
+
+.container .content.chat .students {
+	width: 25%;
+	display: inline-block;
+	vertical-align: top;
+	padding-right: 20px;
+	box-sizing: border-box;
+}
+
+.container .content.chat .students .search {
+	position: relative;
+}
+
+.container .content.chat .students .search .button {
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	cursor: pointer;
+}
+
+.container .content.chat .students .list {
+	margin-top: 20px;
+	max-height: 190px;
+	overflow-y: scroll;
+}
+
+.container .content.chat .students .list .block {
+	padding: 10px;
+	box-sizing: border-box;
+	background: #eee;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.container .content.chat .students .list .block .course {
+	font-size: 12px;
+	margin-top: 4px;
+}
+
+.container .content.chat .students .list .block.current {
+	background: #ddd;
+}
+
+.container .content.chat .students .list .block .image {
+	width: 30px;
+	height: 30px;
+	text-align: center ;
+	line-height: 28px;
+	border: 1px solid #222;
+	border-radius: 90px;
+	float: left;
+	margin-right: 20px;
+}
+
+.container .content.chat .students .list .block .image a {
+	font-size: 18px;
+}
+
+.container .content.chat .chat {
+	border: 1px solid #ddd;
+	display: inline-block ;
+	width: 100%;
+	vertical-align: top;
+	box-sizing: border-box;
+}
+
+.container .content.chat_decanat .chat {
+	width: 75%
+}
+
+.container .content.chat .chat .text {
+	padding: 15px;
+	border: 1px solid #aaa;
+	display: inline-block;
+}
+
+.container .content.chat .chat .blocks {
+	padding: 30px;
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.container .content.chat .chat .blocks .block {
+	clear: both;
+}
+
+.container .content.chat .chat .blocks .block.notme {
+	float: left;
+}
+
+.container .content.chat .chat .blocks .block.me {
+	float: right;
+}
+
+.container .content.chat .blocks .block {
+	padding: 0;
+	margin-bottom: 20px;
+	border: none;
+}
+
+.container .content.chat .write {
+	clear: both;
+	position: relative;
+	padding: 20px 30px;
+	border-top: 1px solid #ddd;
+	margin-top: 10px;
+}
+
+.container .content.chat .write input {
+	display: inline-block;
+	width: 80%;
+}
+
+.container .content.chat .write .button {
+	display: inline-block;
+	position: absolute;
+	right: 30px;
+	cursor: pointer;
+}
+
+.container .content.chat .write .button .fa {
+	font-size: 20px;
+	color: #344c6d;
+}
+
+.container .content.chat .blocks .block .image {
+	display: inline-block;
+}
+
+.container .content.chat .blocks .block .message {
+	display: inline-block;
+}
+
+.container .content.chat .blocks .block .message .name {
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.container .content.chat .blocks .block .image {
+	width: 30px;
+	height: 30px;
+	text-align: center ;
+	line-height: 28px;
+	border: 1px solid #222;
+	border-radius: 90px;
+	float: left;
+	margin-right: 20px;
+}
+
+.container .content.chat .blocks .block .image a {
+	font-size: 18px;
+}
+
+@media only screen and (max-width: 1100px) {
+	.container .content.chat .students {
+		width: 400px;
+	}
+
+	.container .content.chat .chat {
+		width: 100%;
+		display: block;
+		margin-top: 20px;
+	}
+}

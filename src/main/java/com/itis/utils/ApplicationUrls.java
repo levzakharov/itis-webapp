@@ -90,6 +90,8 @@ public interface ApplicationUrls {
         String DECLINE_REQUEST_URL = BASE_REQUESTS_URL + "/{requestId}/decline";
 
         String GENERATE_CERTIFICATE_URL = BASE_REQUESTS_URL + "/{requestId}/generate";
+
+        String BASE_CHAT_URL = "/chat";
     }
 
     interface WebSocketsUrls {
