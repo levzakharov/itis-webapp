@@ -3,7 +3,6 @@ package com.itis.controller;
 import com.itis.security.SecurityUtils;
 import com.itis.service.UserNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.ModelMap;
@@ -25,7 +24,7 @@ public class GlobalController {
 
     @ModelAttribute
     public void getFullName(ModelMap model) {
-        if (!(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken)) {
+        if (SecurityContextHolder.getContext().getAuthentication() instanceof UsernamePasswordAuthenticationToken) {
             model.addAttribute("username", SecurityUtils.getCurrentUser().getFullName());
             model.addAttribute("docuser", SecurityUtils.getCurrentUser());
         }
