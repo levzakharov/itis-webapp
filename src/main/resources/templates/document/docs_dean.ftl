@@ -33,28 +33,30 @@
     </div>
     </@security.authorize>
 <div class="blocks">
-    <#list documents as document>
+    <#if documents??>
+        <#list documents as document>
 
-        <div class="block"><a href="/files/${document.path}">
-            <#if document.name?ends_with("doc") || document.name?ends_with("docx")>
-                <i class="fa fa-file-word-o" aria-hidden="true"></i>
-            <#elseif document.name?ends_with("xls") || document.name?ends_with("xlsx")>
-                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
-            <#elseif document.name?ends_with("pdf")>
-                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-            <#else>
-                <i class="fa fa-file" aria-hidden="true"></i>
-            </#if>
-        ${document.name}</a>
-            <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
-                <a href="#" onclick="document.forms['delete_${document.id}'].submit();"><i class="fa fa-times"
-                                                                                           aria-hidden="true"></i></a>
-                <form hidden action="/documents/${document.id}/delete" name="delete_${document.id}" method="post">
-                </form>
-            </@security.authorize>
+            <div class="block"><a href="/files/${document.path}">
+                <#if document.name?ends_with("doc") || document.name?ends_with("docx")>
+                    <i class="fa fa-file-word-o" aria-hidden="true"></i>
+                <#elseif document.name?ends_with("xls") || document.name?ends_with("xlsx")>
+                    <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                <#elseif document.name?ends_with("pdf")>
+                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                <#else>
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                </#if>
+            ${document.name}</a>
+                <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
+                    <a href="#" onclick="document.forms['delete_${document.id}'].submit();"><i class="fa fa-times"
+                                                                                               aria-hidden="true"></i></a>
+                    <form hidden action="/documents/${document.id}/delete" name="delete_${document.id}" method="post">
+                    </form>
+                </@security.authorize>
 
-        </div>
-    </#list>
+            </div>
+        </#list>
+    </#if>
 </div>
 
 <#--<#list documents as document>-->

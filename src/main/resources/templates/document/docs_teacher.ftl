@@ -6,7 +6,7 @@
 <div class="title"><a href="/documents">Документы</a> <i class="fa fa-chevron-right" aria-hidden="true"></i> <a
         href="/documents/teachers">Преподаватели</a>
     <i class="fa fa-chevron-right" aria-hidden="true"></i> <a
-            href="/documents/teachers/>${documents[0].user.id}">${documents[0].user.fullName}</a>
+            href="/documents/teachers/>${teacher.id}">${teacher.fullName}</a>
 </div>
 <div class="title">
     <@security.authorize access="hasAnyRole('TEACHER')">
@@ -35,29 +35,32 @@
         </#if>
     </@security.authorize>
 <div class="blocks">
-    <#list documents as document>
+    <#if documents??>
+        <#list documents as document>
 
-        <div class="block"><a href="/files/${document.path}">
-            <#if document.name?ends_with("doc") || document.name?ends_with("docx")>
-                <i class="fa fa-file-word-o" aria-hidden="true"></i>
-            <#elseif document.name?ends_with("xls") || document.name?ends_with("xlsx")>
-                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
-            <#elseif document.name?ends_with("pdf")>
-                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-            <#else>
-                <i class="fa fa-file" aria-hidden="true"></i>
-            </#if>
-        ${document.name}</a>
-            <@security.authorize access="hasAnyRole('TEACHER')">
-                <#if isOwner>
-                    <a href="#" onclick="document.forms['delete_${document.id}'].submit();"><i class="fa fa-times"
-                                                                                               aria-hidden="true"></i></a>
-                    <form hidden action="/documents/${document.id}/delete" name="delete_${document.id}" method="post">
-                    </form>
+            <div class="block"><a href="/files/${document.path}">
+                <#if document.name?ends_with("doc") || document.name?ends_with("docx")>
+                    <i class="fa fa-file-word-o" aria-hidden="true"></i>
+                <#elseif document.name?ends_with("xls") || document.name?ends_with("xlsx")>
+                    <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                <#elseif document.name?ends_with("pdf")>
+                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                <#else>
+                    <i class="fa fa-file" aria-hidden="true"></i>
                 </#if>
-            </@security.authorize>
-        </div>
-    </#list>
+            ${document.name}</a>
+                <@security.authorize access="hasAnyRole('TEACHER')">
+                    <#if isOwner>
+                        <a href="#" onclick="document.forms['delete_${document.id}'].submit();"><i class="fa fa-times"
+                                                                                                   aria-hidden="true"></i></a>
+                        <form hidden action="/documents/${document.id}/delete" name="delete_${document.id}"
+                              method="post">
+                        </form>
+                    </#if>
+                </@security.authorize>
+            </div>
+        </#list>
+    </#if>
 </div>
 </#macro>
 
