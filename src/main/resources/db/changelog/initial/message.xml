@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="message_0" author="e.akhmetshin">
+        <createTable tableName="message">
+            <column name="id" type="bigint"/>
+            <column name="content" type="varchar"/>
+            <column name="from_user" type="varchar(50)"/>
+            <column name="to_user" type="varchar(50)"/>
+            <column name="unread" type="boolean"/>
+            <column name="timestamp" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="message_1" author="e.akhmetshin">
+        <addPrimaryKey tableName="message"
+                       columnNames="id"
+                       constraintName="message_pk"/>
+        <addNotNullConstraint tableName="message" columnName="content"/>
+        <addNotNullConstraint tableName="message" columnName="from_user"/>
+        <addNotNullConstraint tableName="message" columnName="to_user"/>
+        <addNotNullConstraint tableName="message" columnName="unread"/>
+        <addNotNullConstraint tableName="message" columnName="timestamp"/>
+    </changeSet>
+
+    <changeSet id="message_2" author="e.akhmetshin">
+        <createSequence sequenceName="message_seq"
+                        startValue="50"
+                        incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

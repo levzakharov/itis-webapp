@@ -19,6 +19,7 @@
     <include file="changelog/initial/user_notification.xml" relativeToChangelogFile="true"/>
     <include file="changelog/initial/user_role.xml" relativeToChangelogFile="true"/>
     <include file="20170513.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/initial/message.xml" relativeToChangelogFile="true"/>
 
     <!--Custom changelog-->
     <include file="changelog/custom/image.xml" relativeToChangelogFile="true"/>
