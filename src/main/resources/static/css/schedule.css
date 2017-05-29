@@ -1,0 +1,32 @@
+.container .content .panel .week {
+	margin-right: 30px;
+}
+
+.container .content .panel .week .fa {
+	font-size: 13px;
+}
+
+.container .content .panel .week a {
+	font-size: 16px;
+	margin: 0 10px;
+}
+
+.container .content .panel > div {
+	margin-right: 30px;
+}
+
+.container .content .table table {
+	width: 100%;
+}
+
+.container .content .title {
+	float: none;
+	display: block;
+	margin-bottom: 30px;
+}
+
+.container .content .filter .title {
+	font-size: 18px;
+	margin-bottom: 0;
+	display: inline-block;
+}

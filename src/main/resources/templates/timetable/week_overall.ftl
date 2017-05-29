@@ -1,12 +1,13 @@
-<#include "days_form.ftl">
+<#assign days = {
+    "MONDAY": "Понедельник",
+    "TUESDAY": "Вторник",
+    "WEDNESDAY": "Среда",
+    "THURSDAY": "Четверг",
+    "FRIDAY": "Пятница",
+    "SATURDAY": "Суббота",
+    "SUNDAY": "Воскресенье"
+}>
 
-<#assign days = {"MONDAY": "Понедельник",
-"TUESDAY": "Вторник",
-"WEDNESDAY": "Среда",
-"THURSDAY": "Четверг",
-"FRIDAY": "Пятница",
-"SATURDAY": "Суббота",
-"SUNDAY": "Воскресенье"}>
 <div class="table">
     <table>
         <thead>

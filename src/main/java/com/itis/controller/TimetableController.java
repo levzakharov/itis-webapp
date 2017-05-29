@@ -41,10 +41,10 @@ public class TimetableController {
     @GetMapping(ApplicationUrls.WebAppUrls.TIMETABLE_SEARCH)
     public String getSchedule(@ModelAttribute TimetableSearchCriteria criteria,
                               Model model) {
+        Map<DayOfWeek, Map<EventInterval, List<Event>>> timetable = eventService.getTimetable(criteria);
+        model.addAttribute("timetable", timetable);
         if (PERSONALITY_ALL.equals(criteria.getPersonality())) {
             if (INTERVAL_WEEK.equals(criteria.getInterval())) {
-                Map<DayOfWeek, Map<EventInterval, List<Event>>> timetable = eventService.getTimetable(criteria);
-                model.addAttribute("timetable", timetable);
                 List<UserGroup> userGroups = new ArrayList<>();
                 timetable.forEach((dayOfWeek, eventIntervalListMap) -> eventIntervalListMap.forEach((eventInterval, events) ->
                         events.forEach(event -> {
@@ -56,9 +56,30 @@ public class TimetableController {
 
                 return "timetable/week_overall";
             }
-
+            else {
+                for (DayOfWeek dayOfWeek : DayOfWeek.values()){
+                    if (dayOfWeek.name().toLowerCase().equals(criteria.getInterval())) {
+                        model.addAttribute("day_of_week", dayOfWeek.name());
+                    }
+                }
+                return "timetable/day_general";
+            }
         }
-        return null;
+        else{
+            model.addAttribute("intervals", EventInterval.values());
+            if (INTERVAL_WEEK.equals(criteria.getInterval())) {
+                return "timetable/week_personal";
+            }
+            else {
+                for (DayOfWeek dayOfWeek : DayOfWeek.values()){
+                    if (dayOfWeek.name().toLowerCase().equals(criteria.getInterval())) {
+                        model.addAttribute("day_of_week", dayOfWeek.name());
+                    }
+                }
+
+                return "timetable/day_personal";
+            }
+        }
 
     }
 

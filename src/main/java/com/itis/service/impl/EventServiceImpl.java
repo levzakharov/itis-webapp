@@ -90,7 +90,7 @@ public class EventServiceImpl implements EventService {
     }
 
     private Map<DayOfWeek, Map<EventInterval, List<Event>>> getEventsByDay(String interval) {
-        List<Event> events = eventRepository.findByDay(DayOfWeek.valueOf(interval));
+        List<Event> events = eventRepository.findByDay(DayOfWeek.valueOf(interval.toUpperCase()));
         return generateTimetable(events);
     }
 
