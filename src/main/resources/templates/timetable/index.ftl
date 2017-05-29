@@ -41,4 +41,4 @@
 </div>
 </#macro>
 
-<@main title="Расписание" customScripts=["/js/timetable.js", "/js/jquery-1.11.3.min.js",  "/js/news.js"] customClass=["/css/schedule.css"]/>
+<@main title="Расписание" customScripts=["/js/timetable.js", "/js/news.js"] customClass=["/css/schedule.css"]/>
