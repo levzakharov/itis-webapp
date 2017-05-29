@@ -14,4 +14,6 @@ public interface UserGroupRepository extends JpaRepository<UserGroup, Long> {
 
     List<UserGroup> findByStartYear(Integer startYear);
 
+    UserGroup findByNumber(String number);
+
 }
