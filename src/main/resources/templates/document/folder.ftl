@@ -21,4 +21,4 @@
     </#list>
 </#macro>
 
-<@main title="Документы" customScripts=["/js/jquery-1.11.3.min.js",  "/js/news.js"] customClass=["docs"]  customStyles=["/css/docs.css"]/>
+<@main title="Документы" customScripts=["/js/news.js"] customClass=["docs"]  customStyles=["/css/docs.css"]/>
