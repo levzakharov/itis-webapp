@@ -81,4 +81,17 @@
             <column name="id" type="numeric"/>
         </loadUpdateData>
     </changeSet>
+    <changeSet id="seeds_12" author="i.nasibullin">
+        <loadUpdateData tableName="user_group"
+                        primaryKey="id"
+                        file="db/seeds/changes/user_group-20170529.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_13" author="i.nasibullin">
+        <delete tableName="user_group">
+            <where>id = 30</where>
+        </delete>
+
+    </changeSet>
 </databaseChangeLog>
