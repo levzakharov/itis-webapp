@@ -3,6 +3,7 @@ package com.itis.controller;
 import com.itis.utils.ApplicationUrls;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -28,7 +29,7 @@ public class ErrorPagesController {
 
     @RequestMapping(ApplicationUrls.WebAppErrorsUrls.ERROR_500_URL)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String internalServerError() {
+    public String internalServerError(ModelMap modelMap) {
         return TEMPLATES_FOLDER + "500";
     }
 }

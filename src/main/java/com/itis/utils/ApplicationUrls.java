@@ -117,6 +117,7 @@ public interface ApplicationUrls {
         String ERROR_404_URL = "/404";
         String ERROR_403_URL = "/403";
         String ERROR_500_URL = "/500";
+        String ERROR_UPLOAD_URL = "/uploadError";
 
     }
 }
