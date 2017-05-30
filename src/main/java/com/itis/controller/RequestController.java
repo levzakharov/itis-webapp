@@ -12,7 +12,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author r.khakov
@@ -50,7 +53,13 @@ public class RequestController {
     }
 
     @PostMapping(ApplicationUrls.WebAppUrls.CREATE_REQUEST_URL)
-    public String createRequest(@ModelAttribute("request_creation_form") RequestCreationForm form) {
+    public String createRequest(@ModelAttribute("request_creation_form") @Valid RequestCreationForm form,
+                                BindingResult result, Model model) {
+
+        if (result.hasErrors()) {
+            model.addAttribute("requests", requestService.getCurrentUserRequests());
+            return TEMPLATES_FOLDER + "index";
+        }
         requestService.createRequest(form);
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_REQUESTS_URL;
     }

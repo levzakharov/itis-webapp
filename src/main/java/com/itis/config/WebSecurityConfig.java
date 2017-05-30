@@ -48,6 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl(ApplicationUrls.WebAppUrls.LOGIN + "/process")
                 .defaultSuccessUrl(ApplicationUrls.WebAppUrls.BASE_NEWS_URL)
                 .failureUrl(LOGIN + "?error=true")
+                .and().rememberMe()
+                .key("uniqueAndSecret")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login")
@@ -56,6 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/swagger-ui.html").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
+
         ;
     }
 
