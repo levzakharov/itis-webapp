@@ -31,7 +31,7 @@
                 <div class="button">Общий</div>
                 <input type="hidden" name="personality" value="private">
             </div>
-            <input type="submit" value="Изменить" class="button enter">
+            <input type="submit" value="Показать" class="button enter">
         </div>
     </form>
 </div>

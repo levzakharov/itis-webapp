@@ -21,7 +21,7 @@
                         <#list mapday as interval_m, events>
                             <#if interval_m == interval>
                                 <#list events as event>
-                                    ${event.description}
+                                    ${event.name}, ${event.description}, ${event.place}
                                 </#list>
                             </#if>
                         </#list>

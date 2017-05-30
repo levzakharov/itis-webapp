@@ -32,7 +32,7 @@
                     <td>
                         <#list maptime as event>
                         <#if event.userGroup.id == group.id>
-                        ${event.name}, ${event.description}
+                        ${event.name}, ${event.description}, ${event.place}
                         </#if>
                         </#list>
                     </td>
