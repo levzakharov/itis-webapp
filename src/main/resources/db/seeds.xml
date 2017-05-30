@@ -94,4 +94,11 @@
         </delete>
 
     </changeSet>
+    <changeSet id="seeds_14" author="r.khakov">
+        <loadUpdateData tableName="event"
+                        primaryKey="id"
+                        file="db/seeds/changes/30051500/event.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
 </databaseChangeLog>
