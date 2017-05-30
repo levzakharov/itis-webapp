@@ -48,8 +48,10 @@ public class DocumentController {
     @GetMapping(value = ApplicationUrls.WebAppUrls.TEACHER_DOCUMENTS_URL)
     public String getTeacherDocumentsPage(@PathVariable int userId, ModelMap modelMap) {
         boolean isOwner = SecurityUtils.getCurrentUser().getId() == userId;
+        User user = userService.getById(userId);
         modelMap.put("documents", documentService.getByUserId(userId));
         modelMap.put("isOwner", isOwner);
+        modelMap.put("teacher", user);
         return "document/docs_teacher";
     }
 

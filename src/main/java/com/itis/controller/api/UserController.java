@@ -1,21 +1,19 @@
 package com.itis.controller.api;
 
 import com.itis.model.User;
+import com.itis.model.enums.Role;
 import com.itis.repository.UserRepository;
+import com.itis.security.SecurityUtils;
 import com.itis.utils.ApplicationUrls;
-
 import com.itis.utils.CSVParser;
 import com.itis.validators.UserValidator;
-
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -81,5 +79,11 @@ public class UserController {
             return ResponseEntity.badRequest().body("User with id '" + id + "' does not exist");
         }
         return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation("return user roles")
+    @GetMapping(ApplicationUrls.ApiUrls.USER_ROLES_URL)
+    public Set<Role> getUserRoles() {
+        return SecurityUtils.getCurrentUser().getRoles();
     }
 }

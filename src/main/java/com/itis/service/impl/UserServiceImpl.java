@@ -39,4 +39,9 @@ public class UserServiceImpl implements UserService {
         }
         return teachers;
     }
+
+    @Override
+    public User getById(long id) {
+        return userRepository.findOne(id);
+    }
 }
