@@ -53,3 +53,12 @@ $(document).on('click', '.type .button', function() {
     $('.type input[name="personality"]').val(transl[$(this).text()]);
 });
 
+$(document).on('click', '.schedule-form .modes .type .overall', function(){
+    $('.schedule-form .modes .size').fadeOut();
+    $('.schedule-form .modes .size .week').click();
+});
+
+$(document).on('click', '.schedule-form .modes .type .private', function(){
+    $('.schedule-form .modes .size').fadeIn();
+});
+
