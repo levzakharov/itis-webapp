@@ -7,7 +7,7 @@ import javax.persistence.Enumerated;
 import java.time.DayOfWeek;
 
 /**
- * Created by softi on 28.05.2017.
+ * @author softi on 28.05.2017.
  */
 public class EventParsingForm {
     private String description;
