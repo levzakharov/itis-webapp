@@ -7,7 +7,7 @@
 
     </div>
     <div class="write new-message">
-        <textarea class="message-content" required></textarea>
+        <textarea class="message-content" placeholder="Введите сообщение" required></textarea>
         <div class="button">
             <i class="fa fa-paper-plane" aria-hidden="true"></i>
         </div>
