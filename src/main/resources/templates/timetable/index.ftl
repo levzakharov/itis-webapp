@@ -17,6 +17,9 @@
         </div>
     </div>
     </@security.authorize>
+<#if error??>
+    ${error}
+</#if>
 <div class="filter">
     <div class="title">Выберите формат:</div>
     <form class="schedule-form">

@@ -8,7 +8,11 @@
 <div class="title"><a href="/documents">Документы</a> <i class="fa fa-chevron-right" aria-hidden="true"></i> <a
         href="/documents/dean">Деканат</a>
 </div>
+    <#if error??>
+    ${error}
+    </#if>
 <div class="title">
+
     <@security.authorize access="hasAnyRole('TEACHER')">
         (<a href="/documents">Все</a> / <a href="/documents/teachers/${docuser.id}">Мои</a>)
     </@security.authorize>

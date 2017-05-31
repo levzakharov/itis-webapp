@@ -1,0 +1,10 @@
+ID,FULL_NAME,EMAIL,PASSWORD,PHONE,USER_GROUP_ID
+1,Канашевич Мирон Юрьевич,stud1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,12
+2,Тимерханов Серафим Игнатьевич,stud2@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,2
+3,Красноперова Александра Игоревна,stud3@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,12
+4,Ганиева Лилия Эдгаровна,stud4@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,2
+5,Скворешников Сергей Антонович,prep1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null
+6,Абрамов Абрам Абрамович,prep2@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null
+7,Моисенко Виталий Игоревич,prep3@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null
+8,Умнова Анна Олеговна,decanat1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null
+9,Мшигапов Айрат Айратович,admin@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null

@@ -8,6 +8,9 @@
     <i class="fa fa-chevron-right" aria-hidden="true"></i> <a
             href="/documents/teachers/>${teacher.id}">${teacher.fullName}</a>
 </div>
+    <#if error??>
+    ${error}
+    </#if>
 <div class="title">
     <@security.authorize access="hasAnyRole('TEACHER')">
         (<a href="/documents">Все</a> / <a href="/documents/teachers/${docuser.id}">Мои</a>)

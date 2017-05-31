@@ -88,4 +88,6 @@ public class TimetableController {
         eventService.createTimetable(file);
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_TIMETABLE_URL;
     }
+
+
 }

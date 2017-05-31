@@ -97,6 +97,7 @@ public interface ApplicationUrls {
     }
 
     interface WebSocketsUrls {
+
         String BASE_MESSAGES_URL = "/messages";
 
         String MESSAGES_PREVIEW_URL = BASE_MESSAGES_URL + "-preview";
@@ -110,5 +111,14 @@ public interface ApplicationUrls {
         String MESSAGES_QUEUE_URL = "/queue/messages";
 
         String MESSAGES_READEN_QUEUE_URL= "/topic/read";
+    }
+
+    interface WebAppErrorsUrls {
+
+        String ERROR_404_URL = "/404";
+        String ERROR_403_URL = "/403";
+        String ERROR_500_URL = "/500";
+        String ERROR_UPLOAD_URL = "/uploadError";
+
     }
 }
