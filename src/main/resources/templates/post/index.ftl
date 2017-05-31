@@ -2,6 +2,9 @@
 
 <#macro m_body>
 <div class="title"><a href="/news">Новости</a></div>
+    <#if error??>
+    ${error}
+    </#if>
     <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
     <div class="add">
         <div class="button">Добавить новость</div>
