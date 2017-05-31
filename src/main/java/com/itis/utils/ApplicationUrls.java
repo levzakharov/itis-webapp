@@ -110,6 +110,7 @@ public interface ApplicationUrls {
 
         String MESSAGES_QUEUE_URL = "/queue/messages";
 
+        String MESSAGES_READEN_QUEUE_URL= "/topic/read";
     }
 
     interface WebAppErrorsUrls {
