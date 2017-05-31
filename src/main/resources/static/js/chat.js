@@ -85,7 +85,6 @@ function connect() {
 }
 
 
-
 function readMeassage(id) {
     stompClient.send("/websockets/messages/" + id +"/read", {}, JSON.stringify({}));
 }
@@ -104,5 +103,12 @@ $(document).ready(function(){
 
 
     });
+    $('.new-message textarea').keypress(function(event){
+        if(event.keyCode == 13){
+            event.preventDefault();
+            $('.new-message .button').click();
+        }
+    });
     connect();
 });
+
