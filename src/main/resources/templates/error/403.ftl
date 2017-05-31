@@ -10,7 +10,6 @@
     <link href="/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
 
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/window.js"></script>
 </head>
 <body>
 <div class="error-container">
