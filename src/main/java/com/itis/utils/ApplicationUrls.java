@@ -94,6 +94,8 @@ public interface ApplicationUrls {
         String GENERATE_CERTIFICATE_URL = BASE_REQUESTS_URL + "/{requestId}/generate";
 
         String BASE_CHAT_URL = "/chat";
+
+        String ACCOUNTS_MANAGEMENT_URL = "/accounts";
     }
 
     interface WebSocketsUrls {
