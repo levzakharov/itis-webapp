@@ -8,6 +8,11 @@ import java.io.IOException;
 import java.util.*;
 
 public interface CSVParser {
+
+    List<String> CSVFormats = Arrays.asList(
+            "application/vnd.ms-excel",
+            "text/csv");
+
     static <T> Set<T> parse(final byte[] data, Class<? extends T> $class) throws IOException {
         final ObjectMapper objectMapper = new ObjectMapper();
         final Iterator<CSVRecord> iterator =

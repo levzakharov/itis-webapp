@@ -14,7 +14,7 @@
                 <form action="/accounts/new" method="post" enctype="multipart/form-data">
                     <div class="name">
                         <label> Пользователи
-                            <input type="file" multiple name="documents"></label>
+                            <input type="file" multiple name="file"></label>
                     </div>
                     <input type="submit" value="Загрузить">
                 </form>

@@ -96,6 +96,7 @@ public interface ApplicationUrls {
         String BASE_CHAT_URL = "/chat";
 
         String ACCOUNTS_MANAGEMENT_URL = "/accounts";
+        String CREATE_ACCOUNT_URL = ACCOUNTS_MANAGEMENT_URL + "/new";
     }
 
     interface WebSocketsUrls {
