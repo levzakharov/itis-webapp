@@ -101,4 +101,98 @@
             <column name="id" type="numeric"/>
         </loadUpdateData>
     </changeSet>
+
+    <!--demo seeds-->
+    <changeSet id="seeds_15" author="al.pliskin">
+        <delete tableName="request">
+            <where>id > 0</where>
+        </delete>
+        <delete tableName="user_notification">
+            <where>user_id > 0</where>
+        </delete>
+        <delete tableName="user_role">
+            <where>user_id > 0</where>
+        </delete>
+        <delete tableName="notification">
+            <where>id > 0</where>
+        </delete>
+        <delete tableName="users">
+            <where>id > 0</where>
+        </delete>
+        <delete tableName="event">
+            <where>id > 0</where>
+        </delete>
+        <delete tableName="user_group">
+            <where>id > 0</where>
+        </delete>
+        <delete tableName="event">
+            <where>id > 0</where>
+        </delete>
+    </changeSet>
+    <changeSet id="seeds_16" author="al.pliskin">
+        <loadUpdateData tableName="user_group"
+                        primaryKey="id"
+                        file="db/seeds/demo/user_group.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_17" author="al.pliskin">
+        <loadUpdateData tableName="users"
+                        primaryKey="id"
+                        file="db/seeds/demo/users.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_18" author="al.pliskin">
+        <loadUpdateData tableName="user_role"
+                        primaryKey="user_id, role"
+                        file="db/seeds/demo/user_role.csv">
+            <column name="user_id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_19" author="al.pliskin">
+        <loadUpdateData tableName="event"
+                        primaryKey="id"
+                        file="db/seeds/demo/event.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_20" author="al.pliskin">
+        <loadUpdateData tableName="notification"
+                        primaryKey="id"
+                        file="db/seeds/demo/notification.csv">
+            <column name="id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_21" author="al.pliskin">
+        <loadUpdateData tableName="user_notification"
+                        primaryKey="id"
+                        file="db/seeds/demo/user_notification.csv">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_22" author="al.pliskin">
+        <delete tableName="event">
+            <where>id = 350</where>
+        </delete>
+    </changeSet>
+    <changeSet id="seeds_23" author="al.pliskin">
+        <loadUpdateData tableName="post"
+                        primaryKey="id"
+                        file="db/seeds/demo/post.csv">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_24" author="al.pliskin">
+        <loadUpdateData tableName="image"
+                        primaryKey="id"
+                        file="db/seeds/demo/image.csv">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="seeds_25" author="al.pliskin">
+        <loadUpdateData tableName="post_image"
+                        primaryKey="post_id, image_id"
+                        file="db/seeds/demo/post_image.csv">
+        </loadUpdateData>
+    </changeSet>
+
+
 </databaseChangeLog>
