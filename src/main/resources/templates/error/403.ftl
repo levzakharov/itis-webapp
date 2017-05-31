@@ -17,7 +17,7 @@
             <img src="/images/logo.png">
         </div>
         <div class="error-content">
-            <a>Ошибка 403</a>
+            <a>Нет доступа</a>
         </div>
     </div>
 </div>

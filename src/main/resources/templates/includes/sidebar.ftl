@@ -7,7 +7,9 @@
             <li><a href="/news">Новости</a></li>
             <li><a href="/timetable">Расписание</a></li>
             <li><a href="/raiting">Баллы</a></li>
+        <@security.authorize access="hasAnyRole('WORKER', 'STAROSTA','STUDENT')">
             <li><a href="/certificates">Запрос в деканат</a></li>
+        </@security.authorize>
             <li><a href="/documents">Документы</a></li>
             <li><a href="/chat">Чат</a></li>
         </ul>
