@@ -23,11 +23,12 @@ public class User implements UserDetails {
     @GeneratedValue(generator = "user_seq")
     private Long id;
 
+
     private String email;
 
     @Column(name = "full_name")
     private String fullName;
-
+    @JsonIgnore
     private String password;
 
     private String phone;
@@ -35,12 +36,14 @@ public class User implements UserDetails {
     @ManyToOne
     private UserGroup userGroup;
 
+    @JsonIgnore
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "user_id")

@@ -9,6 +9,7 @@
             <li><a href="/raiting">Баллы</a></li>
             <li><a href="/certificates">Запрос в деканат</a></li>
             <li><a href="/documents">Документы</a></li>
+            <li><a href="/chat">Чат</a></li>
         </ul>
     </div>
     <div class="exit">

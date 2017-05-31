@@ -108,5 +108,7 @@ public interface ApplicationUrls {
         String MESSAGES_FROM_USER_URL = BASE_MESSAGES_URL + "/{user}";
 
         String MESSAGES_QUEUE_URL = "/queue/messages";
+
+        String MESSAGES_READEN_QUEUE_URL= "/topic/read";
     }
 }

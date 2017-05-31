@@ -38,4 +38,9 @@ public class MessageServiceImpl implements MessageService {
     public Message save(final Message message) {
         return repository.save(message);
     }
+
+    @Override
+    public Message getById(Long id) {
+        return repository.findOne(id);
+    }
 }

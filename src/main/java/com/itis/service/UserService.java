@@ -15,4 +15,6 @@ public interface UserService {
     List<User> getByRole(Role role);
 
     User getById(long id);
+
+    public User getByEmail(String email);
 }

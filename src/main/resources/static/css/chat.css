@@ -40,6 +40,15 @@
 	cursor: pointer;
 }
 
+
+.container .content.chat .students .list .block.active {
+	padding: 10px;
+	box-sizing: border-box;
+	background: #ccc;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
 .container .content.chat .students .list .block .course {
 	font-size: 12px;
 	margin-top: 4px;
@@ -87,6 +96,8 @@
 	display: inline-block;
 	width: 100%;
 	box-sizing: border-box;
+	height: 400px;
+	overflow: scroll;
 }
 
 .container .content.chat .chat .blocks .block {
@@ -101,6 +112,13 @@
 	float: right;
 }
 
+.container .content.chat .chat .blocks .block.unread{
+	background-color: #eee;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+
 .container .content.chat .blocks .block {
 	padding: 0;
 	margin-bottom: 20px;
@@ -110,10 +128,17 @@
 .container .content.chat .write {
 	clear: both;
 	position: relative;
-	padding: 20px 30px;
+	padding: 20px 50px 20px 30px;
 	border-top: 1px solid #ddd;
 	margin-top: 10px;
+	position: relative;
+
 }
+
+.container .content.chat .write textarea{
+	width: 100%;
+}
+
 
 .container .content.chat .write input {
 	display: inline-block;
@@ -123,7 +148,8 @@
 .container .content.chat .write .button {
 	display: inline-block;
 	position: absolute;
-	right: 30px;
+	right: 20px;
+	top: 30px;
 	cursor: pointer;
 }
 

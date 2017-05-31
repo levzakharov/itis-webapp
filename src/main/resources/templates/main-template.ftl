@@ -31,7 +31,7 @@
     <#include "includes/sidebar.ftl">
     <div class="container">
         <#include "includes/header.ftl">
-        <div class="content <#list customClass as class> ${class}</#list>">
+        <div class="content<#list customClass as class> ${class}</#list>">
             <@m_body/>
         </div>
     </div>

@@ -12,4 +12,6 @@ public interface MessageService {
     void read(final Long id);
 
     Message save(final Message message);
+
+    Message getById(Long id);
 }
