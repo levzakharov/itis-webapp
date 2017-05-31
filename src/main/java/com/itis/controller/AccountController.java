@@ -18,7 +18,7 @@ public class AccountController {
 
     @GetMapping(value = ApplicationUrls.WebAppUrls.ACCOUNTS_MANAGEMENT_URL)
     public String getAcctountsPage(ModelMap modelMap) {
-//        modelMap.put("userGroups", userGroupService.g)
+        modelMap.put("userGroups", userGroupService.getUserGroups());
         return "account/management";
     }
 }

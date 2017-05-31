@@ -5,40 +5,72 @@
     <#if error??>
     ${error}
     </#if>
-    <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
-    <div class="add">
-        <div class="button">Добавить пользователя</div>
-        <div class="cancel">Отменить</div>
-        <div class="block">
-            <div class="title">Создание пользователя</div>
-            <form>
-                <div class="name">
-                    <input type="text" placeholder="Фамилия">
-                    <input type="text" placeholder="Имя">
-                    <input type="text" placeholder="Отчество">
-                </div>
-                <div class="usertype">
-                    <select name="usertype">
-                        <option>Студент</option>
-                        <option>Сотрудник</option>
-                        <option>Староста</option>
-                        <option>Преподаватель</option>
-                    </select>
-                </div>
-                <div class="usertype">
-                    <select name="group">
-                        <#list userGroups as userGroup>
-                            <option>${userGroup}</option>
-                        </#list>
-                    </select>
-                </div>
-                <input type="date" name="date" placeholder="Дата рождения">
-
-                <input type="submit" value="Создать">
-            </form>
+    <@security.authorize access="hasAnyRole('ADMIN')">
+        <div class="add">
+            <div class="button">Загрузить список пользователей CSV</div>
+            <div class="cancel">Отменить</div>
+            <div class="block">
+                <div class="title">Загрузка документа</div>
+                <form action="/accounts/new" method="post" enctype="multipart/form-data">
+                    <div class="name">
+                        <label> Пользователи
+                            <input type="file" multiple name="documents"></label>
+                    </div>
+                    <input type="submit" value="Загрузить">
+                </form>
+            </div>
         </div>
-    </div>
     </@security.authorize>
+
+    <#--<@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">-->
+    <#--<div class="add">-->
+        <#--<div class="button">Добавить пользователя</div>-->
+        <#--<div class="cancel">Отменить</div>-->
+        <#--<div class="block">-->
+            <#--<div class="title">Создание пользователя</div>-->
+            <#--<form>-->
+                <#--<div class="name">-->
+                    <#--<input type="text" name="surname" placeholder="Фамилия">-->
+                    <#--<input type="text" name="firstName" placeholder="Имя">-->
+                    <#--<input type="text" name="lastName" placeholder="Отчество">-->
+                <#--</div>-->
+                <#--<div class="name">-->
+                    <#--<select name="usertype">-->
+                        <#--<option>Студент</option>-->
+                        <#--<option>Сотрудник</option>-->
+                        <#--<option>Староста</option>-->
+                        <#--<option>Преподаватель</option>-->
+                    <#--</select>-->
+                <#--</div>-->
+
+                <#--<div class="name">-->
+                    <#--<select name="group">-->
+                        <#--<#list userGroups as userGroup>-->
+                            <#--<option>${userGroup.number}</option>-->
+                        <#--</#list>-->
+                    <#--</select>-->
+                <#--</div>-->
+
+                <#--<div class="name">-->
+                    <#--<label>Дата рождения: <input type="date" name="birthday" placeholder="Дата рождения">-->
+                    <#--</label>-->
+
+                <#--</div>-->
+                <#--<div class="name">-->
+                    <#--<label>Номер телефона: <input type="tel" name="phone"></label>-->
+                <#--</div>-->
+                <#--<div class="name">-->
+                    <#--<label>Email: <input type="email" name="email"></label>-->
+                <#--</div>-->
+                <#--<div class="name">-->
+                    <#--<label>Контракт: <input type="radio" name="contract" value="contract"></label>-->
+                <#--</div>-->
+
+                <#--<input type="submit" value="Создать">-->
+            <#--</form>-->
+        <#--</div>-->
+    <#--</div>-->
+    <#--</@security.authorize>-->
 
 <div class="blocks">
     <div class="block">
@@ -73,4 +105,4 @@
 </div>
 </#macro>
 
-<@main title="Новости" customScripts=["/js/news.js"] customClass=["docs"] customStyles=["/css/docs.css"]/>
+<@main title="Пользователи" customScripts=["/js/news.js"] customClass=["docs"] customStyles=["/css/docs.css"]/>
