@@ -5,7 +5,6 @@
     <title>Ошибка 500</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic" rel="stylesheet">
     <link href="/style.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/window.css" type="text/css" rel="stylesheet"/>
     <link href="/css/error.css" type="text/css" rel="stylesheet"/>
     <link href="/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
 
