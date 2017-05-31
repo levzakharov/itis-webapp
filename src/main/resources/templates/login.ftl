@@ -27,7 +27,7 @@
             <form action="/login/process" method="post">
                 <input name="login" type="text" placeholder="Логин">
                 <input name="password" type="password" placeholder="Пароль">
-                <label>Remember Me: <input type="checkbox" name="remember-me" checked/> </label>
+                <label><input type="checkbox" name="remember-me" checked/>Запомнить меня</label>
                 <input type="submit" class="button" value="Войти">
             <#if error??>
                 <div class="error-msg">Неправильный логин или пароль</div>
