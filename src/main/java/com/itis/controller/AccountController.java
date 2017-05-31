@@ -1,7 +1,10 @@
 package com.itis.controller;
 
+import com.itis.service.UserGroupService;
 import com.itis.utils.ApplicationUrls;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -10,8 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AccountController {
 
+    @Autowired
+    private UserGroupService userGroupService;
+
     @GetMapping(value = ApplicationUrls.WebAppUrls.ACCOUNTS_MANAGEMENT_URL)
-    public String getAcctountsPage() {
+    public String getAcctountsPage(ModelMap modelMap) {
+//        modelMap.put("userGroups", userGroupService.g)
         return "account/management";
     }
 }

@@ -25,6 +25,15 @@
                         <option>Преподаватель</option>
                     </select>
                 </div>
+                <div class="usertype">
+                    <select name="group">
+                        <#list userGroups as userGroup>
+                            <option>${userGroup}</option>
+                        </#list>
+                    </select>
+                </div>
+                <input type="date" name="date" placeholder="Дата рождения">
+
                 <input type="submit" value="Создать">
             </form>
         </div>
