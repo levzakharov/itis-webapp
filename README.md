@@ -25,28 +25,23 @@
 4. Импортим созданные миграции в **changelog.xml** в нужном порядке
 
 #### Тестовые пользователи
-|Логин|Пароль|Роли
-|---|---|---|
-|starosta-304@test.com|password|студент и староста|
-|stud-304@test.com|password|студент|
-|worker@test.com|password|работник|
-|admin@test.com|password|работник админ|
-|teacher@test.com|password|преподаватель|
-|stud-405@test.com|password|студент|
-|stud-601@test.com|password|студент|
-|stud-501@test.com|password|студент|
-|stud-401@test.com|password|студент|
-|stud-302@test.com|password|студент|
-|stud-201@test.com|password|студент|
-|stud-101@test.com|password|студент|
-|stud-402@test.com|password|студент|
-|stud-502@test.com|password|студент|
-|stud-303@test.com|password|студент|
+|Логин|Пароль|Роли|ФИО
+|---|---|---|---|
+|stud3@email.ru|password|студент и староста|Красноперова Александра Игоревна|
+|stud4@email.ru|password|студент и староста|Ганиева Лилия Эдгаровна|
+|stud1@email.ru|password|студент|Канашевич Мирон Юрьевич|
+|stud2@email.ru|password|студент|Тимерханов Серафим Игнатьевич|
+|decanat1@email.ru|password|работник|Умнова Анна Олеговна|
+|admin@email.ru|password|работник админ|Мшигапов Айрат Айратович|
+|prep1@email.ru|password|преподаватель|Скворешников Сергей Антонович|
+|prep2@email.ru|password|преподаватель|Абрамов Абрам Абрамович|
+|prep3@email.ru|password|преподаватель|Моисенко Виталий Игоревич|
 
 
 #### Заполнение расписания
-Номер Группы, Название Событие, Описание события, День недели, Время
----,---,---,---,---,---
+|Номер Группы|Название Событие|Описание события|День недели|Время|
+|---|---|---|---|---|---|
+
 Дни недели:
 MONDAY - понедельник
 TUESDAY - вторник
@@ -63,12 +58,4 @@ I_13_35_15_05 - 13:35-15:05
 I_15_20_16_50 - 15:20-16:50
 I_17_00_18_30 - 17:00-18:30
 I_18_40_20_10 - 18:40-20:10
-
-Пример:
-userGroup,name,description,place,day,interval
-11-401,test,test,1408,MONDAY,I_10_10_11_40
-11-401,test,test,1408,MONDAY,I_11_50_13_20
-11-405,test,test,1408,MONDAY,I_11_50_13_20
-11-602,test,test,1408,MONDAY,I_13_35_15_05
-11-104,test,test,1408,MONDAY,I_15_20_16_50
 

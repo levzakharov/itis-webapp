@@ -117,6 +117,12 @@ $(document).on('click', '.students .list .block', function () {
     $('.students .list .block').removeClass("active");
     $(this).addClass('active');
     var currUser = $(this).data("user");
+    $('.new-message textarea').keypress(function(event){
+        if(event.keyCode == 13){
+            event.preventDefault();
+            $('.new-message .button').click();
+        }
+    });
     stompClient.subscribe('/websockets/messages/' + currUser, function (response) {
         var messages = JSON.parse(response.body);
         function compare(a,b) {
@@ -139,3 +145,4 @@ $(document).on('click', '.students .list .block', function () {
     });
 
 });
+

@@ -87,7 +87,6 @@ function connect() {
 }
 
 
-
 function readMeassage(id) {
     stompClient.send("/websockets/messages/" + id +"/read", {}, JSON.stringify({}));
 }
@@ -106,9 +105,14 @@ $(document).ready(function(){
 
 
     });
+    $('.new-message textarea').keypress(function(event){
+        if(event.keyCode == 13){
+            event.preventDefault();
+            $('.new-message .button').click();
+        }
+    });
     connect();
 });
-
 
 var dateFormat = function () {
     var	token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
@@ -221,3 +225,4 @@ dateFormat.i18n = {
 Date.prototype.format = function (mask, utc) {
     return dateFormat(this, mask, utc);
 };
+

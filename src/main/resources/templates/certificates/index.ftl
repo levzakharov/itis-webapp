@@ -5,7 +5,7 @@
 <div class="filter">
     <@form.form commandName="request_creation_form" action="/certificates/new" method="post">
         <a>Запросить справку об учебе в количестве: </a>
-        <@form.input type="number" step="1" path="amount" />
+        <@form.input type="number" step="1" path="amount" min="1"/>
         <input type="submit" class="button" value="Запросить">
         <div class="text">
             <@form.errors path="amount" cssStyle="color: #ab2020; padding-left: 10px"/>

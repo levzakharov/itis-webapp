@@ -4,7 +4,6 @@ import com.itis.model.User;
 import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
 import com.itis.utils.ApplicationUrls;
-import netscape.security.ForbiddenTargetException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartException;
