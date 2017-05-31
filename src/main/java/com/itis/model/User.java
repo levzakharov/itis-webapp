@@ -53,6 +53,9 @@ public class User implements UserDetails {
 
     private Long birthday;
 
+    @JsonIgnore
+    private boolean enabled;
+
     public Long getId() {
         return id;
     }
@@ -147,7 +150,11 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public List<UserNotification> getUserNotifications() {
@@ -173,4 +180,5 @@ public class User implements UserDetails {
     public void setBirthday(Long birthday) {
         this.birthday = birthday;
     }
+
 }
