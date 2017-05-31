@@ -17,7 +17,7 @@
             <img src="/images/logo.png">
         </div>
         <div class="error-content">
-            <a>Ошибка 404</a>
+            <a>Такой страницы не существует</a>
         </div>
     </div>
 </div>
