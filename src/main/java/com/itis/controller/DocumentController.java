@@ -59,6 +59,7 @@ public class DocumentController {
     public String getDeanDocumentsPage(ModelMap modelMap) {
         List<Document> documents = new ArrayList<>();
         List<User> users = userService.getByRole(Role.WORKER);
+        users.addAll(userService.getByRole(Role.ADMIN));
         for (User user : users) {
             documents.addAll(documentService.getByUserId(user.getId()));
         }
