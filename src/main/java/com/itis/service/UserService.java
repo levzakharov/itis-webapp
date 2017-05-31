@@ -17,4 +17,6 @@ public interface UserService {
     User getById(long id);
 
     public User getByEmail(String email);
+
+    List<User> getAllUsersExceptingAdmin();
 }

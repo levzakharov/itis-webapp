@@ -40,10 +40,14 @@ public class UserServiceImpl implements UserService {
         return teachers;
     }
 
-
     @Override
     public User getByEmail(String email){
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public List<User> getAllUsersExceptingAdmin() {
+        return userRepository.findAllNotContainingRole(Role.ADMIN);
     }
 
     @Override

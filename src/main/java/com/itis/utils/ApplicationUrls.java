@@ -81,6 +81,10 @@ public interface ApplicationUrls {
 
         String BASE_RAITING_URL = "/raiting";
 
+        String ACCOUNTS_MANAGEMENT_URL = "/accounts";
+
+        String BANNED_ACCOUNTS_MANAGEMENT_URL = ACCOUNTS_MANAGEMENT_URL + "/banned";
+
         String BASE_REQUESTS_URL = "/certificates";
 
         String PROCESSED_REQUESTS_URL = BASE_REQUESTS_URL + "/processed";
@@ -110,7 +114,7 @@ public interface ApplicationUrls {
 
         String MESSAGES_QUEUE_URL = "/queue/messages";
 
-        String MESSAGES_READEN_QUEUE_URL= "/topic/read";
+        String MESSAGES_READEN_QUEUE_URL = "/topic/read";
     }
 
     interface WebAppErrorsUrls {
