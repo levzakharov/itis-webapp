@@ -1,8 +1,8 @@
 var transl = {
     'День': 'monday',
     'Неделя': 'week',
-    'Личный': 'private',
-    'Общий': 'overall',
+    'Личное': 'private',
+    'Общее': 'overall',
     'Пн': 'monday',
     'Вт': 'tuesday',
     'Ср': 'wednesday',
@@ -52,6 +52,7 @@ $(document).on('click', '.days .button', function () {
 $(document).on('click', '.type .button', function () {
     $('.type .button').removeClass('active');
     $(this).addClass('active');
+    console.log($(this).text());
     $('.type input[name="personality"]').val(transl[$(this).text()]);
     $('.schedule-form').submit();
 });
