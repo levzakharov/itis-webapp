@@ -22,13 +22,21 @@ public interface CSVParser {
         }
         final CSVRecord headers = iterator.next();
         final Set<T> res = new HashSet<>();
-        iterator.forEachRemaining((record) -> {
+        while (iterator.hasNext()) {
+            CSVRecord record = iterator.next();
             final Map<String, String> values = new HashMap<>();
             for (int i = 0; i < headers.size(); i++) {
                 values.put(headers.get(i), record.get(i));
             }
             res.add(objectMapper.convertValue(values, $class));
-        });
+        }
+//        iterator.forEachRemaining((record) -> {
+//            final Map<String, String> values = new HashMap<>();
+//            for (int i = 0; i < headers.size(); i++) {
+//                values.put(headers.get(i), record.get(i));
+//            }
+//            res.add(objectMapper.convertValue(values, $class));
+//        });
         return res;
     }
 }

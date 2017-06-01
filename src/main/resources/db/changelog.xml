@@ -28,6 +28,7 @@
     <include file="changelog/custom/26050146.xml" relativeToChangelogFile="true"/>
     <include file="changelog/custom/27051136.xml" relativeToChangelogFile="true"/>
     <include file="changelog/custom/01060240.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/custom/timetable.xml" relativeToChangelogFile="true"/>
 
     <!--Seeds-->
     <include file="seeds.xml" relativeToChangelogFile="true"/>

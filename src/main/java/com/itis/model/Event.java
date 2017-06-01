@@ -35,6 +35,9 @@ public class Event {
     @JoinColumn(name = "user_group_id")
     private UserGroup userGroup;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User teacher;
+
     private String name;
 
     public Long getId() {
@@ -102,5 +105,13 @@ public class Event {
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
+    }
+
+    public User getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
     }
 }

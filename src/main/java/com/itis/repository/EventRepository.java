@@ -1,6 +1,7 @@
 package com.itis.repository;
 
 import com.itis.model.Event;
+import com.itis.model.User;
 import com.itis.model.UserGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -19,5 +20,9 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findByUserGroup(UserGroup userGroup);
 
     List<Event> findByUserGroupAndDay(UserGroup userGroup, DayOfWeek day);
+
+    List<Event> findByTeacher(User teacher);
+
+    List<Event> findByTeacherAndDay(User teacher, DayOfWeek day);
 
 }

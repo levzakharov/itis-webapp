@@ -3,6 +3,7 @@ package com.itis.transformers;
 import com.itis.form.EventParsingForm;
 import com.itis.model.Event;
 import com.itis.service.UserGroupService;
+import com.itis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,9 @@ public class EventParsingFormToEventTransformer implements Function<EventParsing
     @Autowired
     private UserGroupService userGroupService;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     public Event apply(EventParsingForm eventParsingForm) {
         Event event = new Event();
@@ -27,6 +31,9 @@ public class EventParsingFormToEventTransformer implements Function<EventParsing
         event.setName(eventParsingForm.getName());
         event.setInterval(eventParsingForm.getInterval());
         event.setUserGroup(userGroupService.getUserGroup(eventParsingForm.getUserGroup()));
+        if (eventParsingForm.getTeacher() != null) {
+            event.setTeacher(userService.getById(eventParsingForm.getTeacher()));
+        }
         return event;
     }
 }

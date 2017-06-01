@@ -1,3 +1,5 @@
+<#assign security=JspTaglibs["/META-INF/security.tld"] />
+
 <#include "days_form.ftl">
 <div class="table dayp">
     <table>
@@ -14,15 +16,22 @@
             <td>${interval}</td>
             <#list timetable as day, mapday>
                 <#if day_of_week == day>
-                <td>
-                    <#list mapday as interval_m, events>
+                    <td>
+                        <#list mapday as interval_m, events>
                             <#if interval_m == interval>
-                        <#list events as event>
-                        ${event.name}, ${event.description}, ${event.place}
+                                <#list events as event>
+                                    <p>
+                                        <@security.authorize access="hasAnyRole('TEACHER')">
+                                            (${event.userGroup.number}) ${event.name}, ${event.place}
+                                        </@security.authorize>
+                                    <p><@security.authorize access="!hasAnyRole('TEACHER')">
+                                    ${event.name} , ${event.description}, ${event.place}
+                                    </@security.authorize>
+                                    </p>
+                                </#list>
+                            </#if>
                         </#list>
-                    </#if>
-                        </#list>
-                </td>
+                    </td>
                 </#if>
             </#list>
         </tr>

@@ -1,3 +1,5 @@
+<#assign security=JspTaglibs["/META-INF/security.tld"] />
+
 <div class="table weekp">
     <table>
         <thead>
@@ -14,20 +16,27 @@
         </thead>
         <tbody>
         <#list intervals as interval>
-            <tr>
-                <td>${interval}</td>
-                <#list timetable as day, mapday>
-                    <td>
-                        <#list mapday as interval_m, events>
-                            <#if interval_m == interval>
-                                <#list events as event>
-                                    ${event.name}, ${event.description}, ${event.place}
-                                </#list>
-                            </#if>
-                        </#list>
-                    </td>
-                </#list>
-            </tr>
+        <tr>
+            <td>${interval}</td>
+            <#list timetable as day, mapday>
+                <td>
+                    <#list mapday as interval_m, events>
+                        <#if interval_m == interval>
+                            <#list events as event>
+                                <p>
+                                    <@security.authorize access="hasAnyRole('TEACHER')">
+                                        (${event.userGroup.number}) ${event.name}, ${event.place}
+                                    </@security.authorize>
+                                <p><@security.authorize access="!hasAnyRole('TEACHER')">
+                                ${event.name} , ${event.description}, ${event.place}
+                                </@security.authorize>
+                                </p>
+                            </#list>
+                        </#if>
+                    </#list>
+                </td>
+            </#list>
+        </tr>
         </#list>
 
         </tbody>

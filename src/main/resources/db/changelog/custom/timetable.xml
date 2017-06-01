@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="timetable_0" author="i.nasibullin">
+        <addColumn tableName="event">
+            <column name="teacher_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="timetable_1" author="i.nasibullin">
+        <addForeignKeyConstraint baseColumnNames="teacher_id"
+                                 baseTableName="event"
+                                 constraintName="event_teacher_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"
+        onDelete="SET NULL"/>
+    </changeSet>
+</databaseChangeLog>
