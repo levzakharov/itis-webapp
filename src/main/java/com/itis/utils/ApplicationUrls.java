@@ -81,9 +81,11 @@ public interface ApplicationUrls {
 
         String BASE_RAITING_URL = "/raiting";
 
-        String ACCOUNTS_MANAGEMENT_URL = "/accounts";
+        String BASE_ACCOUNTS_MANAGEMENT_URL = "/accounts";
 
-        String BANNED_ACCOUNTS_MANAGEMENT_URL = ACCOUNTS_MANAGEMENT_URL + "/banned";
+        String BAN_ACCOUNT_URL = BASE_ACCOUNTS_MANAGEMENT_URL + "/${userId}/ban";
+
+        String UNBAN_ACCOUNT_URL = BASE_ACCOUNTS_MANAGEMENT_URL + "/${userId}/unban";
 
         String BASE_REQUESTS_URL = "/certificates";
 

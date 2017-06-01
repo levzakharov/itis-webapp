@@ -7,22 +7,6 @@
     <div class="cancel">Отменить</div>
     <div class="block">
         <div class="title">Создание пользователя</div>
-        <form>
-            <div class="name">
-                <input type="text" placeholder="Фамилия">
-                <input type="text" placeholder="Имя">
-                <input type="text" placeholder="Отчество">
-            </div>
-            <div class="usertype">
-                <select name="usertype">
-                    <option>Студент</option>
-                    <option>Сотрудник</option>
-                    <option>Староста</option>
-                    <option>Преподаватель</option>
-                </select>
-            </div>
-            <input type="submit" value="Создать">
-        </form>
     </div>
 </div>
 <div class="blocks">
@@ -56,7 +40,7 @@
                 <i class="fa fa-times" aria-hidden="true"></i>
             </div>
             <div class="edit">
-                <div class="title">Редактирование пользователя</div>
+                <div class="title">Информация о пользователе</div>
                 <form>
                     <div class="name">
                         <input disabled type="text" value="${user.fullName}">

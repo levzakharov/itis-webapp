@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * Created by maratgatin on 27/05/2017.
@@ -25,13 +27,25 @@ public class AccountsManagementController {
         this.userService = userService;
     }
 
-    @GetMapping(ApplicationUrls.WebAppUrls.ACCOUNTS_MANAGEMENT_URL)
+    @GetMapping(ApplicationUrls.WebAppUrls.BASE_ACCOUNTS_MANAGEMENT_URL)
     public String getAccountsPage(ModelMap modelMap) {
-        if (SecurityUtils.getCurrentUser().getRoles().contains(Role.ADMIN)) {
+        if (SecurityUtils.getCurrentUser().hasRole(Role.ADMIN)) {
             modelMap.put("users", userService.getAllUsersExceptingAdmin());
             return TEMPLATES_FOLDER + "accounts";
         } else {
             return "redirect:" + ApplicationUrls.WebAppUrls.BASE_NEWS_URL;
         }
+    }
+
+    @PostMapping(ApplicationUrls.WebAppUrls.BAN_ACCOUNT_URL)
+    public String banUser(@PathVariable long userId) {
+        userService.ban(userId);
+        return TEMPLATES_FOLDER + "accounts";
+    }
+
+    @PostMapping(ApplicationUrls.WebAppUrls.UNBAN_ACCOUNT_URL)
+    public String unbanUser(@PathVariable long userId) {
+        userService.unban(userId);
+        return TEMPLATES_FOLDER + "accounts";
     }
 }

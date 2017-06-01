@@ -19,4 +19,8 @@ public interface UserService {
     public User getByEmail(String email);
 
     List<User> getAllUsersExceptingAdmin();
+
+    void ban(long id);
+
+    void unban(long id);
 }

@@ -7,6 +7,7 @@ import com.itis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,13 +42,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getByEmail(String email){
+    public User getByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
     public List<User> getAllUsersExceptingAdmin() {
         return userRepository.findAllNotContainingRole(Role.ADMIN);
+    }
+
+    @Transactional
+    @Override
+    public void ban(long id) {
+        userRepository.ban(id);
+    }
+
+    @Transactional
+    @Override
+    public void unban(long id) {
+        userRepository.unban(id);
     }
 
     @Override
