@@ -433,6 +433,7 @@ header .user .notif .count span {
 	float: right;
 	cursor: pointer;
 	display: none;
+	width: 70px;
 }
 
 .container .content .add .block {
@@ -934,6 +935,17 @@ header .user .notif .count span {
 	}
 }
 
+@media only screen and (max-width: 920px) {
+	.container .content.users .add {
+		clear: both;
+	}
+
+	.container .content.users .add .button {
+		margin-top: 20px;
+		float: none !important;
+	}
+}
+
 @media only screen and (max-width: 880px) {
 	.container .content .filter form {
 		display: block;
@@ -984,12 +996,26 @@ header .user .notif .count span {
 		padding-bottom: 20px;
 	}
 
+	.container .content.users .blocks .block .buttons {
+		position: relative !important;
+		margin-top: 30px;
+		margin-bottom: 0;
+	}
+
+	.container .content.users .blocks .block .buttons .fa:first-child {
+		margin-left: 0;
+	}
+
 	.container .content .add .button {
 		float: none !important;
 	}
 
 	.container .content .add .cancel {
 		float: none !important;
+	}
+
+	.container .content .blocks .block .name {
+		font-size: 16px;
 	}
 }
 
@@ -1008,6 +1034,11 @@ header .user .notif .count span {
 
 	.container {
 		padding-left: 0;
+	}
+
+	.raiting #iframeHolder {
+		left: 0;
+		top: 180px;
 	}
 
 	header .col-5:first-child {
@@ -1074,6 +1105,32 @@ header .user .notif .count span {
 
 }
 
+@media only screen and (max-width: 450px) {
+	.error-container .error {
+		width: 300px !important;
+		margin-left: -150px !important;
+		padding: 50px 0 !important;
+	}
+
+	.error-container .error .logo img {
+		width: 70% !important;
+	}
+
+	.error-container .error a {
+		font-size: 18px !important;
+	}
+
+	.error-container .error .error-content {
+		width: 70% !important;
+		display: inline-block !important;
+	}
+
+	.modal {
+		width: 300px !important;
+		margin-left: -150px !important;
+	}
+}
+
 @media only screen and (max-width: 380px) {
 	.signin-container .signin {
 		width: 270px;
@@ -1095,6 +1152,19 @@ header .user .notif .count span {
 
 	.signin-container .signin .logo img {
 		width: 200px;
+	}
+}
+
+@media only screen and (max-height: 470px) {
+	.error-container .error {
+		position: relative !important;
+		margin-top: 50px !important;
+		margin-bottom: 50px !important;
+		top: 0 !important;
+	}
+
+	.error-container {
+		height: auto !important;
 	}
 }
 

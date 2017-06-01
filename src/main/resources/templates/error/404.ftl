@@ -19,6 +19,10 @@
         <div class="error-content">
             <a>Такой страницы не существует</a>
         </div>
+        <div class="back">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <input type="button" onclick="history.back();" value="Назад"/>
+        </div>
     </div>
 </div>
 </body>

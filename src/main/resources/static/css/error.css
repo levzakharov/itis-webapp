@@ -21,7 +21,7 @@
     left: 50%;
     top: 50%;
     margin-left: -275px;
-    margin-top: -174px;
+    margin-top: -232px;
     padding: 50px;
     text-align: center;
 }
@@ -46,4 +46,25 @@
     font-size: 32px;
     font-weight: 600;
     text-align: center;
+}
+
+.error-container .error .back {
+    margin-top: 20px;
+}
+
+.error-container .error .back .fa {
+    color: #fff;
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.error-container .error .back input {
+    background: transparent;
+    color: #fff;
+    padding: 15px;
+    font-size: 16px;
+    cursor:pointer ;
+    display: inline-block;
+    vertical-align: middle;
 }
