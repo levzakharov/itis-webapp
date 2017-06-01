@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
  * Created by maratgatin on 27/05/2017.
  */
 @Controller
-
 public class AccountsManagementController {
 
     private final UserService userService;

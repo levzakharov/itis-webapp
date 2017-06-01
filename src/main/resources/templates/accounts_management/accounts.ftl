@@ -3,7 +3,7 @@
 <#macro m_body>
 <div class="title">Список пользователей</div>
 <div class="add">
-    <div class="button">Добавить пользователей</div>
+    <div class="button">Добавить/обновить пользователей</div>
     <div class="cancel">Отменить</div>
     <div class="block">
         <div class="title">Загрузить список пользователей CSV</div>
