@@ -1,10 +1,10 @@
 ID,FULL_NAME,EMAIL,PASSWORD,PHONE,USER_GROUP_ID,BIRTHDAY
-1,Канашевич Мирон Юрьевич,stud1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,12,822096000
-2,Тимерханов Серафим Игнатьевич,stud2@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,2,887846400
-3,Красноперова Александра Игоревна,stud3@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,12,795571200
-4,Ганиева Лилия Эдгаровна,stud4@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,2,917308800
-5,Скворешников Сергей Антонович,prep1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,-137548800
-6,Абрамов Абрам Абрамович,prep2@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,50112000
-7,Моисенко Виталий Игоревич,prep3@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,-94867200
-8,Умнова Анна Олеговна,decanat1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,18576000
-9,Мшигапов Айрат Айратович,admin@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,113011200
+1,Канашевич Мирон Юрьевич,stud1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,12,822096000000
+2,Тимерханов Серафим Игнатьевич,stud2@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,2,887846400000
+3,Красноперова Александра Игоревна,stud3@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,12,795571200000
+4,Ганиева Лилия Эдгаровна,stud4@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,2,917308800000
+5,Скворешников Сергей Антонович,prep1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,-137548800000
+6,Абрамов Абрам Абрамович,prep2@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,50112000000
+7,Моисенко Виталий Игоревич,prep3@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,-94867200000
+8,Умнова Анна Олеговна,decanat1@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,18576000000
+9,Мшигапов Айрат Айратович,admin@email.ru,$2a$10$eJiTtoOoo9Bhzx4ddf/ZFubIEUQhvtnRTKhvZKDTJYaaqL4m6Ivym,89364238640,null,113011200000
