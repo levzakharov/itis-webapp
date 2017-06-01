@@ -3,6 +3,9 @@
 <#macro m_body>
 <div class="title">Переписка со студентами</div>
 <div class="students">
+    <div class="search">
+            <input type="text" placeholder="ФИО">
+    </div>
     <div class="list">
 
     </div>

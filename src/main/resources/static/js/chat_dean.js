@@ -98,17 +98,32 @@ function messageIsReaden(id) {
 
 $(document).ready(function(){
     myChatName = $('.content .chat').data('my-chat-name');
+
     $('.new-message textarea').keypress(function(event){
         if(event.keyCode == 13){
             event.preventDefault();
             $('.new-message .button').click();
         }
     });
+
     $('.new-message .button').click(function (event) {
         event.preventDefault();
         var content = $('.new-message .message-content').val();
         if (content != "")
             stompClient.send("/websockets/messages", {}, JSON.stringify({'content': content, 'toUser' : $('.students .list .block.active').data('user')}));
+    });
+
+    $('.search input[type="text"]').on('input', function(e){
+        e.preventDefault();
+        var fullname = $(this).val();
+        $('.students .list .block').each(function () {
+            if ($(this).data('fullname').toLowerCase().indexOf(fullname.toLowerCase()) > -1){
+                $(this).show();
+            }
+            else{
+                $(this).hide();
+            }
+        })
     });
 
     connect();
