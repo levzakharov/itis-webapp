@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @author softi on 25.05.2017.
@@ -69,21 +70,23 @@ public class UserServiceImpl implements UserService {
             if (!CSVParser.CSVFormats.contains(file.getContentType())) {
                 throw new IllegalArgumentException("incorrect format of csv file");
             }
-            Set<UserParsingForm> userParsingForms = CSVParser.parse(file.getBytes(), UserParsingForm.class);
-            assert userParsingForms != null;
-            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            userParsingForms.forEach(userParsingForm -> {
-                User user = userRepository.findByEmail(userParsingForm.getEmail());
+            Set<UserParsingForm> forms = CSVParser.parse(file.getBytes(), UserParsingForm.class);
+            assert forms != null;
+            List<User> users = forms.stream().map(form -> {
+                User user = userRepository.findByEmail(form.getEmail());
                 if (user == null) {
-                    user = transformer.apply(userParsingForm);
+                    user = transformer.apply(form);
                 } else {
-                    user = transformer.apply(userParsingForm, user);
+                    user = transformer.apply(form, user);
                 }
                 String password = (UUID.randomUUID().toString()).substring(0, 8);
+
                 user.setPassword(password);
-                CSVWriter.writeToCSV(user);
-                userRepository.save(user);
-            });
+                user.setEnabled(true);
+                return user;
+            }).collect(Collectors.toList());
+                CSVWriter.writeToCSV(users);
+                userRepository.save(users);
         } catch (IOException e) {
             LOGGER.error("error occured while parsing csv file to timetable events : ", e);
             throw new TimetableCreationException();
