@@ -172,7 +172,7 @@ public class User implements UserDetails {
     }
 
     public void setContract(boolean contract) {
-        contract = contract;
+        this.contract = contract;
     }
 
     public Long getBirthday() {

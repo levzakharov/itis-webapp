@@ -80,7 +80,6 @@ public class UserServiceImpl implements UserService {
                     user = transformer.apply(form, user);
                 }
                 String password = (UUID.randomUUID().toString()).substring(0, 8);
-
                 user.setPassword(password);
                 user.setEnabled(true);
                 return user;

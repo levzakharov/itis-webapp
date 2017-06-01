@@ -30,13 +30,6 @@ public interface CSVParser {
             }
             res.add(objectMapper.convertValue(values, $class));
         }
-//        iterator.forEachRemaining((record) -> {
-//            final Map<String, String> values = new HashMap<>();
-//            for (int i = 0; i < headers.size(); i++) {
-//                values.put(headers.get(i), record.get(i));
-//            }
-//            res.add(objectMapper.convertValue(values, $class));
-//        });
         return res;
     }
 }
