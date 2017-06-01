@@ -67,7 +67,7 @@
                         <input disabled type="text" value="${user.email}">
                     </div>
                     <div class="name">
-                        <input disabled type="date"
+                        <input disabled type="text"
                                value="Дата рождения: <#if user.birthday??>${user.birthday?number_to_date}</#if>">
                     </div>
                     <div class="name">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="name">
                             <input disabled type="text"
-                                   value="Форма обучения: <#if user.contract>контракт<#else>бюджет</#if>">
+                                   value="Форма обучения: <#if user.contract??><#if user.contract>контракт<#else>бюджет</#if>"></#if>
                         </div>
                         <div class="name">
                             <input disabled type="text" value="Год поступления: ${user.userGroup.startYear}">
