@@ -27,6 +27,7 @@ $(document).ready(function() {
             },
         });
     });
+    $('.schedule-form .modes input[type="submit"]').hide();
     $('.schedule-form').submit();
 });
 
@@ -37,6 +38,7 @@ $(document).on('click', '.size .button', function() {
         $('.days .button').removeClass('active');
     }
     $('.size input[name="interval"]').val(transl[$(this).text()]);
+    $('.schedule-form').submit();
 });
 
 $(document).on('click', '.days .button', function() {
@@ -45,20 +47,26 @@ $(document).on('click', '.days .button', function() {
     $('.size .button:first-child').addClass('active');
     $(this).addClass('active');
     $('.size input[name="interval"]').val(transl[$(this).text()]);
+    $('.schedule-form').submit();
 });
 
 $(document).on('click', '.type .button', function() {
     $('.type .button').removeClass('active');
     $(this).addClass('active');
     $('.type input[name="personality"]').val(transl[$(this).text()]);
+    $('.schedule-form').submit();
 });
 
 $(document).on('click', '.schedule-form .modes .type .overall', function(){
     $('.schedule-form .modes .size').fadeOut();
     $('.schedule-form .modes .size .week').click();
+    $('.schedule-form').submit();
 });
 
 $(document).on('click', '.schedule-form .modes .type .private', function(){
     $('.schedule-form .modes .size').fadeIn();
+    $('.schedule-form').submit();
 });
+
+
 

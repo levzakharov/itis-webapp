@@ -1,5 +1,5 @@
 <#include "days_form.ftl">
-<div class="table">
+<div class="table dayg">
     <table>
         <thead>
         <tr>

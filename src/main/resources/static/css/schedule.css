@@ -20,7 +20,7 @@
 }
 
 .container .content .title {
-	float: none;
+	float: left;
 	display: block;
 	margin-bottom: 30px;
 }
@@ -29,4 +29,24 @@
 	font-size: 18px;
 	margin-bottom: 0;
 	display: inline-block;
+	vertical-align: middle;
+	float: none !important;
+}
+
+.container .content .filter {
+	clear: both;
+}
+
+.container .content .add .button {
+	float: right;
+}
+
+.container .content .add .blocks .title {
+	padding-bottom: 0;
+}
+
+.container .content .table.dayp table th, .container .content .table.dayp table td {
+	max-width: none;
+	min-width: 100px;
+	width: 100px;
 }

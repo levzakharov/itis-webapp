@@ -1,6 +1,7 @@
 <#include "../main-template.ftl">
 
 <#macro m_body>
+    <div class="title">Расписание</div>
     <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
     <div class="add">
         <div class="button">Загрузить расписание через csv файл</div>
@@ -44,4 +45,4 @@
 </div>
 </#macro>
 
-<@main title="Расписание" customScripts=["/js/timetable.js", "/js/news.js"] customClass=["/css/schedule.css"]/>
+<@main title="Расписание" customScripts=["/js/timetable.js", "/js/news.js"] customStyles=["/css/schedule.css"]/>

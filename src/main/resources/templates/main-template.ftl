@@ -18,6 +18,7 @@
     </#list>
 
     <script src="/webjars/jquery/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/javascript.js"></script>
 
     <#list customScripts as script>
         <script src="${script}" type="text/javascript"></script>
