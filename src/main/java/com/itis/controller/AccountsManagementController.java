@@ -40,12 +40,12 @@ public class AccountsManagementController {
     @PostMapping(ApplicationUrls.WebAppUrls.BAN_ACCOUNT_URL)
     public String banUser(@PathVariable long userId) {
         userService.ban(userId);
-        return TEMPLATES_FOLDER + "accounts";
+        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_ACCOUNTS_MANAGEMENT_URL;
     }
 
     @PostMapping(ApplicationUrls.WebAppUrls.UNBAN_ACCOUNT_URL)
     public String unbanUser(@PathVariable long userId) {
         userService.unban(userId);
-        return TEMPLATES_FOLDER + "accounts";
+        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_ACCOUNTS_MANAGEMENT_URL;
     }
 }
