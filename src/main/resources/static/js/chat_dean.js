@@ -98,6 +98,12 @@ function messageIsReaden(id) {
 
 $(document).ready(function(){
     myChatName = $('.content .chat').data('my-chat-name');
+    $('.new-message textarea').keypress(function(event){
+        if(event.keyCode == 13){
+            event.preventDefault();
+            $('.new-message .button').click();
+        }
+    });
     $('.new-message .button').click(function (event) {
         event.preventDefault();
         var content = $('.new-message .message-content').val();
@@ -117,12 +123,7 @@ $(document).on('click', '.students .list .block', function () {
     $('.students .list .block').removeClass("active");
     $(this).addClass('active');
     var currUser = $(this).data("user");
-    $('.new-message textarea').keypress(function(event){
-        if(event.keyCode == 13){
-            event.preventDefault();
-            $('.new-message .button').click();
-        }
-    });
+
     stompClient.subscribe('/websockets/messages/' + currUser, function (response) {
         var messages = JSON.parse(response.body);
         function compare(a,b) {
