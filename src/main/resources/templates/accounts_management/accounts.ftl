@@ -80,8 +80,7 @@
                         </div>
                         <div class="name">
                             <input disabled type="text"
-                                   <#assign contract = user.contract/>
-                                   value="Форма обучения: ${contract} <#if contract>контракт<#else>бюджет</#if>">
+                                   value="Форма обучения: <#if user.contract>контракт<#else>бюджет</#if>">
                         </div>
                         <div class="name">
                             <input disabled type="text" value="Год поступления: ${user.userGroup.startYear}">
