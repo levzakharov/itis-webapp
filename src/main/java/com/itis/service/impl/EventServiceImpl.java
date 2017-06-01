@@ -4,7 +4,9 @@ import com.itis.criteria.TimetableSearchCriteria;
 import com.itis.exceptions.TimetableCreationException;
 import com.itis.form.EventParsingForm;
 import com.itis.model.Event;
+import com.itis.model.User;
 import com.itis.model.enums.EventInterval;
+import com.itis.model.enums.Role;
 import com.itis.repository.EventRepository;
 import com.itis.security.SecurityUtils;
 import com.itis.service.EventService;
@@ -51,10 +53,28 @@ public class EventServiceImpl implements EventService {
             }
             return getEventsByDay(criteria.getInterval());
         }
+
+        User user = SecurityUtils.getCurrentUser();
+        if (user.getRoles().contains(Role.TEACHER)) {
+            if (INTERVAL_WEEK.equals(criteria.getInterval())) {
+                return getEventsByTeacher(user);
+            }
+            return getEventsByTeacherAndDay(user, criteria.getInterval());
+        }
         if (INTERVAL_WEEK.equals(criteria.getInterval())) {
             return getEventsByUserGroup();
         }
         return getEventsByUserGroupAndDay(criteria.getInterval());
+    }
+
+    private Map<DayOfWeek, Map<EventInterval, List<Event>>> getEventsByTeacherAndDay(User user, String interval) {
+        List<Event> events = eventRepository.findByTeacherAndDay(user, DayOfWeek.valueOf(interval.toUpperCase()));
+        return generateTimetable(events);
+    }
+
+    private Map<DayOfWeek, Map<EventInterval, List<Event>>> getEventsByTeacher(User user) {
+        List<Event> events = eventRepository.findByTeacher(user);
+        return generateTimetable(events);
     }
 
     @Override

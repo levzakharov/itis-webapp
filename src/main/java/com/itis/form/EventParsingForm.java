@@ -24,6 +24,8 @@ public class EventParsingForm {
 
     private String name;
 
+    private Long teacher;
+
     public String getDescription() {
         return description;
     }
@@ -70,5 +72,13 @@ public class EventParsingForm {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Long teacher) {
+        this.teacher = teacher;
     }
 }
