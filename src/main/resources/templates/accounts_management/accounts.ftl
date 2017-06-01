@@ -44,7 +44,7 @@
             <div class="name">${user.fullName}</div>
             <div class="buttons">
                 <i class="fa fa-search" aria-hidden="true"></i>
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <i class="fa <#if user.enabled>fa-times<#else>fa-plus</#if>" aria-hidden="true"></i>
             </div>
             <div class="edit">
                 <div class="title">Информация о пользователе</div>
@@ -69,7 +69,8 @@
                         </div>
                         <div class="name">
                             <input disabled type="text"
-                                   value="Форма обучения: <#if user.contract>контракт<#else>бюджет</#if>">
+                                   <#assign contract = user.contract/>
+                                   value="Форма обучения: ${contract} <#if contract>контракт<#else>бюджет</#if>">
                         </div>
                     </#if>
                 </form>
