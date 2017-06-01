@@ -21,21 +21,33 @@
     <#if error??>
     ${error}
     </#if>
+
+    <#assign person = "">
+    <#assign time = "">
+    <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')"><#assign person = "overall"><#assign time = "week"></@security.authorize>
+    <@security.authorize access="hasAnyRole('STUDENT', 'STAROSTA', 'TEACHER')"><#assign person = "person"><#assign time = "monday"></@security.authorize>
 <div class="filter">
     <div class="title">Выберите формат:</div>
     <form class="schedule-form">
         <div class="modes">
             <div class="type">
-                <div class="button active private">Личное</div>
-                <div class="button overall">Общее</div>
-                <input type="hidden" name="personality" value="private">
+                <@security.authorize access="hasAnyRole('STUDENT', 'STAROSTA', 'TEACHER')">
+
+                    <div class="button active private">Личное</div>
+                </@security.authorize>
+
+                <div class="button overall <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">active</@security.authorize>">Общее</div>
+                <input type="hidden" name="personality" value="${person}">
             </div>
             <div class="size">
-                <div class="button active">День</div>
-                <div class="button week">Неделя</div>
-                <input type="hidden" name="interval" value="monday">
+                <@security.authorize access="hasAnyRole('STUDENT', 'STAROSTA', 'TEACHER')">
+
+                    <div class="button active">День</div>
+                    <div class="button week">Неделя</div>
+                </@security.authorize>
+
+                <input type="hidden" name="interval" value="${time}">
             </div>
-            <input type="submit" value="Изменить" class="button enter">
         </div>
     </form>
 </div>
