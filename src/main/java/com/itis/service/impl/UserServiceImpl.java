@@ -61,7 +61,6 @@ public class UserServiceImpl implements UserService {
         return teachers;
     }
 
-
     @Override
     public User getByEmail(String email) {
         return userRepository.findByEmail(email);
@@ -92,6 +91,10 @@ public class UserServiceImpl implements UserService {
             LOGGER.error("error occured while parsing csv file to timetable events : ", e);
             throw new TimetableCreationException();
         }
+    }
+
+    public List<User> getAllUsersExceptingAdmin() {
+        return userRepository.findAllNotContainingRole(Role.ADMIN);
     }
 
     @Override

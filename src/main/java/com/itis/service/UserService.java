@@ -20,4 +20,5 @@ public interface UserService {
     public User getByEmail(String email);
 
     void createUsers(MultipartFile file);
+    List<User> getAllUsersExceptingAdmin();
 }
