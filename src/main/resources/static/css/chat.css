@@ -198,3 +198,10 @@
 		margin-top: 20px;
 	}
 }
+
+.students .search input[type="text"]{
+	width: 100%;
+	border: 1px solid #ddd;
+	padding: 10px;
+	box-sizing: border-box;
+}
