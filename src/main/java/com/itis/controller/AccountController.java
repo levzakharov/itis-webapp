@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * Created by maratgatin on 27/05/2017.
+ * @author alt
  */
 @Controller
-public class AccountsManagementController {
+public class AccountController {
 
     private final UserService userService;
 
     private final String TEMPLATES_FOLDER = "accounts_management/";
 
     @Autowired
-    public AccountsManagementController(UserService userService) {
+    public AccountController(UserService userService) {
         this.userService = userService;
     }
 

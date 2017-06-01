@@ -137,8 +137,9 @@
 
 .container .content.chat .write textarea{
 	width: 100%;
+	resize: none;
+	outline: none;
 }
-
 
 .container .content.chat .write input {
 	display: inline-block;

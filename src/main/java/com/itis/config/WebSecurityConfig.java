@@ -1,5 +1,6 @@
 package com.itis.config;
 
+import com.itis.model.enums.Role;
 import com.itis.security.CustomUserDetailsService;
 import com.itis.utils.ApplicationUrls;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,14 +57,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers(ApplicationUrls.WebAppUrls.BASE_REQUESTS_URL)
+                .hasAnyRole(Role.STUDENT.toString(), Role.WORKER.toString())
+                .antMatchers(ApplicationUrls.WebAppUrls.CREATE_NOTIFICATION_URL,
+                        ApplicationUrls.WebAppUrls.EXTENDED_NOTIFICATIONS_URL)
+                .hasAnyRole(Role.STAROSTA.toString(), Role.WORKER.toString(), Role.TEACHER.toString())
+                .antMatchers(ApplicationUrls.WebAppUrls.CREATE_NEWS_URL,
+                        ApplicationUrls.WebAppUrls.UPDATE_NEWS_URL,
+                        ApplicationUrls.WebAppUrls.DELETE_NEWS_URL,
+                        ApplicationUrls.WebAppUrls.PROCESSED_REQUESTS_URL,
+                        ApplicationUrls.WebAppUrls.ACCEPT_REQUEST_URL,
+                        ApplicationUrls.WebAppUrls.DECLINE_REQUEST_URL,
+                        ApplicationUrls.WebAppUrls.GENERATE_CERTIFICATE_URL)
+                .hasAnyRole(Role.WORKER.toString(), Role.ADMIN.toString())
+                .antMatchers(ApplicationUrls.WebAppUrls.CREATE_DOCUMENT_URL,
+                        ApplicationUrls.WebAppUrls.DELETE_DOCUMENT_URL)
+                .hasAnyRole(Role.WORKER.toString(), Role.TEACHER.toString(), Role.ADMIN.toString())
+                .antMatchers(ApplicationUrls.WebAppUrls.CREATE_REQUEST_URL)
+                .hasAnyRole(Role.STUDENT.toString(), Role.STAROSTA.toString())
                 .anyRequest().authenticated()
                 .and().csrf().disable()
-
         ;
     }
 
     @Override
-    public void configure(WebSecurity security){
+    public void configure(WebSecurity security) {
         security.ignoring().antMatchers("/fonts/**");
     }
 }

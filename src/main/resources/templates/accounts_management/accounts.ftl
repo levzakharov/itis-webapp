@@ -3,7 +3,7 @@
 <#macro m_body>
 <div class="title">Список пользователей</div>
 <div class="add">
-    <div class="button">Добавить/обновить пользователей</div>
+    <div class="button" style="float: right;">Добавить/обновить пользователей</div>
     <div class="cancel">Отменить</div>
     <div class="block">
         <div class="title">Загрузить список пользователей CSV</div>
@@ -44,13 +44,24 @@
             <div class="name">${user.fullName}</div>
             <div class="buttons">
                 <i class="fa fa-search" aria-hidden="true"></i>
-                <i class="fa fa-times" aria-hidden="true"></i>
+
+                <#if user.enabled>
+                    <form action="/accounts/${user.id}/ban" name="ban_${user.id}" method="post"></form>
+                    <i class="fa fa-ban" onclick="document.forms['ban_${user.id}'].submit();" aria-hidden="true"></i>
+                <#else>
+                    <form action="/accounts/${user.id}/unban" name="unban_${user.id}" method="post"></form>
+                    <i class="fa fa-check" onclick="document.forms['unban_${user.id}'].submit();"
+                       aria-hidden="true"></i>
+                </#if>
             </div>
             <div class="edit">
                 <div class="title">Информация о пользователе</div>
                 <form>
                     <div class="name">
                         <input disabled type="text" value="${user.fullName}">
+                    </div>
+                    <div class="name">
+                        <input disabled type="text" value="Аккаунт: <#if user.enabled>активен<#else>заблокирован</#if>">
                     </div>
                     <div class="name">
                         <input disabled type="text" value="${user.email}">
@@ -70,6 +81,9 @@
                         <div class="name">
                             <input disabled type="text"
                                    value="Форма обучения: <#if user.contract>контракт<#else>бюджет</#if>">
+                        </div>
+                        <div class="name">
+                            <input disabled type="text" value="Год поступления: ${user.userGroup.startYear}">
                         </div>
                     </#if>
                 </form>

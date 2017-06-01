@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Ошибка 404</title>
+    <title>Ошибка 404 (Такой страницы не существует)</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic" rel="stylesheet">
     <link href="/css/style.css" type="text/css"   rel="stylesheet" />
     <link href="/css/error.css" type="text/css"   rel="stylesheet" />
@@ -17,7 +17,7 @@
             <img src="/images/logo.png">
         </div>
         <div class="error-content">
-            <a>Ошибка 404</a>
+            <a>Такой страницы не существует</a>
         </div>
     </div>
 </div>

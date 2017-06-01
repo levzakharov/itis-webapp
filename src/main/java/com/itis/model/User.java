@@ -29,6 +29,7 @@ public class User implements UserDetails {
 
     @Column(name = "full_name")
     private String fullName;
+
     @JsonIgnore
     private String password;
 
@@ -50,12 +51,12 @@ public class User implements UserDetails {
     @JoinColumn(name = "user_id")
     private List<UserNotification> userNotifications;
 
-    private boolean contract;
+    private Boolean contract;
 
     private Long birthday;
 
     @JsonIgnore
-    private boolean enabled;
+    private Boolean enabled;
 
     public Long getId() {
         return id;

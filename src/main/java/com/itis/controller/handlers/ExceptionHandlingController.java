@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by softi on 30.05.2017.
+ * @author softi on 30.05.2017.
  */
 @ControllerAdvice
 public class ExceptionHandlingController extends ResponseEntityExceptionHandler {

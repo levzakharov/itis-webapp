@@ -2,9 +2,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Ошибка 403</title>
+    <title>Ошибка 403 (Нет доступа)</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic" rel="stylesheet">
-    <link href="/style.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet"/>
     <link href="/css/error.css" type="text/css" rel="stylesheet"/>
     <link href="/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
 
@@ -17,7 +17,7 @@
             <img src="/images/logo.png">
         </div>
         <div class="error-content">
-            <a>Ошибка 403</a>
+            <a>Нет доступа</a>
         </div>
     </div>
 </div>
