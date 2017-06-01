@@ -4,7 +4,6 @@ import com.itis.criteria.TimetableSearchCriteria;
 import com.itis.exceptions.TimetableCreationException;
 import com.itis.form.EventParsingForm;
 import com.itis.model.Event;
-import com.itis.model.UserGroup;
 import com.itis.model.enums.EventInterval;
 import com.itis.repository.EventRepository;
 import com.itis.security.SecurityUtils;
@@ -22,7 +21,6 @@ import java.util.*;
 
 import static com.itis.criteria.TimetableSearchCriteria.INTERVAL_WEEK;
 import static com.itis.criteria.TimetableSearchCriteria.PERSONALITY_ALL;
-import static java.util.Objects.isNull;
 
 /**
  * @author aleksandrpliskin on 13.05.17.
@@ -32,9 +30,6 @@ public class EventServiceImpl implements EventService {
 
 //    private final String[] CSVFormats = {"application/vnd.ms-excel", "text/csv"};
 
-    private List<String> CSVFormats = Arrays.asList(
-            "application/vnd.ms-excel",
-            "text/csv");
 
     private static final Logger LOGGER = Logger.getLogger(EventServiceImpl.class);
 
@@ -65,7 +60,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public void createTimetable(MultipartFile file) {
         try {
-            if (!CSVFormats.contains(file.getContentType())) {
+            if (!CSVParser.CSVFormats.contains(file.getContentType())) {
                 throw new IllegalArgumentException("incorrect format of csv file");
             }
             eventRepository.deleteAll();
@@ -124,6 +119,4 @@ public class EventServiceImpl implements EventService {
         });
         return timetable;
     }
-
-
 }
