@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itis.model.enums.Role;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,7 +24,7 @@ public class User implements UserDetails {
     @GeneratedValue(generator = "user_seq")
     private Long id;
 
-
+    @Email
     private String email;
 
     @Column(name = "full_name")
@@ -180,5 +181,4 @@ public class User implements UserDetails {
     public void setBirthday(Long birthday) {
         this.birthday = birthday;
     }
-
 }

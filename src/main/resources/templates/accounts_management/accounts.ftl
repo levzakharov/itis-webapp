@@ -3,10 +3,17 @@
 <#macro m_body>
 <div class="title">Список пользователей</div>
 <div class="add">
-    <div class="button">Добавить пользователя</div>
+    <div class="button">Добавить пользователей</div>
     <div class="cancel">Отменить</div>
     <div class="block">
-        <div class="title">Создание пользователя</div>
+        <div class="title">Загрузить список пользователей CSV</div>
+        <form action="/accounts/new" method="post" enctype="multipart/form-data">
+            <div class="name">
+                <label> Пользователи
+                    <input type="file" multiple name="file"></label>
+            </div>
+            <input type="submit" value="Загрузить">
+        </form>
     </div>
 </div>
 <div class="blocks">
@@ -49,17 +56,20 @@
                         <input disabled type="text" value="${user.email}">
                     </div>
                     <div class="name">
-                        <input disabled type="date" value="Дата рождения: ${user.birthday?number_to_date}">
+                        <input disabled type="date"
+                               value="Дата рождения: <#if user.birthday??>${user.birthday?number_to_date}</#if>">
                     </div>
                     <div class="name">
-                        <input disabled type="text" value="Телефон: ${user.phone}">
+                        <input disabled type="text" value="Телефон: <#if user.phone??>${user.phone}</#if>">
                     </div>
                     <#if user.userGroup??>
                         <div class="name">
-                            <input disabled type="text" value="Группа: ${user.userGroup.number}">
+                            <input disabled type="text"
+                                   value="Группа: <#if user.userGroup??>${user.userGroup.number}</#if>">
                         </div>
                         <div class="name">
-                            <input disabled type="text" value="Форма обучения: <#if user.contract>контракт<#else>бюджет</#if>">
+                            <input disabled type="text"
+                                   value="Форма обучения: <#if user.contract>контракт<#else>бюджет</#if>">
                         </div>
                     </#if>
                 </form>

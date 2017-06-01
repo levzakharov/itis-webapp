@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by maratgatin on 27/05/2017.
@@ -46,6 +47,12 @@ public class AccountsManagementController {
     @PostMapping(ApplicationUrls.WebAppUrls.UNBAN_ACCOUNT_URL)
     public String unbanUser(@PathVariable long userId) {
         userService.unban(userId);
+        return "redirect:" + ApplicationUrls.WebAppUrls.BASE_ACCOUNTS_MANAGEMENT_URL;
+    }
+
+    @PostMapping(value = ApplicationUrls.WebAppUrls.CREATE_ACCOUNT_URL)
+    public String createUsersWithCsvFile(MultipartFile file) {
+        userService.createUsers(file);
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_ACCOUNTS_MANAGEMENT_URL;
     }
 }
