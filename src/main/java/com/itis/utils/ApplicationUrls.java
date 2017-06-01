@@ -81,6 +81,14 @@ public interface ApplicationUrls {
 
         String BASE_RAITING_URL = "/raiting";
 
+        String BASE_ACCOUNTS_MANAGEMENT_URL = "/accounts";
+
+        String BAN_ACCOUNT_URL = BASE_ACCOUNTS_MANAGEMENT_URL + "/{userId}/ban";
+
+        String UNBAN_ACCOUNT_URL = BASE_ACCOUNTS_MANAGEMENT_URL + "/{userId}/unban";
+
+        String CREATE_ACCOUNT_URL = BASE_ACCOUNTS_MANAGEMENT_URL + "/new";
+
         String BASE_REQUESTS_URL = "/certificates";
 
         String PROCESSED_REQUESTS_URL = BASE_REQUESTS_URL + "/processed";
@@ -94,9 +102,11 @@ public interface ApplicationUrls {
         String GENERATE_CERTIFICATE_URL = BASE_REQUESTS_URL + "/{requestId}/generate";
 
         String BASE_CHAT_URL = "/chat";
+
     }
 
     interface WebSocketsUrls {
+
         String BASE_MESSAGES_URL = "/messages";
 
         String MESSAGES_PREVIEW_URL = BASE_MESSAGES_URL + "-preview";
@@ -108,5 +118,15 @@ public interface ApplicationUrls {
         String MESSAGES_FROM_USER_URL = BASE_MESSAGES_URL + "/{user}";
 
         String MESSAGES_QUEUE_URL = "/queue/messages";
+
+        String MESSAGES_READEN_QUEUE_URL = "/topic/read";
+    }
+
+    interface WebAppErrorsUrls {
+
+        String ERROR_404_URL = "/404";
+        String ERROR_403_URL = "/403";
+        String ERROR_500_URL = "/500";
+
     }
 }

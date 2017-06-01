@@ -8,7 +8,7 @@
     "SUNDAY": "Воскресенье"
 }>
 
-<div class="table">
+<div class="table weekg">
     <table>
         <thead>
         <tr>

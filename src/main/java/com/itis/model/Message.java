@@ -82,4 +82,11 @@ public class Message {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString(){
+        return this.content + "\n" +
+                this.fromUser + "\n" +
+                this.toUser + "\n";
+    }
 }

@@ -1,0 +1,88 @@
+.container .content.users .blocks {
+	padding-top: 30px;
+	clear: both;
+}
+
+.container .content.users .blocks .block {
+	position: relative;
+}
+
+.container .content.users .blocks .block .buttons {
+	float: none;
+	position: absolute;
+	right: 0;
+	top: 4px;
+}
+
+.container .content.users .blocks .block .buttons .fa {
+	font-size: 20px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.container .content.users .blocks .block .image {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 28px;
+	border: 1px solid #222;
+	border-radius: 90px;
+	float: left;
+	margin-top: -4px;
+
+	margin-right: 20px;
+}
+
+.container .content.users .blocks .block .image a {
+	font-size: 18px;
+}
+
+.container .content.users .add .block input {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.container .content.users .ms-parent {
+	display: none;
+}
+
+.container .content .add .usertype .button {
+	background: transparent;
+	border: 1px solid #ddd;
+	color: #222;
+	float: none;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.container .content .add .usertype .button.active {
+	border-color: #456693;
+	color: #456693;
+}
+
+.container .content.users .add .block input[type='submit'] {
+	margin-top: 30px;
+}
+
+.container .content.users .block .edit input {
+	display: block !important;
+	margin-bottom: 8px !important;
+}
+
+.container .content.users .usertypeedit .button {
+	background: transparent;
+	border: 1px solid #ddd;
+	color: #222;
+	float: none;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.container .content.users .usertypeedit .button.active {
+	border-color: #456693;
+	color: #456693;
+}
+
+.container .content.users .block .edit input[type='submit'] {
+	margin-top: 30px;
+}

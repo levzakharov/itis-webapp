@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,6 +30,9 @@ public class ImageServiceImpl implements ImageService {
     }
 
     public Image create(MultipartFile multipartFile) {
+        if (!multipartFile.getContentType().matches("image/.+")) {
+            throw new IllegalArgumentException("Incorrect format of image");
+        }
         Image image = new Image();
         image.setTitle(storageService.store(multipartFile));
         return imageRepository.save(image);

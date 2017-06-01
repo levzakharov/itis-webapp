@@ -1,5 +1,7 @@
 package com.itis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,11 +24,13 @@ public class Post {
     @ManyToMany
     @JoinTable(name = "post_image", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns =
     @JoinColumn(name = "image_id"))
+    @JsonIgnore
     private List<Image> images;
 
     @ManyToMany
     @JoinTable(name = "document_post", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns =
     @JoinColumn(name = "document_id"))
+    @JsonIgnore
     private List<Document> documents;
 
     private long date;

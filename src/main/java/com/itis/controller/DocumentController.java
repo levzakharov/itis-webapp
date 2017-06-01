@@ -2,7 +2,6 @@ package com.itis.controller;
 
 import com.itis.form.DocumentCreationForm;
 import com.itis.model.Document;
-import com.itis.model.Post;
 import com.itis.model.User;
 import com.itis.model.enums.Role;
 import com.itis.security.SecurityUtils;
@@ -49,16 +48,21 @@ public class DocumentController {
     public String getTeacherDocumentsPage(@PathVariable int userId, ModelMap modelMap) {
         boolean isOwner = SecurityUtils.getCurrentUser().getId() == userId;
         User user = userService.getById(userId);
-        modelMap.put("documents", documentService.getByUserId(userId));
-        modelMap.put("isOwner", isOwner);
-        modelMap.put("teacher", user);
-        return "document/docs_teacher";
+        if (user != null && user.getRoles().contains(Role.TEACHER)) {
+            modelMap.put("documents", documentService.getByUserId(userId));
+            modelMap.put("isOwner", isOwner);
+            modelMap.put("teacher", user);
+            return "document/docs_teacher";
+        } else {
+            return "redirect:" + ApplicationUrls.WebAppUrls.TEACHER_FOLDERS_URL;
+        }
     }
 
     @GetMapping(value = ApplicationUrls.WebAppUrls.DEAN_DOCUMENTS_URL)
     public String getDeanDocumentsPage(ModelMap modelMap) {
         List<Document> documents = new ArrayList<>();
         List<User> users = userService.getByRole(Role.WORKER);
+        users.addAll(userService.getByRole(Role.ADMIN));
         for (User user : users) {
             documents.addAll(documentService.getByUserId(user.getId()));
         }
@@ -90,6 +94,5 @@ public class DocumentController {
             return "redirect:" + ApplicationUrls.WebAppUrls.TEACHER_FOLDERS_URL + "/" + user.getId();
         }
         return "redirect:" + ApplicationUrls.WebAppUrls.BASE_DOCUMENTS_URL;
-
     }
 }

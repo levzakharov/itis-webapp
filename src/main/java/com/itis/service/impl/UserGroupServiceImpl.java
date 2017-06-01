@@ -63,4 +63,9 @@ public class UserGroupServiceImpl implements UserGroupService {
         }
         return currentDate.get(Calendar.YEAR) - groupsStartYear;
     }
+
+    @Override
+    public List<UserGroup> getUserGroups() {
+        return userGroupRepository.findAll();
+    }
 }

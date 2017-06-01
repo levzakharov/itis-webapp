@@ -1,4 +1,4 @@
-<div class="table">
+<div class="table weekp">
     <table>
         <thead>
         <tr>

@@ -1,9 +1,12 @@
 <#include "../main-template.ftl">
 
 <#macro m_body>
-<div class="title"><a href="/news">Новости</a></div>
+<div class="title title_news"><a href="/news">Новости</a></div>
+    <#if error??>
+    ${error}
+    </#if>
     <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
-    <div class="add">
+    <div class="add add_news">
         <div class="button">Добавить новость</div>
         <div class="cancel">Отменить</div>
         <div class="block">

@@ -1,7 +1,11 @@
 <header>
     <div class="col-5">
+        <div class="logo">
+            <img src="/images/logo.png">
+        </div>
     </div>
     <div class="col-5">
+        <i class="fa fa-bars" aria-hidden="true"></i>
         <div class="user">
             <a href="/notifications">
                 <div class="notif">

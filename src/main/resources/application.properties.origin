@@ -16,3 +16,6 @@ liquibase.drop-first=false
 liquibase.url=jdbc:postgresql://localhost:5432/itis-portal
 liquibase.user=postgres
 liquibase.password=postgres
+
+spring.http.multipart.maxFileSize=100MB
+spring.http.multipart.maxRequestSize=1000MB
