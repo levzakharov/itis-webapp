@@ -193,6 +193,13 @@
                         file="db/seeds/demo/post_image.csv">
         </loadUpdateData>
     </changeSet>
+    <changeSet id="seeds_26" author="r.khakov">
+        <loadUpdateData tableName="user_role"
+                        primaryKey="user_id, role"
+                        file="db/seeds/changes/01062222/user_role.csv">
+            <column name="user_id" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
 
 
 </databaseChangeLog>
