@@ -30,7 +30,7 @@
                 <label><input type="checkbox" name="remember-me" checked/>Запомнить меня</label>
                 <input type="submit" class="button" value="Войти">
             <#if error??>
-                <div class="error-msg">Неправильный логин или пароль</div>
+                <div align="center" style="color: #ab2020;">Неправильный логин или пароль</div>
             </#if>
             </form>
             <div class="forgot">

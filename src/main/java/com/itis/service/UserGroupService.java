@@ -21,4 +21,6 @@ public interface UserGroupService {
 
     Integer getCourseByUserGroups(UserGroup userGroup);
 
+    List<UserGroup> getUserGroups();
+
 }

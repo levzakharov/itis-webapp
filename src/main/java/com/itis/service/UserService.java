@@ -2,6 +2,7 @@ package com.itis.service;
 
 import com.itis.model.User;
 import com.itis.model.enums.Role;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,4 +18,11 @@ public interface UserService {
     User getById(long id);
 
     public User getByEmail(String email);
+
+    void createUsers(MultipartFile file);
+    List<User> getAllUsersExceptingAdmin();
+
+    void ban(long id);
+
+    void unban(long id);
 }

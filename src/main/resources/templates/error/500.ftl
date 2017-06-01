@@ -19,9 +19,9 @@
         <div class="error-content">
             <a>
             <#if error??>
-                ${error}
+            ${error}
             <#else>
-                Упс... что-то пошло не так
+                Упс... что-то пошло не так :(
             </#if>
             </a>
         </div>

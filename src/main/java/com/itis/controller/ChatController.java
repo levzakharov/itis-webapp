@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by maratgatin on 28/05/2017.
+ * @author maratgatin on 28/05/2017.
  */
 @Controller
 @RequestMapping(ApplicationUrls.WebAppUrls.BASE_CHAT_URL)

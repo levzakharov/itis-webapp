@@ -2,7 +2,7 @@
 <#macro m_body>
 <div class="title">Уведомления</div>
 <div class="add">
-    <div class="button">Добавить уведомление</div>
+    <div class="button" style="float: right;">Добавить уведомление</div>
     <div class="cancel">Отменить</div>
     <div class="block">
         <div class="title">Создание уведомления</div>

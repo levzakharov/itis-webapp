@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itis.model.enums.Role;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,11 +24,12 @@ public class User implements UserDetails {
     @GeneratedValue(generator = "user_seq")
     private Long id;
 
-
+    @Email
     private String email;
 
     @Column(name = "full_name")
     private String fullName;
+
     @JsonIgnore
     private String password;
 
@@ -49,9 +51,12 @@ public class User implements UserDetails {
     @JoinColumn(name = "user_id")
     private List<UserNotification> userNotifications;
 
-    private boolean contract;
+    private Boolean contract;
 
     private Long birthday;
+
+    @JsonIgnore
+    private Boolean enabled;
 
     public Long getId() {
         return id;
@@ -147,7 +152,11 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public List<UserNotification> getUserNotifications() {

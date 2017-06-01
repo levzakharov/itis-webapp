@@ -1,7 +1,7 @@
 <#include "../main-template.ftl">
 
 <#macro m_body>
-    <div class="title">Расписание</div>
+<div class="title">Расписание</div>
     <@security.authorize access="hasAnyRole('WORKER', 'ADMIN')">
     <div class="add">
         <div class="button">Загрузить расписание через csv файл</div>
@@ -18,22 +18,22 @@
         </div>
     </div>
     </@security.authorize>
-<#if error??>
+    <#if error??>
     ${error}
-</#if>
+    </#if>
 <div class="filter">
     <div class="title">Выберите формат:</div>
     <form class="schedule-form">
         <div class="modes">
+            <div class="type">
+                <div class="button active private">Личное</div>
+                <div class="button overall">Общее</div>
+                <input type="hidden" name="personality" value="private">
+            </div>
             <div class="size">
                 <div class="button active">День</div>
                 <div class="button week">Неделя</div>
                 <input type="hidden" name="interval" value="monday">
-            </div>
-            <div class="type">
-                <div class="button active private">Личный</div>
-                <div class="button overall">Общий</div>
-                <input type="hidden" name="personality" value="private">
             </div>
             <input type="submit" value="Изменить" class="button enter">
         </div>

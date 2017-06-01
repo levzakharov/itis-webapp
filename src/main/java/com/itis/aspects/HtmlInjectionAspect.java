@@ -23,22 +23,26 @@ public class HtmlInjectionAspect {
         notification.setText(HtmlUtils.htmlEscape(notification.getText()));
         notification.setTheme(HtmlUtils.htmlEscape(notification.getTheme()));
     }
+
     @Before("execution(* com.itis.repository.PostRepository.save(..)) && args(post)")
     public void validPost(final Post post) throws Exception {
         post.setText(HtmlUtils.htmlEscape(post.getText()));
         post.setTitle(HtmlUtils.htmlEscape(post.getTitle()));
     }
+
     @Before("execution(* com.itis.repository.EventRepository.save(..)) && args(event)")
     public void validEvent(final Event event) throws Exception {
         event.setDescription(HtmlUtils.htmlEscape(event.getDescription()));
         event.setName(HtmlUtils.htmlEscape(event.getName()));
         event.setPlace(HtmlUtils.htmlEscape(event.getPlace()));
     }
+
     @Before("execution(* com.itis.repository.UserRepository.save(..)) && args(user)")
     public void validUser(final User user) throws Exception {
         user.setFullName(HtmlUtils.htmlEscape(user.getFullName()));
         user.setPhone(HtmlUtils.htmlEscape(user.getPhone()));
     }
+
     @Before("execution(* com.itis.repository.DecreesRepository.save(..)) && args(decree)")
     public void validDecree(final Decree decree) throws Exception {
         decree.setText(HtmlUtils.htmlEscape(decree.getText()));
