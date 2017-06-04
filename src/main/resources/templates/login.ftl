@@ -18,6 +18,23 @@
         <a>За восстановлением пароля обратитесь к администратору</a>
     </div>
 </div>
+<div class="info-modal">
+    <img src="/images/close.png">
+    <p style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">Добро пожаловать на портал группы 11-401!</p>
+    <p>Для входа на портал Вы можете использовать следующие email:</p>
+    <ul>
+        <li>stud1@email.ru - студент</li>
+        <li>stud3@email.ru -  студент и староста</li>
+        <li>prep1@email.ru -  преподаватель</li>
+    </ul>
+    <p>Пароль: password</p>
+    <p>Сервер перезапускается каждый день в 05:00.</p>
+    <p>При перезапуске введенные данные будут сброшены.</p>
+    <p><a href="goo.gl/95cYht" style="color: #feebff; text-decoration: underline">Ссылка на apk для Android</a></p>
+    <p>Приятного пользования!</p>
+    <p style="font-size: 12px;margin-top: 5px;">Для получения данных от аккаунта деканата обратитесь по телефону <br>
+        <a href="tel:+79033443530" style="color: #feebff; text-decoration: underline">+79033443530</a> или telegram @arwres</p>
+</div>
 <div class="signin-container">
     <div class="signin">
         <div class="logo">
