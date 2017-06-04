@@ -28,10 +28,12 @@
         <li>prep1@email.ru -  преподаватель</li>
     </ul>
     <p>Пароль: password</p>
-    <p>В каждые 5 утра сервер перезапускается.</p>
-    <p><a href="goo.gl/95cYht" style="color: #feebff; text-decoration: underline">Ссылка на apk для Android</a> </p>
+    <p>Сервер перезапускается каждый день в 05:00.</p>
+    <p>При перезапуске веденные данные будут сброшены.</p>
+    <p><a href="goo.gl/95cYht" style="color: #feebff; text-decoration: underline">Ссылка на apk для Android</a></p>
     <p>Приятного пользования!</p>
-    <p style="font-size: 12px;margin-top: 5px;">Для получения данных от аккаунта деканата обратитесь по телефону <a href="tel:+79033443530" style="color: #feebff; text-decoration: underline">+79033443530</a> или telegram @arwres</p>
+    <p style="font-size: 12px;margin-top: 5px;">Для получения данных от аккаунта деканата обратитесь по телефону <br>
+        <a href="tel:+79033443530" style="color: #feebff; text-decoration: underline">+79033443530</a> или telegram @arwres</p>
 </div>
 <div class="signin-container">
     <div class="signin">
