@@ -7,3 +7,10 @@ $(document).on("click", ".modal .close", function() {
 	$(".modal-container").removeClass("activate");
 	$(".modal").removeClass("activate");
 });
+
+$(document).on("click", ".info-modal img", function () {
+	$(".info-modal").removeClass('active');
+});
+$(document).ready(function () {
+    $(".info-modal").addClass('active');
+});
